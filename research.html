@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Research: Distributed Systems and Networks Lab</title>
+    <link rel="stylesheet" type="text/css" href="dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include file="top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Research </h1>
+        </div>
+        <div class="page-nav">
+        <ul>
+
+            <li> <a href="#intrusion-tolerant-systems">Real-Time Byzantine Resilient
+            Systems</a> </li>
+            
+            <li> <a href="#severe-impact-resilience">Severe Impact Resilient
+            Systems</a> </li>
+
+            <li> <a href="#real-time-reliable-internet">Real-Time Reliable Internet
+            Services</a> </li>
+        </ul>
+        
+        </div>
+
+        <div class="top-border-box">
+        <div id="intrusion-tolerant-systems">
+            <div class="large-title">
+            <h2> Real-time Byzantine Resilient Systems </h2>
+            </div>
+
+            <div class="textbox">
+
+
+            <p>Critical applications are becoming more connected to the
+            Internet for cost-effectiveness and scalability reasons, but this
+            leaves them vulnerable to attack. Most systems today are not
+            designed to withstand sophisticated attacks; an attacker who is
+            able to compromise a single machine typically gains the power to
+            take down the entire system. Our lab is working to develop systems
+            that continue to work correctly even when some parts of the system
+            become compromised.</p>
+
+            <p>Our research in this area focuses on building intrusion-tolerant systems for
+            critical infrastruture monitoring and control. In critical infrastruture, intrusion-tolerant systems 
+            not only need intrusion-tolerant communication and intrusion-tolerant consistent state to perform correct
+            operations, but also strict real-time reponsiveness even in presence of faults, attacks and intrusions.
+            Supervisory Control and Data Acquisition (SCADA) operations in power grid control centers typically 
+            require latency of 100-200ms and the requirements become much more stringent as we move from 
+            control centers to substations that carry out critical protection functions (4.167ms), due to the physical 
+            properties of the system.</p>
+
+            <p>Our current research in this area focuses on developing Byzantine resilient techniques 
+            for the grid substations. Substaions play a key role in grid resilience as 
+            they protect grid assets during risky events and ensure reliable power supply. 
+            A grid asset like a high voltage transformer (345kV and up) 
+            serves vast spans of the grid, costs millions of dollars, and takes over a year to procure, 
+            damaging it threatens grid stability. However, existing state-of-the-art protective schemes are
+            susceptible to intrusions i,e., a compromied protection device can damage assets or cause significant disruptions.
+            The challenge is to maintain correct protective opreations in susbations, meeting the latency requirements (4.167ms) and 
+            remain available even when up to a certain fraction of the protection devices are compromised. </p>
+
+            <p>We developed the first architecture and protocols for the substation that ensure correct protection operations
+            in the face of successful intrusions and network attacks while meeting the required latency constraint (4.167ms).
+            Our current work uses proactive recovery and diversity to allow Byzantine resileint systems 
+            to survive an unbounded number of compromises over the system lifetime, as long as the number of simultaneous 
+            compromises does not exceed a certain threshold. A key component of this work is the practical use of diversity 
+            to support the standard assumption that all machines in a system are not compromised simultaneously. If all machines 
+            run exactly the same programs in exactly the same environment, the same exploit will be effective against all of them. 
+            Because of this, it is necessary to add diversity in order to build resilient systems. 
+            Our current work in this area includes combining diversity and proactive recovery for Spire.</p>
+
+            <p>Our Spire, an open-source intrusion-tolerant SCADA system is built to address the use cases of power grid at 
+            both control center and substation levels. More information can be found at <a href="https://www.cnds.jhu.edu/spire">Spire</a> webpage</p>
+
+             </div>
+        </div>
+        </div>
+
+        
+        <div class="top-border-box">
+        <div id="severe-impact-resilience">
+            <div class="large-title">
+            <h2> Severe Impact Resilient Systems </h2>
+            </div>
+
+            <div class="textbox">
+            <p>Successful intrusions (compromises) of the control servers can cause the system to behave 
+            in incorrect ways (exhibiting arbitrary/Byzantine behavior - caused due to cyber attacks), 
+            as opposed to simply becoming unavailable (non-malicious - like those due to natural disasters).
+            Because of the differences between these two failure modes, the dependability reserach has traditionally 
+            considered them separately, developing crash-fault-tolerant system architectures and protocols to 
+            address non-malicious faults, and Byzantine-fault-tolerant protocols to address arbitrary or malicious faults.
+            However, recents trends have shown a novel threat model - an increasing cyberattacks that are targeted in the aftermath of a natural disaster 
+            posing an important emerging threat for critical infrastructure. This novel <b>compound threat model</b> and the impact of such 
+            threats on critical infrastructure are not well understood.</p> 
+            
+            <p>Our research defines the novel threat model and develops a framework to assess the impact of 
+            novel compound threats on critical infrastructure with the aim to develop severe 
+            impact resilient systems for critical infrastruture. The new analysis framework 
+            integrates a data-based model of natural disaster effects with a concrete model of an attacker’s
+            power to determine the probability of a given system instance surviving a specific compound threat.
+            Using this data-centric framework, we perform case-study analysis of an attacker attempting to disrupt a power-grid SCADA systems.
+            Our results show that while fault and intrusion-tolerant architectures deployed today or 
+            proposed in the literature offer some protection against compound threats, no existing architecture 
+            is designed to handle such threats, and none can guarantee uninterrupted operation under the full compound threat models considered.
+            </p>
+
+            <p>Further, our research aims to design, develop and deploy systems with novel architectures to 
+            withstand the compound threat using a combination of intrusion-tolerant techniques, mobile solutions and flexibity.
+            More information can be found in the project page.
+            </p>
+
+
+
+                         </div>
+        </div>
+        </div>
+
+
+        
+        
+        
+        
+        
+        
+        <div class="top-border-box">
+        <div id="real-time-reliable-internet">
+            <div class="large-title">
+            <h2> Real-Time Reliable Internet Services </h2>
+            </div>
+
+            <div class="textbox">
+
+            <p><b>News:</b> This <a
+            href="https://www.womeninhpc.org/hpc/icdcs-best-paper-internet-transport-service/">
+            blog post</a> describes our recent work on a timely, reliable, and
+            cost-effective Internet transport service, which received the best paper
+            award at IEEE ICDCS 2017. (07/13/2017)</p>
+
+            <p> New applications with demands such as low latency and high
+            reliability are challenging to support on the native Internet due
+            to the Internet's extreme scalability requirements. Our lab works
+            to enable these types of demanding applications using overlay
+            networks. </p>
+
+            <p> Our lab has developed the open-source <a
+            href="http://www.spines.org">Spines Overlay Messaging system</a>,
+            which provides a framework for deploying software overlay routers,
+            as well as algorithms to provide high-quality VoIP service using
+            overlays. The Spines framework is used commercially on 
+            a global scale.</p>
+
+            <p> We are currently interested in supporting even more demanding
+            applications, such as remote manipulation, which requires closing a
+            130ms round-trip loop to provide the operator with realistic
+            feedback.</p>
+
+            <p>For more information on the overlay network paradigm, see Yair
+            Amir's Don P. Giddens lecture at the Johns Hopkins University
+            Whiting School of Engineering (February 16, 2012): <a
+            href="https://www.youtube.com/playlist?list=PL4ADA453088CE2744">From
+            Overlays to Clouds: Inventing a New Network Paradigm</a> (<a
+            href="http://www.dsn.jhu.edu/~yairamir/YairAmir_IPL.pptx">PowerPoint
+            slides</a>, <a
+            href="http://www.dsn.jhu.edu/~yairamir/YairAmir_IPL.pdf">PDF
+            slides</a>). </p>
+
+            </div>
+        </div>
+        </div>
+
+        <div class="top-border-box">
+        <div id="communication-and-coordination">
+            <div class="large-title">
+            <h2> Communication and Coordination for Modern Data Centers </h2>
+            </div>
+
+            <div class="textbox">
+
+            <p>Today's cloud applications have a variety of communication and
+            coordination needs, both within a single data center and among
+            geographically dispersed data centers. Our research in this area
+            focuses on high-performance messaging systems that guarantee strong
+            semantics, as well as high-performance replication.</p>
+            
+            <p>In our work on messaging systems, our lab has developed the <a
+            href="http://www.spread.org">Spread toolkit</a>, an open-source,
+            widely-used group communication system, and <a
+            href="http://www.dsn.jhu.edu/research/group/secure_spread">Secure
+            Spread</a>, a library that adds security to Spread. More recently,
+            we designed a new message ordering protocol, the Accelerated Ring
+            protocol, and implemented it in the Spread toolkit (<a
+            href="http://www.spread.org/SpreadReleases.html">version 4.4.0 and
+            up</a>), improving both its throughput and latency for reliable,
+            agreed order, and safe message delivery.</p>
+
+            <p>In our work on replication, we have developed <a
+            href="http://www.dsn.jhu.edu/Paxos-SB.html">Paxos for System
+            Builders</a>, a complete specification and implementation of the
+            Paxos state-machine replication algorithm, and begun work comparing
+            replication protocols based on group communication to other
+            approaches (including Paxos). We are currently continuing this work
+            to develop a complete understanding of the tradeoffs of different
+            replication techniques.</p>
+
+            <p>In addition, we are currently interested in strong consistency
+            guarantees for Big Data systems.</p>
+
+            </div>
+        </div>
+        </div>
+
+    </div> <!-- main-wrapper -->
+    <!--#include file="footer.html" -->
+    </div> <!-- wrapper -->
+</body>
+
+</html>

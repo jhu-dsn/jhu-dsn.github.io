@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Distributed Systems and Networks Lab</title>
+    <link rel="stylesheet" type="text/css" href="dsn_style.css">
+</head>
+
+<script language="JavaScript">
+<!-- Hide from old browsers
+                                                                                
+// Array in the following format
+// [name, image_file, student/professor/alumni, home_page, info]
+                                                                                
+people = new Array
+
+<!--#include virtual="people/PEOPLE.DB" -->
+var array_length = people.length-1
+
+var rand_name  
+var rand_image 
+var rand_type
+var rand_link 
+var rand_info 
+
+function rand_image() {
+  var randomnumber = Math.random()
+  var rand1 = Math.round( (alumni-1) * randomnumber) + 1
+  rand_name  = people[rand1][0]
+  rand_image = "people/" + people[rand1][1]
+  rand_type  = people[rand1][2]
+  rand_link  = people[rand1][3]
+  rand_info  = people[rand1][4]
+}
+
+// -- End Hiding Here -->
+</script>
+
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include file="top-nav.html" -->
+    <div class="main-wrapper">
+
+    <div class="dsn-main">
+        <div class="dsn-head">
+        <h1> Distributed Systems and Networks Lab </h1>
+            <div class="rand-memb">
+              <h2> DSN Lab Member of the Minute </h2>
+              <script language="JavaScript">
+              <!-- Hide this script from old browsers --
+
+              //configure the speed of the slideshow, in miliseconds
+              var slideshowspeed=60000
+              rand_image()
+              document.write('<a href=' + rand_link + '>')
+              document.write('<img src="' + rand_image + '"></a>')
+              document.write('<div class="rand-memb-interests">')
+              document.write(rand_info)
+              document.write('</div>')
+              document.write('<br><br><b>' + rand_name + '</b>')
+              <!-- document.write('<img src="' + rand_image + '"></a>' + rand_info + '<br><br>' + rand_name) -->
+              setTimeout("slideit()",slideshowspeed)
+              function slideit(){
+                window.location.reload()
+              }
+
+              // -- End Hiding Here -->
+              </script>
+            </div>
+        </div>
+
+        <div class="right-image">
+        <img src="globe_big.jpg" alt="globe image" />
+        </div>
+    </div>
+
+
+    
+    <div class="textbox-wrapper">
+        <!-- <div class="textbox"> -->
+        <div style="padding: 1em">
+       
+
+
+        <p> The Distributed Systems and Networks (DSN) Lab is a Computer
+        Science research lab at Johns Hopkins University. We aim to invent and
+        develop technologies with a real-world impact. To achieve this, we work
+        to combine the practical and theoretical aspects of system-building to
+        create systems that are not only practical and deployable, but also
+        provably correct. The broad themes of our work are resilience,
+        performance, and enabling services that were not previously
+        possible.</p>
+
+        <p>We focus on dependable infrastructure: making the computerized
+        networked infrastructure systems that our society relies upon
+        resilient, performant, and secure. Our current research includes
+        intrusion-tolerant systems for clouds and critical infrastructure with
+        a focus on real-time and extremely resilient intrusion-tolerant SCADA systems 
+        for the power grid, as well as real-time reliable Internet services enabled 
+        by overlay networks and high-performance communication and coordination for 
+        modern data centers. </p>
+
+        <p>Examples of the systems developed in our lab include <a
+        href="http://www.spines.org">Spines</a>, an overlay messaging
+        framework, <a href="https://www.dsn.jhu.edu/spire">Spire</a>, an
+        intrusion-tolerant SCADA system for the power grid, and <a
+        href="http://www.spread.org">Spread</a>, a high-performance group
+        communication toolkit. </p>
+
+        <p> Our technologies are deployed in mission critical systems, support
+        data center applications, are included in commercial products, and are
+        used for research and teaching in universities and research labs around
+        the world. 
+        </div>
+
+    </div>
+    </div> <!-- main-wrapper -->
+
+    <!--#include file="footer.html" -->
+    </div> <!-- wrapper -->
+</body>
+
+</html>

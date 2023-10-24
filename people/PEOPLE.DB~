@@ -1,0 +1,48 @@
+// JavaScript Database
+
+var index = 1
+
+people[index++] = ["Yair Amir", "yairamir.gif", "Faculty", "http://www.cs.jhu.edu/~yairamir", "Group Communication, Multicast, Security for Group Communiation, Replication, Local and Wide Area Clusters, Metacomputing, Distributed Resource Management. "]
+
+people[index++] = ["Claudiu Danilov", "claudiu.jpg", "Faculty", "http://www.cs.jhu.edu/~claudiu", "Research Scientist. Byzantine and Benign Fault Tolerant Systems, Survivability, Wireless and Hybrid Mesh Networks, Overlay Networks."]
+
+people[index++] = ["John Lane", "jlane2.jpg", "Student", "http://www.cs.jhu.edu/~johnlane", "Survivable Systems, Byzantine Fault Tolerant Algorithms"]
+
+people[index++] = ["Nilo Rivera", "nilo.jpg", "Student", "http://www.cs.jhu.edu/~nrivera", "Wireless Mesh Networks, Routing Protocols"]
+
+people[index++] = ["Jonathan Kirsch", "jon_kirsch.jpg", "Student", "http://www.cs.jhu.edu/~jak", "Survivable Systems, P2P Networks"]
+
+people[index++] = ["Raluca Musaloiu-E", "ralucam.jpg", "Student", "http://www.cs.jhu.edu/~ralucam", "Networks and Operating Systems"]
+
+
+
+// ------------ ALUMNI ONLY AFTER THIS POINT --------------------
+
+var alumni = index-1;
+
+people[index++] = ["Michael Kaplan, MS 2006", "michaelkaplan.jpg", "Alumnus", "http://www.cs.jhu.edu/~kaplan", "High Performance Routing, Survivability, Network Protocols"]
+
+people[index++] = ["Ciprian Tutu, PhD 2004", "jimmy.jpg", "Alumnus", "http://www.cnds.jhu.edu/~jimmy", "OmniTi. Wide-area database replication using group communication, distributed algorithms" ]
+
+people[index++] = ["Cristina Nita-Rotaru, PhD 2003", "crisn.jpg", "Alumnus", "http://www.cnds.jhu.edu/~crisn", "Assistant Professor, Purdue Univeristy. Security in group communication and distributed systems" ]
+
+people[index++] = ["Jonathan Stanton, PhD 2002", "jonathan.jpg", "Alumnus", "http://www.seas.gwu.edu/~jstanton", "Assistant Professor, George Washington University. Distributed Systems, wide-area group communication" ]
+
+people[index++] = ["R. Sean Borgstrom, PhD 2000", "no_photo.jpg", "Alumnus", "http://www.cs.jhu.edu/~rsean", "Author. Metacomputing" ]
+
+people[index++] = ["Ryan Caudy, MS 2004", "ryan.jpg", "Alumnus", "http://www.cnds.jhu.edu/~wyvern", "Bloomberg LP. Group communication and high availability for network clusters" ]
+
+people[index++] = ["Michael Hilsdale, MS 2004", "MikeHilsdale.jpg", "Alumnus", "http://www.hilsdale.com", "Microsoft. Seamless Wireless Networks"]
+
+people[index++] = ["Ashima Munjal, MS 2004", "aashima.jpg", "Alumnus", "http://www.cnds.jhu.edu/~munjal", "Virtual IP management for network clusters" ]
+
+people[index++] = ["John Schultz, MS 2001", "jschultz.jpg", "Alumnus", "http://www.cnds.jhu.edu/~jschultz", "Parter, Spread Concepts. Distributed systems, group communication" ]
+
+people[index++] = ["Jacob Green, MS 2000", "green.jpg", "Alumnus", "http://www.cnds.jhu.edu/~jgreen", "Partner, Spread Concepts. Distributed systems, metacomputing" ]
+
+people[index++] = ["David Shaw, MS 1998", "no_photo.jpg", "Alumnus", "http://www.cs.jhu.edu/~dshaw", "Internet protocols" ]
+
+people[index++] = ["Theo Schlossnagle", "jesus.jpg", "Alumnus", "http://www.cnds.jhu.edu/~jesus", "Founder, OmniTi. Replicated web service" ]
+
+people[index++] = ["Alec Peterson", "apeterson.jpg", "Alumnus", "http://www.centergate.com/apeterson.html", "Internet protocols" ]
+

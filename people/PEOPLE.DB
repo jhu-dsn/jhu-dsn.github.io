@@ -1,0 +1,81 @@
+// JavaScript Database
+
+var index = 1
+
+people[index++] = ["Dr. Yair Amir", "yair.jpg", "Current", "http://www.cs.jhu.edu/~yairamir", "Intrusion Tolerant Clouds, Critical Infrastructure, Overlay Networks, Wireless Mesh Networks, Distributed Algorithms, Replication" ]
+
+people[index++] = ["Sahiti Bommareddy", "sahiti.jpg", "Current", "http://www.cs.jhu.edu/~sahiti", "Distributed Systems, Intrusion-tolerant Systems, Critical Infrastructure, Dependable and Resilient Systems" ]
+
+people[index++] = ["Brian Wheatman", "brian.png", "Current", "http://brianwheatman.com/", "Big Data and Distributed Systems, Dependable and Resilient Systems" ]
+
+
+
+
+// ------------ ALUMNI ONLY AFTER THIS POINT --------------------
+
+var alumni = index-1;
+
+
+people[index++] = ["Daniel Qian, MSE 2021", "daniel.jpeg", "Alumnus", "http://danqian.net/",  "Critical Infrastructure, Real Time Interactive Services" ]
+
+people[index++] = ["Guangrui (Jerry) Chen, MSE 2021", "jerry.jpeg", "Alumnus", "https://www.linkedin.com/in/guangrui-chen/", "Real Time Interactive Services, Dependable Systems" ]
+
+people[index++] = ["Shriya Kaneriya, 2021", "shriya.jpeg", "Alumnus", "https://www.linkedin.com/in/shriya-kaneriya/",  "Systems and Networks" ]
+
+people[index++] = ["Amy Babay, PhD 2018", "babay.jpg", "Alumnus", "https://people.cs.pitt.edu/~babay/", "Real-Time Reliable Internet Services, Intrusion-Tolerant Systems, Critical Infrastructure, High Performance Messaging" ]
+
+people[index++] = ["Tom Tantillo, PhD 2018", "tomt.jpg", "Alumnus", "https://www.linkedin.com/in/tomtantillo/", "Intrusion Tolerant Clouds, Critical Infrastructure, Survivable Highly-Available Intrusion Tolerant Systems, Overlay Networks" ]
+
+
+people[index++] = ["Sam Beckley, 2018", "sam_beckley.jpg", "Alumnus", "https://www.linkedin.com/in/samuelbeckley/", "Intrusion-Tolerant Open-Source SCADA" ]
+
+people[index++] = ["Kaiyue (Karin) Wu, 2018", "kaiyue_wu.jpg", "Alumnus", "http://www.cnds.jhu.edu/~wooloo", "" ]
+
+people[index++] = ["Ned Duhaime, MSE 2017", "ned.jpg", "Alumnus", "https://www.linkedin.com/in/edmund-duhaime-824322104/", "Seamless Overlay Networks" ]
+
+people[index++] = ["Trevor Aron, MSE 2017", "trevor.jpg", "Alumnus", "https://www.linkedin.com/in/trevoraron/", "Intrusion-Tolerant SCADA" ]
+
+people[index++] = ["Emily Wagner, MSE 2016", "emily_wagner.jpg", "Alumnus", "https://www.linkedin.com/in/ewagner46/", "Real-Time Reliable Internet Services, Overlay Network Simulation" ]
+
+people[index++] = ["Daniel Obenshain, PhD 2015", "dano.jpg", "Alumnus", "http://www.cnds.jhu.edu/~dano", "Practical Intrusion-Tolerant Networking" ]
+
+people[index++] = ["Dr. Marco Platania", "platania.jpg", "Alumnus", "https://www.linkedin.com/in/marco-platania-b3855123/", "Survivable Intrusion-Tolerant Systems, Critical Infrastructure Protection" ]
+
+people[index++] = ["Jeffrey Dalla Tezza, MSE 2015", "JeffDallaTezza.jpg", "Alumnus", "https://www.linkedin.com/in/jeffrey-dallatezza/", "Sharded Key-Value Stores" ]
+
+people[index++] = ["Jonathan Kirsch, PhD 2010", "jon_kirsch.jpg", "Alumnus", "http://www.cs.jhu.edu/~jak", "Survivable Systems, P2P Networks"]
+
+people[index++] = ["Raluca Musaloiu-E., PhD 2010", "ralucam.jpg", "Alumnus", "https://www.linkedin.com/in/ralucam/", "Networks, Wireless Mesh Networks"]
+
+people[index++] = ["John Lane, PhD 2008", "jlane2.jpg", "Alumnus", "http://www.cs.jhu.edu/~johnlane", "Survivable Systems, Byzantine Fault Tolerant Algorithms"]
+
+people[index++] = ["Nilo Rivera, PhD 2008", "nilo.jpg", "Alumnus", "https://www.linkedin.com/in/nilo-rivera-b3312414/", "Wireless Mesh Networks, Routing Protocols"]
+
+people[index++] = ["Michael Kaplan, MS 2006", "michaelkaplan.jpg", "Alumnus", "https://www.linkedin.com/in/michaelakaplan/", "High Performance Routing, Survivability, Network Protocols"]
+
+people[index++] = ["Claudiu Danilov, PhD 2004", "claudiu.jpg", "Alumnus", "https://www.linkedin.com/in/claudiu-danilov-81399211/", "Byzantine and Benign Fault Tolerant Systems, Survivability, Wireless and Hybrid Mesh Networks, Overlay Networks."]
+
+people[index++] = ["Ciprian Tutu, PhD 2004", "jimmy.jpg", "Alumnus", "http://omniti.com/is/ciprian-tutu", "Wide-area database replication using group communication, distributed algorithms" ]
+
+people[index++] = ["Ryan Caudy, MS 2004", "ryan.jpg", "Alumnus", "http://www.cnds.jhu.edu/~wyvern", "Bloomberg LP. Group communication and high availability for network clusters" ]
+
+people[index++] = ["Michael Hilsdale, MS 2004", "MikeHilsdale.jpg", "Alumnus", "http://www.hilsdale.com", "Microsoft. Seamless Wireless Networks"]
+
+people[index++] = ["Ashima Munjal, MS 2004", "aashima.jpg", "Alumnus", "http://www.cnds.jhu.edu/~munjal", "Virtual IP management for network clusters" ]
+
+people[index++] = ["Cristina Nita-Rotaru, PhD 2003", "crisn.jpg", "Alumnus", "http://www.ccs.neu.edu/home/crisn/index.html", "Professor, Northeastern Univeristy. Security in group communication and distributed systems" ]
+
+people[index++] = ["Jonathan Stanton, PhD 2002", "jonathan.jpg", "Alumnus", "http://www.seas.gwu.edu/~jstanton", "Assistant Professor, George Washington University. Distributed Systems, wide-area group communication" ]
+
+people[index++] = ["John Schultz, MS 2001", "jschultz.jpg", "Alumnus", "https://www.linkedin.com/in/john-lane-schultz-76982a62/", "Partner, Spread Concepts. Distributed systems, group communication" ]
+
+people[index++] = ["R. Sean Borgstrom, PhD 2000", "borgstrom.jpg", "Alumnus", "http://www.cs.jhu.edu/~rsean", "Author. Metacomputing" ]
+
+people[index++] = ["Jacob Green, MS 2000", "jgreen.jpg", "Alumnus", "https://www.linkedin.com/in/jacoblyopen/", "Partner, Spread Concepts. Distributed systems, metacomputing" ]
+
+people[index++] = ["David Shaw, MS 1998", "david_shaw.jpg", "Alumnus", "http://www.cs.jhu.edu/~dshaw", "Internet protocols" ]
+
+people[index++] = ["Theo Schlossnagle", "jesus.jpg", "Alumnus", "http://omniti.com/is/theo-schlossnagle", "Founder, OmniTi. Replicated web service" ]
+
+people[index++] = ["Alec Peterson", "apeterson.jpg", "Alumnus", "http://www.centergate.com/apeterson.html", "Internet protocols" ]
+

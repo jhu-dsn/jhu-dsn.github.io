@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head> 
+
+<title>People: Distributed Systems and Networks Lab</title>
+<link rel="stylesheet" type="text/css" href="dsn_style.css" />
+
+<script language="JavaScript">
+<!-- Hide from old browsers
+                                                                                
+// Array in the following format
+// [name, image_file, student/professor/alumni, home_page, info]
+                                                                                
+people = new Array
+<!--#include virtual="people/PEOPLE.DB" -->
+var array_length = people.length-1
+                                                                                
+function print_all(printType) {
+  document.write('<div class="photo-array-wrap">')
+  var j=0;
+  for (var i=1; i <= array_length; i++) {
+    var name  = people[i][0];
+    var image = "people/" + people[i][1];
+    var type  = people[i][2];
+    var link  = people[i][3];
+    var info  = people[i][4];
+    if (printType == type || printType == "all") {
+      if (j%4 == 0) {
+        document.write('<div class="photo-row">')
+      }
+      document.write('<div class="photo-box">')
+      document.write('<div class="photo-box-img-wrap">')
+	  if (image != "people/no_photo.jpg") {
+        document.write('<a href=' + link + '>')
+      	document.write('<img src=' + image + ' alt="image of ' + name +'" /></a><br>')
+      }
+      document.write('</div>')
+	  if (image == "people/no_photo.jpg")
+        document.write('<a href=' + link + '>')
+      document.write('<h3>' + name + '</h3>')
+      if (image == "people/no_photo.jpg")
+        document.write('</a>')
+      document.write('<p>' + info + '</p>')
+      document.write('</div>')
+      j++;
+      if (j%4 == 0) {
+        document.write('</div>')
+      }
+    }
+  }
+  if (j%4 != 0) {
+    document.write('</div>')
+  }
+  document.write('</div>')
+}
+// -- End Hiding Here -->
+</script>
+                                                                                
+</head>
+  
+<body>
+    <div class="full-wrapper">
+    <!--#include file="top-nav.html" -->
+    <div class="main-wrapper">
+
+    <div class="large-title">
+    <h1> People </h1>
+    </div>
+    <div class="page-nav">
+    <ul>
+
+        <li> <a href="#current-members">Current Members</a> </li>
+
+        <li> <a href="#alumni">Alumni</a> </li>
+
+    </ul>
+    </div>
+
+
+    <div class="top-border-box">
+    <div id="current-members">
+        <div class="large-title">
+            <h2> Current Members </h2>
+        </div>
+
+        <script language="JavaScript">
+        <!-- Hide this script from old browsers --
+        print_all("Current")
+        // -- End Hiding Here -->
+        </script>
+    </div>
+    </div>
+
+    <div class="top-border-box">
+    <div id="alumni">
+        <div class="large-title">
+            <h2> Alumni </h2>
+        </div>
+
+        <script language="JavaScript">
+        <!-- Hide this script from old browsers --
+        print_all("Alumnus")
+        // -- End Hiding Here -->
+        </script>
+    </div>
+    </div>
+
+    </div> <!-- main-wrapper -->
+    <!--#include file="footer.html" -->
+    </div> <!-- wrapper -->
+
+</body></html>
