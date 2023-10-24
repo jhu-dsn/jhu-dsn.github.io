@@ -1,0 +1,47 @@
+--- ssp.c.old	Thu Nov 15 15:56:12 2001
++++ ssp.c	Thu Nov 15 15:56:41 2001
+@@ -388,8 +388,8 @@
+    fails, it returns a negative value. 
+ -----------------------------------------------------------------------------------------------*/
+ static int handle_reg_msg(SSP_Grp *grp, SSP_Msg *msg) {
+-  int ret = msg->msg_len;
+-  
++  int    ret = msg->msg_len;
++
+   DEBUG_enter(f_dbg, "handle_reg_msg");
+   
+   if(Is_encrypt_mess_type(msg->msg_type)) {
+@@ -578,13 +578,14 @@
+ 
+   if(deliv_msg == DELIV_MSG) { /* deliver message in user's buffer */
+     ret = glb_2_usr(max_grps, num_grps, grps, ret, scat, msg->grps, msg->scat);
++    *msg_type = msg->msg_type; 
+     SSP_Msg_free(&msg);
+   }
+   else { 
+     ret = SSP_NOTHING_TO_DELIVER;
+     if(deliv_msg == DONT_DELIV_AND_FREE_MSG) {
+       SSP_Msg_free(&msg);
+-    }
++    } 
+   }
+   
+  end:
+@@ -828,7 +829,7 @@
+   else if (SSP_Is_illegal_mess_type(m_type)) {
+     ret = ILLEGAL_MESSAGE;
+   }
+-  else if (!(((grp = SSP_Con_getGrp(con, grp_name))) || Is_private_group(grp_name))) {
++  else if (!(grp = SSP_Con_getGrp(con, grp_name)) || Is_private_group(grp_name)) {
+     ret = ILLEGAL_GROUP;
+   }
+   else {
+@@ -857,7 +858,7 @@
+ 	  goto end;
+ 	}
+ 	m_type     = SSP_ENCRYPT_MESS_TYPE;
+-	serv      &= ~ENCRYPT_MESS;
++	serv      &= ~ENCRYPT_MESS; 
+ 	diff_size  = new_size - org_size;
+       }
+     }
