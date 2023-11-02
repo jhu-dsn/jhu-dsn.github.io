@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About Us: Distributed Systems and Networks Lab</title>
+    <link rel="stylesheet" type="text/css" href="dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include file="top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> About Us </h1>
+        </div>
+        <div class="page-nav">
+        <ul>
+
+            <li> <a href="#overview">Overview</a> </li>
+
+            <li> <a href="#research">Research</a> </li>
+
+            <li> <a href="#software">Software</a> </li>
+
+        </ul>
+        </div>
+
+
+        <div class="top-border-box">
+        <div id="overview">
+
+            <div class="large-title">
+            <h2> Overview </h2>
+            </div>
+
+            <div class="textbox">
+
+            <p>The Distributed Systems and Networks (DSN) Lab is a research lab
+            in the Johns Hopkins University (JHU) Computer Science Department.
+            We strive to invent and develop technologies with both academic and
+            real-world impacts. We create practical, provably correct
+            technological solutions to real problems and implement those
+            solutions in publicly available software.</p>
+
+            </div>
+
+        </div>
+        </div>
+
+        <div class="top-border-box">
+        <div id="research">
+
+            <div class="large-title">
+            <h2> Research </h2>
+            </div>
+
+            <div class="textbox">
+
+            <p>Our research focuses on dependable infrastructure: making the
+            computerized networked infrastructure our society relies upon
+            resilient, performant, and secure. Our current work includes:</p>
+
+            <ul>
+            
+            <li><b>Real-Time Byzantine Resilient Systems:</b> Critical applications 
+            are migrating to IP networks for cost-effectiveness and scalability, but 
+            this transition exposes our society's infrastructure to malicious cyber attacks.
+            The rising number of cyberattacks against critical infrastructure reinforces 
+            the need to build Byzantine resilient systems that function correctly 
+            even while parts of them are compromised. While Byzantine resilient techniques 
+            have been developed in the context of IT applications, applying them in the 
+            critical infrastruture domain brings the need to consider strict requirements including
+            real-time responsiveness, continuous availability, correctness and guranteed 
+            performance even under attack. While our earlier work focused on power grid control centers, 
+            we currently explore one of the the most important and 
+            challenging use case and develop the first real-time Byzantine Resilient 
+            architecture and protocols for the power grid substations. 
+            
+            </li><br>
+            <li><b>Severe Impact Resilient Systems:</b> The joint threats of increasingly frequent severe natural disasters 
+            and follow-on sophisticated malicious cyberattacks are becoming increasingly realistic and 
+            seriously threaten critical infrastructure systems. This novel threat model and the impact of such threats 
+            on critical infrastructure are not well understood. The research defines the threat model and develops a 
+            framework to assess the impact of novel compound threats on critical infrastructure 
+            with the aim to develop severe impact resilient systems for critical infrastruture. The work aims to design, develop and deploy 
+            systems with novel architectures to address the compound threat using a combination of intrusion-tolerant techniques, mobile solutions and 
+            flexibity.
+            </li><br>
+            
+            
+            <li><b>Real-Time Reliable Internet Services:</b> New applications
+            with low latency and high reliability requirements, such as live TV
+            transport and remote robotic surgery, are challenging to support on
+            the native Internet. We create overlay networks that push
+            intelligence to the middle of the network to enable these demanding
+            applications to run effectively over the Internet at a global
+            scale.</li><br>
+            
+            <li><b>Communication and Coordination for Modern Data Centers:</b>
+            Today's cloud applications have a variety of communication and
+            coordination needs, both within a single data center and among
+            geographically dispersed data centers. We create messaging and
+            coordination systems that guarantee the strong semantics and high
+            performance required by today's cloud applications.</li>
+
+            </ul>
+
+            <p>More detailed information about our current research is
+            available <a href="research.html">here</a>.</p>
+
+            </div>
+
+        </div>
+        </div>
+
+        <div class="top-border-box">
+        <div id="software">
+
+            <div class="large-title">
+            <h2> Software </h2>
+            </div>
+
+            <div class="textbox">
+            
+            <p>Our research has resulted in practical open-source software
+            systems available <a href="software.html">here</a>. The primary
+            systems involved in our current research are:</p>
+
+            <ul>
+
+            <li><b><a href="http://www.cnds.jhu.edu/spire">Spire</a>:</b> Spire is an open-source intrusion-tolerant SCADA system for the power grid. Spire is designed to        withstand attacks and compromises at both the system level and the network level, while meeting the timeliness requirements of power grid monitoring and control systems (on the  order of 100-200ms update latency).</li><br>
+
+            <li><b><a href="http://www.spines.org">Spines</a>:</b> Spines is a
+            framework for deploying software overlay routers. Our current
+            research includes implementing intrusion-tolerant messaging
+            protocols in Spines and investigating techniques to support
+            applications with extremely low latency and high reliability
+            requirements on a continent or even global scale.</li><br>
+
+            <li><b><a
+            href="http://www.dsn.jhu.edu/byzrep/prime.html">Prime</a>:</b>
+            Prime is a replication engine that provides performance guarantees
+            under attack. Our current research integrates proactive recovery
+            and dynamic diversity into Prime to create a highly-resilient
+            system that can survive an unbounded number of compromises over the
+            lifetime of the system (as long as the number of simultaneous
+            compromises does not exceed a certain threshold, an assumption
+            which is supported by the use of dynamic diversity).</li><br>
+
+            <li><b><a href="http://www.spread.org">Spread</a>:</b> Spread is a
+            widely-used group communication toolkit that provides reliable
+            messaging as well as total ordering and delivery guarantees, with
+            strong well-defined semantics in the presence of process failures
+            and network partitions. Our recent research includes developing a
+            new total ordering protocol that improves both the throughput and
+            latency of Spread's message-delivery services.</li><br>
+
+            </ul>
+
+            </div>
+
+        </div>
+        </div>
+
+    </div> <!-- main-wrapper -->
+    <!--#include file="footer.html" -->
+    </div> <!-- wrapper -->
+</body>
+
+</html>
