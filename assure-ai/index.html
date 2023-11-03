@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assuring City Scale Infrastructure Systems</title>
+    <link rel="stylesheet" type="text/css" href="/dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include virtual="/top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1>Assuring City Scale Infrastructure Systems</h1>
+        </div>
+
+        <div class="top-border-box">
+        </div>
+
+<p>
+<!-- A <a href="http://www.nsf.gov/">National Science Foundation (IAA)</a> grant 
+to <a href="http://www.cs.jhu.edu">Johns Hopkins University</a>. A component of
+the <a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505125"> NSF
+Algorithms in the Field (AitF)</a> program. -->
+<br>
+Principal Investigators: <a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>, JHU Computer Science
+and <a href="https://ep.jhu.edu/about-us/faculty-directory/1887-tamim-sookoor
+">Tamim Sookoor</a>, JHU Applied Physics Lab
+</p>
+
+<h2>Contributors</h2>
+<p>
+  <ul>
+        <LI> JHU Computer Science, DSN Lab
+        <ul>
+
+            <li> <a href=" http://brianwheatman.com/">Brian Wheatman</a>
+            <li> <a href="http://www.cs.jhu.edu/~sahiti/">Sahiti Bommareddy</a>
+            <li> <a href="https://www.linkedin.com/in/guangrui-chen/">Jerry Chen</a>
+        </ul>
+        <br>
+        <li> JHU Applied Physics Lab
+        <ul>
+
+            <li> <a>Sebastian Zanlongo</a>
+            <li> <a href="https://www.linkedin.com/in/bradley-potteiger-phd-aa3271a0/">Brad Potteiger</a>
+            <li> <a>Tim Krentz</a>
+            <li> <a>Christina Selby</a>
+            <li> <a>Paul Wood</a>
+            <li> <a>Nick Sarfaraz</a></li>
+        </ul>
+  </ul>
+</p>
+
+<h2>Overview</h2>
+<p>
+AI systems are optimized for the average case.
+They cannot be used in critical systems  that need to guarantee safety in worst case scenarios.
+The problem with AI systems is  the long tail of edge cases that lead to failure situations.
+We want to gain the benefits of AI on the average case without incurring failures due to the long tail edge cases.
+</p>
+<h2>Proposed Approach</h2>
+        <p>
+        Designing a monitoring architecture that can take over from the AI with a safe controller when the AI system is at risk of breaching the system invariants.
+        We intend to combine an  invariant-based Black-Box Monitor with a White-Box Monitor that evaluates the  confidence of the machine learning algorithm
+
+        <div class="figure">
+	<img src="RADICS.jpg" align="center" style="width: 80%; height: 80%"/>
+        </div>
+
+        </p>
+
+<h2>Flagship Projects</h2>
+        <p>
+        Two ecosystem testbeds targeted at transportation and public safety domains
+        <ul>
+        <li> <a>Transportation - Intelligent Traffic Control</a>
+        <li> <a>Public Safety - Smart Power Grid</a>
+        </ul>
+    </p>
+
+<h2>Presentations</h2>
+<p>
+<ul>
+  <li>Review Meeting, June 2020: <a href="./iaa_smart_cities_review.pdf">slides</a>
+  <li>Kickoff Meeting, March 2020: <a href="./kickoff_presentation.pdf">slides</a>
+</ul>
+<br>
+<br>
+
+
+<h2>Traffic Simulator Testbed Videos</h2>
+
+ <h3><span style="font-weight: 400;">Safe Controller</span></h3>
+<p>Average waiting time is 9.97 seconds</p>
+<video src="videos/safe_controller.mov" controls width="400"></video>
+<p>&nbsp;</p>
+<h3><span style="font-weight: 400;">RL Model</span></h3>
+<p>50K training steps, average waiting time is 34.51 seconds</p>
+<video src="videos/rl_model_50k.mov" controls width="400"></video>
+<p>&nbsp;</p>
+<p>1M training steps, average waiting time is 14.52 seconds</p>
+<video src="videos/rl_model_1m.mov" controls width="400"></video>
+<p>&nbsp;</p>
+<p>3M training steps, average waiting time is 5.58 seconds</p>
+<video src="videos/rl_model_3m.mov" controls width="400"></video>
+<p>&nbsp;</p>
+<p>30M training steps, average waiting time is 0.29 second</p>
+<video src="videos/rl_model_30m.mov" controls width="400"></video>
+
+<!--        The following simulations use a two-by-two traffic grid with turning and random routes -->
+        <h3><span style="font-weight: 400;">Safe Controller with a Guarantee</span></h3>
+        <p>Guarantee: vehicles that are going straight or turning right stop at most once at an intersection.</p>
+        <p>Average speed: 5.69047 (m/s)</p>
+        <video src="videos/more-realistic/safe_controller_with_guarantee.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+        <h3><span style="font-weight: 400;">A More Realistic Model</span></h3>
+        <p>50K training steps, average speed is 1.97545 (m/s)</p>
+        <video src="videos/more-realistic/rl_model_50k.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+        <p>10M training steps, average speed is 3.01981 (m/s) </p>
+        <video src="videos/more-realistic/rl_model_10m.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+        <p>30M training steps, average speed is 5.66471 (m/s) </p>
+        <video src="videos/more-realistic/rl_model_30m.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+        <p>50.3M training steps, average speed is 6.00123 (m/s)</p>
+        <video src="videos/more-realistic/rl_model_50m300k.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+        <p>67.4M training steps, average speed is 6.48839 (m/s)</p>
+        <video src="videos/more-realistic/rl_model_67m400k.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+<!--        Switch mechanism-->
+        <h3><span style="font-weight: 400;">Switching Mechanism</span></h3>
+        <ul>
+            <li><p>Switch from AI Controller to Safe Controller:</p></li>
+                <ul><li><p>switch when the average speed of past 50 seconds is below 4 (m/s)</p></ul>
+            <li><p>Switch from Safe Controller to AI controller</p></li>
+                <ul>
+                    <li><p>Strategy 1: </p>
+                        <p>After 60 seconds, switch to the AI controller when the average speed of the past 50 seconds is above 5 (m/s).</p></li>
+                    <li><p>Strategy 2: </p>
+                        <p>After 60 seconds, run a test simulation with the AI controller for 1000 steps.
+                            The test simulation uses an inflow rate of the past 50 seconds.
+                            If the average speed of the test simulation is above 5 (m/s), switch to the AI controller.</p></li>
+                </ul>
+            <li><p>Results</p></li>
+                <ul>
+                    <li><p>Strategy 1: average speed (m/s) of all vehicles is  5.53297</p>
+                    <li><p>Strategy 2: average speed (m/s) of all vehicles is  5.84685</p></li>
+                </ul>
+        </ul>
+        <p>Each of the following simulations has 9000 steps (900 seconds).<br>
+            Between 1-300 seconds, the inflow is 500 vehicles per hour on each outside edge.<br>
+            Between 301-600 seconds, the inflow is 700 vehicles per hour on one edge, and 100 vehicles per hour on other edges. <br>
+            Between 601-900 seconds, the inflow becomes 500 vehicles per hour on each outside edge again. </p>
+        <p>Strategy 1</p>
+        <video src="videos/more-realistic/switch-mode-1-scenario6.mov" controls width="400"></video>
+        <p>Strategy 2</p>
+        <video src="videos/more-realistic/switch-mode-2-scenario6.mov" controls width="400"></video>
+        <p>&nbsp;</p>
+<p>Moving from grid to real world map</p>
+<video src="./sumo_jhu_recording.mov" controls width="400"></video>
+
+<p>
+
+    </div> <!-- main-wrapper -->
+    <!--#include virtual="/footer.html" -->
+    </div> <!-- wrapper -->
+</body>
+</html>

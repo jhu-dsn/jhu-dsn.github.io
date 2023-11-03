@@ -1,0 +1,293 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Yearly Technical Report, July 2003</h2>
+<p>
+
+<h3><font color="blue">Objective:</font></h3>
+<P>
+A practical group communication system should provide secure multicast
+services for peer groups over local and wide area networks. To support
+the environment described in the Dynamic Coalition program, such a
+system should scale to tens of coalition parties, with hundreds of
+servers, supporting thousands of users. This service is crucial for
+building distributed applications that work in dynamic environments
+and communicate over unsecured networks (e.g.  the Internet). It is
+also important for enabling other infrastructures for these
+environments, such as replicated certification, highly available
+policy management, and high performance access control.
+<p>
+A common claim today is that a wide-area, secure group communication
+system with strict reliability semantics and strict security
+requirements, cannot perform well enough to be practical. Based on our
+past and current work, we claim that with careful protocol design, a
+system that is limited to the size of the above peer groups can
+perform well without relaxing any of the security or reliability
+guarantees. The objective of this project is to build it.
+
+<h3><font color="blue">Approach</font></h3>
+<P>
+Our technical approach builds our work with the Spread group
+communication system (http://www.spread.org) and the CLIQUES key
+agreement protocols suite (http://sconce.ics.uci.edu/cliques/). Our
+approach includes the following innovative aspects:
+
+<ul>
+<li> Constructing group communication protocols that support wide and
+local area networks with tens of sites, hundreds of servers, and
+thousands of users.
+<li> Current key agreement protocols are not designed to tolerate
+failures and changes in the membership during their execution. Our
+protocols, in contrast, will be completely resilient to any sequence
+of such events. We believe this will be the first robust
+implementation of distributed key agreement protocols that provide
+perfect forward secrecy, group membership authentication,
+non-repudiation, and resilience to known-key attacks.
+<li> The performance of a group key generation protocol is very
+dependent on the network structure, the relative power of machines,
+and the algorithm used. We do not think that there can be one key
+agreement protocol that outperforms all other protocols in all of the
+possible environments.  Instead, we will develop several different
+algorithms, each optimized (performance-wise) for a different setting.
+<li> We design and build a modular architecture that allows different
+security protocols to be plugged in. The architecture will switch
+protocols during execution in agreement with other members, so that
+the most suitable protocol for the current situation is invoked. The
+selection will be based on the current state of the network, available
+system resources, the number of members in the group, a user defined
+policy, etc.
+<li> The current state of the art in secure group communication
+implements security as a layer, separate from the reliability,
+ordering, and membership services. Although this structure has much
+merit, there is a high performance cost attached. We will build two
+versions of our system that share most of the code and
+infrastructure. The Layered Architecture version will have the
+security services provided on top of the reliability, ordering and
+membership services.  The Integrated Architecture version will tailor
+the security protocols into the core reliability, ordering and
+membership services, drastically cutting the latency and bandwidth
+cost associated with group membership changes.
+<li> In a Dynamic Coalition environment, it is likely that each
+coalition party will retain its autonomy, which includes full control
+over its part of the infrastructure. This is in contrast to current
+group communication architectures that assume one administrative
+domain. Our system will allow multiple autonomous control domains,
+while still preserving the tightly coupled group communication
+semantics.
+</ul>
+
+<h3><font color="blue">Recent Accomplishments</font></h3>
+
+During this period, we continued our efforts on the dual track:
+improving on our layered architecture system, Secure Spread, and
+developing/designing the integrated architecture. In addition, a
+major effort was the participation in the Red Team Experimentation
+Project. Below, we detail on these three directions.
+
+<h4>Layered Architecture</h4>
+
+<p> The results of this
+work are: a new release of Secure Spread (upgraded to support the
+newest Cliques library that broke backwards compatibility). We
+continued the experiments on the layered architecture with focus on
+evaluating the cost of establishing a new key when group membership
+changes because of merges or partitions. We have results for all five
+group key management protocol supported by Secure Spread.  
+These results are available in a technical report below.
+</p>
+
+<h4> Integrated Architecture </h4>
+
+<p>
+Our main research effort concentrated on the integrated architecture.
+We investigated a high-performance security architecture for Spread, under two
+well-known group semantics: Virtual Synchrony and Extended Virtual Synchrony
+Both models support network partitions and merges. Our approach entails
+using contributory group key management in a light-weight/heavy-weight
+group architecture such that the cost of key management is amortized
+over many groups, while each group has its own unique key.
+The goal of this architecture is
+to amortize the cost of the key agreement protocols over many groups
+and to provide very fast joins and leaves, while ensuring the
+confidentiality of the data even when long-term keys of the
+participant get compromised.
+</p>
+
+<p>
+We have designed three variants of an integrated architecture that trade off
+encryption cost for complexity and group communication model
+support. We evaluated their performance and security guarantees and
+compared them to the layered approach, demonstrating the increased
+scalability.
+</p>
+
+
+<p> We continued our work on the integrated architecture. We
+implemented the main building blocks that allwed us to have
+preliminary results that offer an insight into the scalability of the
+new system.
+
+<p>
+Our main research effort concentrated on the development of an
+integrated architecture for Spread. Our solution describes three
+variants, that trade-off group communication model for performance. As
+part of the experimentation plan, we provided an internal release of
+an integrated architecture variant for BBN Technologies.
+
+
+<h4> RedTeam Project </h4>
+We collaborated with the RedTeam and the experimentation efforts.
+This included:
+<ul>
+
+  <li>participation in weekly phone-conference with all parts involved
+  in the effort (BBN, SRI, AFRL).Separately, we participated in
+  several discussions with the red team directly.
+
+  <li>providing support to the WhiteTeam, both by email and phone
+
+  <li>providing additional code (mainly demos and testing programs,
+  not included in the Secure Spread distribution), releasing a new
+  version of both Spread and Secure Spread,
+
+  <li>participating in the meeting at BBN Columbia with (JHU, BBN and
+  SRI)
+
+  <li> providing Spread, Secure Spread descriptions, and previous work
+  and bibliography for the Experimental Plan Document.
+
+  <li> We provided fixes to the code base of the layered architecture.
+
+  <li>We also provided feedback on the experimentation
+  documents. Separately, we participated in some discussions with the
+  red team directly.  
+</ul>
+
+
+<h3>Conference Participation and Demonstrations </h3>
+<ul>
+<li>
+We conducted a presentation and demonstration of Secure Spread, both
+layered architecture and a preliminary version of the integrated architecture
+at Colorado Springs for Strategic Command, in October 2002.
+
+<li>
+We also conducted a presentation and demonstration for the Boeing OASIS Dem/Val
+team as they evaluated Secure Spread for their project, October 2002. 
+
+<li>
+We conducted a presentation and demonstration of Secure Spread, both
+layered architecture and a preliminary version of the integrated
+architecture, in Hawai for Pacific Command, in April 2003.
+
+<li>
+We also participated in the DARPA DISCEX 3 Conference. Secure Spread
+was featured in the movie promoting all the technologies from the
+DARPA programs, and our group was present both in the presentations
+section and in the Exposition, in April 2003.
+</ul>
+
+<h3>Publications</h3>
+<ul>
+<li>
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.pdf">
+Scaling Secure Group Communication Systems: Beyond Peer-to-Peer.</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.pdf">pdf</a>.
+Published in the Proceedings of DISCEX'3 Washington DC, April 2003.
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>.
+</p>
+</small>
+</TD></TR></TABLE></STRONG></FONT>
+
+<li>
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+High Performance Secure Group Communication. 
+</TD></TR><TR><TD>
+<small>
+Ph.D. Thesis, Johns Hopkins University, July 2003.
+<p>
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>.
+</p>
+</small>
+</TD></TR></TABLE></STRONG></FONT>
+</ul>
+
+
+<h3><font color="blue">Software:</font></h3>
+<p> <b>Spread</b> releases:
+<ul>
+<li> We have released <a href="http://www.spread.org"> Spread </a> version 3.17.1 in June 2003.
+<li>We have released <a href="http://www.spread.org">Spread</a> version 3.17.0 in
+September 2002.
+</ul>
+
+<p> <b>Secure Spread</b> releases:
+<ul>
+
+<li> We have released a version of the Integrated Architecture of Secure Spread (for RedTeam use), in March 2003.
+<li>We have released <a href="http://www.cnds.jhu.edu/research/group/secure_spread/">Secure Spread</a> version 2.1.0 in
+September 2002.
+</ul>
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+<p>
+DARPA related:
+<ul>
+<li>Boeing/Telcordia/NAI/SC - used as the messaging system in OASIS Dem/Val.
+<li>SRI (Farrell) - red team.
+<li>BBN (Theriault/Meighan) -  experimentation.
+<li>Rome labs / CACI (Valente/Cole) - evaluation.
+<li>SRI (Millen/Denker) - formal verification.
+<li>Irvine/Brown/Algomagic (Goodrich/Tamassia/Cohen) - message bus.
+<li>UMCP (Gligor) - message bus.
+<li>NCSU / MCNC (Yalta - Smith/Byrd) - secure group comm.
+<li>U Penn (Smith) - integrating Keynote into Spread.
+</ul>
+Others:
+<ul>
+<li>Over 600 Secure Spread library downloads including major companies and international academics.
+<li>
+      During the period Spread was featured in several magazine
+      articles. The first was published in the <a
+      href="http://www.samag.com/articles/2003/0302/">Februrary
+      2003</a> issue of <a href="http://www.samag.com/">Sysadmin
+      Magazine</a> and covered the use of <a
+      href="http://www.samag.com/documents/sam0302a/">Spread for
+      distributed web logging.</a> The second article was published in
+      the April 2003 issue of <a
+      href="http://www.linux-mag.com/">Linux Magazine</a> and provided
+      <a href="http://www.linux-mag.com/2003-04/diy_01.html">a nice
+      overview of Spread</a>.
+
+
+
+<li>
+Spread is used by hundreds of organizations. Lately it was added to several
+Linux distributions as well as FreeBSD. 
+<li>There are several popular programs that use Spread, including Apache-SSL, Apache distributed logging, the native replication in the Postgres database and in the Zope product.
+</ul>
+
+
+
+
+<!--#include virtual="/includes/footer" -->
+

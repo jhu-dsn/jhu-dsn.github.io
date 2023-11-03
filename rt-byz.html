@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RTBYZ Project Page</title>
+    <link rel="stylesheet" type="text/css" href="dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include file="top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Real-Time Byzantine Resilient Systems </h1>
+        </div>
+        <div class="page-nav">
+        <ul>
+
+            <li> <a href="#overview">Overview</a> </li>
+
+            <li> <a href="#contribs">Team</a> </li>
+            <li> <a href="#pubs">Publication</a> </li>
+            <li> <a href="https://www.dsn.jhu.edu/spire/#software">Software</a> </li>
+
+        </ul>
+        </div>
+        
+        <div class="top-border-box">
+            <div id="overview">
+            <p>This research is currently supported in part by the Department of Energy (DOE) Offices of Cybersecurity, 
+            Energy Security, and Emergency Response (CESER); Electricity (OE); and Nuclear Energy (NE) under 
+            the Grid Modernization Laboratory Consortium (GMLC) Topic 5.1.4 - Cyber-Physical Security. </p>
+                    <h2> Overview </h2>
+                <ul>
+                <p>
+               Critical infrastructure control systems are becoming more connected to the Internet 
+               for cost-effectiveness and scalability reasons, but this leaves them vulnerable to attack. 
+               Most systems today are not designed to withstand sophisticated attacks; an attacker who is able to compromise a 
+               single machine typically gains the power to take down the entire system. Consider the protective relays used to
+               monitor and protect grid assests during risky events. A protective relay under the control of an attacker can damage 
+               the grid assets by not protecting when needed. A grid asset such as a high voltage (345kV and up) transformer serves 
+               vast spans of the grid, costs millions of dollars, and takes over a year to procure, damaging it threatens grid stability.
+               Additionally, a relay that does unnecessarily trip to protect causes significant disruption to many customers.
+                </p>
+                <p>
+                The rising number of cyberattacks against critical infrastructure reinforces the need to build 
+                Byzantine resilient power grid infrastructure. However, the critical applications have many
+                rigid requirements even in presence of failures/attacks: strict real-time requirement, continuous availability, 
+                long system life and economic factors. We research to build Byzantine resilient system architectures, protocols and 
+                tools needed for critical infrastruture that can ensure correct operations in the face of successful intrusions and network
+                attacks while meeting the required latency constraints.
+                </p>
+
+                <p>While Byzantine Fault Tolerance technique like State Machine Replication can address the requirements of 
+                the power grid control centers that have typical latency requirements of 100-200ms, they cannot address all the requirements 
+                of the substations. Critical protection functions like the one described above are time-critical and have a responsiveness 
+                requirement of quarter-power cycle due the physical properties of the substation system. 
+                In the U.S., a cycle is 16.667ms and a quarter-cycle is 4.167ms. We develop Spire for the Substation,
+                the first real-time Byzantine resilient architecture and protocols for the substation as an open source system. 
+                </p>
+                <p>
+                The system uses proactive recovery and diversity to allow Byzantine resileint systems to survive an 
+                unbounded number of compromises over the system lifetime, as long as the number of simultaneous compromises 
+                does not exceed a certain threshold. A key component of this work is the practical use of diversity to 
+                support the standard assumption that all machines in a system are not compromised simultaneously. 
+                If all machines run exactly the same programs in exactly the same environment, the same exploit will be 
+                effective against all of them. Because of this, it is necessary to add diversity in order to build resilient systems.
+                In addition to Byzantine resilience techniques, the system is reinforced with machine learning based intrusion-detection and 
+                awareness module.
+                </p>
+
+                <p>Spire for the Substation is part of the open-source Spire,
+                the network-attack resilient intrusion-tolerant SCADA for the power grid. 
+                The system underwent a red team experiment by Sandia National Labs(SNL) that included protective relays from 
+                industry partners- Siemens, GE, and Hitachi Energy in 2022.</p>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id=contribs>
+            <h2>TEAM</h2>
+            <UL>
+            Johns Hopkins Team
+            <ul>
+                <li><a href="https://www.cs.jhu.edu/~yairamir/">Dr. Yair Amir</a>
+                <li><a href="https://www.cs.jhu.edu/~sahiti/">Sahiti Bommareddy</a>
+            </ul>
+
+        </div>
+
+        <div id="pubs">
+            <h2>Publications</h2>
+
+            <ul>
+            <li><b>Real-Time Byzantine Resilient Power Grid Infrastructure: Evaluation and Trade-offs</b>
+            <BR>
+            Sahiti Bommareddy, Maher Khan, David J Sebastian Cardenas, Carl Miller, Christopher Bonebrake, Yair Amir, and Amy Babay
+            <br>
+            Accepted at International Workshop on Explainability of Real-time Systems and their Analysis at the IEEE Real-Time Systems Symposium (RTSS 2022)
+            </li>
+            </ul>
+                <ul>
+                <li><a href="https://www.dsn.jhu.edu/papers/RealTime.pdf">Real-Time Byzantine Resilience for Power Grid Substations </a>
+                <BR>
+                Sahiti Bommareddy, Daniel Qian, Christopher Bonebrake, Paul Skare, Yair Amir
+                <br>
+                In Proceedings of the 41st International Symposium on Reliable Distributed Systems (SRDS 2022)
+                </ul>
+            </li>
+
+        </div>
+
+        
+
+
+
+    </div> <!-- main-wrapper -->
+    <!--#include file="footer.html" -->
+    </div> <!-- full-wrapper -->
+</body>
+
+</html>
+

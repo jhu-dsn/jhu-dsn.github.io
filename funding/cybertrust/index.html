@@ -1,0 +1,118 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Cyber Trust</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Survivable Information Infrastructure for National Civilian BioDefense</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+
+<p>
+An <a href="http://www.nsf.gov">NSF</a> grant (January 2005 - September 2007) to <a href="http://www.cs.jhu.edu">Johns Hopkins Univesity</a>, <a href="http://www.cs.purdue.edu">Purdue University</a>, <a href="http://www.cs.ucla.edu">UCLA</a> and <a href="http://www.telcordia.com">Telcordia Technologies</a>. A component of the <a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=13451&org=CISE">NSF Cyber Trust</a> program.
+<br>
+Principal Investigators: <a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>, <a href="http://www.argreenhouse.com/bios/coan/">Brian Coan</a>, <a href="http://www.cerias.purdue.edu/home/crisn">Cristina Nita-Rotaru</a> and <a href = "http://www.cs.ucla.edu/~rafail/">Rafail Ostrovsky</a>. 
+<br>
+<h3>Overview</h3>
+<p>
+
+This project focuses on the theoretical foundation and the protocols that
+facilitate a survivable information infrastructure that meets the critical
+requirements of a national emergency response system. Specifically, the
+project will address the following challenges:
+<ul>
+<li>Expand the existing theoretical framework to analyze the behavior of
+malicious and colluding participants.
+<li>Design and construct a scalable survivable messaging system that operates
+correctly under a strong adversarial model that includes insider threat and
+denial of service attacks. 
+<li>Design and construct information access protocols that protect against
+compromised database servers providing incorrect data or servers that deny
+access to legitimate users. 
+<li>Prevent malicious users from learning unauthorized information.
+</ul>
+The domain of application for this work is the Clinicians' Biodefense
+Network (CBN), a nationwide Internet-based information exchange system
+designed to provide clinicians with critical information in the aftermath of
+a bioterrorist attack. The CBN is designed to mitigate benign Internet
+faults and to resist a physical attack on one location. However, it is not
+able to correctly operate under a stronger threat model that includes
+insider attacks. Solutions for this stronger threat model are not currently
+available and present a major research challenge.  This project will
+construct a prototype survivable system based on the CBN, and from it draw
+general principles. It will develop a solid theoretical foundation and novel
+system tools to facilitate building national emergency networks that are
+resilient against cyber-attacks in crisis situations, when those networks
+are most urgently needed.
+<br>
+<h3>Students</h3>
+<p>
+<ul>
+<li><a href="http://www.cs.jhu.edu/~mak9x/">Michael Kaplan</a>
+<li><a href="http://www.cs.jhu.edu/~ralucam/">Raluca Musaloiu-Elefteri</a>
+</ul>
+<h3>Related Publications</h3>
+We are developing the survivable messaging infrastructure based on our 
+<a href="www.spines.org">Spines</a> toolkit. 
+
+<ul>
+<li><a href="http://www.cnds.jhu.edu/pub/papers/dsn06_steward.pdf">
+            Scaling Byzantine Fault-Tolerant Replication to Wide Area Networks</a>
+           <br><small>
+	    In the Proceedings of the IEEE International Conference on
+Dependable Systems and Networks (DSN06), pages 105-114, Philadelphia, June
+2006.
+            A longer version is available as <a href = "http://www.cnds.jhu.edu/pub/papers/steward_2006.pdf">CNDS Technical Report 2006-2</a>.<br> 
+	     Yair Amir, Claudiu Danilov, Danny Dolev, Jonathan Kirsch, John Lane, Cristina Nita-Rotaru, Josh Olsen, David Zage <br>
+	This paper presents the first hierarchical Byzantine fault-tolerant replication architecture suitable to systems that span multiple wide area sites. The architecture confines the effects of any malicious replica to its local site, reduces message complexity of wide area communication, and allows read-only queries to be performed locally within a site for the price of additional standard hardware. We present proofs that our algorithm provides safety and liveness properties. A prototype implementation is evaluated over several network topologies and is compared with a flat Byzantine fault-tolerant approach. The experimental results show considerable improvement over flat Byzantine replication algorithms, bringing the performance of Byzantine replication closer to existing benign fault-tolerant replication techniques over wide area networks.  
+           </small>
+           <br>
+           <br>
+<li><a href="http://www.cnds.jhu.edu/pub/papers/voip.pdf">
+             1-800-OVERLAYS: Using Overlay Networks to Improve VoIP Quality</a>
+           <br><small>
+               To appear in the Proceedings of the 15th International
+               Workshop on Network and Operating Systems Support for Digital 
+	       Audio and Video (NOSSDAV), Skamania, Washington, June 13th-14th, 2005.
+               A longer version is available as <a href = "http://www.cnds.jhu.edu/pub/papers/cnds-2004-2.pdf">CNDS Technical Report 2004-2</a>.<br> 
+	       Yair Amir, Claudiu Danilov, Stuart Goose, David Hedqvist, Andreas Terzis<br>
+	       In this paper we describe two algorithms to improve the performance of
+	       VoIP applications. These mechanisms are used for localized packet
+	       loss recovery and rapid rerouting in the event of network
+	       failures. The algorithms are deployed on the routers of an
+	       application-level overlay network and require no changes to the
+	       underlying infrastructure. Initial experimental results indicate that
+	       these two approaches can be composed to yield voice quality on par
+	       with the PSTN.
+           </small>
+           <br>
+           <br>
+<li><a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.pdf">
+             Reliable Communication in Overlay Networks</a><br><small>
+	     In the Proceedings of the IEEE International Conference on
+	     Dependable Systems and Networks (DSN03), San Francisco, June 2003.<br>
+	     Yair Amir and Claudiu Danilov<br>
+	     Reliable point-to-point communication is usually achieved in overlay 
+	     networks by applying TCP/IP on the end nodes of a connection. This paper 
+	     presents an hop-by-hop reliability approach that considerably reduces the 
+	     latency and jitter of reliable connections. Our approach is feasible and 
+	     beneficial in overlay networks that do not have the scalability and 
+	     interoperability requirements of the global Internet.<br>
+	     The effects of the hop-by-hop reliability approach are quantified in 
+	     simulation as well as in practice using a newly developed overlay network 
+	     software that is fair with the external traffic on the Internet. The 
+	     experimental results show that the overhead associated with overlay network 
+	     processing at the application level does not play an important factor 
+	     compared with the considerable gain of the approach.
+	     </small>
+	     <br><br>
+</ul>
+
+
+<!--#include virtual="/includes/footer" -->
+
+
+

@@ -1,0 +1,59 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Cybertrust</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">Scalability, Accountability and Instant Information Access for Network-Centric Warfare</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+
+<p>
+A <a href="http://www.darpa.mil">DARPA</a>/<a href="http://www.darpa.mil/ipto/">IPTO</a> grant (June 2004 - December 2005) to <a href="http://www.cs.jhu.edu">Johns Hopkins Univesity</a> with a subcontract to <a href="http://www.cs.purdue.edu">Purdue University</a>. A component of the <a href="http://www.darpa.mil/ipto/Programs/srs/index.htm">DARPA Self-Regenerative Systems (SRS)</a> effort.
+<br>
+Principal Investigator: <a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>. Subcontract PI: <a href="http://www.cerias.purdue.edu/home/crisn">Cristina Nita-Rotaru</a>.
+<br>
+<br>
+<TABLE CELLPADDING=0 width="100%">
+<TR><TD> 
+	  <h3>Presentations</h3>
+	  <ul>
+	    <li><a href="/funding/srs/ar0407_srs/">SRS Kickoff Meeting in Arlington, Va, July 2004</a>
+	  </ul>
+
+	  <h3>Reports</h3>
+	  <ul>
+	    <li>July 2004: <a href="/funding/srs/quad_0407.html">Starting Quad</a>.
+	    <br><br>
+	  </ul>
+
+</TD><TD align=right width=270> <img border=0 src="/pics/srs.png">
+</TD></TR></TABLE>
+
+
+<br>
+<h3>Overview</h3>
+<p>
+Network-centric warfare calls for survivable command control communication and intelligence (C3I) systems that are resilient to a broad range of attacks. The focus of this project is to construct a realistic solution for the broad malicious attack problem where part of the C3I system is compromised. 
+<p>
+The project targets three main limitations with current solutions: they are not scalable to high latency wide area networks underlying C3I systems; they have no protection against malicious clients providing incorrect input that is within their authority; and they often unnecessarily delay applying updates, withholding important information from clients until updates can be globally ordered. 
+<p>
+From a research perspective, there is a broad class of distributed data management applications based on replication infrastructure. This project takes the C3I problem as a representative example of this broader class.
+<h3>Key innovations</h3>
+<ul>
+<li> <I>Scalable wide-area intrusion-tolerant architecture:</I> By inventing a hierarchical approach in which Byzantine replication is used locally in each site, and efficient fault tolerant replication is used on the wide area network, we overcome the strong connectivity requirements and multiple all-peer exchanges of current Byzantine replication solutions. Symmetric Byzantine replication in conjunction with threshold cryptography is used in each site to create one logical trusted entity, over which the non-malicious tolerant replication can be safely used. The effects of malicious server replicas are then confined to the local site.
+<p>
+<li> <I>Accountability for updates:</I> Once bad data is discovered, we identify the client that injected it and quickly mark corrupted and suspected data. We can then backtrack and regenerate the C3I state based on non-corrupted and/or non-suspected data, and identify the extent of potential damage. Accountability for updates also provides protection against a complete site compromise, enabling a reduction in the number of replicas for a slightly higher risk and better performance.
+<p>
+<li> <I>Instant Information Access:</I> Our architecture propagates updates to other sites as soon as network connectivity exists and exploits commutative update semantics to efficiently make update effects available immediately. In contrast, Byzantine replication solutions may only provide access to the effects of updates that are globally ordered on the wide area network.
+</ul>
+The resulting system will have considerably better performance and much higher availability then existing symmetric solutions and offer a clear path for technology transition.
+<br>
+<br>
+<!--#include virtual="/includes/footer" -->
+
+
+

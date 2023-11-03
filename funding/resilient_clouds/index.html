@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Intrusion Tolerant Clouds </title>
+    <link rel="stylesheet" type="text/css" href="/dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include virtual="/top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Toward Intrusion Tolerant Clouds </h1>
+        </div>
+
+        <div class="top-border-box">
+        </div>
+
+<p>
+A <a href="http://www.darpa.mil">DARPA</a>/<a href="http://www.darpa.mil/Our_Work/I2O/">I2O</a> grant 
+(November 2011 - September 2016) to <a href="http://www.cs.jhu.edu">Johns Hopkins University</a>,
+<a href="http://www.cs.purdue.edu/">Purdue University</a> and 
+<a href="http://www.cs.uci.edu/">University of California at Irvine</a>. 
+A component of the 
+<a href="http://www.darpa.mil/Our_Work/I2O/Programs/Mission-oriented_Resilient_Clouds_(MRC).aspx">
+DARPA Mission-Oriented Resilient Clouds (MRC)</a> program.
+Principal Investigator: <a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>.
+Subcontract PIs: 
+<a href="http://homes.cerias.purdue.edu/~crisn/">Cristina Nita-Rotaru</a>,
+<a href="http://www.ics.uci.edu/~franz/">Michael Franz</a>.
+</p>
+
+<h3>Overview</h3>
+
+<p>
+<!-- Cloud computing presents a new, cost effective approach to run the nation's IT infrastructure. This paradigm
+shift means that the global IT infrastructure becomes dependent on a relatively small number of very large
+distributed systems managed as clouds, and the trend will likely continue as a result of the economic benefits
+of scale. Availability, reliability and security are paramount in this new world. In our experience, in order
+for a cloud to achieve adequate scale and availability, consistent global state replicated across the network 
+and a distributed messaging system that connects cloud componenets are mandatory. However, a large gap in the
+cloud architecture is its vulnerability to intrusions. Modern cloud systems entail a large concentration of 
+homogeneous hosts on the widely accessible Internet. With essentially the same software running on each of 
+these hosts, the ability to compromise one cloud node usually translates to the capacity to take over the 
+entire system. The implicit trust among hosts and lack of strong internal checks make matters worse.
+The algorithms and tools needed to build consistent global state and a distributed messaging system that
+work well under sophisticated intrusion attacks do not exist in practice. Therefore, 
+our goal in this project is to invent, develop and transition the replication and overlay messaging tools
+necessary to make public and private clouds resilient to sophisticated intrusion attacks. The proposed
+plan consists of: -->
+
+Cloud computing offers a new, cost-effective approach for running the nation's
+IT infrastructure. As critical services move to a relatively small number of
+large distributed systems, ensuring the availability, reliability, and security
+of those systems becomes essential. Our experience has shown that a scalable,
+highly-available cloud system requires consistent replicated global state and a
+distributed messaging system that connects the cloud components. However, there
+is a large gap between today's cloud systems and a truly resilient cloud
+architecture; this gap is the vulnerability to intrusions. The systems in use
+today were not designed to withstand sophisticated attackers who may
+successfully compromise one or more machines in the system. Modern cloud
+systems are generally composed of homogeneous hosts on the widely accessible
+Internet. Because these systems are on the Internet, they are subject to
+attack. However, today's systems typically rely on perimeter defenses and
+implicitly trust all hosts in the system; an attacker who is able to gain
+access to a single host can cause serious damage throughout the system.
+Moreover, the homogeneity of the hosts means that the same exploit will be
+effective against all of them, so even if hosts are not implicitly trusted, a
+determined attacker can compromise a large fraction of the system and do
+considerable damage. A resilient cloud must continue to function correctly and
+perform well under sophisticated attacks, including when the system is
+partially compromised. However, the algorithms and tools needed to build
+consistent global state and distributed messaging systems that meet this
+requirement do not exist in practice. Our goal in this project is to invent,
+develop, and transition the replication and messaging tools necessary to make
+public and private clouds resilient to sophisticated intrusion attacks. The
+proposed plan includes:
+
+<ul>
+<li> Developing the first scalable, intrusion-tolerant replication protocol that provides performance
+guarantees under attack, including extremely sophisticated intrusions.
+<li> Developing the first scalable tunable intrusion-tolerant overlay messaging engine, containing two
+new sets of protocols: Controlled Authenticated K-Paths Routing and Controlled Authenticated Flooding.
+<ul>
+<li> Controlled Authenticated K-Paths Routing: routes a message from source to destination along
+K node-disjoint paths, providing protection against up to K-1 compromised nodes, while incurring a cost that
+is K times the cost of standard secure link-state routing.
+<li> Controlled Authenticated Flooding: provides optimal intrusion tolerance -- if there is even a single
+path of correct nodes from source to destination, the message will arrive.
+</ul>
+<li> Developing automated diversity to be incorporated with the replication and messaging engines, providing
+each of their instances in the cloud network with a diverse attack surface. 
+<li> Developing a detection, diagnosis and prediction engine that will use cloud entities' log streams to 
+allow real time detection and prediction of faults and attacks.
+<li> Implementing the previously mentioned components into a real cloud system running on the wide-area network.
+</ul>
+</p>
+
+<h3>Students</h3>
+<p>
+Johns Hopkins University: 
+<a href="http://www.cnds.jhu.edu/~dano/">Daniel Obenshain</a>, 
+<a href="http://www.cnds.jhu.edu/~tomt/">Tom Tantillo</a>,
+<a href="http://www.cnds.jhu.edu/~babay/">Amy Babay</a>.<br>
+Purdue University:
+<a href="http://www.cs.purdue.edu/homes/newella/">Andrew Newell</a>, 
+<a href="http://www.cs.purdue.edu/homes/jcseiber/">Jeff Seibert</a>,
+<a href="http://www.cs.purdue.edu/homes/mhoque/">Endadul Hoque</a>, 
+Sebastian Moreno.<br> 
+University of California, Irvine:
+Andrei Homescu,
+Stephen Crane,
+Steven Neisius.
+</p>
+
+<h3>Results and Current Activities</h3> 
+
+<ul>
+
+<li> We have designed a Controlled Authenticated K-Paths routing protocol, and
+two Controlled Authenticated Flooding protocols. The first flooding protocol is
+Priority Flooding with Source-Based Fairness, which is designed for cloud
+monitoring and ensures that the most important messages from each source reach
+their destination in a timely manner. The second is Reliable Flooding with
+Flow-Based Reserved Capacity, which is designed for control messages and
+ensures reliable message delivery.</li>
+
+<li> We have implemented the K-Paths routing algorithm and the two flooding
+algorithms in the existing <a href='http://www.spines.org'>Spines</a>
+framework.</li>
+
+<li> We have tested the K-Paths routing algorithm and the flooding algorithms
+on both a simulated network and a real cloud overlay network.</li>
+
+<li> We have developed a practical, survivable, intrusion-tolerant replication
+engine by integrating the <a
+href='http://www.dsn.jhu.edu/byzrep/prime.html'>Prime</a> replication system,
+which provides performance guarantees under attack, with compiler-based
+diversification that allows each replica to run different version of the
+software. Moreover, replicas are periodically rejuvenated as part of  a
+proactive recovery protocol, and each replica generates a new, diverse version
+of the software upon rejuvenation. The compiler-based diversification is
+provided by the <a
+href='https://ssllab.org/trac/wiki/MultiCompilerPublic'>MultiCompiler</a>
+developed by Michael Franz's group at University of California, Irvine.</li>
+
+<li>We have developed theoretical results concerning the placement of limited
+numbers of diverse variants (e.g. different operating systems) within a system.
+</li>
+
+</ul>
+</p>
+
+<!--<h3>Related Publications</h3>
+<p>
+<ul>
+<li>Coming Soon!
+</ul>-->
+
+<h3> Presentations</h3>
+<p>
+<ul>
+<li> MRC Kickoff Meeting in Crystal City, VA, November 2011: 
+	<a href="/funding/resilient_clouds/ar1110_mrc.pdf">Slides</a>
+</ul>
+</p>
+
+    </div> <!-- main-wrapper -->
+    <!--#include virtual="/footer.html" -->
+    </div> <!-- wrapper -->
+</body>
+
+</html>

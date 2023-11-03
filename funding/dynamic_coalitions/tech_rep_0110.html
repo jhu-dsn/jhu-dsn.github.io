@@ -1,0 +1,124 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, October 2001</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+During the past three months we have completed the design and
+implementation of our unifying framework that allows us to include
+different key agreement protocols in the Secure Spread framework. We
+also completed an implementation of three new key agreement protocols
+and added them to the system.  As a result, the Secure Spread system
+now support five key agreement protocols:
+<ul>
+<li> BD (Burmester Desmedt) - a protocol that requires three rounds
+and upto n multicasts in each round, and is fairly easy to make it
+robust.
+<li> CKD (Centralized Key Distribution) - a protocol that selects a
+leader based on the membership of a group and that leader computes a
+key and disseminates it to the others.
+<li> GDH (Group Diffie Hellman) - our basic CLIQUES protocol.
+<li> STR - A sparse tree group Diffie Hellman.
+<li> TGDH (Tree-based Group Diffie Hellman).
+</ul>
+<p>
+We have experimented with the five different protocols over a local
+area network. 
+<p>
+We completed an initial implementation of our access control framework
+which is part of our integrated architecture.  This framework
+specifies a modular architecture allowing multiple access control and
+authentication protocols to be used and the location of checks in the
+group communication system to enforce the policies.  The access
+control and authentication framework adds two new features to the
+Spread group communication system. First, it provides a modular API
+that allows anyone to write a custom authentication and access control
+policy code module which will be loaded into the Spread daemon. This
+module (or modules) will control how clients are authenticated when
+they connect to the daemon and what restrictions should be enforced on
+the clients actions (such as joining groups or sending messages).
+Second, it inserts appropriate checks into Spread to enforce whatever
+access control policy the user has enabled.
+<p>
+We have made a major step forward in the design of our integrated
+architecture with respect to the key management building block.
+In the integrated architecture, this building block is moved
+from the Secure Spread library to the Spread daemon itself.
+The Spread daemons share a key and based 
+on it and additional information generate
+group keys and refresh them after every group membership change.
+The daemons key is changed upon daemon membership changes.
+
+We have devised three types of solutions to obtain a shared
+daemon key, depending on where and how encryption is done and what 
+group communication model is used:
+<ul>
+<li> Virtual Synchrony solution: provides the client with a Virtual
+Synchrony model, similar to the current layered Secure Spread
+implementation. It has the advantage, compared with the layered
+architecture, that key agreement protocol is required on every network
+connectivity change and not every join and leave of a client. Client
+joins and leave only require a local computation at each of the
+daemons that have relevant clients.
+<li> Extended Virtual Synchrony solution: provides the client with the
+more efficient Extended Virtual Synchrony model. We are protecting the
+data between the client and the daemon using a client-daemon key that
+is generated upon connect. The drawback of this method is that every
+message will be encrypted three times and deciphered three time
+(client -> daemon) (daemon -> daemons) (daemon -> client).
+<li> Optimized Extended Virtual Synchrony solution: similar to the
+above but in most cases encrypt and decipher the message only
+once. Only in messages that are sent just before a daemon connectivity
+change there will be a need for the messages to be deciphered and
+re-encrypted by the daemons. This solution provides a considerable
+performance boost, but is fairly complex to implement.
+</ul>
+<p>
+We were fortunate to host the Program Manager Dr. Douglas Maughan during this period. During the visit we demonstrated the Secure Spread system in action and
+live nation-wide experiments with Spread.
+
+<h3><font color="blue">Software:</font></h3>
+
+We have released several updates to Spread 3.16.0, but no major
+release this time around.
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+
+We know of one Dynamic Coalitions project that already uses our
+software: This is the Efficient and Scalable Infrastructure Support
+project done at University of California, Irvine and at Brown
+University, which aims to provide scalable certification service.
+<p>
+We are starting to get some comments from the community regarding
+issues with the Secure Spread release, which means that at least some
+people are exploring it.
+<p>
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Experiment with the key agreement protocols supported by our
+framework on wide area networks.  Continue to explore the different
+trade-offs of the different key agreement protocols as they manifest
+themselves on local and wide area networks.
+<li> Continue our work on the integrated architecture.
+<li> Update the integrated access control and authentication framework
+based on community feedback.
+<li> Continued research into high performance wide area group
+communication.
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+
+

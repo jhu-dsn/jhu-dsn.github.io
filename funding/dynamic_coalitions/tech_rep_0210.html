@@ -1,0 +1,182 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, October 2002</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+
+During this period, we continued our efforts on the dual track:
+improving on our layered architecture system, Secure Spread, and
+developing/designing the integrated architecture. The results of this
+work are: a new release of Secure Spread (upgraded to support the
+newest Cliques library that broke backwards compatibility). We
+continue the experiments on the layered architecture with focus on
+evaluating the cost of establishing a new key when group membership
+changes because of merges or partitions. We have results for all five
+group key management protocol supported by Secure Spread.  <br><br> We
+continued our work on the integrated architecture. We implemented the
+main building blocks that allwed us to have preliminary results that
+offer an insight into the scalability of the new system. A detailed
+description on our design and preliminary results can be found in
+Technical Report CNDS-2002-3, available below.  <br><br> In addition,
+we collaborated with the RedTeam and the experimentation efforts.
+This included: 
+<ul>
+<li>participation in weekly phone-conference with all parts
+involved in the effort (BBN, SRI, AFRL), 
+
+<li>providing support to the WhiteTeam, both by email and phone 
+
+<li>providing additional code (mainly demos
+and testing programs, not included in the Secure Spread distribution),
+releasing a new version of both Spread and Secure Spread,
+
+
+<li>participating in the meeting at BBN Columbia with (JHU, BBN and SRI) 
+
+<li> providing Spread, Secure Spread descriptions, and previous work
+and bibliography for the Experimental Plan Document.  
+
+</ul> <h3><font
+color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-3.ps">
+Scaling Secure Group Communication Systems: Beyond Peer-to-Peer.</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-3.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-3.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-3.pdf">pdf</a>.
+Technical Report CNDS-2002-3, October 2002.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>.
+</p>
+
+<small>
+  This paper develops several integrated security architecture
+  scenarios for client-server group communication systems. In an
+  integrated architecture, security services are implemented in
+  servers, in contrast to a layered architecture where the same
+  services are implemented in clients.  We discuss benefits and
+  drawbacks of each proposed architecture and present experimental
+  results that demonstrate the superior scalability of an integrated
+  architecture.
+</small>
+<p>
+</TD></TR></TABLE></STRONG></FONT>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">
+On the Performance of Group Key Agreement Protocols </a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.pdf">pdf</a>.
+Published in the  Proceedings of the 22nd IEEE International Conference of Distributed Computing Systems, short paper, 2-5 July, Vienna, Austria.
+A longer version is available as Technical Report CNDS-2001-5, November 2001.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.ics.uci.edu/~kyongdae/">Kim Yongdae</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>.
+</p>
+
+<small>
+Group key agreement is a fundamental building block for secure peer
+group communication systems. Several group key agreement protocols
+were proposed in the last decade, all of them assuming the existence
+of an underlying group communication infrastructure.
+<br><br>
+This paper presents a performance evaluation of five notable key
+agreement protocols for peer groups, integrated with a reliable group
+communication system (Spread). They are: Centralized Group Key
+Distribution (CKD), Burmester-Desmedt (BD), Steer et al. (STR), Group
+Diffie-Hellman (GDH) and Tree-Based Group Diffie-Hellman (TGDH).  The
+paper includes an in-depth comparison and analysis of conceptual
+results and is the first to report practical results in real-life
+local and wide area networks. Our analysis of these protocols'
+experimental results offers insights into their scalability and
+practicality.
+</small>
+<p>
+</TD></TR></TABLE></STRONG></FONT>
+
+
+<h3><font color="blue">Software:</font></h3>
+
+<li>We have released <a href="http://www.cnds.jhu.edu/research/group/secure_spread/">Secure Spread</a> version 2.1.0 in
+September 2002.
+<br>
+<li>We have released <a href="http://www.spread.org">Spread</a> version 3.17 in
+September 2002.
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+
+There are several popular programs that use Spread, including
+Apache-SSL, Apache distributed logging, the native replication in the
+Postgres database, etc.  Related with the funding agencies of this
+program, we are aware of the following projects using the system:
+<ul>
+<li> The Efficient and Scalable Infrastructure Support for Dynamic
+Coalitions project, a collaboration between University of California
+at Irvine, Brown University and Johns Hopkins University, uses Spread
+as communication infrastruture.  
+
+<li> A group in University of Idaho that uses Secure Spread in
+research.
+
+<li> A group at SRI is working on specifing the GDH key agreement
+protocol from Secure Spread using the CAPSL/MuCAPSL language.
+
+<li> A group from AF Rome Lab is conducting an evaluation of Secure
+Spread.
+
+<li> A group at the University of Maryland, College Park uses Spread
+as part of the Integrated Security Services for Dynamic Coalition
+Management project
+</ul>
+
+<br>
+
+<p>
+So far, we registered about 300 downloads for Secure Spread from our
+web site and about 4200 for Spread.
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Finalize the investigation of the group key agreement in more complex cases, such as merges and partition.
+<li> Continue the work on the integrated architecture. Current plans focus on having the VS and the 
+Three-Step Client-Server solutions ready.
+<li> Update the integrated access control and authentication framework based on community feedback.
+<li> Continue research into high performance wide area group communication.
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+
+
+
+

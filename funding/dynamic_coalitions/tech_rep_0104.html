@@ -1,0 +1,122 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, April 2001</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+During the past three months we have continued to work on the Secure Spread System.
+We released Secure Spread Version 1 in March. Secure Spread Version 1 implements the first robust contributory key agreement that can handle any sequence of network events, including cascading joins, leaves, network partitions and network merges. The robust algorithm is based on the CLIQUES Group Diffie Helman algorithm. The system is available off this site web pages.
+<p>
+We have also finalized the design of a new robust Tree-based Group Diffie Helman algorithm. A paper on the vanila algorithm was presented at ACM CCS 2000, and our design makes it robust and tolerant to any scenario of cascading network events. We have started the implementation of that robust version and its integration into Secure Spread.
+<p>
+A new group key agreement method, based on a protocol originally proposed by Steer et al. at Crypto88, was fully specified and implemented as part of the CLIQUES library. It is not yet part of the Secure Spread system and we did not yet fully address robustness issues. This new string-like tree structure is very efficient communication-wise, on the expense of computation, which may make it a better fit for wide area networks. A paper describing this work will be presented at IFIP-SEC 2001 in June.
+<p>
+We are starting to create a unified framework in Secure Spread that will enable us to evaluate and compare the different key agreement algorithms side by side, namely, Centralized Key Disrtibution, CLIQUES Group Diffie Helman, Tree-based Group Diffie Helman, Burmester-Desmedt, and the Sting-like Tree).
+We are continuing to define the necessary services for practical secure group comunication in particular and for overlay networks in general. 
+We look beyond the key agreement protocols into authentication and access control. 
+<p>
+
+We completed the initial design of a framework for access control in group
+communication systems. This framework specifies a modular architecture allowing multiple access control and authentication protocols to be used and the location of checks in the group communication system to enforce the policies. Work to implement this framework and explore what makes a good group access control policy is ongoing.
+<br>
+The access control and authentication framework adds two new features to the Spread group communication system. First, it provides a modular API that allows anyone to write a custom authentication and access control policy code module which will be loaded into the Spread daemon. This module (or modules) will control how clients are authenticated when they connect to the daemon and what restrictions should be enforced on the clients actions (such as joining groups or sending messages).  Second, it inserts appropriate checks into Spread to enforce whatever access control policy the user has enabled.
+<br>
+This work is the first step toward an integrated architecture of the security mechanisms into the Spread daemon.
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><STRONG>
+<a name="ifip_sec" href="http://www.cnds.jhu.edu/pub/papers/collab_papers/sec-ifip-2001.ps">
+Communication-Efficient Group Key Agreement
+</TD></TR><TR><TD>
+
+<p>
+<small>To be published in IFIP -SEC 2001, June 2001.
+            <br>
+</small>
+<p>
+<a href="http://www.ics.uci.edu/~kyongdae/">Yongdae Kim</a>,
+<a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>
+and Adrian Perrig
+<p>
+<small>
+            Most prior research   in group key management focused on minimizing
+computational overhead   stemming from expensive cryptographic operations whereas bandwidth and communication round complexity was of secondary concern. However, recent advances in computation have resulted in the network delay in wide area networks (WANs) being the primary cost factor in the performance of group key management protocols. In this paper, we reconsider a group key agreement protocol previously  proposed by Steer, et al. in 1988. We extend it to handle dynamic groups and network faults such as topology partitions and merges. The resulting protocol suite is simple, provably secure, fault-tolerant, and particularly well-suited for applications in high-delay WANs.    
+            </small>
+
+
+
+<p>
+</TD></TR></TABLE>
+
+
+<TABLE CELLPADDING=3><TR><TD><STRONG>
+<a name="icdcs01_robustness" href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.ps">
+Exploring Robusteness in Group Key Agreement
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.pdf">pdf</a>.
+Published in Proceedings of the 21th IEEE International Conference on Distributed Computing Systems, Phoenix, Arizona, April 16-19,
+               2001, pp 399-408.
+<p>
+</small>
+
+<p>
+
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, 
+<a href="http://www.ics.uci.edu/~kyongdae/">Yongdae Kim</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>, 
+<a href="http://www.cnds.jhu.edu/~jschultz/">John Schultz</a>, 
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>
+
+<p>
+
+<small>
+In this paper we present two robust contributory key agreement protocols 
+which are resilient to any sequence of events while preserving the group 
+communication membership and ordering guarantees. 
+</small>
+
+<p>
+</TD></TR></TABLE>
+
+<h3><font color="blue">Software:</font></h3>
+
+We have released Secure Spread Version 1.0 in March. This version includes a complete robust CLIQUES protocol and a stable API for establishing secure groups and sending and receiving encrypted messages. This version is available and works with Spread 3.12, 3.13, and 3.14.
+<br><br>
+We have released Spread 3.15.0, 3.15.1, and 3.15.2 during this period. These releases address stability issues discovered by the growing community of Spread users. 
+<br>
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+
+We know of one Dynamic Coaltions project that already uses our software: This is the Efficient and Scalable Infrastructure Support project done at Johns Hopkins and Brown, which aims to provide scalable certification service.
+We are exploring potentail collaboration with other projects in the program.
+<p>
+During the period Spread was integrated into the beta version of OpenLinux. It is expected to be released in the next OpenLinux version in April.
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Completing the design, implementation, integration and evaluation fo three of the key agreement methods in the Secure Spread framework.
+<li> Implement and release the integrated access control and authentication framework as part of Spread. 
+<li> Investigate the different tradeoffs of the different key agreement protocols as they manifest themselves on local and wide area networks.
+<li> Continued research into high performance wide area group communication.
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

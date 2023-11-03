@@ -1,0 +1,147 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, April 2002</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+<p>
+During this period, we achieved one of the main milestones for the project
+by releasing Secure Spread 2.0. This system includes implementation of 
+five different key agreement protocols and allows evaluation of all of
+them under the same system. We have completed evaluation of the system
+over local and wide area networks. Details can be found in the paper
+below.
+<p>
+We continued our work on the Secure Spread integrated architecture. 
+Previously, we designed three different solutions of providing confidentiality
+of the data, supporting two group communication semantics: Virtual
+Synchrony and Extended Virtual Synchrony.  Briefly these solutions
+were:
+<ul>
+<li> Virtual Synchrony solution: provides the client with a Virtual
+Synchrony model, similar to the current layered Secure Spread
+implementation. The advantage of this method with respect to the
+layered Secure Spread is that it will scale better, particularly in
+simple group changes such as joins and leaves.  
+<li> Extended Virtual Synchrony solution: provides the client with the
+more efficient group communication Extended Virtual Synchrony
+model. This solution protects both the
+client-daemon channel and the daemon-daemon communication channels, at
+the cost of six encryption/decryption operations.
+<li> Optimized Extended Virtual Synchrony solution: similar to the
+Extended Virtual Synchrony solution, but in most cases encrypt and decipher 
+the message only once. Only in messages that are sent just before a 
+daemon connectivity
+change there will be a need for the messages to be deciphered and
+re-encrypted by the daemons. This solution provides a considerable
+performance boost, but is fairly complex to implement.
+</ul>
+<p>
+We completed the implementation of the Virtual Synchrony solution and
+implemented the building blocks for the Extended Virtual Synchrony
+solution. The Extended Virtual Synchrony code was merged with the
+main development tree and is currently going under testing and evaluation.
+In addition, we designed a flexible architecture that will allow 
+us to provide all the solutions in a configurable way. 
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">
+On the Performance of Group Key Agreement Protocols </a>
+
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.pdf">pdf</a>.
+Technical Report CNDS-2001-5, November 2001.
+A condensed form will appear in the Proceedings of the 22nd IEEE International Conference of Distributed Computing Systems, short paper, 2-5 July, Vienna, Austria.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.ics.uci.edu/~kyongdae/">Kim Yongdae</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>.
+</p>
+
+<small>
+Group key agreement is a fundamental building block for secure peer
+group communication systems. Several group key agreement protocols
+were proposed in the last decade, all of them assuming the existence
+of an underlying group communication infrastructure.
+<br><br>
+This paper presents a performance evaluation of five notable key
+agreement protocols for peer groups, integrated with a reliable group
+communication system (Spread). They are: Centralized Group Key
+Distribution (CKD), Burmester-Desmedt (BD), Steer et al. (STR), Group
+Diffie-Hellman (GDH) and Tree-Based Group Diffie-Hellman (TGDH).  The
+paper includes an in-depth comparison and analysis of conceptual
+results and is the first to report practical results in real-life
+local and wide area networks. Our analysis of these protocols'
+experimental results offers insights into their scalability and
+practicality.
+</small>
+<p>
+</TD></TR></TABLE></STRONG></FONT>
+
+
+<h3><font color="blue">Software:</font></h3>
+
+We have released <a href="http://www.cnds.jhu.edu/research/group/secure_spread/">Secure Spread</a> version 2.0 in
+February 2002.
+<br>
+We have released <a href="http://www.spread.org">Spread</a> version 3.16.2 in
+April 2002.
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+
+There are several popular programs that use Spread, including Apache-SSL, Apache distributed logging, the native replication in the Postgres database, etc.
+Related with the funding agencies of this program, we are
+aware of the following projects using the system:
+<ul>
+<li> The Efficient and Scalable Infrastructure Support for Dynamic Coalitions project, a collaboration between University of California at Irvine, Brown University and Johns Hopkins University, uses Spread as communication infrastruture.
+<li> A group in University of Idaho that uses Secure Spread in research.
+<li> A group at SRI is working on specifing the GDH key agreement protocol from Secure Spread using the CAPSL/MuCAPSL language. 
+<li> A group from AF Rome Lab is conducting an evaluation of Secure Spread.
+<li> A group at the University of Maryland, College Park uses Spread as part of the Integrated Security Services for Dynamic Coalition Management project
+</ul>
+
+<br>
+We also participated at the Secure Group Communication Workshop organized
+by the NAI Labs, on March 13 2002, Glenwood, Maryland.
+
+<p>
+So far, we registered over 150 downloads for Secure Spread from our
+web site and about 3500 for Spread.
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Continue our work on the integrated architecture. Current plans focus on testing and evaluating the Extended
+Virtual Synchrony and finalizing  Optimized Extended Virtual Synchrony solution.
+<li> Update the integrated access control and authentication framework based on community feedback.
+<li> Continue to explore the different trade-offs of the different key agreement protocols on wide area networks. We plan
+     to perform more scenarios using the EMULAB network.
+<li> Continue research into high performance wide area group communication.
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+
+
+
+

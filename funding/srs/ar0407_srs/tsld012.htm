@@ -1,0 +1,42 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>State Machine Replication</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>State Machine Replication</H1> 
+ <P><UL>
+<LI><H2>Requests must be ordered in a consistent manner by all servers.
+</H2>
+</UL><UL>
+<LI><H2>Usually one server manages the ordering process based on information from the other participants, then informs everybody about what was decided.
+</H2>
+</UL><UL>
+<LI><H2>If the leader dies, a new leader must be selected to ensure progress.
+</H2>
+</UL><UL>
+<LI><H2>Benign faults: Paxos [Lam98,Lam01]: must contact f+1 out of 2f+1 servers and uses 2 rounds to allow consistent progress.
+</H2>
+</UL><UL>
+<LI><H2>Byzantine faults: BFT [CL99]: must contact 2f+1 out of 3f+1 servers and uses 3 rounds to allow consistent progress.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld012.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

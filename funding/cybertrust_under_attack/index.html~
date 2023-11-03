@@ -1,0 +1,141 @@
+<head> 
+    <link rel="stylesheet" type="text/css" href="/gen.css" />
+</head>
+
+<body>
+
+<table>
+  <tr valign="top">
+    <td width="15%" class="left_bar">
+      <!--#include virtual="/includes/side_menu.html" -->
+    </td>
+  <td width="85%" class="CENTER_DATA"> <br>
+<!--       <div class="pagename">CyberTrust Grant</div>
+-->
+</head>
+
+<ul><h1><font color="blue">Scalable Byzantine Replication Under Attack</font></h1></ul>
+
+<p>
+An <a href="http://www.nsf.gov">NSF</a> grant (August 2007 - July 2010) to <a href="http://www.cs.jhu.edu">Johns Hopkins University</a>. A component of the <a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=13451&org=CISE">NSF Cyber Trust</a> program.
+<br>
+Principal Investigator: <a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>.
+<br>
+<h3>Overview</h3>
+<p>
+As network environments become increasingly hostile, even well protected
+distributed information systems, constructed with security in mind, are likely
+to be compromised. Hence, architecting large-scale distributed systems that
+function correctly and provide adequate performance even when parts of them are
+compromised is one of the most important challenges. Byzantine replication is
+emerging as a promising direction to mitigate server compromises. Experience
+with Byzantine replication protocols reveals considerable shortcomings in the
+underlying theoretical foundation. Namely, existing fault models, metrics, and
+correctness criteria used to reason about and construct Byzantine replication
+algorithms, fail to capture properties that manifest themselves in wide-area
+environments. Since all existing Byzantine replication algorithms were designed
+to meet the standard safety and liveness criteria, they all exhibit critical
+vulnerabilities not covered by the standard models. This project will develop
+the theoretical foundation, architectural framework, and algorithmic techniques
+for a scalable wide-area Byzantine replication system that provides strong
+performance guarantees under attack. This includes:
+
+<ul>
+<li> Expanding the existing theoretical fault models to better encapsulate the
+unique characteristics and performance vulnerabilities associated with scalable
+wide-area Byzantine replication systems.
+<li> Defining useful metrics for evaluating and comparing different
+architectures, configurations, and algorithms with a focus on their performance
+under sophisticated attacks.
+<li> Developing an architectural framework for scalable Byzantine replication
+that can be customized to topology, performance, and resiliency requirements of
+specific wide-area systems.
+<li> Developing specific algorithms for wide-area environments that provide
+strong performance guarantees under attack.
+</ul>
+
+<h3>Students</h3>
+<p>
+<ul>
+<li><a href="http://www.cs.jhu.edu/~jak/">Jonathan Kirsch</a>
+<li><a href="http://www.cs.jhu.edu/~johnlane/">John Lane</a>
+</ul>
+
+<h3>Results and Current Activities</h3>
+<p>
+<ul>
+<li> We have shown that standard leader-based replication protocols are vulnerable to performance attacks
+that can render them useless in practice even though they meet the traditional correctness criteria of safety
+and liveness.<BR>
+&nbsp
+<li> We have devised a new correctness criterion, Bounded-Delay, to assess the performance of state
+machine replication protocols when under attack.<BR>
+&nbsp
+<li> We developed Prime (Performance-Oriented Replication In Malicious Environments), a new state machine
+replication protocol that achieves a new level of resilience to performance attacks and meets the Bounded-Delay
+correctness criterion.<BR>
+&nbsp
+<li> Collaborating with the <a href="http://www.navigators.di.fc.ul.pt/">Navigators</a> group while at the University 
+of Lisboa, Portugal, we analyzed the extent to which randomized intrusion-tolerant replication protocols (which do 
+not rely on a leader for coordination) are vulnerable to performance degradation under attack.  We devised a timing 
+attack that can likely be used to significantly reduce performance.<BR>
+&nbsp
+<li> We developed a new view change protocol for Prime that offers a fundamentally stronger performance guarantee
+by preventing faulty servers from delaying progress by causing long view changes.<BR>
+&nbsp
+<li> We designed and are implementing a scalable attack-resilient architecture for intrusion-tolerant wide-area
+replication.
+</ul>
+
+<h3>Related Publications</h3>
+<p>
+<ul>
+
+<li><a href="http://www.cnds.jhu.edu/pub/papers/dsn08_attack.pdf">
+            Byzantine Replication Under Attack</a>
+   <small>
+   <br>Yair Amir, Brian Coan, Jonathan Kirsch, John Lane<br>
+In Proceedings of the 38th IEEE/IFIP International Conference on Dependable Systems and Networks (DSN 2008), 
+Anchorage, Alaska, June 2008, pp. 197-206.	  
+<BR>
+<br>
+Byzantine-resilient replication protocols satisfy two standard
+correctness criteria, safety and liveness, in the presence of
+Byzantine faults. In practice, however, faulty processors can, in some
+protocols, significantly degrade performance by causing the system to
+make progress at an extremely slow rate. While ``correct'' in the
+traditional sense, systems vulnerable to such performance degradation
+are of limited practical use in adversarial environments. This paper
+argues that techniques for mitigating such performance attacks are
+needed to bridge this ``practicality gap'' for intrusion-tolerant
+replication systems. We propose a new performance-oriented correctness
+criterion, and we show how failure to meet this criterion can lead to
+performance degradation. We present a new Byzantine replication
+protocol that achieves the criterion and evaluate its performance in
+fault-free configurations and when under attack.  </small><br> 
+<BR>
+<li><a href="http://www.cnds.jhu.edu/pub/papers/cnds-2009-4.pdf">
+Prime: Byzantine Replication Under Attack</a>
+<BR>
+<small>Yair Amir, Brian Coan, Jonathan Kirsch, John Lane<br>
+Technical Report CNDS-2009-4.<BR></small>
+
+</ul>
+
+<h3> Presentations</h3>
+<p>
+<ul>
+
+<li> <a href="http://www.cnds.jhu.edu/presentations/dsn08.ppt">Byzantine Replication Under Attack</a><BR>
+<small> 38th IEEE/IFIP International Conference on Dependable Systems and Networks 
+(DSN 2008), Anchorage, Alaska, June 2008.</small><BR>
+&nbsp
+<li> <a href="http://www.cnds.jhu.edu/presentations/dsn08.ppt">Byzantine Replication Under Attack</a><BR>
+<small> Telcordia Technologies, July 2008.</small> 
+
+</ul>
+
+<!--#include virtual="/includes/footer.html" -->
+
+
+

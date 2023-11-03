@@ -1,0 +1,357 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Dynamic Coalitions</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">High Performance, Robust and Secure Group Communication </font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Yearly Technical Report, July 2002</h2>
+<p>
+
+<h3><font color="blue">Objective:</font></h3>
+<P>
+A practical group communication system should provide secure multicast
+services for peer groups over local and wide area networks. To support
+the environment described in the Dynamic Coalition program, such a
+system should scale to tens of coalition parties, with hundreds of
+servers, supporting thousands of users. This service is crucial for
+building distributed applications that work in dynamic environments
+and communicate over unsecured networks (e.g.  the Internet). It is
+also important for enabling other infrastructures for these
+environments, such as replicated certification, highly available
+policy management, and high performance access control.
+<p>
+A common claim today is that a wide-area, secure group communication
+system with strict reliability semantics and strict security
+requirements, cannot perform well enough to be practical. Based on our
+past and current work, we claim that with careful protocol design, a
+system that is limited to the size of the above peer groups can
+perform well without relaxing any of the security or reliability
+guarantees. The objective of this project is to build it.
+
+<h3><font color="blue">Approach:</font></h3>
+<P>
+Our technical approach builds our work with the Spread group
+communication system (http://www.spread.org) and the CLIQUES key
+agreement protocols suite (http://sconce.ics.uci.edu/cliques/). Our
+approach includes the following innovative aspects:
+<ul>
+<li> Constructing group communication protocols that support wide and
+local area networks with tens of sites, hundreds of servers, and
+thousands of users.
+<li> Current key agreement protocols are not designed to tolerate
+failures and changes in the membership during their execution. Our
+protocols, in contrast, will be completely resilient to any sequence
+of such events. We believe this will be the first robust
+implementation of distributed key agreement protocols that provide
+perfect forward secrecy, group membership authentication,
+non-repudiation, and resilience to known-key attacks.
+<li> The performance of a group key generation protocol is very
+dependent on the network structure, the relative power of machines,
+and the algorithm used. We do not think that there can be one key
+agreement protocol that outperforms all other protocols in all of the
+possible environments.  Instead, we will develop several different
+algorithms, each optimized (performance-wise) for a different setting.
+<li> We design and build a modular architecture that allows different
+security protocols to be plugged in. The architecture will switch
+protocols during execution in agreement with other members, so that
+the most suitable protocol for the current situation is invoked. The
+selection will be based on the current state of the network, available
+system resources, the number of members in the group, a user defined
+policy, etc.
+<li> The current state of the art in secure group communication
+implements security as a layer, separate from the reliability,
+ordering, and membership services. Although this structure has much
+merit, there is a high performance cost attached. We will build two
+versions of our system that share most of the code and
+infrastructure. The Layered Architecture version will have the
+security services provided on top of the reliability, ordering and
+membership services.  The Integrated Architecture version will tailor
+the security protocols into the core reliability, ordering and
+membership services, drastically cutting the latency and bandwidth
+cost associated with group membership changes.
+<li> In a Dynamic Coalition environment, it is likely that each
+coalition party will retain its autonomy, which includes full control
+over its part of the infrastructure. This is in contrast to current
+group communication architectures that assume one administrative
+domain. Our system will allow multiple autonomous control domains,
+while still preserving the tightly coupled group communication
+semantics.
+</ul>
+
+<h3><font color="blue">Recent accomplishments:</font></h3>
+<h4>Layered architecture</h4>
+<p>
+During the last year, we achieved one of the main milestones for the project
+by releasing Secure Spread 2.0. This system includes implementation of 
+five different key agreement protocols and allows evaluation of all of
+them under the same system. The Secure Spread system
+now supports these key agreement protocols:
+<ul>
+<li> BD (Burmester Desmedt) - a protocol that requires three rounds
+and upto n multicasts in each round, and is fairly easy to make it
+robust.
+<li> CKD (Centralized Key Distribution) - a protocol that selects a
+leader based on the membership of a group and that leader computes a
+key and disseminates it to the others.
+<li> GDH (Group Diffie Hellman) - our basic CLIQUES protocol.
+<li> STR - A sparse tree group Diffie Hellman.
+<li> TGDH (Tree-based Group Diffie Hellman).
+</ul>
+<p>
+We have experimented with the five different protocols over a local
+area network. Using the Secure Spread framework
+supporting five key agreement protocols, we conducted extensive tests over
+high-latency wide area networks. Results discussing the performance and
+the trade-offs of these protocols on both local and wide area networks
+are presented in a technical report below.
+
+<h4>Integrated Architecture</h4>
+<p>
+We completed an initial implementation of our access control framework
+which is part of our integrated architecture.  This framework
+specifies a modular architecture allowing multiple access control and
+authentication protocols to be used and the location of checks in the
+group communication system to enforce the policies.  The access
+control and authentication framework adds two new features to the
+Spread group communication system. First, it provides a modular API
+that allows anyone to write a custom authentication and access control
+policy code module which will be loaded into the Spread daemon. This
+module (or modules) will control how clients are authenticated when
+they connect to the daemon and what restrictions should be enforced on
+the clients actions (such as joining groups or sending messages).
+Second, it inserts appropriate checks into Spread to enforce whatever
+access control policy the user has enabled.
+<p>
+We have made a major step forward in our integrated
+architecture with respect to the key management building block.
+In this architecture, the key management block is moved from the
+Secure Spread library to the Spread daemon itself. This also changes
+the way the data is protected by means of encryption.
+The Spread daemons share a key and based 
+on it and additional information generate
+group keys and refresh them after every group membership change.
+The daemons key is changed upon daemon membership changes.
+
+We finalized
+the design of three different solutions of providing confidentiality
+of the data, supporting two group communication semantics: Virtual
+Synchrony and Extended Virtual Synchrony. These solutions are:
+<ul>
+<li> Virtual Synchrony solution: provides the client with a Virtual
+Synchrony model, similar to the current layered Secure Spread
+implementation. It has the advantage, compared with the layered
+architecture, that key agreement protocol is required on every network
+connectivity change and not every join and leave of a client. Client
+joins and leave only require a local computation at each of the
+daemons that have relevant clients.
+<li> Extended Virtual Synchrony solution: provides the client with the
+more efficient Extended Virtual Synchrony model. We are protecting the
+data between the client and the daemon using a client-daemon key that
+is generated upon connect. The drawback of this method is that every
+message will be encrypted three times and deciphered three time
+(client -> daemon) (daemon -> daemons) (daemon -> client).
+<li> Optimized Extended Virtual Synchrony solution: similar to the
+above but in most cases encrypt and decipher the message only
+once. Only in messages that are sent just before a daemon connectivity
+change there will be a need for the messages to be deciphered and
+re-encrypted by the daemons. This solution provides a considerable
+performance boost, but is fairly complex to implement.
+</ul>
+
+<p>
+We started the implementation of these solutions. 
+We are on our way to complete an implementation of the Virtual Synchrony solution and
+implemented the building blocks for the Extended Virtual Synchrony
+solution. The Extended Virtual Synchrony code was merged with the
+main development tree and is currently going under internal testing and evaluation.
+In addition, we designed a flexible architecture that will allow 
+us to provide all the solutions in a configurable way. 
+
+<h4>Publications</h4>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=3><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">
+On the Performance of Group Key Agreement Protocols </a>
+
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.pdf">pdf</a>.
+Technical Report CNDS-2001-5, November 2001.
+A condensed form will appear in the Proceedings of the 22nd IEEE International Conference of Distributed Computing Systems, short paper, 2-5 July, Vienna, Austria.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.ics.uci.edu/~kyongdae/">Kim Yongdae</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+and <a href="http://www.ics.uci.edu/~gts/">Gene Tsudik</a>.
+</p>
+
+<small>
+Group key agreement is a fundamental building block for secure peer
+group communication systems. Several group key agreement protocols
+were proposed in the last decade, all of them assuming the existence
+of an underlying group communication infrastructure.
+<br><br>
+This paper presents a performance evaluation of five notable key
+agreement protocols for peer groups, integrated with a reliable group
+communication system (Spread). They are: Centralized Group Key
+Distribution (CKD), Burmester-Desmedt (BD), Steer et al. (STR), Group
+Diffie-Hellman (GDH) and Tree-Based Group Diffie-Hellman (TGDH).  The
+paper includes an in-depth comparison and analysis of conceptual
+results and is the first to report practical results in real-life
+local and wide area networks. Our analysis of these protocols'
+experimental results offers insights into their scalability and
+practicality.
+</small>
+<p>
+</TD></TR></TABLE></STRONG></FONT>
+
+<TABLE CELLPADDING=3><TR><TD><STRONG>
+<a name="ngc01_auth_framework" href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.ps">
+Framework for Authentication and Access Control of Client-Server Group Communication Systems
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.pdf">pdf</a>.
+Published in the Proceedings of the Third International Workshop on Networked Group Communications, London, United Kingdom, November 7-9, 2001. A longer version is available as CNDS Technical Report 2001-2
+(
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-2.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-2.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-2.pdf">pdf</a>.
+).
+<p>
+</small>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, 
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>, 
+and <a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>
+</p><p>
+<small>
+In this paper we present a framework for integrating authentication and 
+access control mechanisms and policies into a group communication system.
+</small>
+</TD></TR></TABLE></STRONG></FONT>
+
+
+<h3><font color="blue">Current plans:</font></h3>
+<ul>
+<li> The project was selected for red-teaming and we expect to provide support for this effort.
+<li> Continue our work on the integrated architecture. Current plans focus on testing and evaluating the Extended
+Virtual Synchrony and finalizing  Optimized Extended Virtual Synchrony solution.
+<li> Update the integrated access control and authentication framework based on community feedback.
+<li> Continue to explore the different trade-offs of the different key agreement protocols on wide area networks. We plan
+     to perform more scenarios using the EMULAB network.
+<li> Continue research into high performance wide area group communication.
+</ul>
+
+<h3><font color="blue">Software:</font></h3>
+<p> <b>Spread</b> releases:
+<ul>
+<p><li>We released Spread 3.13 in August 2000. The main new features of
+this version included:
+<ul>
+<li> Scalability improvements in the number of groups in the system.
+The lightweight group management is now using probablistic algorithms
+that reduce group lookups to complexity of o(log(n)) down from o(n).
+This allows us to support tens of thousands of groups without
+noticeable performance penalty.  Our system is still limited to about
+1000 groups due to state transfer implementation limitation.  <li>
+Performance improvements for small messages (by a factor of 4 or so).
+<li> A new configuration format that allows improved run time
+configuration.
+</ul>
+<li>
+We have released Spread 3.14 (October 31, 2000), 3.15.0 (December 20,
+2000), 3.15.1 (February 26, 2001), and 3.15.2 (March 20, 2001) during
+this period.  These releases address stability issues discovered by
+the growing community of Spread users.
+
+<li>
+A release of Spread, 3.16.0 (June 25, 2001), that includes a
+preliminary version of an integrated authentication and access control
+enforcement framework. We also have released several updates to Spread 3.16.0.
+
+<li>
+We have released <a href="http://www.spread.org">Spread</a> version 3.16.1 on
+December 2001.
+<li>
+We have released <a href="http://www.spread.org">Spread</a> version 3.16.2 in
+April 2002.
+
+</ul>
+
+<p> <b>Secure Spread</b> releases from the begining of the project:
+<ul>
+<li>We released Secure Spread Beta 0 in November 2000. This is a
+preliminary version which includes a fairly stable API and a correct
+implementation of the CLIQUES GDH key agreement protocol.  Secure
+Spread beta 0 supports simple group events and failure scenarios.  No
+cascading failures are supported.  This version is available for other
+researchers to use.  It works with Spread 3.12, 3.13 and 3.14.
+<li>
+We released Secure Spread Version 1.0 in March 2001. This version
+included a complete robust CLIQUES GDH protocol and a stable API for
+establishing secure groups and sending and receiving encrypted
+messages.  This version is available and works with Spread 3.12, 3.13,
+3.14, and 3.16.0.
+<li>
+This year we have released  <a href="http://www.cnds.jhu.edu/research/group/secure_spread/">Secure Spread</a> version 2.0 in
+February 2002, which includes all of the key agreement protocols we will exepriment with during this project.
+</ul>
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+<p>
+DARPA DC related:
+<ul>
+<li>SRI (Farrell) - red team.
+<li>BBN (Theriault/Meighan) -  experimentation.
+<li>Rome labs / CACI (Valente/Cole) - evaluation.
+<li>SRI (Millen/Denker) - formal verification.
+<li>Irvine/Brown/Algomagic (Goodrich/Tamassia/Cohen) - message bus.
+<li>UMCP (Gligor) - message bus.
+<li>NCSU / MCNC (Yalta - Smith/Byrd) - secure group comm.
+<li>U Penn (Smith) - integrating Keynote into Spread.
+</ul>
+Others:
+<ul>
+<li>220 Secure Spread library downloads including major companies and international academics, going up exponentially.
+<li>
+During the period Spread was integrated into the beta version of OpenLinux. 
+It was released in the next OpenLinux version in June.
+<li>
+Spread is used by hundreds of organizations. Lately it was added to several
+Linux distributions as well as FreeBSD. 
+<li>There are several popular programs that use Spread, including Apache-SSL, Apache distributed logging, the native replication in the Postgres database and in the Zope product.
+<li>
+A Spread Workshop was held over three days at Johns Hopkins University in June
+2001. 
+This meeting included people from academia and industry and involved 
+presentations, demos, and a collaborative discussion of 
+future features, current needs and problems, and solutions.
+<li> 
+We also participated at the Secure Group Communication Workshop organized
+by the NAI Labs, on March 13 2002, Glenwood, Maryland.
+</ul>
+
+<p>
+We were fortunate to host the Program Manager Dr. Douglas Maughan in September 2001. During the visit we demonstrated the Secure Spread system in action and
+live nation-wide experiments with Spread.
+
+
+
+<!--#include virtual="/includes/footer" -->
+
+
+
+
