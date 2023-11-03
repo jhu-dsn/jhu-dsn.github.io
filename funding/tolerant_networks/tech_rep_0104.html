@@ -1,0 +1,99 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, April 2001</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+<ul>
+<li>We have implemented an initial version of gravitational flow technique for routing that can overcome strong adversary model. Our protocols operate without using the concept of a global path, which is standard in the common "weak adversary" models.
+Roughly, the operation of the gravitational flow protocol is based on the number of unacknowledged packets that were sent in each direction. Packets that reach the destination are acknowledged. Packets that are stuck create "back pressure" so that this link is not used for further packets. As the network connectivity change, pressure points may be released with links coming back up, and free paths may be clogged as links go down.
+<p>
+We have built a preliminary test for the gravitational flow protocol that sends Mpeg video stream through an overlay network in our lab with controlled link-down and link-up events. This is still work in progress.
+<p>
+<li> Overlay network infrastructure: We have completed a basic congestion control for the Hop link-level protocol. The basic congestion control was implemented both in the ns2 simulator and in our overlay network implementation. We are still investigating tradeoffs regarding the different mechanisms in terms of our ability to control rate versus window, and in terms of cpu consumption.
+<p>
+<li> Cost benefit decision making: We have implemented the global flow control, both in ns2 and in our overlay network implementation inside the Spread group communication system. This is based on the Cost Benefit framework.
+A technical report is now released. 
+<p>
+<li> New replication protocol: We came up with a method to create new replicas and eliminate replicas while the system is operational without compromising consistency and without requiring complete connectivity. This is a work in progress, but when completed, it will allow our cost-benefit algorithms to determine how many replicas to keep in the system and possibly where to situate them.
+<p>
+Previously, we have developed a general replication engine that allows consistent ordering of actions in a network that is prone to partitions and crashes.
+We planned to complete the integration of our engine with the Postgres database software, but that turned out to be more complicated than we thought. We continue to work on this.
+<p>
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+<ul>
+<li><a name="cnds-2001-1" href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-1.ps">
+Flow Control for Many-to-Many Multicast: A Cost-Benefit Approach
+</a>
+<p>
+<small>Technical Report CNDS-2001-1
+<br>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+
+<p>
+<small>
+We present a protocol
+            that is analytically grounded, yet also achieves real world goals,
+            such as simplicity, fairness and minimal resource usage.  We base our
+            flow control protocol on the Cost-Benefit algorithmic framework for
+            resource management. We base decisions on the "opportunity" costs of
+            network resources, comparing the cost of each individual resource to
+            the benefit it provides.  As opposed to existing window-based flow
+            control schemes, we avoid end-to-end feedback by basing decisions on
+            the state of the links between participating nodes. This produces
+            control traffic proportional only to the number of overlay network
+            links and independent of the number of groups.
+  
+            </small>
+
+
+
+<p>
+</ul>
+
+
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Network level resiliency: We plan to evaluate the performance of the gravitational flow implementation and contrast it with regular algorithms in "well-behaved" environments to assess the overhead.
+<p>
+<li> Data level resiliency: We plan to continue the validation of our 
+general replication engine. We intend to use the CAIRN network to experiment 
+with high latency wide area settings. Next, we are in the midst of integrating
+our replication engine to the Postgres database. We did not make much progress in this task this period and hope to do better this coming quarter.
+<p>
+<li> Overlay network infrastructure: We will clean our initial implementation for congestion control and flow control to make it more scalable and flexible. We expect our re-implementation in ns2 to be much cleaner this time around since we know exactly where we are going. This will potentially enable other researchers to use our new framework when developing their own protocols. 
+<p>
+We will complete our evaluation of the different congestion control schemes and enhance the scalability of our global flow control.
+<p>
+During the coming period, we plan to release our extentions to ns2 that implement our framework.
+<p>
+<li> Replication protocol: We hope to finally complete our integration with Postgres.
+<p>
+<li> Cost benefit decision making: We will start investigating what parameters can be useful in the decision of where and whether to create new replicas in a replicated data(base) system.
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

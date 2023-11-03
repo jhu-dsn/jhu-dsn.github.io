@@ -1,0 +1,191 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, October 2002</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+This quarter we focused on developing new more advanced protocols to provide replication and 
+dynamic network routing. We also enhanced the existing software systems by
+increasing their modularity and adding new capabilities. The new overlay network 
+implementation provides a fully application independent platform upon which routing and
+reliability protocols can be developed.
+
+<ul>
+<li> New replication protocol: 
+<p> 
+We continued to work on optimizing and evaluating the replication architecture. 
+<p>
+In order to comprehensively analyze the tradeoffs involved when replicating
+database systems on wide area networks, we implemented the modular version of the
+replication algorithm (Maintaining Database Consistency in P2P networks).
+We are practically evaluating the performance of this approach and comparing it
+with the performance of our replication architecture.
+<P>
+We are investigating algorithmic and practical solutions for optimizing the cost
+of reconfigurations in the presence of faults in a wide-area network environment.
+We are also investigating algorithms that minimize the replication costs based on
+data partitioning and access patterns.
+
+
+<li> Overlay network infrastructure: 
+
+<p>We focused our work on the client-daemon communication
+in Spines. We develpoped a socket-like API for unreliable, best-effort
+UDP communication, and also for the session-based TCP reliable
+communication. This brings us the level of transparency necessary for
+making Spines easy to use in the socket programming paradigm, in a first
+step towoards complete transparency. We also analyzed the possibilities
+of poviding IP multicast service using Spines while using only simple
+unicast communication at the network level.
+
+<li> Wackamole: 
+<p>
+We have adapted Wackamole in order to provide n-way fail-over for routers.
+An example layout for this application of Wackamole consists of multiple physical 
+routers that act as a single virtual router. An indivisible set of virtual addresses
+ on different interfaces is allocated to the physical router currently acting as the 
+fail over router. If the interface through which the machine is connected to Spread fails, 
+or the machine itself crashes, the set of virtual addresses will be reallocated to a different
+ machine. The set of physical routers running Wackamole, each of which is 
+potentially "the" router, can be conceptualized as a single virtual router.
+facilities and enhancing the multiplatform support.
+
+</ul>
+
+
+Our approach to providing fault-tolerant networks was extended, to
+include more dynamic network environments such as ad-hoc wireless
+networks. In particular, we addressed the routing survivability problem under
+an adversarial model where any intermediate node or group of nodes can
+perform byzantine attacks such as creating routing loops, misrouting
+packets on non-optimal paths, or selectively dropping packets.  Our
+on-demand routing algorithm addresses both fault-tolerant and security
+concerns and uses an adaptive probing technique that identifies a
+faulty link after log n faults have occurred, where n is the length of
+the path.  A multiplicative increase scheme is used to penalize
+``faulty''links which are then rehabilitated over time.  This list is
+used by the route discovery phase to avoid faulty paths. More details
+about this work can be found in a report below.
+
+<h3><font color="blue">Papers:</font></h3>
+
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="AT02" href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.pdf">
+An On-Demand Secure Routing Protocol Resilient to Byzantine Failures
+</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.pdf">pdf</a>.
+In ACM Workshop on Wireless Security (WiSe) , Atlanta, Georgia, September
+              28 2002.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>, 
+<a href="http://www.cnds.jhu.edu/~dave/">Dave Holmer</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+and <a href="http://www.cnds.jhu.edu/~herb/">Herbert Rubens</a>.<br>
+</p>
+<p>
+
+<small>
+An ad hoc wireless network is an autonomous self-organizing system of
+mobile nodes connected by wireless links where nodes not in direct
+range can communicate via intermediate nodes. A common technique used
+in routing protocols for ad hoc wireless networks is to establish the
+routing paths on-demand, as opposed to continually maintaining a
+complete routing table. A significant concern in routing is the
+ability to function in the presence of byzantine failures which
+include nodes that drop, modify, or mis-route packets in an attempt to
+disrupt the routing service.
+<br><br>
+We propose an on-demand routing protocol for ad hoc wireless networks
+that provides resilience to byzantine failures caused by individual or
+colluding nodes. Our adaptive probing technique detects a malicious
+link after log  faults have occurred, where n is the length of
+the path. These links are then avoided by multiplicatively increasing
+their weights and by using an on-demand route discovery protocol that
+finds a least weight path to the destination.
+</small>
+</p>
+</TD></TR></TABLE>
+
+
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<b>
+On the Performance of Synchronous Wide-Area Database Replication</b> </TD></TR><TR><TD>
+<small>
+Technical Report CNDS-2002-4, September 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+href="http://www.cnds.jhu.edu/~claudiu/">Claudiu Danilov</a>, <a
+href="http://www.spreadconcepts.com/company.html#michal">Michal
+Miskin-Amir</a>, <a href="http://www.cnds.jhu.edu/~jonathan/">Jonathan
+Stanton</a> and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian
+Tutu</a>.
+</p>
+<p>
+<small>
+A fundamental challenge in database replication is maintaining
+a low cost of updates while assuring global system consistency.
+The problem is magnified for wide-area replication due to the high latency
+and the increased likelihood of network partitions. As a consequence,
+most database replication research moved away from strictly consistent
+models to update models with weaker semantics, relying on application
+knowledge to resolve conflicts.
+<br><br>
+This paper explores a synchronous replication architecture for local
+and wide-area networks that provides strong consistency and performs 
+considerably better than previous consistent approaches. As a proof of concept,
+we implemented transparanet replication for the Postgres database system.
+<br><br>
+Our results show that sophisticated algorithms and careful distributed systems 
+design can make symmetric, synchronous, peer database replication a reality over
+both local and wide-area networsk.
+
+</small>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Data level resiliency: 
+We will continue to develop algorithms that will enable smart decision making with
+respect to data placement, which will further reduce the costs for providing
+data fault-tolerance.
+<p>
+<li> Wackamole: 
+We plan to release a new version of Wackamole with enhanced algorithm that better
+support survivable routers.
+<p>
+<li> Overlay network infrastructure: 
+We plan to release the first version of Spines
+as an overlay network research tool and make it available open source.
+We also plan to provide multipath routing using the Cost Benefit
+framework and implement the IP multicast mechanisms in Spines.
+
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

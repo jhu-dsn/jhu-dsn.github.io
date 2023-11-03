@@ -1,0 +1,214 @@
+<!--#include virtual="/includes/header" -->
+
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost-Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Technical Report, July 2001</h2>
+<p>
+<h3><font color="blue">Objective:</font></h3>
+Our goal is to develop a Cost-Benefit framework for fault tolerant communication and
+information access that addresses extremely powerful adversaries that were never handled in
+the past. The project will develop the theory and algorithms required to overcome strong
+network attacks, while providing theoretically provable performance bounds. We will build a
+system that incorporates these algorithms, and that exhibits good performance in practice.
+
+<h3><font color="blue">Approach:</font></h3>
+Our technical approach includes the following innovative topics:
+<ul>
+<li> Analysis of strong adversary models: In order to understand how robust our solutions must
+be, we need to first understand what is the model of possible attacks and errors. This project
+introduces a collection of adversary models. They range from a simple predictable slow
+adversary, to a somewhat limited "stable path" adversary (which allows communication over a
+path to be successfully completed), to a totally unpredictable adversary (which can
+selectively block traffic based on type, source, destination, etc.). Many of these models have
+not been considered in the literature so far.
+<p>
+<li> New routing and dissemination protocols: We present a suite of novel routing protocols
+tailored to the above adversary models and prove that these protocols perform in a
+near-optimal manner. Specifically, we present novel solutions that, in case an operational
+path exists, will be able to find it. Even when no path exist for more than a very short time
+(shorter than network round-trip time) we still are able to pass packets between source
+and destination.
+Our goal is to support the performance and
+correctness properties of these protocols by rigorous analysis. We aim our analysis not to
+assume anything about either the topology or the traffic patterns in the network, and not to
+assume a known correlation between past and future behavior of the adversary.
+<p>
+<li> New replication protocol: When there is no theoretic possibility of communication, say in
+the case of a cut in the network, one can still continue the operation by making sure that the
+data is replicated in most areas, or at least in the areas where disconnection is likely. We
+will develop a suite of replication protocols that can handle a range of adversaries and can
+gracefully degrade performance and semantics as the network hostility increases. We aim
+at being able to replicate an ACID database as this is the most demanding replication
+problem.
+<p>
+<li> A Cost-Benefit decision framework: This framework is used to select the most suitable
+protocol as network conditions change, both for network-level protocols such as routing and
+flow control, and data-level protocols such as replication. The main idea is to consider the
+marginal benefit obtained by the application when consuming a given resource, versus the
+"opportunity cost" of using this resource. The latter is the benefit that may potentially be
+lost by other applications if this resource is committed. In the network level, the decision
+is based on application tolerance to delay, and the reliability of the network. In the data
+level, the decision is based on the cost of inaccessibility of data, the cost of updating
+replicas, and the synchronization cost of replication.
+<p>
+<li> An overlay network architecture: We develop an overlay network architecture that will make
+these protocols practical since they are too complex to have any hope to be implemented in
+general Internet routers anytime soon.
+</ul>
+
+
+<h3><font color="blue">Accomplishments:</font></h3>
+
+
+<ul>
+<li>Analysis of strong adversary models, and routing and dissemination protocols: We have implemented an initial version of gravitational flow technique for routing that can overcome strong adversary model. Our protocols operate without using the concept of a global path, which is standard in the common "weak adversary" models.
+Roughly, the operation of the gravitational flow protocol is based on the number of unacknowledged packets that were sent in each direction. Packets that reach the destination are acknowledged. Packets that are stuck create "back pressure" so that this link is not used for further packets. As the network connectivity change, pressure points may be released with links coming back up, and free paths may be clogged as links go down.
+<p>
+We have built a prototype for the gravitational flow protocol that sends Mpeg video stream through an overlay network in our lab with controlled link-down and link-up events. This is still a work in progress.
+<p>
+<li> Overlay network infrastructure: We have completed a basic congestion control for the Hop link-level protocol - a link level modified 
+selective-repeat protocol that is TCP-fair, uses less CPU, and allows us full control over the forwarding of messages on 
+the overlay network. The basic congestion control was implemented both in the ns2 simulator and in our overlay network implementation. 
+We are still investigating tradeoffs regarding the different mechanisms in terms of our ability to control rate versus window, 
+and in terms of cpu consumption.
+<p>
+<li> Cost benefit decision making: We designed two alternative global flow control protocols
+for multi-sender multi-group multicast in overlay networks schemes. The first scheme is a cost benefit approach 
+that regulates buffer utilization in overlay network routers. The second scheme is a cost benefit approach 
+that regulates capacity utilization of the overlay links. We have implemented the buffer utilization cost-benefit 
+scheme in the ns2 simulation toolkit and in the Spread group communication system. We discovered that keeping 
+track of buffers is more successful than keeping track of link utilization since the link utilization is very hard to 
+measure on the overlay network, it changes rapidly, and is hard to approximate.
+
+<p>
+<li> New replication protocol: We have developed a general replication engine 
+that allows consistent ordering of actions in a network that is prone to 
+partitions and crashes.
+Our method places instances of our replication engine strategically in 
+the network. The replicas maintain consistent state and recover from a wide range of possible faults.
+<p>
+We came up with a method to create new replicas and eliminate replicas while the system is operational without compromising consistency and without requiring complete connectivity. This is a work in progress, but when completed, it will allow our cost-benefit algorithms to determine how many replicas to keep in the system and possibly where to situate them.
+<p>
+We implemented a prototype of a Postgres Interceptor that allows us to apply our replication engine to the PosgreSQL database server.
+Existing applications may seemlesly use our interceptor layer that gives them exactly the Postgres interface, while the Postgres database
+server sees our interceptor as a regular client. This enables us to replicate a database for existing applications without any change
+to both the database and the application.
+
+<p>
+</ul>
+
+<h3><font color="blue">Current Plan:</font></h3>
+
+Our plan for FY 2002 includes the following:
+<ul>
+<li> Network level resiliency: Algorithmic design and simulations - focusing on gravitational flow.
+
+<li> Data level resiliency: Enhancing our replication technology and making it dynamic. Investigating
+new ways to replicate large scale systems.
+
+<li> Cost benefit decision making: Algorithmic design - figuring out the specific interfaces and
+formulas for the network-level resiliency and the data-level resiliency domains.
+
+<li> Overlay network infrastructure: partial implementation of a core system providing the
+overlay network abstraction.
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+<ul>
+<li><a name="cnds-2001-3" href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">
+Global Flow Control for Wide Area Overlay Networks: A Cost-Benefit Approach
+</a>
+<p>
+<small>Technical Report CNDS-2001-3
+<br>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+
+<p>
+<small>
+This paper presents a flow control for multi-sender multi-group 
+multicast and unicast in wide area overlay networks.
+The protocol is analytically grounded and achieves real world goals,
+such as simplicity, fairness and minimal resource usage.  
+Flows are regulated based on the "opportunity" costs of
+network resources used and the benefit provided by the flow.
+In contrast to existing window-based flow
+control schemes, we avoid end-to-end per sender or per group 
+feedback by looking only at  
+the state of the virtual links between participating nodes. This produces
+control traffic proportional only to the number of overlay network
+links and independent of the number of groups, senders or receivers.
+We show the effectiveness of the resulting protocol
+through simulations and validate the simulations with live Internet experiments.
+<p>
+This is an updated version of Technical Report CNDS-2001-1
+</small>
+<p>
+<li><a name="cnds-2001-1" href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-1.ps">
+Flow Control for Many-to-Many Multicast: A Cost-Benefit Approach
+</a>
+<p>
+<small>Technical Report CNDS-2001-1
+<br>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>,
+
+<p>
+<small>
+We present a protocol
+that is analytically grounded, yet also achieves real world goals,
+such as simplicity, fairness and minimal resource usage.  We base our
+flow control protocol on the Cost-Benefit algorithmic framework for
+resource management. We base decisions on the "opportunity" costs of
+network resources, comparing the cost of each individual resource to
+the benefit it provides.  As opposed to existing window-based flow
+control schemes, we avoid end-to-end feedback by basing decisions on
+the state of the links between participating nodes. This produces
+control traffic proportional only to the number of overlay network
+links and independent of the number of groups.
+</small>
+<p>
+</ul>
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+<p>
+The cost-benefit decision making framework was used in the <A Href="http://www.backhand.org/mod_backhand/">mod_backhand</a> 
+load-balancing module for the Apache web server. The framework was used to decide which servers 
+should respond to each web request. The mod_backhand module has grown to be used in
+over 10,000 websites and is included in the SuSE 7.0 and Caldera OpenLinux 3.2 linux distributions.
+
+<p>
+We have pre-released <A Href="http://www.backhand.org/wackamole/">Wackamole</a> which is a software tool that 
+allows N-Way Fail Over for IP Addresses in a cluster.
+Wackamole runs as root on each of the cluster's machines. 
+It uses the membership notifications provided by the <A Href="http://www.spread.org/">Spread toolkit</A>
+to generate a consistent state that is agreed upon
+among all of the connected Wackamole instances. Wackamole uses this 
+knowledge to ensure that all of the public IP addresses served by the 
+cluster will be covered by exactly one Wackamole instance. We are planning on an
+open-source release in the very near future.
+
+</p>
+
+
+<!--#include virtual="/includes/footer" -->
+

@@ -1,0 +1,145 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, October 2001</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+<ul>
+<li> Cost benefit decision making: We have rewritten our global flow 
+control in the ns2 simulation. The new implementation scales much better
+with the number of sites. We are now able to simulate our cost-benefit
+flow control in network scenarios with up to 1600 sites,
+800 different senders sending to several groups each, 
+out of 800 different groups in the system. This gives us the ability
+to simulate very large overlay networks.
+<p>
+<li> New replication protocol: We have started to experiment with the
+replication server we developed. We are now benchmarking the replication
+server with and without the Postgres database on local area network and on
+the CAIRN wide area network. We are experiencing a lot of problems in terms
+of the CAIRN nodes' performance (e.g. disk sync performance) and hope 
+to be able to get a better network in place. We could use any 
+external help that can be provided here...
+<p>
+<li> Wackamole: We have developed and released Wackamole, a software 
+tool that allows N-Way Fail Over for IP Addresses in a cluster.
+<p>
+Wackamole is a tool that helps with making a cluster highly available.
+It manages a bunch of virtual IPs that should be available to the outside
+world at all times. Wackamole ensures that exactly one machine within the
+cluster is listening on each virtual IP address that Wackamole manages.
+If it discovers that particular machines within the cluster are not alive, 
+it will almost immediately ensure that other machines acquire the 
+virtual IP addresses the down machines were managing. At no time will more 
+than one connected machine be responsible for any virtual IP.
+<p>
+Wackamole also works toward achieving a balanced distribution of the 
+public IPs within the cluster it manages.
+<p>
+How it works:
+<br>
+Wackamole runs as root on each of the cluster's machines. 
+It uses the membership notifications provided by the 
+<a href="http://www.spread.org">Spread Toolkit</a>
+, also developed in our lab,
+to generate a consistent state that is agreed upon among
+all of the connected Wackamole instances.
+Wackamole uses this knowledge to ensure that all of the public IP addresses
+served by the
+cluster will be covered by exactly one Wackamole instance.
+
+<li> Archipelago: We have developed an initial version of the Archipelago
+system. The system allows us to
+investigate efficient ways to form an extended ad-hoc network of laptops, 
+handhelds, and other wireless capable devices, and bridge it to the Internet.
+Archipelago constructs a multi-hop dynamic network using the wireless devices of participating users. The current system is fully operational, capable of 
+supporting up to about fifty participants using handhelds (Windows CE) and 
+laptops (Windows and Linux), and up to 10 hops in network diameter.
+
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><FONT SIZE=4><STRONG>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">
+Global Flow Control for Wide Area Overlay Networks: A Cost-Benefit Approach </a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.pdf">pdf</a>.
+Technical Report CNDS-2001-3.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>,
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>
+</p>
+<p>
+
+<small>
+This paper presents a flow control for multi-sender multi-group 
+multicast and unicast in wide area overlay networks.
+The protocol is analytically grounded and achieves real world goals,
+such as simplicity, fairness and minimal resource usage.  
+Flows are regulated based on the "opportunity" costs of
+network resources used and the benefit provided by the flow.
+In contrast to existing window-based flow
+control schemes, we avoid end-to-end per sender or per group 
+feedback by looking only at  
+the state of the virtual links between participating nodes. This produces
+control traffic proportional only to the number of overlay network
+links and independent of the number of groups, senders or receivers.
+We show the effectiveness of the resulting protocol
+through simulations and validate the simulations with live Internet experiments.
+</small>
+<p>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<h3><font color="blue">Software:</font></h3>
+We have released version 1.0.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster. Version 1.0.0 supports the Linux operating
+system. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Data level resiliency: We plan to investigate and optimize the
+performance of our replication architecture over local and wide area
+network.
+<p>
+<li> Overlay network infrastructure: We plan to start investigating
+a cost-benefit routing for overlay networks. We hope the cost-benefit
+framework will help us to dynamically utilize various overlay network
+paths in parallel as we route messages.
+<p>
+We plan to investigate techniques to make our overlay network architecture
+seamless to existing applications that use TCP/IP.
+<p>
+<li> Wackamole: We plan to update our initial implementation as external
+feedback is received from the Internet community. We also plan to port the
+initial (Linux) version to support Solaris and FreeBSD.
+<p>
+<li> Archipelago: We plan to continue with this promising direction.
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

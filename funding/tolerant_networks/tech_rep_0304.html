@@ -1,0 +1,161 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, April 2003</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+This quarter we continued our work on the Spines overlay network infrastructure
+and on the Wackamole NxWay failover for servers and routers. We have also begun
+exploring issues related with Domain Name Service (DNS) availability.
+
+
+<ul>
+<li> The Spines overlay network infrastructure.
+
+<p>
+We designed a framework for application level, transparent reliable multicast
+using the hop-by-hop reliability in Spines. The framework includes end-to-end 
+reliablility, congestion and flow control, and relaxed semantics over reliable 
+multicast that handle partitions, merges, crashes and recoveries. We started 
+the implementation of this framework in our overlay infrastructure.
+<p>
+We investigated some of the survivability aspects of Spines, both in wireless
+and wired environments. We developed a mechanism of trust based on monitoring 
+the abnormal behaviour of overlay nodes, and an acusation system that would 
+eventually reroute packets to avoid untrusted nodes.
+
+We released the first version of Spines (<a href="http://www.spines.org">www.spines.org</a>)
+under a standard BSD licence. 
+
+<li> Highly available Domain Name Service infrastructure
+<p>
+The current DNS infrastructure suffers from several major drawbacks
+that impact the reliability and the quality of the
+provided service. Each DNS zone is served by a set of servers
+organized in a single-master - multiple-slaves architecture. Under
+this model, zone updates can be performed only at the master server
+and they are passively propagated to the slaves through a pull
+mechansim based on polling. If the master server of a zone becomes
+unavailable zone updates can no longer be applied.
+Furthermore, the entire infrastructure is highly dependent on
+the availability of the 13 root servers. A recent denial of service
+attack disabled 9 out of the 13 root servers exposing the vulnerability
+of the whole system. 
+
+We have begun exploring the possibility of employing a peer zone management
+system to replace the current master-slave architecture. Such a system
+will maintain replicated copies of the DNS records at all the servers and
+will allow for dynamic zone updates to be submitted to any peer.
+Each update is propagated as soon as possible to all other servers, 
+reducing to a minimum the time necessary for an update to reach all
+the slaves and enhancing the overall availability of the system. 
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="dsn03_overlay" href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.pdf">
+Reliable Communication in Overlay Networks
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.pdf">pdf</a>.
+To appear in the Proceedings of the IEEE International Conference on
+Dependable Systems and Networks (DSN03), San Francisco, June 2003. 
+<br>
+<a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a> and
+<a href="http://www.cs.jhu.edu/~claudiu">Claudiu Danilov</a>.
+<p>
+Reliable point-to-point communication is usually achieved in overlay
+networks by applying TCP/IP on the end nodes of a connection.
+This paper presents an hop-by-hop reliability approach that
+considerably reduces the latency and jitter of reliable connections.
+Our approach is feasible and beneficial in overlay networks that
+do not have the scalability and interoperability requirements of
+the global Internet.
+<br><br>
+The effects of the hop-by-hop reliability approach are quantified
+in simulation as well as in practice using a newly developed
+overlay network software that is fair with the external traffic 
+on the Internet. The experimental results show that
+the overhead associated with overlay network processing at the
+application level does not play an important factor compared with
+the considerable gain of the approach.
+<p>
+
+
+</small>
+</TD></TR></TABLE>
+<hr>
+
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-5.pdf">
+N-Way Fail-Over Infrastructure for Survivable Servers and Routers.</a> </TD></TR><TR><TD>
+<small>
+To appear in the Proceedings of the IEEE International Conference on
+Dependable Systems and Networks (DSN03), San Francisco, June 2003. 
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+href="http://www.cnds.jhu.edu/~wyvern/">Ryan Caudy</a>, <a
+href="http://www.cnds.jhu.edu/~munjal/">Ashima Munjal</a>, <a
+href="http://www.cnds.jhu.edu/~jesus/">Theo Schlossnagle</a> and <a
+href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+<small>
+Maintaining the availability of critical servers and routers is an important
+concern for many organizations. At the lowest level, IP addresses represent the
+global namespace by which services are accessible on the Internet.
+<p>
+We introduce Wackamole, a completely distributed software solution
+based on a provably correct algorithm that negotiates the
+assignment of IP addresses among the currently available servers upon
+detection of faults. This reallocation ensures that at any given time
+any public IP address of the server cluster is covered exactly once,
+as long as at least one physical server survives the network fault.
+The same technique is extended to support highly available routers. 
+<p>
+The paper presents the design considerations, 
+algorithm specification and correctness proof, discusses
+the practical usage for server clusters and for routers,
+and evaluates the performance of the system.
+</small>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<h3><font color="blue">Software:</font></h3>
+
+We released the first version of Spines (<a href="http://www.spines.org">www.spines.org</a>)
+under a standard BSD licence. The current version offers both best-effort and reliable
+communication, obtaining better performance for reliable sessions in an overlay network setup,
+compared with the end-to-end reliable communication.
+<p>
+
+
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+Our focus for the next quarter will be on providing reliable multicast
+functionality in overlay networks, and add survivabilty features to our overlay 
+network platform. We will continue exploring aspects related
+to DNS availability.
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

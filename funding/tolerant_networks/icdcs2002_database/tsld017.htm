@@ -1,0 +1,51 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Where is Paxos?	</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Where is Paxos?	</H1> 
+ <P><UL>
+<LI><H2>2PC – vulnerable at critical points.
+</H2>
+<UL>
+<LI>3n unicasts overall, 1 forced disk per transaction per replica.
+</UL></UL><UL>
+<LI><H2>COReL by Keidar. 
+</H2>
+<UL>
+<LI>n multicasts overall, 1 forced disk per transaction per replica.
+</UL></UL><UL>
+<LI><H2>Paxos-based Global Consistent Persistent Order
+</H2>
+<UL>
+<LI>Quorum is non-blocking.
+<LI>No less than n unicasts (1½ n, but waiting for ½ n and sending to ½ n), 1 forced disk per transaction per replica.
+<LI>Approximately same cost as COReL.
+</UL></UL><UL>
+<LI><H2>Our replication engine.
+</H2>
+<UL>
+<LI>EVS based algorithm.
+<LI>Vulnerable to all quorum replicas crashing together before any detects a problem.
+<LI>1 safe multicast, 1/n forced disk per transaction per replica.</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld016.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld018.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld017.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

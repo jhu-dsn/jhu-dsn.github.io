@@ -1,0 +1,168 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, April 2002</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+<ul>
+<li> New replication protocol: We continued to work on optimizing and evaluating
+the replication architecture. We have conducted additional wide-area experiments on 
+a more diverse, and larger set of hosts at the Emulab facility hosted by the University
+of Utah. 
+<p>
+<li> Overlay network infrastructure: We plan to start investigating
+a cost-benefit routing for overlay networks. We hope the cost-benefit
+framework will help us to dynamically utilize various overlay network
+paths in parallel as we route messages.
+<p>
+We plan to investigate techniques to make our overlay network architecture
+seamless to existing applications that use TCP/IP.
+<p>
+<li> Archipelago: We plan to continue enhancing the basic framework. We will begin
+adding specialized routing and transport protocols.
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="cnds-2001-6" href="http://www.cnds.jhu.edu/pub/papers/AT01_icdcs.ps">
+From Total Order to Database Replication</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/AT01_icdcs.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/AT01_icdcs.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/AT01_icdcs.pdf">pdf</a>.
+To appear in the Proceedings of the 22nd IEEE International Conference on Distributed
+Computing Systems (ICDCS), Vienna Austria, July 2002
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+
+<small>
+  This paper presents in detail an efficient and
+  provably correct algorithm for database replication over
+  partitionable networks. Our algorithm avoids the need for end-to-end   
+  acknowledgments for each action while supporting network partitions and
+  merges and allowing dynamic instantiation of new replicas.
+  One round of end-to-end acknowledgments is required only upon a
+  membership change event such as a network partition. New actions may
+  be introduced to the system at any point, not only while in a
+  primary component. We show how performance can be further improved 
+  for applications that allow relaxation of consistency requirements.
+  We provide experimental results that demonstrate the superiority of
+  this approach.
+</small>
+   
+<p>
+</TD></TR></TABLE>
+
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="cnds-2002-2" href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-2.ps">
+Maintaining Database Consistency in Peer to Peer Networks
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-2.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-2.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-2.pdf">pdf</a>.
+Technical Report CNDS-2002-2, February 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>, and <a
+href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+<small>
+We present an algorithm for persistent consistent distributed commit
+(distributed database commit) in a dynamic, asynchronous, peer to peer
+network. The algorithm has constant overhead in time and space and
+almost constant communication complexity, allowing it to scale to very
+large size networks. Previous solutions required linear overhead in
+communication and space, making them unscalable.  We introduce a
+modular solution based on several well defined blocks with clear
+formal specifications. These blocks can be implemented in a variety of
+ways and we give examples of possible implementations. Most of the
+existing solutions require acknowledgments from every participant for
+each action. Our algorithm is highly efficient by aggregating these
+acknowledgments. Also, in contrast with existing solutions, our
+algorithm does not require any membership knowledge. Components are
+detected based on local information and the information is
+disseminated on an overlay spanning tree.  The algorithm may prove to
+be more suited for practical implementation than the existing ones,
+because of its simplicity.
+</small>
+</TD></TR></TABLE>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="cnds-2002-1" href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-1.pdf">
+Practical Wide Area Database Replication </TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-1.ps">ps</a>, <a
+href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-1.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-1.pdf">pdf</a>.
+Technical Report CNDS-2002-1, February 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+href="http://www.cnds.jhu.edu/~claudiu/">Claudiu Danilov</a>, <a
+href="http://www.spreadconcepts.com/company.html#michal">Michal
+Miskin-Amir</a>, <a href="http://www.cnds.jhu.edu/~jonathan/">Jonathan
+Stanton</a> and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian
+Tutu</a>.
+</p>
+<p>
+<small>
+This paper explores the architecture, implementation and performance
+of a wide and local area database replication system. The architecture
+provides synchronous, peer replication, supporting diverse application
+semantics, based on a group communication paradigm. Network partitions
+and merges, computer crashes and recoveries, and message omissions are
+all handled. Using a generic replication engine and the Spread group
+communication toolkit, we provide replication services for the
+PostgreSQL database system. We define three different environments to
+be used as test-beds: a local area cluster, a wide area network that
+spans the U.S.A, and an emulated wide area test bed. We conduct an
+extensive set of experiments on these environments, varying the number
+of replicas and clients, the mix of updates and queries, and the
+network latency. Our results show that sophisticated algorithms and
+careful distributed systems design can make symmetric, synchronous,
+peer database replication a reality for both local and wide area
+networks.
+</small>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Data level resiliency: We plan to investigate and evaluate the
+dynamic placement of replicas and the performance of it. 
+<p>
+<li> Overlay network infrastructure: 
+<p>
+<li> Archipelago: 
+
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

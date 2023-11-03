@@ -1,0 +1,164 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, January 2002</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+<ul>
+<li> New replication protocol: We continued to work on optimizing and evaluating
+the replication architecture. We discovered and corrected several performance issues
+with the engine itself and designed a significant latency optimization to Safe messages
+in the Spread Toolkit that improved the performance of the replication system as a whole.
+A complete replicated database solution for the PostgreSQL database was produced and 
+formed the basic version upon which we ran experiments.
+<p>
+We have completed a full set of experiments on
+local and wide area networks. The experiments were conducted over a local cluster
+in our lab, the CAIRN wide area network, and at the Emulab facility hosted by the 
+University of Utah. We were able to accurately emulate the physical topology of the
+CAIRN network on the Emulab machines. The Emulab machines have processing and
+disk IO resources comperable to those of our local cluster and we were able to get
+excellent results for the replication engine that showed the efficiency of
+the replication architecture and the practical capibility for wide area database
+replication.
+<p>
+<li> Wackamole: We have developed and released a second version of Wackamole, a software 
+tool that allows N-Way Fail Over for IP Addresses in a cluster.
+<p>
+Wackamole now supports four platforms, Linux, FreeBSD, Solaris 8, and Mac OSX. This release
+also focused on making Wackamole more robust and fixing deployment issues we received
+from users. Based on email queries and downloads Wackamole has started to make 
+an impact as a different model for IP failover for clusters and to be used in practice.
+<li> Archipelago: We have developed a third generation version of the Archipelago
+system. This version completely reimplements the system with a modular design that
+allows pluggable protocols and services such as routing, transport, and security.
+This will allow us to use Archipelago as a flexible platform for experimentation 
+with specialized routing protocols and the cost-benefit framework. It also allows us
+to use it in non-wireless, or hybrid wired-wireless environments.
+<p>
+The Archipelago system allows us to
+investigate efficient ways to form an extended ad-hoc network of laptops, 
+handhelds, and other wireless capable devices, and bridge it to the Internet.
+Archipelago constructs a multi-hop dynamic network using the wireless devices of participating users. The current system is fully operational, capable of 
+supporting up to about fifty participants using handhelds (Windows CE) and 
+desktops or laptops (Windows and Linux), and up to 10 hops in network diameter.
+
+</ul>
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="cnds-2001-6" href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-6.ps">
+From Total Order to Database Replication</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-6.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-6.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-6.pdf">pdf</a>.
+Technical Report CNDS-2001-6, November 2001.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+
+<small>
+  This paper presents in detail an efficient and
+  provably correct algorithm for database replication over
+  partitionable networks. Our algorithm avoids the need for end-to-end   
+  acknowledgments for each action while supporting network partitions and
+  merges and allowing dynamic instantiation of new replicas.
+  One round of end-to-end acknowledgments is required only upon a
+  membership change event such as a network partition. New actions may
+  be introduced to the system at any point, not only while in a
+  primary component. We show how performance can be further improved 
+  for applications that allow relaxation of consistency requirements.
+  We provide experimental results that demonstrate the superiority of
+  this approach.
+</small>
+   
+<p>
+</TD></TR></TABLE>
+
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">
+Global Flow Control for Wide Area Overlay Networks: A Cost-Benefit Approach </a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.pdf">pdf</a>.
+Accepted to the Fifth IEEE Conference on Open Architectures and Network Programming June 2002.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>,
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>
+</p>
+<p>
+
+<small>
+This paper presents a flow control for multi-sender multi-group 
+multicast and unicast in wide area overlay networks.
+The protocol is analytically grounded and achieves real world goals,
+such as simplicity, fairness and minimal resource usage.  
+Flows are regulated based on the "opportunity" costs of
+network resources used and the benefit provided by the flow.
+In contrast to existing window-based flow
+control schemes, we avoid end-to-end per sender or per group 
+feedback by looking only at  
+the state of the virtual links between participating nodes. This produces
+control traffic proportional only to the number of overlay network
+links and independent of the number of groups, senders or receivers.
+We show the effectiveness of the resulting protocol
+through simulations and validate the simulations with live Internet experiments.
+</small>
+<p>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<h3><font color="blue">Software:</font></h3>
+On November 5, 2001 we released version 1.2.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster. Version 1.2.0 supports the Linux, FreeBSD, Solaris 8, and Mac OSX operating
+systems. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Data level resiliency: We plan to investigate and evaluate the
+dynamic placement of replicas and the performance of it. 
+<p>
+<li> Overlay network infrastructure: We plan to start investigating
+a cost-benefit routing for overlay networks. We hope the cost-benefit
+framework will help us to dynamically utilize various overlay network
+paths in parallel as we route messages.
+<p>
+We plan to investigate techniques to make our overlay network architecture
+seamless to existing applications that use TCP/IP.
+<p>
+<li> Archipelago: We plan to continue enhancing the basic framework. We will begin
+adding specialized routing and transport protocols.
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

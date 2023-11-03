@@ -1,0 +1,386 @@
+<!--#include virtual="/includes/header" -->
+
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost-Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Yearly Technical Report, July 2002</h2>
+<p>
+<h3><font color="blue">Objective:</font></h3>
+Our goal is to develop a Cost-Benefit framework for fault tolerant communication and
+information access that addresses extremely powerful adversaries that were never handled in
+the past. The project will develop the theory and algorithms required to overcome strong
+network attacks, while providing theoretically provable performance bounds. We will build a
+system that incorporates these algorithms, and that exhibits good performance in practice.
+
+<h3><font color="blue">Approach:</font></h3>
+Our technical approach includes the following innovative topics:
+<ul>
+<li> Analysis of strong adversary models: In order to understand how robust our solutions must
+be, we need to first understand what is the model of possible attacks and errors. This project
+introduces a collection of adversary models. They range from a simple predictable slow
+adversary, to a somewhat limited "stable path" adversary (which allows communication over a
+path to be successfully completed), to a totally unpredictable adversary (which can
+selectively block traffic based on type, source, destination, etc.). Many of these models have
+not been considered in the literature so far.
+<p>
+<li> New routing and dissemination protocols: We present a suite of novel routing protocols
+tailored to the above adversary models and prove that these protocols perform in a
+near-optimal manner. Specifically, we present novel solutions that, in case an operational
+path exists, will be able to find it. Even when no path exist for more than a very short time
+(shorter than network round-trip time) we still are able to pass packets between source
+and destination.
+Our goal is to support the performance and
+correctness properties of these protocols by rigorous analysis. We aim our analysis not to
+assume anything about either the topology or the traffic patterns in the network, and not to
+assume a known correlation between past and future behavior of the adversary.
+<p>
+<li> New replication protocol: When there is no theoretic possibility of communication, say in
+the case of a cut in the network, one can still continue the operation by making sure that the
+data is replicated in most areas, or at least in the areas where disconnection is likely. We
+will develop a suite of replication protocols that can handle a range of adversaries and can
+gracefully degrade performance and semantics as the network hostility increases. We aim
+at being able to replicate an ACID database as this is the most demanding replication
+problem.
+<p>
+<li> A Cost-Benefit decision framework: This framework is used to select the most suitable
+protocol as network conditions change, both for network-level protocols such as routing and
+flow control, and data-level protocols such as replication. The main idea is to consider the
+marginal benefit obtained by the application when consuming a given resource, versus the
+"opportunity cost" of using this resource. The latter is the benefit that may potentially be
+lost by other applications if this resource is committed. In the network level, the decision
+is based on application tolerance to delay, and the reliability of the network. In the data
+level, the decision is based on the cost of inaccessibility of data, the cost of updating
+replicas, and the synchronization cost of replication.
+<p>
+<li> An overlay network architecture: We develop an overlay network architecture that will make
+these protocols practical since they are too complex to have any hope to be implemented in
+general Internet routers anytime soon.
+</ul>
+
+
+<h3><font color="blue">Accomplishments:</font></h3>
+
+<h5>Overlay network infrastructure</h5>
+In order to better analyze and understand the overlay networks paradigm
+in an environment defined by weaker semantics, we developed a stand
+alone prototyple called "Spines" using the client-daemon architecture that is able to build
+and automatically configure a dynamic overlay network. Our Overlay
+Network aims to be very scalable, as it does not have any limitation in
+number of nodes or links, other than what the routing protocol used
+can support.
+<p>
+In the current implementation we provide only unreliable, best effort
+semantics, similarly with UDP. The overlay networks configures itself
+automatically, and dynamically grows or shrinks as nodes decide to join
+or leave the network, and supports partitions, merges, crashes and
+recoveries, and any such cascading events. Applications that use the
+overlay network use a simple API consisting in four calls (that provide
+connect, disconnect, send and receive), very similar to UDP socket
+functions.
+<p>
+We continued developing Spines by adding
+reliablility semantics, both hop by hop and end to end, similar to
+TCP. We showed in simulations how using hop by hop reliablility in an
+overlay improves the performance in terms of latency of  point to point TCP
+connections.       
+<p>  
+We implemented the first mechanisms leading us to support multipath routing in
+Spines. These include the detection of the level of link congestion,
+necessary for a TCP-friendly pricing mechanism in the Cost-Benefit
+framework.
+<p>
+<h5>Cost benefit decision making</h5>
+We have rewritten our global flow 
+control in the ns2 simulation. The new implementation scales much better
+with the number of sites. We are now able to simulate our cost-benefit
+flow control in network scenarios with up to 1600 sites,
+800 different senders sending to several groups each, 
+out of 800 different groups in the system. This gives us the ability
+to simulate very large overlay networks.
+<p>
+
+<h5>New replication protocol</h5>
+We continued to work on optimizing and evaluating
+the replication architecture. We discovered and corrected several performance issues
+with the engine itself and designed a significant latency optimization to Safe messages
+in the Spread Toolkit that improved the performance of the replication system as a whole.
+A complete replicated database solution for the PostgreSQL database was produced and 
+formed the basic version upon which we ran experiments.
+<p>
+We have started to experiment with the
+replication server we developed. We are now benchmarking the replication
+server with and without the Postgres database on a local area cluster located in our lab, on
+the CAIRN wide area network and on general wide area networks using the Emulab 
+facility hosted by the University of Utah.
+<p>
+We have completed a full set of experiments on
+local and wide area networks. We were able to accurately emulate the physical topology of the
+CAIRN network on the Emulab machines. The Emulab machines have processing and
+disk IO resources comperable to those of our local cluster and we were able to get
+excellent results for the replication engine that showed the efficiency of
+the replication architecture and the practical capibility for wide area database
+replication.
+<p>
+With the purpose of building a framework that will allow us to
+clearly identify the tradeoffs involved when replicating databases on
+wide area networks, we developed a more modular version of the
+replication algorithm (Maintaining Database Consistency in P2P
+Networks). We are investigating a new metric that will allow us to
+quantify the opportunity of establishing new replicas into a
+replicated system. We are also studying the possibility of enhancing
+the current replication schemes in order to increase their fault
+tolerance and scalability properties, in the context of dynamic
+networks.
+<p>
+
+<h5>Wackamole</h5>
+We have developed and released Wackamole, a software 
+tool that allows N-Way Fail Over for IP Addresses in a cluster.
+<p>
+Wackamole is a tool that helps with making a cluster highly available.
+It manages a bunch of virtual IPs that should be available to the outside
+world at all times. Wackamole ensures that exactly one machine within the
+cluster is listening on each virtual IP address that Wackamole manages.
+If it discovers that particular machines within the cluster are not alive, 
+it will almost immediately ensure that other machines acquire the 
+virtual IP addresses the down machines were managing. At no time will more 
+than one connected machine be responsible for any virtual IP.
+<p>
+Wackamole also works toward achieving a balanced distribution of the 
+public IPs within the cluster it manages.
+<p>
+Wackamole uses the membership notifications provided by the 
+<a href="http://www.spread.org">Spread Toolkit</a>
+, also developed in our lab,
+to generate a consistent state that is agreed upon among
+all of the connected Wackamole instances.
+Wackamole uses this knowledge to ensure that all of the public IP addresses
+served by the
+cluster will be covered by exactly one Wackamole instance.
+<p>
+Wackamole now supports four platforms, Linux, FreeBSD, Solaris 8, and Mac OSX. Development has
+also focused on making Wackamole more robust and fixing deployment issues we received
+from users. Based on email queries and downloads Wackamole has started to make 
+an impact as a different model for IP failover for clusters and to be used in practice.
+<p>
+<h5>Archipelago</h5>
+We have developed an initial version of the Archipelago
+system. The system allows us to
+investigate efficient ways to form an extended ad-hoc network of laptops, 
+handhelds, and other wireless capable devices, and bridge it to the Internet.
+Archipelago constructs a multi-hop dynamic network using the wireless devices of 
+participating users. The current system is fully operational, capable of 
+supporting up to about fifty participants using handhelds (Windows CE) and 
+laptops (Windows and Linux), and up to 10 hops in network diameter.
+<p>
+Later in the year we developed a third generation version of the Archipelago
+system. This version completely reimplements the system with a modular design that
+allows pluggable protocols and services such as routing, transport, and security.
+This will allow us to use Archipelago as a flexible platform for experimentation 
+with specialized routing protocols and the cost-benefit framework. It also allows us
+to use it in non-wireless, or hybrid wired-wireless environments.
+<p>
+
+<h3><font color="blue">Papers:</font></h3>
+<ul>
+<li>
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-3.ps">
+Global Flow Control for Wide Area Overlay Networks: A Cost-Benefit Approach </a>
+<br>
+<small>
+In the Fifth IEEE Conference on Open Architectures and Network Programming June 2002.
+<p>
+Also available in an extended form as CNDS Technical Report CNDS-2001-3.
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>,
+<a href="http://www.cs.jhu.edu/~claudiu/">Claudiu Danilov</a>,
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>
+</p>
+<p>
+
+<small>
+This paper presents a flow control for multi-sender multi-group 
+multicast and unicast in wide area overlay networks.
+The protocol is analytically grounded and achieves real world goals,
+such as simplicity, fairness and minimal resource usage.  
+Flows are regulated based on the "opportunity" costs of
+network resources used and the benefit provided by the flow.
+In contrast to existing window-based flow
+control schemes, we avoid end-to-end per sender or per group 
+feedback by looking only at  
+the state of the virtual links between participating nodes. This produces
+control traffic proportional only to the number of overlay network
+links and independent of the number of groups, senders or receivers.
+We show the effectiveness of the resulting protocol
+through simulations and validate the simulations with live Internet experiments.
+</small>
+<p>
+
+<li>
+<a name="AT02" href="http://www.cnds.jhu.edu/pub/papers/AT02_icdcs.pdf">
+From Total Order to Database Replication</a>
+<br>
+<small>
+In the Proceedings of the 22nd IEEE International Conference on Distributed
+Computing Systems (ICDCS), Vienna Austria, July 2002
+<p>
+Also available in extended form as Technical Report CNDS-2001-6, November 2001.
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>,
+and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+
+<small>
+  This paper presents in detail an efficient and
+  provably correct algorithm for database replication over
+  partitionable networks. Our algorithm avoids the need for end-to-end   
+  acknowledgments for each action while supporting network partitions and
+  merges and allowing dynamic instantiation of new replicas.
+  One round of end-to-end acknowledgments is required only upon a
+  membership change event such as a network partition. New actions may
+  be introduced to the system at any point, not only while in a
+  primary component. We show how performance can be further improved 
+  for applications that allow relaxation of consistency requirements.
+  We provide experimental results that demonstrate the superiority of
+  this approach.
+</small>
+   
+<p>
+
+<li>
+<a name="cnds-2002-2" href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-2.ps">
+Maintaining Database Consistency in Peer to Peer Networks</a>
+<br>
+<small>
+Technical Report CNDS-2002-2, February 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>, and <a
+href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+<small>
+We present an algorithm for persistent consistent distributed commit
+(distributed database commit) in a dynamic, asynchronous, peer to peer
+network. The algorithm has constant overhead in time and space and
+almost constant communication complexity, allowing it to scale to very
+large size networks. Previous solutions required linear overhead in
+communication and space, making them unscalable.  We introduce a
+modular solution based on several well defined blocks with clear
+formal specifications. These blocks can be implemented in a variety of
+ways and we give examples of possible implementations. Most of the
+existing solutions require acknowledgments from every participant for
+each action. Our algorithm is highly efficient by aggregating these
+acknowledgments. Also, in contrast with existing solutions, our
+algorithm does not require any membership knowledge. Components are
+detected based on local information and the information is
+disseminated on an overlay spanning tree.  The algorithm may prove to
+be more suited for practical implementation than the existing ones,
+because of its simplicity.
+</small>
+
+<li>
+<a name="cnds-2002-1" href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-1.pdf">
+Practical Wide Area Database Replication</a>
+<br>
+<small>
+Technical Report CNDS-2002-1, February 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, 
+<a href="http://www.cnds.jhu.edu/~claudiu/">Claudiu Danilov</a>, 
+<a href="http://www.spreadconcepts.com/company.html#michal">Michal Miskin-Amir</a>, 
+<a href="http://www.cnds.jhu.edu/~jonathan/">Jonathan Stanton</a> and 
+<a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+<small>
+This paper explores the architecture, implementation and performance
+of a wide and local area database replication system. The architecture
+provides synchronous, peer replication, supporting diverse application
+semantics, based on a group communication paradigm. Network partitions
+and merges, computer crashes and recoveries, and message omissions are
+all handled. Using a generic replication engine and the Spread group
+communication toolkit, we provide replication services for the
+PostgreSQL database system. We define three different environments to
+be used as test-beds: a local area cluster, a wide area network that
+spans the U.S.A, and an emulated wide area test bed. We conduct an
+extensive set of experiments on these environments, varying the number
+of replicas and clients, the mix of updates and queries, and the
+network latency. Our results show that sophisticated algorithms and
+careful distributed systems design can make symmetric, synchronous,
+peer database replication a reality for both local and wide area
+networks.
+</small>
+
+</ul>
+
+<h3><font color="blue">Current Plans:</font></h3>
+
+Our plan for FY 2003 includes the following:
+<ul>
+
+<li> Replication and Decision Making: continue exploring the tradeoffs involved in wide area
+replication and provide an online decision algorithm for the
+dynamic instantiation/removal of replicas.
+</p>  
+
+<p>
+We are evaluating how our replication method can be combined with
+other existing techniques in order to create the most performant
+replication system for a given setup.
+</p>
+
+<li> Experimentation with data replication and overlay networks over various
+wide area network topologies using the Emulab facility.
+
+<li> Overlay network infrastructure: We plan to continue to develop
+our general overlay network tools called Spines and to add support for 
+more protocols and services. We will explore how overlay networks
+can be a critical building block for fault tolerant applications.
+
+</ul>
+
+<h3><font color="blue">Software:</font></h3>
+<p>
+We have released version 1.0.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster on August 2001. Version 1.0.0 supports the Linux operating
+system. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+</p>
+<p>
+On November 5, 2001 we released version 1.2.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster. Version 1.2.0 supports the Linux, FreeBSD, Solaris 8, and Mac OSX operating
+systems. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+</p>
+<p>
+On December 9, 2001 we released version 1.2.1 of mod_backhand, an Apache web-server module that
+enables cluster management and request load balancing and control for heterogeneous clusters. This 
+version now supports Windows NT as well as several versions of Unix. More information about
+mod_backhand is available at <a href="http://www.backhand.org/mod_backhand">www.backhand.org/mod_backhand</a>.
+</p>
+<h3><font color="blue">Technology Transfer:</font></h3>
+<p>
+The Wackamole project has experienced a steady stream of downloads from our website 
+including commercial, individual, and academic users over the last year. All in all we registered 550 distinct downloads of the software. We know of several organizations that use it in production both as NxWay failover for servers and as NxWay failover for routers (which is interesting because we never thought about it ourselves).
+</p>
+
+<!--#include virtual="/includes/footer" -->
+

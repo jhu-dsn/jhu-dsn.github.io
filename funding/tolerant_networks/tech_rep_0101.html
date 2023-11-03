@@ -1,0 +1,84 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Quarterly Technical Report, January 2001</h2>
+<p>
+<h3><font color="blue">Progress:</font></h3>
+
+<ul>
+<li>Analysis of strong adversary models: We continue to investigate an adversary that 
+can fail and recover edges in an arbitrary manner, in contrast to
+traditional adversary models which leave the network stable for time 
+long enough for the protocols to accomplish global communication.
+<p>
+<li>New routing and dissemination protocols: We devised initial routing 
+protocols that accomplish the task of routing facing the above strong 
+adversary model. Our protocols operate without using the concept of
+a global path, which is standard in the common "weak adversary" models.
+Moreover, the operation of these protocols is based solely on locally
+available knowledge, eliminating the need to build a global picture of
+the network state.
+<p>
+<li>New replication protocol: We have developed a general replication engine 
+that allows consistent ordering of actions in a network that is prone to 
+partitions and crashes.
+The main idea has several instances of the engine (several tens) strategically
+positioned in the network. The replicas maintain consistent state and recover
+from a wide range of possible faults.  
+We are now in the process of connecting our engine with the Postgress database software.
+<p>
+We have built some of the infrastructure that will allow us to test the 
+replication engine, inducing faults into practical network settings. 
+Currently, our tests are still configned to our lab.
+<p>
+<li>Overlay networks architecture: We started developing the basic building 
+blocks for our overlay networks architecture. The first step was to develop 
+Hop - a link level modified selective-repeat protocol that is TCP-fair, uses less CPU, and allows us full control over the forwarding of messages on 
+the overlay network.
+<p>
+We designed two alternative global flow control schemes. The first scheme is
+a cost benefit approach to buffer utilization in the overlay network routers. The second Scheme is a cost benefit approach to capacity utilization of the 
+overlay links. We have implemented the buffer utilization cost-benefit scheme in the ns2 simulation toolkit and in the Spread group communication system. Preliminary results are promissing.
+It seems that keeping track of buffers is more successful compared with keeping track of link utilization since the link utilization is very hard to measure on the overlay network, it changes rapidly, and hard to assess.
+<p>
+</ul>
+
+<h3><font color="blue">Plans for Next Quarter:</font></h3>
+<ul>
+<li> Network level resiliency: We plan to analyze specific techniques 
+for single-source single-destination routing, and develop efficient 
+routing methods for the weak adversary model. We expect that the final 
+protocol will achieve performance comparable to algoritms that operate 
+with global knowledge of current and future adversarial behavior.
+<p>
+<li> Data level resiliency: We plan to continue the validation of our 
+general replication engine. We intend to use the CAIRN network to experiment 
+with high latency wide area settings. Next, we are in the midst of integrating
+our replication engine to the Postgress database.
+<p>
+<li> Cost benefit decision making: We have developed a cost 
+benefit framework to support global flow control on our overlay network 
+architecture. A report about this work will appear shortly. 
+We plan to investigate extending the cost benefit framework to support 
+overlay network routing, but this will take some time to mature.
+<p>
+<li> Overlay network infrastructure: We have completed the first global flow 
+control mechanisms in our overlay network architecture, and are now looking to complete a basic congestion control for Hop. The combination of global flow control and "local" - link level - congestion control will result in a complete practcial method. Currently we maintain fair link level congestion control using TCP/IP.
+<p>
+</ul>
+
+<br>
+
+<!--#include virtual="/includes/footer" -->
+

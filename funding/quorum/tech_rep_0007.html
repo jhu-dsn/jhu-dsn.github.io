@@ -1,0 +1,60 @@
+<html>
+<head><title>CNDS Grants - Metacomputing</title></head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">End to End Resource Allocation for Metacomputers</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Technical Report, July 2000</h2>
+<p>
+<h3><font color="blue">Objective:</font></h3>
+
+The more powerful a cluster of workstations is, the more important it is to use its resources wisely. A poor job assignment policy can result in heavily
+unbalanced loads and thrashing machines, which cripples the cluster's computational power. Resources can be used more efficiently if the cluster can migrate jobs - moving them transparently from one machine to another.  
+However, even systems that can reassign jobs can still benefit from a carefully-chosen assignment policy. 
+<p>
+Determining the optimal location for a job is a complicated problem. The most important complication is that the resources available on a cluster of workstations are heterogeneous. In effect, the costs for memory, CPU, process communication, and so forth, are incomparable (apples versus oranges). They are not even measured in the same units: communication resources are measured in terms of bandwidth, memory in terms of space, and CPU in terms of cycles. The natural greedy strategy, balancing the resources across all of the machines, is not even well defined.
+<p>
+Our goal is to develop a unifying framework for management of heterogeneous resources in metacomputers. The framework must naturally lead to provably efficient online resource allocation algorithms that perform well under all input instances, in spite of complete uncertainty about future system inputs. This leads to the development of specific resource allocation algorithms and their implementation and tayloring for a number of platforms. 
+
+<p> 
+
+As the first case in point, we have picked the Mosix distributed operating system (http://www.mosix.com). The Mosix kernel enhancements to the BSD/OS Unix-like operating system allow this kind of transparent job migration. The goal is to improve performance in Mosix.
+<p>
+Another case in point is developing an Internet-Wide cross-platform metacomputer, namely, to make it possible to transfer jobs to any machine on the Internet that desires to participate, without any installation or platform-dependent code. Note that most of the machines that are connected to the Internet are idle a significant fraction of the time. Thus, we need a system that allows organizations and Internet users to make use of this wasted computational power. 
+<p> 
+A recent area of interest for us is resource management in a cluster of web servers. We investigated the applicability of our framework in this domain as well.
+
+<h3><font color="blue">Approach:</font></h3>
+
+In this project, we develop a new job assignment policy based on "economic" principles and competitive analysis. This policy enables us to manage heterogeneous resources in a near-optimal fashion. The key idea of this policy is to convert the total usage of several heterogeneous resources, such as memory and CPU, into a single homogeneous "cost." Jobs are then assigned to the machine where they have the lowest cost. This economic policy provides a unified algorithmic framework for allocation of computation, communication, memory and I/O resources. It allows the development of near-optimal online algorithms for allocating and sharing these resources. 
+<p>
+Our policy guarantees near-optimal end-to-end performance for the overall system on each single instance of job generation and resource availability.  This is accomplished using online algorithms that know nothing about the future, assume no correlation between past and future, and are only aware of the state. One can rigorously prove that their performance will always be comparable to that of the optimal prescient strategy. This work shows that the unified opportunity cost approach offers good performance in practice. 
+<p>
+The above results are extended to a Java-based cross-platform Internet-wide Metacomputer system using the Java programming language and Web technology. Every user on the Internet can contribute their machine's computational resources just by pointing a Java-capable browser to the Java Market web page. Similarly, users can launch jobs to the system by posting them on the Web and registering them with the Java Market. 
+<p>
+
+We also show the applicability of our approach in several practical areas.  The first is the Mosix extension to to Linux. Mosix allows dynamic process migration in a cluster of Linux workstations connected by some high speed local area network (such as Fast Ethernet or Myrinet). 
+<p>
+
+A second area is resource management in web clusters. We are investigating the applicability of the cost benefit framework in this domain by implementing a new module, mod_backhand, for the Apache web server.  The module is able to make re-allocation decisions such as to proxy requests to other servers in the cluster based on the the framework. 
+<p>
+
+A third area is resource management for Internet-wide metacomputing. A first system, the Java Market was completed last year and we are now taking the next step of utilizing the new Jini platform and our framework to create a more flexible tool called Frugal.
+
+<h3><font color="blue">Recent Accomplishments:</font></h3>
+
+We completed the development of the process migration decision mechanism in Mosix based on the above cost-benefit framework for memory and CPU, and proved them superior. The Mosix extension is now available for the Linux operating system. In the context of Mosix, we performed tests using a cluster that was built with a collection of Pentium 133, Pentium Pro 200 and Pentium II machines with different memory capacity, connected by Fast Ethernet. We injected our cost-benefit policy into two known environments: the widely used PVM and the sophisticated Mosix, creating two new policies: Enhanced PVM and Enhanced Mosix. We then compared generic PVM and Mosix to their enhanced version. Over 3,000 executions of a Java-based simulation were performed, each representing 10,000 - 20,000 simulated seconds on each of the four policies. 
+<p>
+We validated the simulation results by running the first 50 executions on the real cluster for each policy (which took about 50 days of real time). The simulation was needed to provide higher confidence and the real life executions validated the simulation. When no reassignments were allowed, the enhanced method was shown to be a dramatic improvement over PVM.  When reassignments were allowed, our method was substantially better than that of the highly tuned, but ad hoc, Mosix policy. 
+<p>
+We have released the mod_backhand load balancing module for the Apache web server http://www.backhand.org). Backhand extends the popular Apache web server to enable it to manage a cluster of web servers.  Each web server autonomously decides whether to perform web requests or to proxy them to other servers in the cluster based on some watered-down version of the cost benefit framework. The unique aspect of Backhand is its ability to assign a cost to the different requests based on the nature of the request AND the current cost of each resource (memory, cpu, I/O) on the servers of the cluster (including itself). The system is very efficient when re-assignment is the favorable decision. The code was released as open source (BSD style license) and got over 1000 downloads. It is used by several prominent web sites. 
+
+
+<!--#include virtual="/includes/footer" -->
+
+
+

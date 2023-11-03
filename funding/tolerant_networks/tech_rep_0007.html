@@ -1,0 +1,98 @@
+<!--#include virtual="/includes/header" -->
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost-Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Technical Report, July 2000</h2>
+<p>
+<h3><font color="blue">Objective:</font></h3>
+Our goal is to develop a Cost-Benefit framework for fault tolerant communication and
+information access that addresses extremely powerful adversaries that were never handled in
+the past. The project will develop the theory and algorithms required to overcome strong
+network attacks, while providing theoretically provable performance bounds. We will build a
+system that incorporates these algorithms, and that exhibits good performance in practice.
+
+<h3><font color="blue">Approach:</font></h3>
+Our technical approach includes the following innovative topics:
+<ul>
+<li> Analysis of strong adversary models: In order to understand how robust our solutions must
+be, we need to first understand what is the model of possible attacks and errors. This project
+introduces a collection of adversary models. They range from a simple predictable slow
+adversary, to a somewhat limited "stable path" adversary (which allows communication over a
+path to be successfully completed), to a totally unpredictable adversary (which can
+selectively block traffic based on type, source, destination, etc.). Many of these models have
+not been considered in the literature so far.
+<p>
+<li> New routing and dissemination protocols: We present a suite of novel routing protocols
+tailored to the above adversary models and prove that these protocols perform in a
+near-optimal manner. Specifically, we present novel solutions that, in case an operational
+path exists, will be able to select such a path with high probability and, in case such a path
+does not exist, will store and forward the packets. Our goal is to support the performance and
+correctness properties of these protocols by rigorous analysis. We aim our analysis not to
+assume anything about either the topology or the traffic patterns in the network, and not to
+assume a known correlation between past and future behavior of the adversary.
+<p>
+<li> New replication protocol: When there is no theoretic possibility of communication, say in
+the case of a cut in the network, one can still continue the operation by making sure that the
+data is replicated in most areas, or at least in the areas where disconnection is likely. We
+will develop a suite of replication protocols that can handle a range of adversaries and can
+gracefully degrade performance and semantics as the network hostility increases.
+<p>
+<li> A Cost-Benefit decision framework: This framework is used to select the most suitable
+protocol as network conditions change, both for network-level protocols such as routing and
+dissemination, and data-level protocols such as replication. The main idea is to consider the
+marginal benefit obtained by the application when consuming a given resource, versus the
+"opportunity cost" of using this resource. The latter is the benefit that may potentially be
+lost by other applications if this resource is committed. In the network level, the decision
+is based on application tolerance to delay, and the reliability of the network. In the data
+level, the decision is based on the cost of inaccessibility of data, the cost of updating
+replicas, and the synchronization cost of replication.
+<p>
+<li> An overlay network architecture: We develop an overlay network architecture that will make
+these protocols practical since they are too complex to have any hope to be implemented in
+general Internet routers anytime soon.
+</ul>
+
+
+<h3><font color="blue">Recent Accomplishments:</font></h3>
+
+New Start
+
+<h3><font color="blue">Current Plan:</font></h3>
+
+Our plan for FY 2001 includes the following:
+<ul>
+<li> Network level resiliency: Algorithmic design and simulations - focusing on randomized path
+selection and gravitational flow.
+<p>
+<li> Data level resiliency: Simulating different replication protocols with special focus on the
+active replication and the anti-entropy replication technique.
+<p>
+<li> Cost benefit decision making: Algorithmic design - figuring out the specific interfaces and
+formulas for the network-level resiliency and the data-level resiliency domains.
+<p>
+<li> Overlay network infrastructure: partial implementation of a core system providing the
+overlay network abstraction.
+</ul>
+
+
+<h3><font color="blue">Technology Transfer:</font></h3>
+
+New Start
+
+<br>
+<br>
+
+<!--#include virtual="/includes/footer" -->
+
+
+

@@ -1,0 +1,39 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Basic Idea</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Basic Idea</H1> 
+ <P><UL>
+<LI><H2>Reduce database replication to Global Consistent Persistent Order (GCPO)
+</H2>
+<UL>
+<LI>Use group communication ordering to establish the Global Consistent Persistent Order on the actions.
+<LI>deterministic + serialized = consistent
+</UL></UL><UL>
+<LI><H2>GC membership + quorum = primary partition.
+</H2>
+<UL>
+<LI>Only replicas in the primary component can commit transactions.
+<LI>Actions ordered in a primary component are marked green and applied to the database. Actions ordered in a non-primary component are marked red and their commit will be delayed.</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

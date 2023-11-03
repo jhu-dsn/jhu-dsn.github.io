@@ -1,0 +1,49 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Dynamic Replica Instantiation and Deactivation</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Dynamic Replica Instantiation and Deactivation</H1> 
+ <P><UL>
+<LI><H2>Purpose
+</H2>
+<UL>
+<LI>On-demand replica creation based on client access patterns.
+<UL>
+<LI>Between 8am-11am(EST) transactions need only be replicated on east-coast servers. After 11am(EST) add west-coast replicas as well.
+</UL></UL></UL><UL>
+<LI><H2>Problem
+</H2>
+<UL>
+<LI>Replica addition and removal needs to be synchronized over all participating servers.
+</UL></UL><UL>
+<LI><H2>Solution
+</H2>
+<UL>
+<LI>Use transaction commit mechanism to atomically decide on replica creation and removal.
+</UL></UL><UL>
+<LI><H2>Cost-Benefit framework
+</H2>
+<UL>
+<LI>Helps decide when and where to create or destroy replicas.</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

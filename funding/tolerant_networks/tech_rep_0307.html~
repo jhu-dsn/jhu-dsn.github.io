@@ -1,0 +1,410 @@
+<!--#include virtual="/includes/header" -->
+
+
+<title>CNDS Grants - Tolerant Networks</title>
+
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<ul><h1><font color="blue">A Cost-Benefit Approach to Fault Tolerant Communication and Information Access</font></h1></ul>
+
+<!--#include virtual="/includes/header-b" -->
+<br>
+<br>
+<h2>Yearly Technical Report, July 2003</h2>
+<p>
+<h3><font color="blue">Objective:</font></h3>
+Our goal is to develop a Cost-Benefit framework for fault tolerant communication and
+information access that addresses extremely powerful adversaries that were never handled in
+the past. The project will develop the theory and algorithms required to overcome strong
+network attacks, while providing theoretically provable performance bounds. We will build a
+system that incorporates these algorithms, and that exhibits good performance in practice.
+
+<h3><font color="blue">Approach:</font></h3>
+Our technical approach includes the following innovative topics:
+<ul>
+<li> Analysis of strong adversary models: In order to understand how robust our solutions must
+be, we need to first understand what is the model of possible attacks and errors. This project
+introduces a collection of adversary models. They range from a simple predictable slow
+adversary, to a somewhat limited "stable path" adversary (which allows communication over a
+path to be successfully completed), to a totally unpredictable adversary (which can
+selectively block traffic based on type, source, destination, etc.). Many of these models have
+not been considered in the literature so far.
+<p>
+<li> New routing and dissemination protocols: We present a suite of novel routing protocols
+tailored to the above adversary models and prove that these protocols perform in a
+near-optimal manner. Specifically, we present novel solutions that, in case an operational
+path exists, will be able to find it. Even when no path exist for more than a very short time
+(shorter than network round-trip time) we still are able to pass packets between source
+and destination.
+Our goal is to support the performance and
+correctness properties of these protocols by rigorous analysis. We aim our analysis not to
+assume anything about either the topology or the traffic patterns in the network, and not to
+assume a known correlation between past and future behavior of the adversary.
+<p>
+<li> New replication protocol: When there is no theoretic possibility of communication, say in
+the case of a cut in the network, one can still continue the operation by making sure that the
+data is replicated in most areas, or at least in the areas where disconnection is likely. We
+will develop a suite of replication protocols that can handle a range of adversaries and can
+gracefully degrade performance and semantics as the network hostility increases. We aim
+at being able to replicate an ACID database as this is the most demanding replication
+problem.
+<p>
+<li> A Cost-Benefit decision framework: This framework is used to select the most suitable
+protocol as network conditions change, both for network-level protocols such as routing and
+flow control, and data-level protocols such as replication. The main idea is to consider the
+marginal benefit obtained by the application when consuming a given resource, versus the
+"opportunity cost" of using this resource. The latter is the benefit that may potentially be
+lost by other applications if this resource is committed. In the network level, the decision
+is based on application tolerance to delay, and the reliability of the network. In the data
+level, the decision is based on the cost of inaccessibility of data, the cost of updating
+replicas, and the synchronization cost of replication.
+<p>
+<li> An overlay network architecture: We develop an overlay network architecture that will make
+these protocols practical since they are too complex to have any hope to be implemented in
+general Internet routers anytime soon.
+</ul>
+
+
+<h3><font color="blue">Accomplishments:</font></h3>
+
+<h5>Overlay network infrastructure</h5>
+In order to better analyze and understand the overlay networks paradigm
+in an environment defined by weaker semantics, we developed a stand
+alone prototype called <a href="http://www.spines.org">Spines</a> using the client-daemon architecture that 
+is able to build and automatically configure a dynamic overlay network. Our Overlay
+Network aims to be very scalable, as it does not have any limitation in
+number of nodes or links, other than what the routing protocol used
+can support.
+<p>
+We focused our work on the client-daemon communication in Spines. We develpoped a socket-like API for unreliable,
+best-effort UDP communication, and also for the session-based TCP reliable communication. This brings us the level of
+transparency necessary for making Spines easy to use in the socket programming paradigm, in a first step towoards complete
+transparency. We also analyzed the possibilities of poviding IP multicast service using Spines while using only simple
+unicast communication at the network level.
+<p>
+We developed an end-to-end reliability over our hop-by-hop reliability approach. We have a complete socket capability,
+similar to a TCP socket that flows over the overlay end-to-end. As a by product of our approach, we can now provide a
+TCP-fair implementation of an efficient user-level reliable protocol.
+<p>
+We demonstrated that employing hop-by-hop reliability techniques considerably reduces the average latency and jitter of
+reliable communication while still being fair with external Internet traffic. In order to deploy our protocols over the
+Internet we considered networking aspects such as congestion control, internal and external fairness, flow control and
+end-to-end reliability.
+<p>
+We showed that the benefit of hop-by-hop reliability greatly overcomes the overhead associated with reliable overlay
+routing given by factors such as processing overhead and CPU scheduling, and achieves much better performance compared to
+standard end-to-end TCP connections deployed on the same overlay network.
+<p>
+We designed a framework for application level, transparent reliable multicast using the hop-by-hop reliability in Spines.
+The framework includes end-to-end reliablility, congestion and flow control, and relaxed semantics over reliable multicast
+that handle partitions, merges, crashes and recoveries. We started the implementation of this framework in our overlay
+infrastructure.
+<p>
+We investigated some of the survivability aspects of Spines, both in wireless and wired environments. We developed a
+mechanism of trust based on monitoring the abnormal behaviour of overlay nodes, and an acusation system that would
+eventually reroute packets to avoid untrusted nodes. We released the first version of Spines (www.spines.org) under a
+standard BSD licence. 
+<p>
+We implemented best-effort multicast in Spines, with an interface that resembles the standard IP Multicast service. Our
+preliminary tests show that Spines is very scalable with the number of senders, receivers and groups. We plan to release 
+a new version of Spines that incorporates best effort multicast soon.
+<p>
+
+
+
+<hr>
+<hr>
+Between the double lines is only old stuff that needs to be edited
+<p><p>
+<h5>New replication protocol</h5>
+We continued to work on optimizing and evaluating
+the replication architecture. We discovered and corrected several performance issues
+with the engine itself and designed a significant latency optimization to Safe messages
+in the Spread Toolkit that improved the performance of the replication system as a whole.
+A complete replicated database solution for the PostgreSQL database was produced and 
+formed the basic version upon which we ran experiments.
+<p>
+We have started to experiment with the
+replication server we developed. We are now benchmarking the replication
+server with and without the Postgres database on a local area cluster located in our lab, on
+the CAIRN wide area network and on general wide area networks using the Emulab 
+facility hosted by the University of Utah.
+<p>
+We have completed a full set of experiments on
+local and wide area networks. We were able to accurately emulate the physical topology of the
+CAIRN network on the Emulab machines. The Emulab machines have processing and
+disk IO resources comperable to those of our local cluster and we were able to get
+excellent results for the replication engine that showed the efficiency of
+the replication architecture and the practical capibility for wide area database
+replication.
+<p>
+With the purpose of building a framework that will allow us to
+clearly identify the tradeoffs involved when replicating databases on
+wide area networks, we developed a more modular version of the
+replication algorithm (Maintaining Database Consistency in P2P
+Networks). We are investigating a new metric that will allow us to
+quantify the opportunity of establishing new replicas into a
+replicated system. We are also studying the possibility of enhancing
+the current replication schemes in order to increase their fault
+tolerance and scalability properties, in the context of dynamic
+networks.
+<p>
+
+<h5>Wackamole</h5>
+We have developed and released Wackamole, a software 
+tool that allows N-Way Fail Over for IP Addresses in a cluster.
+<p>
+Wackamole is a tool that helps with making a cluster highly available.
+It manages a bunch of virtual IPs that should be available to the outside
+world at all times. Wackamole ensures that exactly one machine within the
+cluster is listening on each virtual IP address that Wackamole manages.
+If it discovers that particular machines within the cluster are not alive, 
+it will almost immediately ensure that other machines acquire the 
+virtual IP addresses the down machines were managing. At no time will more 
+than one connected machine be responsible for any virtual IP.
+<p>
+Wackamole also works toward achieving a balanced distribution of the 
+public IPs within the cluster it manages.
+<p>
+Wackamole uses the membership notifications provided by the 
+<a href="http://www.spread.org">Spread Toolkit</a>
+, also developed in our lab,
+to generate a consistent state that is agreed upon among
+all of the connected Wackamole instances.
+Wackamole uses this knowledge to ensure that all of the public IP addresses
+served by the
+cluster will be covered by exactly one Wackamole instance.
+<p>
+Wackamole now supports four platforms, Linux, FreeBSD, Solaris 8, and Mac OSX. Development has
+also focused on making Wackamole more robust and fixing deployment issues we received
+from users. Based on email queries and downloads Wackamole has started to make 
+an impact as a different model for IP failover for clusters and to be used in practice.
+<p>
+<h5>Archipelago</h5>
+We have developed an initial version of the Archipelago
+system. The system allows us to
+investigate efficient ways to form an extended ad-hoc network of laptops, 
+handhelds, and other wireless capable devices, and bridge it to the Internet.
+Archipelago constructs a multi-hop dynamic network using the wireless devices of 
+participating users. The current system is fully operational, capable of 
+supporting up to about fifty participants using handhelds (Windows CE) and 
+laptops (Windows and Linux), and up to 10 hops in network diameter.
+<p>
+Later in the year we developed a third generation version of the Archipelago
+system. This version completely reimplements the system with a modular design that
+allows pluggable protocols and services such as routing, transport, and security.
+This will allow us to use Archipelago as a flexible platform for experimentation 
+with specialized routing protocols and the cost-benefit framework. It also allows us
+to use it in non-wireless, or hybrid wired-wireless environments.
+<p>
+
+
+up to here...
+<hr><hr>
+from here is new stuff again...
+<p>
+
+<h3><font color="blue">Papers:</font></h3>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="AT02" href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.pdf">
+An On-Demand Secure Routing Protocol Resilient to Byzantine Failures
+</a>
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/wise2002_sec_routing.pdf">pdf</a>.
+In ACM Workshop on Wireless Security (WiSe) , Atlanta, Georgia, September
+              28 2002.
+<p>
+</small>
+
+<p>
+<a href="http://www.cs.jhu.edu/~baruch/">Baruch Awerbuch</a>,
+<a href="http://www.cnds.jhu.edu/~dave/">Dave Holmer</a>,
+<a href="http://www.cs.jhu.edu/~crisn/">Cristina Nita-Rotaru</a>,
+and <a href="http://www.cnds.jhu.edu/~herb/">Herbert Rubens</a>.<br>
+</p>
+<p>
+
+<small>
+An ad hoc wireless network is an autonomous self-organizing system of
+mobile nodes connected by wireless links where nodes not in direct
+range can communicate via intermediate nodes. A common technique used
+in routing protocols for ad hoc wireless networks is to establish the
+routing paths on-demand, as opposed to continually maintaining a
+complete routing table. A significant concern in routing is the
+ability to function in the presence of byzantine failures which
+include nodes that drop, modify, or mis-route packets in an attempt to
+disrupt the routing service.
+<br><br>
+We propose an on-demand routing protocol for ad hoc wireless networks   
+that provides resilience to byzantine failures caused by individual or 
+colluding nodes. Our adaptive probing technique detects a malicious  
+link after log  faults have occurred, where n is the length of
+the path. These links are then avoided by multiplicatively increasing
+their weights and by using an on-demand route discovery protocol that
+finds a least weight path to the destination.
+</small>
+</p>
+</TD></TR></TABLE>
+
+<hr> 
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<b>
+On the Performance of Synchronous Wide-Area Database Replication</b> </TD></TR><TR><TD>
+<small>
+Technical Report CNDS-2002-4, September 2002.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+href="http://www.cnds.jhu.edu/~claudiu/">Claudiu Danilov</a>, <a
+href="http://www.spreadconcepts.com/company.html#michal">Michal
+Miskin-Amir</a>, <a href="http://www.cnds.jhu.edu/~jonathan/">Jonathan
+Stanton</a> and <a href="http://www.cnds.jhu.edu/~jimmy/">Ciprian  
+Tutu</a>.                                         
+</p>
+<p>
+<small>
+A fundamental challenge in database replication is maintaining
+a low cost of updates while assuring global system consistency.
+The problem is magnified for wide-area replication due to the high latency
+and the increased likelihood of network partitions. As a consequence,
+most database replication research moved away from strictly consistent
+models to update models with weaker semantics, relying on application
+knowledge to resolve conflicts.
+<br><br>
+This paper explores a synchronous replication architecture for local
+and wide-area networks that provides strong consistency and performs
+considerably better than previous consistent approaches. As a proof of concept,
+we implemented transparanet replication for the Postgres database system.
+<br><br>
+Our results show that sophisticated algorithms and careful distributed systems
+design can make symmetric, synchronous, peer database replication a reality over
+both local and wide-area networsk.
+
+</small>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+<hr>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<a name="dsn03_overlay" href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.pdf">
+Reliable Communication in Overlay Networks
+</TD></TR><TR><TD>
+<small>
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/dsn03_overlay.pdf">pdf</a>.
+In the Proceedings of the IEEE International Conference on
+Dependable Systems and Networks (DSN03), San Francisco, June 2003.
+</small>
+<br>
+<a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a> and
+<a href="http://www.cs.jhu.edu/~claudiu">Claudiu Danilov</a>.
+<p>
+<small>
+Reliable point-to-point communication is usually achieved in overlay
+networks by applying TCP/IP on the end nodes of a connection.
+This paper presents an hop-by-hop reliability approach that
+considerably reduces the latency and jitter of reliable connections.
+Our approach is feasible and beneficial in overlay networks that
+do not have the scalability and interoperability requirements of
+the global Internet.
+<br><br>
+The effects of the hop-by-hop reliability approach are quantified
+in simulation as well as in practice using a newly developed
+overlay network software that is fair with the external traffic
+on the Internet. The experimental results show that
+the overhead associated with overlay network processing at the
+application level does not play an important factor compared with
+the considerable gain of the approach.
+<p>
+
+
+</small>
+</TD></TR></TABLE>
+<hr>
+
+<TABLE CELLPADDING=3><TR><TD><FONT SIZE=4><STRONG>
+<A href="http://www.cnds.jhu.edu/pub/papers/cnds-2002-5.pdf">
+N-Way Fail-Over Infrastructure for Survivable Servers and Routers.</a> </TD></TR><TR><TD>
+<small>
+To appear in the Proceedings of the IEEE International Conference on
+Dependable Systems and Networks (DSN03), San Francisco, June 2003.
+<p>
+</small>
+<p>
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+href="http://www.cnds.jhu.edu/~wyvern/">Ryan Caudy</a>, <a
+href="http://www.cnds.jhu.edu/~munjal/">Ashima Munjal</a>, <a
+href="http://www.cnds.jhu.edu/~jesus/">Theo Schlossnagle</a> and <a
+href="http://www.cnds.jhu.edu/~jimmy/">Ciprian Tutu</a>.
+</p>
+<p>
+<small>
+Maintaining the availability of critical servers and routers is an important
+concern for many organizations. At the lowest level, IP addresses represent the
+global namespace by which services are accessible on the Internet.
+<p>
+We introduce Wackamole, a completely distributed software solution
+based on a provably correct algorithm that negotiates the
+assignment of IP addresses among the currently available servers upon
+detection of faults. This reallocation ensures that at any given time
+any public IP address of the server cluster is covered exactly once,
+as long as at least one physical server survives the network fault.
+The same technique is extended to support highly available routers.
+<p>
+The paper presents the design considerations,
+algorithm specification and correctness proof, discusses
+the practical usage for server clusters and for routers,
+and evaluates the performance of the system.
+</small>
+</TD></TR></TABLE>
+</STRONG></FONT>
+
+
+<hr>
+
+<h3><font color="blue">Software:</font></h3>
+
+We have released version 1.0 of Spines, an Overlay Network Research Platform. Version 1.0 supports unicast best effort and
+reliable communication with an interface similar with the Unix socket interface. Spines is available at 
+<a href="http://www.spines.org">www.spines.org</a>
+<p>
+<hr><hr>
+from here again needs to be updated...
+<p>
+<p>
+We have released version 1.0.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster on August 2001. Version 1.0.0 supports the Linux operating
+system. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+</p>
+<p>
+On November 5, 2001 we released version 1.2.0 of Wackamole, an NxWay fail-over for
+IP addresses in a cluster. Version 1.2.0 supports the Linux, FreeBSD, Solaris 8, and Mac OSX operating
+systems. Wackmole is available at <a href="http://www.backhand.org/wackamole">www.backhand.org/wackamole</a>.
+</p>
+<p>
+On December 9, 2001 we released version 1.2.1 of mod_backhand, an Apache web-server module that
+enables cluster management and request load balancing and control for heterogeneous clusters. This 
+version now supports Windows NT as well as several versions of Unix. More information about
+mod_backhand is available at <a href="http://www.backhand.org/mod_backhand">www.backhand.org/mod_backhand</a>.
+</p>
+<h3><font color="blue">Technology Transfer:</font></h3>
+<p>
+The Both Spines and Wackamole project have experienced a steady stream of downloads from our website 
+including commercial, individual, and academic users over the last year. All in all we registered 60 distinct downloads 
+for Spines and XXXXX downloads of Wackamole. We know of several organizations that use Wackamole in production both
+as NxWay failover for servers and as NxWay failover for routers (which is interesting because we never thought about it ourselves).
+</p>
+
+<!--#include virtual="/includes/footer" -->
+
