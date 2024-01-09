@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Prime Intrusion-Tolerant Replication Engine</title>
+    <link rel="stylesheet" type="text/css" href="/dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <div class="dsn-nav">
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about-us.html">About Us</a></li>
+        <li><a href="../research.html">Research</a></li>
+        <li><a href="../people.html">People</a></li>
+        <li><a href="../photos.html">Photos</a></li>
+        <li><a href="../funding.html">Funding</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../softwares.html">Software</a></li>
+    </ul>
+    </div>
+
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Prime: Byzantine Replication Under Attack </h1>
+        </div>
+
+        <div class="page-nav">
+        <ul>
+            <li> <a href="#overview">Overview</a> </li>
+            <li> <a href="#software">Software</a> </li>
+            <li> <a href="#funding">Funding</a> </li>
+            <li> <a href="#license">License</a> </li>
+            <li> <a href="#publications">Publications</a> </li>
+            <li> <a href="/prime/documentation.html">Documentation</a> </li>
+            <li> <a href="/prime/credits.html">Credits</a> </li>
+        </ul>
+        </div>
+
+
+        <div class="top-border-box">
+        <div id="overview">
+                <div class="large-title">
+                 <h2> Overview </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- overview --!>
+
+        <div class="textbox">
+
+        <p> Prime is a Byzantine fault-tolerant replication engine that
+        provides meaningful performance guarantees even after some of the
+        replication servers have been compromised. Like previous Byzantine
+        fault-tolerant replication protocols, Prime guarantees Safety
+        (consistency of the correct replicas) and Liveness (the eventual
+        execution of each update) as long as no more than f out of 3f+2k+1
+        replicas are compromised, no more than k replicas are unavailable (e.g.
+        due to crashes, network partitions, or proactive recovery), and the
+        network is sufficiently stable. Unlike previous protocols, Prime
+        additionally provides a stronger performance guarantee, which we call
+        Bounded-Delay. Bounded-Delay limits the amount of performance
+        degradation that can be caused by malicious servers. Intuitively, Prime
+        forces any leader that remains in power to meet a threshold level of
+        performance, where the threshold is a function of the message delays
+        between the correct servers in the system, which cannot be arbitrarily
+        increased by the malicious servers.</p>
+
+        <p>Prime supports the use of diversity and proactive recovery to
+        substantially increase the effort required for an attacker to
+        compromise multiple replicas simultaneously. The <a
+        href="https://github.com/securesystemslab/multicompiler">MultiCompiler</a>
+        developed by the UC Irvine <a href="http://ssllab.org/">Secure Systems
+        and Software Laboratory</a> can be used to diversify the code layout of
+        Prime servers in order to increase the resiliency of the system. The
+        MultiCompiler uses a 64-bit random number to generate different
+        variants of an application. In this way, if an adversary attacks all
+        the servers in parallel, the probability to defeat more than f servers
+        is low. Proactive recovery allows Prime servers to be periodically
+        rejuvenated to clean potentially undetected intrusions from the system
+        and can be combined with diversity such that a different version of the
+        Prime server is generated after each rejuvenation.</p>
+
+        <p> By default, Prime is configured to make use of <a
+        href="https://spines-org.github.io">Spines</a>, an overlay messaging framework
+        developed at Johns Hopkins. Spines offers an intrusion-tolerant network
+        service that protects communication between the Prime replicas. Spines
+        can be deployed in both local-area and wide-area environments and
+        includes tools for emulating wide-area topologies in local-area
+        networks by placing bandwidth and latency constraints on the links
+        between servers.</p>
+
+        <p>Note that version 3.0 re-designed Prime's replication model such
+        that each replica in the system consists of an application replica
+        paired with a Prime daemon co-located on the same machine. Prime
+        daemons provide an ordering service for the application replicas, with
+        each Prime daemon delivering a totally ordered stream of updates to its
+        application replica. In this model, application-specific state transfer
+        must be handled at the application level. When a Prime daemon detects
+        that a state transfer is needed (i.e. because it has missed message,
+        for example due to a crash, partition, or proactive recovery), it will
+        notify the application, which can then decide on the correct action
+        (different applications may vary on whether an application-level state
+        transfer is needed).</p>
+        
+        <p> Prime was created at Johns Hopkins University by <a
+        href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a>, <a
+        href="http://www.cs.jhu.edu/~jak">Jonathan Kirsch</a>, <a
+        href="http://www.cs.jhu.edu/~johnlane">John Lane</a>, <a
+        href="http://www.dsn.jhu.edu/~platania">Marco Platania</a>, <a
+        href="http://www.pitt.edu/~babay">Amy Babay</a>, and <a 
+        href="http://www.dsn.jhu.edu/~tomt">Thomas Tantillo</a>.</p>
+
+        <p>Special thanks to Brian Coan for major contributions to the design
+        of the Prime algorithm, and Jeff Seibert for major contribution to the
+        View Change protocol.</p>
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="software">
+                <div class="large-title">
+                <h2> Software </h2>
+                </div>
+        </div> <!-- software --!>
+        </div> <!-- top-border-box --!>
+
+        <div class="textbox">
+
+        <p> Prime can be downloaded <a
+        href="http://dsn.jhu.edu/download/download_prime_MZceyx.cgi">here</a>.
+        The code was written in C and runs on Linux.</p>
+
+        <h3>Releases</h3>
+        <ul>
+        <li>Version 3.3 - December 23, 2020
+        <li>Version 3.2 - November 26, 2018
+        <li>Version 3.1 - March 14, 2018
+        <li>Version 3.0 - May 17, 2017
+        <li>Version 2.0 - September 17, 2014
+        <li>Version 1.1 - December 07, 2013
+        <li>Version 1.0 - May 04, 2010
+        </ul>
+
+        <p>See the <a href="/prime/CHANGELOG.txt">Changelog</a> for release
+        details.</p>
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="funding">
+                <div class="large-title">
+                <h2> Funding </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- funding --!>
+
+        <div class="textbox">
+
+        <p> Partial funding for Prime research was provided by the Defense
+        Advanced Research Projects Agency (DARPA) and the National Science
+        Foundation (NSF). Prime is not necessarily endorsed by DARPA or the
+        NSF.
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="license">
+                <div class="large-title">
+                <h2> License </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- license --!>
+
+        <div class="textbox">
+
+        <p> Prime may be freely used and distributed under some conditions.
+        Please review the <a
+        href="./LICENSE.txt">license
+        agreement</a> for more details.
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="publications">
+                <div class="large-title">
+                <h2> Publications </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- publications --!>
+
+        <div class="textbox">
+
+        <ul>
+
+        <LI><a name="spire_dsn"
+        href="https://jhu-dsn.github.io/pub/papers/cnds-2017-2.pdf">Network-Attack-Resilient
+        Intrusion-Tolerant SCADA</a><BR>&nbsp &nbsp Amy Babay, Thomas Tantillo,
+        Trevor Aron, Marco Platania, Yair Amir<BR> &nbsp &nbsp Technical Report
+        CNDS-2017-2. Accepted to IEEE/IFIP International Conference on
+        Dependable Systems and Networks (DSN 2018), <BR> &nbsp &nbsp
+        Luxembourg, June 2018.<BR>
+        &nbsp </LI>
+
+        <LI><a name="prime_rec_srds"
+        href="http://jhu-dsn.github.io/pub/papers/cnds-2014-1.pdf">Towards a
+        Practical Survivable Intrusion Tolerant Replication System (Technical
+        Report)</a><BR>&nbsp &nbsp Marco Platania, Daniel Obenshain, Tom
+        Tantillo, Ricky Sharma, Yair Amir<BR> &nbsp &nbsp Technical Report
+        CNDS-2014-1.<BR> &nbsp </LI>
+
+        <LI><a name="prime_rec_srds"
+        href="https://jhu-dsn.github.io/pub/papers/srds14_prime_rec.pdf">Towards
+        a Practical Survivable Intrusion Tolerant Replication
+        System</a><BR>&nbsp &nbsp Marco Platania, Daniel Obenshain, Tom
+        Tantillo, Ricky Sharma, Yair Amir<BR> &nbsp &nbsp 33rd IEEE/IFIP
+        International Sysmposium on Reliable Distributed Systems (SRDS 2014),
+        Nara, Japan, October 2014, pp. 242-252.<BR> &nbsp </LI>
+
+        <LI><a name="prime_sg"
+        href="https://jhu-dsn.github.io/pub/papers/Survivable_SCADA.pdf">Survivable
+        SCADA via Intrusion-Tolerant Replication</a><BR>&nbsp &nbsp Jonathan
+        Kirsch, Stuart Goose, Yair Amir, Dong Wei, Paul Skare<BR> &nbsp &nbsp
+        IEEE Transactions on Smart Grid, January 2014, 5(1), pp. 60-70.<BR>
+        &nbsp </LI>
+
+        <LI><a name="prime_tdsc"
+        href="https://jhu-dsn.github.io/pub/papers/TDSC_Prime_2011_07.pdf">Prime: Byzantine Replication
+        Under Attack</a><BR>&nbsp &nbsp Yair Amir, Brian Coan, Jonathan Kirsch,
+        John Lane<BR> &nbsp &nbsp IEEE Transactions on Dependable and Secure
+        Computing (TDSC), 8(4), pp. 564-577, July 2011.<BR> &nbsp </LI>
+
+        <LI><a name="prime_dsn"
+        href="https://jhu-dsn.github.io/pub/papers/dsn08_attack.pdf">Byzantine
+        Replication Under Attack</a><BR>&nbsp &nbsp Yair Amir, Brian Coan,
+        Jonathan Kirsch, John Lane<BR> &nbsp &nbsp 38th IEEE/IFIP International
+        Conference on Dependable Systems and Networks (DSN 2008), Anchorage,
+        Alaska, June 2008, pp. 197-206.<BR> &nbsp </LI>
+
+        </ul>
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    </div> <!-- main-wrapper -->
+    <!--#include virtual="/footer.html" -->
+    </div> <!-- full-wrapper -->
+</body>
+
+</html>
+

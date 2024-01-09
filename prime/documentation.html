@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Prime Intrusion-Tolerant Replication Engine</title>
+    <link rel="stylesheet" type="text/css" href="/dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include virtual="/top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Prime: Byzantine Replication Under Attack </h1>
+        </div>
+
+        <div class="page-nav">
+        <ul>
+            <li> <a href="/prime#overview">Overview</a> </li>
+            <li> <a href="/prime#software">Software</a> </li>
+            <li> <a href="/prime#funding">Funding</a> </li>
+            <li> <a href="/prime#license">License</a> </li>
+            <li> <a href="/prime#publications">Publications</a> </li>
+            <li> <a href="/prime/documentation.html">Documentation</a> </li>
+            <li> <a href="/prime/credits.html">Credits</a> </li>
+        </ul>
+        </div>
+
+
+        <div class="top-border-box">
+        <div class="large-title">
+         <h2> Documentation </h2>
+        </div>
+        </div> <!-- top-border-box --!>
+
+<div class="textbox">
+
+<h2> Instructions </h2>
+
+<p>Prime is a Byzantine fault-tolerant state machine replication engine. The
+system maintains correctness as long as no more than f servers are Byzantine,
+and remains available as long as no more than f servers are Byzantine and no
+more than k servers are crashed/paritioned out of the total 3f+2k+1 servers.</p>
+
+<p>This implementation is based on the protocols described in:</p>
+
+<ul>
+<li>Y. Amir, B. Coan, J. Kirsch, J. Lane. Byzantine Replication Under Attack. In
+Proceedings of the 38th IEEE/IFIP International Conference on Dependable
+Systems and Networks (DSN 2008), Anchorage, Alaska, June 2008, pp. 197-206.</li>
+<br>
+<li>M. Platania, D. Obenshain, T. Tantillo, R. Sharma, Y. Amir. Towards a
+Practical Surviviable Intrusion Tolerant Replication System. In 
+Proceedings of the IEEE International Symposium on Reliable Distributed
+Systems (SRDS14), Nara, Japan, October 2014, pp. 242-252.</li>
+</ul>
+
+<p>The current release implements the complete Prime protocol as described in the
+Byzantine Replication Under Attack paper and J. Kirsch's PhD thesis. This
+version provides an ephemeral ordering service that can tolerate f compromised
+replicas and k unavailable replicas (due to crashes, partitions, or recovery).
+In addition, this version is able to recover from temporary network
+partitions. If there are not enough connected replicas to make progress due to
+a partition, progress will resume once the partition heals. If some replica(s)
+are disconnected from a quorum of replicas that continues to make progress,
+these replicas will be caught up and able to rejoin the system once they are
+reconnected.</p>
+
+<p>In the replication model used in this version, each replica consists of an
+application replica paired with a Prime daemon co-located on the same machine.
+The application replicas introduce updates or events into the system for
+ordering through their paired Prime daemon. The Prime daemons execute the
+Prime Byzantine agreement protocol to assign each update an ordinal in the
+global total ordering.</p> 
+
+<p>Each application replica receives an ordered stream of updates from its Prime
+daemon, including both the updates it introduced and updates introduced by
+other application replicas. If the replica pair (application and Prime) miss
+messages (e.g., due to crash-recovery or network partition), the Prime daemon
+will explicitly notify the application that it should do a state transfer
+(applications may vary as to whether or not the application-level state
+transfer is necessary). This Prime daemon will reconcile with the other Prime
+daemons to rejoin the ordering protocol, and will resume delivering ordered
+updates to the application replica starting from the ordinal immediately
+following the one that the application will become consistent with after its
+state transfer.</p>
+
+<p>Note that this new replication model is different than that of Prime version
+2.0, which treated Prime as both an ordering service and a persistent database
+that stored and recovered application state with its own Prime-level
+state transfer protocol.</p>
+
+<h2> Software Dependencies </h2>
+
+<p>Prime uses the OpenSSL cryptographic library. OpenSSL can be downloaded from
+www.openssl.org. The Makefile is set up to dynamically link to to OpenSSL. If
+necessary, you can modify the Makefile to statically link to the library
+libcrypto.a.</p>
+
+<p>The current version of Prime is configured to make use of Spines
+(www.spines.org), an overlay messaging toolkit also developed at Johns Hopkins
+University. Spines provides an intrusion-tolerant networking foundation that
+serves as Prime's communication layer, protecting Prime from attacks and
+compromises at the underlying network level. Spines is also helpful for
+testing wide-area topologies and placing bandwidth and latency constraints on
+the links between Prime servers.</p>
+
+<p>By default, Prime is setup to use Spines. The latest compatible version is
+included in the Prime software package at Prime/spines. We recommend using
+Spines because it provides intrusion tolerance at the network level, as well
+as resiliency to normal benign network issues (e.g., lossy links). Note that
+to use Spines, a Spines network topology and options should be configured in
+the spines/daemon/spines.conf file, and then the spines daemons should be
+started (see Spines documentation for more details). To work without Spines,
+comment the two lines in src/Makefile beginning with SPINES and SPINES_LIB.</p>
+
+<p>Prime also makes use of several other open-source libraries, all of which are
+included in the Prime software package. OpenTC provides an implementation of
+the Shoup threshold cryptography algorithm, which Prime uses during the View
+Change protocol to efficiently challenge the new leader. stdutil provides
+efficient C implementations of several common data structures. libspread-util
+provides access a suite of functions, including event handling and logging.</p>
+
+<h2> Configuration </h2>
+
+<p>The bin directory contains a sample address configuration file
+(address.config), which tells the servers the IP addresses of all servers
+based on server id. The file contains a line for each server with the
+following format:</p>
+
+   <pre>server_id ip_address</pre>
+
+<p>The <code>server_id</code> is a number from 1 to the number of servers in
+the system. The <code>ip_address</code> is a standard dotted ipv4 address.</p>
+
+<p>NOTE: The parameters in src/def.h must be written to match the address
+configuration file (i.e., if NUM_SERVERS is set to 4, then there must be an
+entry for each of the four servers in the bin/address.config file).</p>
+
+<p>NOTE: If you are using Spines (which is the default), please also configure
+spines_address.config to indicate which spines daemon each Prime server
+connects with.</p>
+
+<p>Prime contains many configurable parameters; the code must be recompiled to
+change these parameters. The parameters are contained in src/def.h. Please
+refer to this file for details. For reference, the file is organized as
+follows:</p>
+
+<ul>
+   <li>System-wide Configuration Settings</li>
+   <li>Networking Settings</li>
+   <li>Cryptography Settings</li>
+   <li>Throttling Settings (to control how much bandwidth is used)</li>
+   <li>Periodic Sending Settings (to control message flow at certain steps)</li>
+   <li>Attack Settings</li>
+</ul>
+
+<h2> Compiling </h2>
+
+<p>Prime can be compiled by typing make in the src directory. Three executables
+will be generated and stored in the bin directory. The programs are gen_keys,
+prime and client.</p>
+
+<h2> Running </h2>
+
+<p>The following assumes that you have successfully compiled the Prime server and
+client and carried out the necessary configuration steps discussed above. The
+Prime servers can be run as follows:</p>
+
+<p>First make sure you are in the bin directory.</p>
+
+<p>The gen_keys program must be run first:</p>
+
+<pre>./gen_keys</pre>
+
+<p>This generate RSA keys for the servers and clients. The keys are stored in
+bin/keys. The Prime server and client programs must read the keys from the
+bin/keys directory. We assume that in a secure deployment the private keys are
+accessible only to the server to which they belong. This also generates
+threshold cryptography shares for the Prime servers, which are used in the
+Prime View Change protocol.</p>
+ 
+<p>Then, the Prime server can be run as follows:</p>
+
+<pre>./prime -i SERVER_ID</pre>
+
+<p>where SERVER_ID denotes an integer from 1 to the number of servers in the
+system.</p>
+
+<p>The client can be run like this:</p>
+
+<pre>./client -l IP_ADDRESS -i CLIENT_ID -s SERVER_ID</pre>
+
+<p>IP_ADDRESS denotes the IP address of the client program, and CLIENT_ID denotes
+an integer from 1 to the maximum number of clients in the system. The client
+sends its updates through the Prime server with id SERVER_ID.</p>
+
+<p>NOTE: With the replication model used in the version, only one client can
+connect to each Prime replica at a given time, and that client must be
+co-located on the same machine as the target Prime server.</p>
+
+<p>By default, each client sends one update at a time through its connected Prime
+server, only sending the next update once it has received a response for the
+current pending one. By setting the NUM_CLIENTS_TO_EMULATE parameter in
+src/client.c and recompiling, the client will instead send several updates at
+once, maintaining multiple outstanding updates in a pipeline fashion. As soon
+as a response is received for one of these pending updates, another one is
+sent to the Prime server.</p>
+
+<h2> Erasure Codes </h2>
+<p>
+The Prime protocol makes use of erasure codes to send efficient
+reconciliation (RECON) messages.  RECON messages keep correct servers
+up to date despite the efforts of faulty servers to block execution by
+failing to properly disseminate updates.
+<br><br>
+
+Prime was developed using Michael Luby's implementation of
+Cauchy-based Reed-Solomon erasure codes, which can be downloaded here:
+<br><br>
+
+<a href="http://www.icsi.berkeley.edu/~luby/">http://www.icsi.berkeley.edu/~luby/</a>
+
+<br><br>
+Due to licensing restrictions, we are unable to include this library
+in the current release.  By default, the current release performs
+reconciliation without using erasure codes (i.e., full PO-Request
+messages are sent rather than erasure-encoded ones).  This is less
+efficient than using erasure codes but serves the same functional
+purpose.  Note that the results from the DSN '08 paper reflect the use
+of erasure codes, and thus performance obtained from the current
+release in bandwidth-constrained environments will be lower than what
+is actually achievable.
+<br><br>
+
+The current release is set up to use a generic interface to an erasure
+encoding library.  By default, the interface calls are not invoked,
+because the USE_ERASURE_CODES flag is set to 0 (see src/def.h).  The
+Luby library (or some other erasure encoding library) can be fairly
+easily integrated into the current release by setting
+USE_ERASURE_CODES to 1 and filling in the implementations of the
+interface functions (see src/erasure.h and src/erasure.c).
+
+<h2> Prime Checklist </h2>
+
+<p>The following is a short summary of the important things that you must do to
+run Prime.</p>
+
+<ol>
+<li>Download and compile OpenSSL. Make sure the shared library can be located,
+or modify the Makefile to link to the static library libcrypto.a.</li>
+
+<li>Decide on the number of servers in the system. Change the parameters in
+src/def.h accordingly.  Note that the number of servers must be equal to
+<code>3*NUM_F + 2*NUM_K + 1</code>, which are parameters in src.def.h.</li>
+
+<li>If using Spines (which is the default setting), configure the Spines
+network (spines/daemon/spines.conf) and configure bin/spines_address.config
+accordingly.</li>
+
+<li>Type <code>make</code> in the src directory.</li>
+
+<li><code>cd</code> to the bin directory. Run the gen_keys program: <code>./gen_keys</code></li>
+
+<li>Run the spines network.</li>
+
+<li>Change the bin/address.config file as described above.</li>
+
+<li>The server and client programs can now be run.</li>
+</ol>
+
+    </div> <!-- textbox -->
+    </div> <!-- main-wrapper -->
+    <!--#include virtual="/footer.html" -->
+    </div> <!-- full-wrapper -->
+</body>
+
+</html>
