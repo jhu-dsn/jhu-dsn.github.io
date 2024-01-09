@@ -1,0 +1,30 @@
+<html>
+<p></p>
+<h2 style="strong;text-align: center; color: #4485b8;">Resilent Power Grid</h2>
+<p style="text-align: center;">Sahiti Bommareddy&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Daniel Qian&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Parv Saxena</p>
+<body>
+<p style="color: #4485b8;">Project Overview</p>
+<p>Critical Infrastructure like the SCADA system for the power grid should be resilient to both network and system-level&nbsp;attacks. The current project is built on top of existing open-source software Spire. It involves three exploration tracks:</p>
+<ul>
+	<li>Optimizing update transaction time for single substation/site setting</li>
+	<li>Build a network intrusion detection component into spires</li>
+	<li>Build attack vectors</li>
+</ul>
+<p style="color: #4485b8;">Optimizing update transaction time:</p>
+<p>With the setting of f=1,k=1 and N=3f+2k+1 in the single site configuration, each update transaction  was bencmarked to have an average time of around 43ms. An initial attempt at using updated Openssl libraries decreased the average to 36ms.  In the next stage spires code needs to be refactored to be compatable with futher optimized ssl libraries</p>
+
+<p style="color: #4485b8;">Network Intrusion Detection Component:</p>
+<p>
+  General approach is to use network traffic of spires and ML Algorithms to detect network intrusion/attacks.
+    <center>
+	    <p><img  src="PowerML.PNG" alt="Planned Architecture of Network Intrusion Dectection Componet" align=middle width="500" height="250" title="Planned Architecture of Network Intrusion Dectection Componet" /></p>
+	        </center>
+</p>
+<p style="color: #4485b8;">Attack Vectors:</p>
+<p>
+  Build the general attacks SCADA systems are subject to. Using these vectors test the intrusion detection component.
+</p>
+<p>References : http://www.dsn.jhu.edu/spire/
+</p>
+</body>
+</html>

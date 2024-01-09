@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spire: Intrusion-Tolerant SCADA for the Power Grid</title>
+    <link rel="stylesheet" type="text/css" href="/dsn_style.css">
+</head>
+
+<body>
+    <div class="full-wrapper">
+    <!--#include virtual="/top-nav.html" -->
+    <div class="main-wrapper">
+
+        <div class="large-title">
+        <h1> Spire: Intrusion-Tolerant SCADA for the Power Grid </h1>
+        </div>
+
+        <div class="page-nav">
+        <ul>
+            <li> <a href="#overview">Overview</a> </li>
+            <li> <a href="/spire/documentation">Documentation</a> </li>
+            <li> <a href="#funding">Funding</a> </li>
+            <li> <a href="#software">Software</a> </li>
+            <li> <a href="#license">License</a> </li>
+            <li> <a href="http://lists.dsn.jhu.edu/mailman/listinfo/spire-forum/">Spire Forum</a> </li>
+            <li> <a href="credits.html">Credits</a> <li>
+        </ul>
+        </div>
+
+
+        <div class="top-border-box">
+        <div id="overview">
+                <div class="large-title">
+                 <h2> Overview </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- overview --!>
+
+        <div class="textbox">
+
+        <p><b>Spire</b> is an open-source intrusion-tolerant
+        SCADA system for the power grid. Spire is designed to withstand attacks
+        and compromises at both the system level and the network level, while
+        meeting the timeliness requirements of power grid monitoring and
+        control systems at the control center level (on the order of 100-200ms
+        update latency).</p>
+        <p>The Spire system includes a SCADA Master and PLC/RTU proxy
+        designed from scratch to support intrusion tolerance, as well as
+        several example HMIs based on <a
+        href="https://pvbrowser.de/pvbrowser/index.php">pvbrowser</a>. The
+        SCADA Master is replicated using the <a
+        href="http://www.dsn.jhu.edu/prime/">Prime intrusion-tolerant
+        replication engine</a>. Communication between Spire components is
+        protected using the <a href="http://www.spines.org/">Spines
+        intrusion-tolerant network</a>. The Spire PLC/RTU proxy can interact
+        with any devices that use the Modbus or DNP3 communication protocols
+        over IP. We use <a href="http://www.openplcproject.com/">OpenPLC</a> to
+        emulate PLCs that can be monitored and controlled by the system.</p>
+
+        <p>As the research progressed, Spire evolved into a toolkit with
+        components that can support different deployment options, and that can
+        provide intrusion-tolerance capabilities for power grid control systems
+        at both control center and substation levels. Specifically, Spire 2.0
+        release includes: Spire for the Substation and Confidential Spire in
+        addition to the original base Spire.</p>
+
+        <p><b>Confidential Spire</b> is an intrusion-tolerant SCADA system that
+        provides the same resilience guarantees as the base Spire. However,
+        Confidential Spire enables system operators to maintain strong
+        confidentiality guarantees for potentially sensitive or proprietary
+        system data, while still leveraging commodity data centers to support
+        cost-effective network-attack resilience. In Confidential Spire, only
+        replicas hosted in the control centers execute SCADA logic and process
+        system updates. Data center replicas participate in the replication
+        protocol, but only process and store encrypted state and updates. No
+        application logic or unencrypted application data is exposed to the
+        data center replicas</p>
+
+        <p>Confidential Spire consists of the same modules as Spire (modified
+        to support confidentiality). The main change is that Spire&#8217s standard
+        SCADA master is replaced by the Confidential SCADA Master, which
+        additionally performs the needed encryption/decryption of requests and
+        state, along with generating threshold signatures on encrypted contents
+        to prove their validity to data center replicas.</p>
+
+        <p>Confidential Spire is described in the paper &#8220<a
+        href="https://sites.pitt.edu/~babay/pubs/dsn21_confidentialBFT.pdf">Toward
+        Intrusion Tolerance as a Service: Confidentiality in Partially
+        Cloud-Based BFT Systems</a>&#8220 published at [<a
+        href="https://ieeexplore.ieee.org/document/9505127">IEEE DSN</a>
+        2021]</p>
+
+
+        <p><b>Spire for the Substation</b> is built to
+        support the real-time Byzantine resilience required for power grid
+        substations. The system is designed to withstand both system-level
+        protective relay intrusions and network attacks on substation LAN,
+        while meeting the stringent quarter of a power-cycle latency
+        requirement (4.167ms).</p>
+
+        <p>The Spire for the Substation includes a Trip Master, Relay Proxy and
+        Breaker Proxy. Additionally, we provide emulated relays to simulate
+        real substation fault-free and faulty operating conditions. We support
+        substation communication protocol of IEC61850 using open-source
+        libiec61850.</p>
+
+        <p>Spire for the Substation is described in the paper &#8220<a
+        href="https://www.dsn.jhu.edu/papers/RealTime.pdf">Real-Time Byzantine
+        Resilience for Power Grid Substations</a>&#8221 published at [<a
+        href="https://ieeexplore.ieee.org/document/9996955">SRDS</a>
+        2022]</p>
+
+                <hr>
+        
+        <p>Spire 2.0 is the latest release. It extends the Spire 1.3 to support
+        real-time Byzantine resilience of power grid substations. This release
+        includes Spire for the Substation code that successfully withstood a
+        red-team attack conducted by Sandia National Laboratories in an
+        exercise at Pacific Northwest National Laboratory (PNNL) in 2022.
+        Furthermore, it includes Confidential Spire, a system that provides the
+        same resilience guarantees as the base Spire. However, Confidential
+        Spire enables system operators to maintain strong confidentiality
+        guarantees for potentially sensitive or proprietary system data, while
+        still leveraging commodity data centers to support cost-effective
+        network-attack resilience. </p>
+
+        <p>Spire 1.3 is the latest release. It updates Spire 1.2 to use Spines 5.5, OpenSSL 1.1.1 and includes a new ML-based <a href="nids/index.html">NIDS</a> (Network Intrusion Detection System) framework. This version of Spire uses Prime 3.3. </p>
+        <p>Spire 1.2 updates Spire 1.1 to use Spines
+        5.4, fixing a bug in Spines that could affect Spire in certain
+        configurations. The Spire 1.1 release consists of the version of the
+        Spire code that was used in a test deployment with the Hawaiian
+        Electric Company (HECO) from January 22 to February 1, 2018. This test
+        deployment was conducted by the <a href="http://www.dsn.jhu.edu/">DSN
+        lab</a> and <a href="http://www.spreadconcepts.com/">Spread Concepts
+        LLC</a> as part of a DoD ESTCP project led by <a
+        href="http://www.resurgo.net/">Resurgo LLC</a>. This version of the
+        code was deployed using Prime 3.1 and Spines 5.3.</p>
+
+        <p>Spire 1.1 builds on the Spire 1.0 release, which consisted of the
+        version of the Spire code that successfully withstood a red-team attack
+        conducted by Sandia National Laboratories in an exercise at Pacific
+        Northwest National Laboratory (PNNL) from March 27 to April 7, 2017, as
+        part of the same DoD ESTCP project. This version of the code was
+        deployed using Prime 3.0 and Spines 5.2.</p>
+
+        <p>Spire 1.1 supports six different example SCADA systems, with their associated HMIs:
+        <ul>
+        <li>jhu: an example system we created to represent a power distribution system
+              with 10 substations, each monitored and controlled by a different PLC or RTU
+        <li>pnnl: the exact system that was used in the red-team exercise at PNNL, where
+              it monitored and controlled a real PLC provided by PNNL
+        <li>heco_3breaker: the system that was deployed at the Hawaiian Electric Company,
+              monitoring and controlling to a real PLC that controlled three physical
+              breakers
+        <li>heco_5breaker: a system similar to heco_3breaker but including two additional
+              breakers
+        <li>heco_timing: the system used at the Hawaiian Electric Company to measure the
+              end-to-end response time of the system by flipping a breaker and measuring
+              the time for the HMI to reflect the change
+        <li>ems: a system modeling an Energy Management System (EMS) that controls
+              several different types of generators with different ramp-up rates and
+              renewable energy sources that can be connected to the grid or deactivated
+        </ul></p>
+
+        <p>The SCADA Master of Spire 1.1 can support all of these systems; we
+        provide a separate HMI for each system. Note that because the pnnl and
+        heco systems use the same underlying infrastructure, only one of the
+        pnnl, heco_3breaker, heco5_breaker, and heco_timing systems can be run at
+        once. However, any one of these systems can be simultaneously run with
+        both the jhu and ems systems. We also provide emulated PLCs for both
+        systems that were created using OpenPLC.</p>
+        
+        <p>Spire was created by <a
+        href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a>, <a
+        href="http://www.dsn.jhu.edu/~trevor/">Trevor Aron</a>, <a
+        href="http://www.pitt.edu/~babay/">Amy Babay</a>, <a
+        href="http://www.dsn.jhu.edu/~tomt">Thomas Tantillo</a>,
+        <a href="https://b-sahiti.github.io/">Sahiti Bommareddy</a>, and 
+        <a href="https://www.linkedin.com/in/maherkhan">Maher Khan</a>. It is
+        currently developed by the <a href="http://www.dsn.jhu.edu">Distributed
+        Systems and Networks Lab</a> at <a href="http://www.jhu.edu">Johns
+        Hopkins University</a> and by the <a
+        href="https://rsslab.io/">Resilient Systems and Societies Lab</a> at
+        the <a href="http://www.pitt.edu">University of Pittsburgh</a>.</p>
+
+        <p>Available materials describing Spire include:
+        <ul>
+        <li><img src=/images/new_tiny.gif> A <a
+        href="/spire/2023_03_08_Spire_CERAWeek.pdf">presentation</a> about
+        Spire that was given at CERAWeek (March 2023).</li>
+        <li><img src=/images/new_tiny.gif> A <a
+        href="/papers/RTbyz_ERSA2022.pdf">paper</a> about Evaluation and Tradeoffs in Real-Time Byzantine Resilient Power Grid Infrastructure
+        that was presented at the <a
+        href="https://sites.google.com/view/ersa22">nternational Workshop on Explainability of Real-time Systems and their Analysis at the IEEE Real-Time Systems Symposium (RTSS)</a> 
+        (December 2022).</li> 
+        <li><img src=/images/new_tiny.gif> A <a
+        href="/papers/RealTime.pdf">paper</a> about Real-Time Byzantine Resilience for Power Grid Substations
+        that was presented at the <a
+        href="https://srds-conference.org/">International Symposium on Reliable Distributed Systems (SRDS)</a> 
+        (September 2022).</li>
+        <li> A <a href="https://sites.pitt.edu/~babay/pubs/dsn21_confidentialBFT.pdf">paper</a> about Confidential Spire titled "Towards Intrusion Tolerance as a Service: Confidentiality in Partially Cloud-Based BFT Systems" that was presented at the <a href="https://www.dsn.org">IEEE/IFIP Dependable Systems and Networks (DSN)</a> (June 2021).</li>
+        <li>Detailed <a href="/spire/documentation">instructions</a> on
+        configuring and running Spire</li>
+        <li> A <a 
+        href="/spire/2019_08_Spire_SCADATechSummit.pdf">presentation</a> about
+        Spire that was given at the SCADA Tech Summit (August
+        2019).</li>
+        <li> A <a
+        href="/papers/DSN_2019_SCADA_Experience.pdf">paper</a> about our
+        experience red teaming and test deploying Spire that was presented <a
+        href="http://2019.dsn.org">IEEE/IFIP DSN 2019</a> and the <a
+        href="/spire/2019_06_Spire_DSN.pdf">presentation</a> that was given
+        (June 2019).</li> 
+        <li> A <a href="/spire/2018_08_Spire_AEA.pdf">presentation</a> about
+        Spire that was given at the Army Engineer Association seminar (August
+        2018).</li>
+        <li>A <a href="/papers/scada_ICDCS_2018.pdf">vision paper</a> about
+        challenges facing the power grid that was presented at the <a
+        href="http://icdcs2018.ocg.at/">IEEE ICDCS 2018</a> conference and the
+        <a href="/spire/2018_07_ICDCS_Vision.pdf">presentation</a> that was
+        given (July 2018).</li>
+        <li>A <a href="/papers/scada_DSN_2018.pdf">paper</a> about Spire that
+        was presented at the <a href="http://2018.dsn.org/">IEEE/IFIP DSN 2018</a>
+        conference and the <a
+        href="/spire/2018_06_DSN_Spire.pdf">presentation</a> that was given (June 2018).
+        <li>A <a href="/spire/2018_01_Spire_HECO.pdf">presentation</a> about
+        Spire that was given at the Hawaiian Electric Company (January 2018)</li>
+        <li>A <a href="/spire/2017_06_Spire_IFIP.pdf">presentation</a> about
+        Spire that was given at the IFIP 10.4 working group (June 2017)</li>
+        <li>A <a href="/spire/2017_04_Spire_poster.pdf">poster</a> describing
+        Spire that was presented by Trevor Aron at the Johns Hopkins Day of
+        Undergraduate Research in Engineering, the Arts and Humanities,
+        Medicine, and the Sciences (<a
+        href="https://research.jhu.edu/hour/dreams/">DREAMS</a>) (April 2017)</li>
+        </ul></p>
+
+        <p>Spire has also been featured in the following articles:
+        <ul>
+        <li> <a href="https://hub.jhu.edu/magazine/2018/winter/cybersecurity-power-grid/">Johns Hopkins Magazine</a>, December 2018</li> 
+        <li> <a href="http://www.powermag.com/researchers-demonstrate-intrusion-tolerant-scada-at-power-plant/?printmode=1">POWER Magazine</a>, February 2018</li>
+        <li> <a href="http://www.futurity.org/hackers-power-grid-security-software-168635/">Futurity</a>, February 2018</li>
+        <li><a href="https://hub.jhu.edu/2018/02/21/hacker-resistant-software-hawaii-power-grid/">JHU Hub</a>, February 2018</li>
+        </ul></p>
+
+       <!--div class="spire_im_box">
+
+        <div class="spire_image" style="width:25em">
+        <a href="images/testbed.png"><img src="images/testbed.png" alt="Spire for the Substation testbed with relays at PNNl" align="middle"/></a>
+        <div class="caption">
+        The Spire for the Susbtation testbed with relays at PNNL.
+        </div>
+        </div-->
+
+        
+        <div class="spire_im_box">
+
+        <div class="spire_image" style="width:11em">
+        <a href="images/Rack_with_Spire.jpg"><img src="images/Rack_with_Spire_small.jpg" alt="Rack with Spire at HECO" align="middle"/></a>
+        <div class="caption">
+        The Spire system installed at HECO.
+        </div>
+        </div>
+
+        <div class="spire_image" style="width:19em">
+        <a href="images/Spire_in_action.jpg"><img src="images/Spire_in_action_small.jpg" alt="Spire in action" align="middle"/></a>
+        <div class="caption">
+        The Spire system in action. Each of the six computers in the center runs
+        a SCADA Master replica, a Prime daemon, and two Spines daemons. The
+        monitors show three HMIs. One switch connects the replicas to the HMI
+        and a PLC proxy (not shown), while the other is exclusively for
+        communication among the six replicas.
+        </div>
+        </div>
+
+        <div class="spire_image" style="width:19em">
+        <a href="images/Spire_in_Rack.jpg"><img src="images/Spire_in_Rack_small.jpg" alt="Spire in Rack at HECO" align="middle"/></a>
+        <div class="caption">
+        The Spire system installed at HECO.
+        </div>
+        </div>
+
+        </div> <!-- spire_im_box -->
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="funding">
+                <div class="large-title">
+                <h2> Funding </h2>
+                </div>
+        </div> <!-- funding --!>
+        </div> <!-- top-border-box --!>
+
+        <div class="textbox">
+	<p> Partial funding for Spire is provided by the Department of Energy as part of a <a href="https://www.cnds.jhu.edu/rt-byz.html">project on Byzantine Resilience </a>  in collaboration with Pacific Northwest National Laboratory (<a href="https://www.pnnl.gov/">PNNL</a>).
+
+        <p> Partial funding for Spire was provided in the past by the Defense Advanced
+        Research Projects Agency (DARPA), as part of our project <a
+        href="http://www.dsn.jhu.edu/funding/resilient_clouds/">Toward
+        Intrusion Tolerant Clouds</a> under the Mission-Oriented Resilient
+        Clouds (MRC) program, and by the Department of Defense (DoD) as part of
+        the Environmental Security Technology Certification Program (ESTCP) in
+        the Energy and Water project led by <a href="http://www.resurgo.net/">Resurgo LLC</a>.
+        Spire is not necessarily endorsed by DARPA or the DoD. </p>
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="top-border-box">
+        <div id="software">
+                <div class="large-title">
+                <h2> Software </h2>
+                </div>
+        </div> <!-- software --!>
+        </div> <!-- top-border-box --!>
+
+        <div class="textbox">
+
+        <p> Spire is <a href="/download/download_spire.cgi">available for
+        download</a>. Please <a href="mailto:spire@dsn.jhu.edu">contact us</a>
+        if you are interested in learning more about Spire.</p>
+
+        <h3>Releases</h3>
+
+        <ul>
+        <li>Version 2.0 - January  27, 2023
+        <li>Version 1.3 - December 23, 2020
+        <li>Version 1.2 - November 26, 2018
+        <li>Version 1.1 - March 14, 2018
+        <li>Version 1.0 - May 17, 2017
+        </ul>
+
+        <p>See the <a href="/spire/CHANGELOG.txt">Changelog</a> for release details</p>
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    <div class="top-border-box">
+        <div id="license">
+                <div class="large-title">
+                <h2> License </h2>
+                </div>
+        </div> <!-- top-border-box --!>
+        </div> <!-- license --!>
+
+        <div class="textbox">
+
+        <p> Spire may be freely used and distributed under some conditions.
+        Please review the <a
+        href="http://www.dsn.jhu.edu/spire/LICENSE.txt">license agreement</a>
+        for more details.
+
+        </div> <!-- textbox -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    </div> <!-- main-wrapper -->
+    <!--#include virtual="/footer.html" -->
+    </div> <!-- full-wrapper -->
+</body>
+
+</html>

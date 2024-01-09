@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Urban by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>ML based Network Intrusion Detection System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="../dsn_style.css" />
+	</head>
+	<body class="subpage">
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Section -->
+
+						</header>
+					</section>
+					<section class="wrapper style1">
+						<div class="inner">
+
+							<div class="flex flex-2">
+
+								<div class="col col3">
+
+									<h2 style="text-align:center">ML Based Network Intrusion Detection for SPIRE</h2>
+								</div>
+							</div>
+							<div class="flex flex-2">
+
+								<div class="col">
+									<p>
+										Although Spire is intrusion tolerant (i.e. potential attackers cannot execute malicious operations or significantly affect the timeliness of the system), it does not provide alerts or feedback about potential compromises. Implementing such a system to allow for situational awareness could be invaluable to system operators, allowing them to diagnose and fix problems. From previous field tests of Spire as well as our own research, we decided that using Machine Learning would be the best way to approach this problem, as it would allow for detection of novel attcks. Following is a general overview of our system:
+									</p>
+									<ul>
+											<li>
+												Collection of Spire's normal network traffic using SPAN on external dissemination network switch.
+											</li>
+											
+											<li>
+												Data pipeline that parses packets and then stores for training or predicts on them (see diagram)
+											</li>	
+											
+											<li>
+												Traffic pattern based prediction using packet counts per minute. Better at detecting larger scale attacks such as denial of service
+											</li>
+
+											<li>
+												Packet analysis based prediction that clusters similar individual packets. Can detect packets that are unusual with respect to normal system operation
+											</li>								
+
+											<li>
+												Majority voting between different algorithms to reduce false positive rate
+											</li>
+									</ul>
+									<p>
+										For both types of predictions, we used sklearns implementation of various novelty detection algorithms (an overview of these can be found <a href="https://scikit-learn.org/stable/modules/outlier_detection.html ">here</a>).  
+									</p>
+								</div>
+								<div class="col" style="display:flex;justify-content:center;align-items:center;">
+									<div class="image main">
+										<img src="images/MLArch.png" alt="Architecture of ML based IDS" />
+									</div>
+								</div>
+							</div>
+							<hr class="minor" />
+
+							<div class="flex flex-2">
+								<div class="col col3 first">
+									<h3>Attack Vectors: </h3>
+									<p>To test our ML models, we generated attack vectors that replicate some well known network level attacks:
+									</p>
+									<ul>
+										<li>
+											Port Scanning
+										</li>
+										<li>
+											Denial of Service (DOS)
+										</li>
+										<li>
+											Address Resolution Protocol (ARP) Poisoning
+										</li>
+										<li>
+											Replay Attacks
+										</li>
+									</ul>
+									<p>
+										To generate out testbed, we systematically varied parameters in our attack generation scripts, so that different variations of the above mentioned attacks are generated.
+									</p>
+									<p>
+										We ran the Spire system, and launched these attacks, to test the performance of our ML models.The table summarized the number of attacks detected by each predictor and overall system for a total of 28 attacks.
+									</p>
+								</div>
+								<div class="col" style="display:flex;justify-content:center;align-items:center;">
+									<table>
+										<tr>
+											<th></th>
+											<th>Packet Analysis Model  || </th>
+											<th>Traffic Pattern Model  || </th>
+											<th>Overall System         ||  </th>
+										</tr>
+										<tr>
+											<th>Accuracy</th>
+											<th>25/28(89.2%)</th>
+											<th>22/28(78.6%)</th>
+											<th>27/28(96.5%)</th>
+										</tr>
+									</table>
+								</div>
+
+							</div>
+                        
+                        <hr class="minor" />
+
+						<div class="flex flex-2">
+							<div class="col col3 first">
+								<h3>Demos: </h3>
+
+                                <p>In the videos below the top - right screen is output log of Traffic Pattern based Predictor which predicts the past minute's traffic as either normal or abnormal. The top-left screen is output log of Packet Analysis based predictor printing as soon as an attack packet is predicted. The bottom window is used to generate attacks.</p> 
+                                <h3>Demo 1: Probing/ Scanning</h3>
+                                <p> The packets in such attack are low in volume but their headers vary as such attacks are intended to explore the system. In  the video we generate random UDP packets mimicking the genuine IPs. The Packet Analysis based Predictor (top- left screen) immediately detects the packets and prints their summary. The Traffic Pattern based Predictor waits till the end of current interval (60 sec) to give summary stats of the abnormal traffic it has observed. </p>
+                                <video src="videos/Random_100.mov" width="500" height="250"  controls></video>
+
+                                <h3>Demo 2: DoS</h3>
+                                <p>In this Denial of Service attack a plc is targeted. These packets headers may have some matching fields as good packets and are also generally high in volume (as the target is to exhaust resources). The Packet Analysis based Predictor detects these packets (highlighted in the video) along with Traffic Pattern based Predictor.</p>
+                                <video src="videos/dest_DOS.mov" width="500" height="250"  controls></video>
+                                <h3>Demo 3: Replay Attack with certain volume</h3>
+                                <p>As the name indicates the good packets are captured and are used for DoS attacks. As the headers match exactly with good packets the Packet Analysis based Predictor fails to detect them. Due to their significant volume the Traffic Pattern based Predictor will be able to detect them and provide a summary that the volume is more that expected. </p>
+                                <video src="videos/replay_100.mov" width="500" height="250"  controls></video>
+                                <h3>Demo 4: Replay Attack with very low volume</h3>
+                                <p>The packets are captured good traffic and are also very low in volume. Hence, both predictors fail to detect this scenario. But, the system is tolerant to such attacks at both network level and system level causing no adverse impact. </p>
+                                <video src="videos/failure_Replay_4.mov" width="500" height="250"  controls></video>
+                                <h3>Demo 5: Byzantine Node Attack</h3>
+                                <p> In this scenario a node is assumed to be compromized. It is capable of sending DoS traffic directed towards other components which are part of system but not part of its intended communication. The packet Analysis based traffic detects in mixed header cases and the Traffic Pattern based Predictor detects when such scenarios have even low volume of traffic. </p>
+                                <video src="videos/Byzantine_node_attack.mov" width="500" height="250"  controls></video>
+
+    
+                            </div>
+                        </div>
+                        <!-- Demo Video end-->
+						</div>
+							
+
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					<p>Template from: <a href="https://templated.co">TEMPLATED</a>. 
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
