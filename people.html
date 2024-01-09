@@ -4,57 +4,7 @@
 <title>People: Distributed Systems and Networks Lab</title>
 <link rel="stylesheet" type="text/css" href="dsn_style.css" />
 
-<script language="JavaScript">
-<!-- Hide from old browsers
-                                                                                
-// Array in the following format
-// [name, image_file, student/professor/alumni, home_page, info]
-                                                                                
-people = new Array
-<!--#include virtual="people/PEOPLE.DB" -->
-var array_length = people.length-1
-                                                                                
-function print_all(printType) {
-  document.write('<div class="photo-array-wrap">')
-  var j=0;
-  for (var i=1; i <= array_length; i++) {
-    var name  = people[i][0];
-    var image = "people/" + people[i][1];
-    var type  = people[i][2];
-    var link  = people[i][3];
-    var info  = people[i][4];
-    if (printType == type || printType == "all") {
-      if (j%4 == 0) {
-        document.write('<div class="photo-row">')
-      }
-      document.write('<div class="photo-box">')
-      document.write('<div class="photo-box-img-wrap">')
-	  if (image != "people/no_photo.jpg") {
-        document.write('<a href=' + link + '>')
-      	document.write('<img src=' + image + ' alt="image of ' + name +'" /></a><br>')
-      }
-      document.write('</div>')
-	  if (image == "people/no_photo.jpg")
-        document.write('<a href=' + link + '>')
-      document.write('<h3>' + name + '</h3>')
-      if (image == "people/no_photo.jpg")
-        document.write('</a>')
-      document.write('<p>' + info + '</p>')
-      document.write('</div>')
-      j++;
-      if (j%4 == 0) {
-        document.write('</div>')
-      }
-    }
-  }
-  if (j%4 != 0) {
-    document.write('</div>')
-  }
-  document.write('</div>')
-}
-// -- End Hiding Here -->
-</script>
-                                                                                
+                                                                               
 </head>
   
 <body>
@@ -93,11 +43,17 @@ function print_all(printType) {
     <div id="current-members">
         <div class="large-title">
             <h2> Current Members </h2>
+          <div >
+            <figure>
+              <img width="100" src="people/sahiti.jpg" alt="Sahiti Bommareddy"/>
+              <figcaption> Sahiti Bommareddy </figcaption>
+            </figure>
+
+
+          </div>
+
         </div>
 
-        <script language="JavaScript">
-        print_all("Current")
-        </script>
     </div>
     </div>
 
@@ -107,9 +63,28 @@ function print_all(printType) {
             <h2> Alumni </h2>
         </div>
 
-        <script language="JavaScript">
-        print_all("Alumnus")
-        </script>
+        <div class="row">
+          <div class="column">
+            <figure>
+              <img width="100" src="people/babay.jpg" alt="Amy Babay"/>
+              <figcaption> Amy Babay </figcaption>
+            </figure>            
+          </div>
+          <div class="column">
+            <figure>
+              <img width="100" src="people/tomt.jpg" alt="Tom Tantillo"/>
+              <figcaption> Tom Tantillo </figcaption>
+            </figure>            
+          </div>
+          <div class="column">
+            <figure>
+              <img width="100" src="people/dano.jpg" alt="Daniel Obenshain"/>
+              <figcaption> Tom Tantillo </figcaption>
+            </figure>            
+          </div>
+        </div>
+
+
     </div>
     </div>
 
