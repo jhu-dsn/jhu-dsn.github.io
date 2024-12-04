@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>WEP &#150; description</title>
+</head>
+<body text=#000000 bgcolor=#FFFFFF link=#000080 vlink=#800000 alink=#000080>
+<center>
+<a href="text0.htm">First page</a> <a href="text21.htm">Back</a> <a href="text23.htm">Continue</a> <a href="text29.htm">Last page</a> <a href="lect6.htm">Summary</a> <a href="img22.htm">Graphics</a></center><br>
+<h1>WEP &#150; description</h1><p>
+<ul><li><h2>To send a message M from A to B</h2>
+<ul><li>compute integrity checksum (CRC32):  c(M) and plaintext <font color=#9933FF>P = {M, c(M)}</font>
+<li>encrypt P using RC4:  
+<li>       ciphertext C = P &Aring; RC4(v,k)  
+<li>       where  key k and initialization vector (IV) v are
+<li>       used to generate keystream RC4(v,k)
+<li>Transmit <b><font color=#CC0000>C&#146; = v, (P &Aring; RC4(v,k))</b></font>
+</ul><li><h2>To decipher an encrypted message C&#146;, the encryption process is reversed</h2>
+</ul><br>
+<h3>Notes:</h3>
+</body>
+</html>

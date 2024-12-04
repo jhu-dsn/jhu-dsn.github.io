@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Preventing Colluding  Nodes Attacks</title>
+</head>
+<body text=#000000 bgcolor=#FFFFFF link=#000080 vlink=#800000 alink=#000080>
+<center>
+<a href="text0.htm">First page</a> <a href="text24.htm">Back</a> <a href="text26.htm">Continue</a> <a href="text32.htm">Last page</a> <a href="lect9.htm">Summary</a> <a href="img25.htm">Graphics</a></center><br>
+<h1>Preventing Colluding &#10;Nodes Attacks</h1><p>
+<ul><li><h2>Route discovery</h2>
+<ul><li>Bi-directional flood
+<li>Distance vector protocol
+<li>Uses weight list contained in request
+<li>Based on single source Bellman-Ford
+<li>Only lower cost updates are broadcast
+</ul><li><h2>Path is accumulated on response packet</h2>
+<li><h2>Path must be verified at intermediate nodes</h2>
+</ul><br>
+<h3>Notes:</h3>
+Route Discovery Phase:<br>
+Patterned after the classic on-demand route discovery process with a route request and route response.<br>
+<br>
+Bi-directional flood:<br>
+Required to guarantee path establishment in the case where a single adversary could repeatedly block a unicast route response.<br>
+<br>
+Weights used for distance vector:<br>
+The weight list carried on the request is used by the distance vector based path selection protocol.<br>
+This path selection proceeds similarly to the single source Bellman-Ford algorithm, and computes the least weight path to the destination.<br>
+<br>
+Re-broadcast:<br>
+The major departure from the classic algorithm is that each node broadcasts an update only when it receives an update that lowers its cost.<br>
+<br>
+<br>
+// In classic Bellman-Ford each node must broadcast N times, this modification requires re-broadcasts only when <br>
+<br>
+<br>
+</body>
+</html>
