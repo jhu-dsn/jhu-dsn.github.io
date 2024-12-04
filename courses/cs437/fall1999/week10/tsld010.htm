@@ -1,0 +1,48 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>CORBA</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>CORBA</H1> 
+ <P><UL>
+<H2>Steps to Creating a CORBA object:
+</H2>
+</UL><UL>
+<H2>1)	Write some IDL that describes the interfaces to the object.
+</H2>
+</UL><UL>
+<H2>2)	Compile the IDL using the IDL compiler provided by the particular ORB. This produces the stub and skeleton code that implements location transparency. That is, it will convert an object reference into a network connection to a remote server, and then marshal the arguments we provide to an operation on the object reference, convey them to the correct method in the object denoted by our object reference, execute the method, and return the results. 
+</H2>
+</UL><UL>
+<H2>3)	Write an implementation of the object that actually does the work.
+</H2>
+</UL><UL>
+<H2>4)	Write code to initialize the ORB and inform it of any CORBA objects that we have created. 
+</H2>
+</UL><UL>
+<H2>5)	Compile all the generated code and our application code. 
+</H2>
+</UL><UL>
+<H2>6)	Run the distributed application. </H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld009.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld010.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

@@ -1,0 +1,47 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Ways of Distributing Objects</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Ways of Distributing Objects</H1> 
+ <P><UL>
+<LI><H2>Message Passing
+</H2>
+<UL>
+<LI>Object knows about network, Network data = Min needed.
+</UL></UL><UL>
+<LI><H2>Argument/Return Passing
+</H2>
+<UL>
+<LI>Like RPC, Network data = Size(Args) + Size(Return) + Size(Name).
+</UL></UL><UL>
+<LI><H2>Serializing & Sending Object
+</H2>
+<UL>
+<LI>Actual object including code is sent. Might need synchronization. Network data = Size(object code) + Size(object state) + Size(synchronization)
+</UL></UL><UL>
+<LI><H2>Shared Memory
+</H2>
+<UL>
+<LI>Rely on DSM implementation. Network data = Size(data touched) + Size(synchronization).</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld005.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld007.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld006.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

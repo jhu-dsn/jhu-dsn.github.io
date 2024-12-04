@@ -1,0 +1,57 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Remote Procedure Call (cont.)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Remote Procedure Call (cont.)</H1> 
+ <P><UL>
+<LI><H2>Client procedure calls the client stub in a normal way
+</H2>
+</UL><UL>
+<LI><H2>Client stub builds a message and traps to the kernel
+</H2>
+</UL><UL>
+<LI><H2>Kernel sends the message to remote kernel
+</H2>
+</UL><UL>
+<LI><H2>Remote kernel gives the message to server stub
+</H2>
+</UL><UL>
+<LI><H2>Server stub unpacks parameters and calls the server
+</H2>
+</UL><UL>
+<LI><H2>Server computes results and returns it to server stub
+</H2>
+</UL><UL>
+<LI><H2>Server stub packs results in a message and traps to kernel
+</H2>
+</UL><UL>
+<LI><H2>Remote kernel sends message to client kernel
+</H2>
+</UL><UL>
+<LI><H2>Client kernel gives message to client stub
+</H2>
+</UL><UL>
+<LI><H2>Client stub unpacks results and returns to client</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld021.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

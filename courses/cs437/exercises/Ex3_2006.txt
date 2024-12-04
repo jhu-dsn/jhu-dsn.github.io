@@ -1,0 +1,68 @@
+        Exercise 3
+        ==========
+
+1. The assignment:
+
+Using Spread, you should write a tool that reliably multicasts messages 
+between n processes that reside on the same Spread domain. 
+
+The tool consists of only one program: 
+	mcast - the tool's process. 
+
+The mcast process should be run as follows:
+
+mcast <num_of_messages> <process_index> <num_of_processes>
+
+The num_of_processes indicates how many mcast processes will be run. 
+The maximal number of num_of_processes is 10.
+
+The num_of_messages indicates how many messages THIS mcast has to
+initiate.  This number might be on the order of 10000's.  Each message
+should contain the creating process_index, the message_index, and a
+random number, each of which is stored in a 4 bytes integer.
+Therefore, each message should contain 12 bytes at least.  The
+message_index is a per-process counter that is incremented each time a
+process initiates a message.
+
+The requirement is for all of the processes to deliver all of the messages
+in AGREED order.
+
+On delivery of a message the mcast should write to a file, in ASCII format,
+the packet id as follows:
+   fprintf( fd, "%5d, %6d, %5d\n", 
+	message->process_index, message->message_index, message->random_data );
+
+The output file name will be <process_index>.out
+
+After all the mcast processes have been run, they get membership
+messages and wait until all of them are running (thus, there is no
+need for a separate start program).
+
+To benchmark your program you should run a test with 8 machines where 
+only 5 of them send 20000 packets each, for a total of 100000 packets,
+and time how long the test takes. The other machines will get 0 as 
+<num_of_packets>.  
+
+Spread will already be running on the ugrad machines on its default
+port, 4803.  
+
+2. A final submission of documentation, writeup and code. Due 
+Tuesday,  November 14 at 11pm. This is an electronic submission. 
+See instructions below.
+
+This final report should also include a brief discussion of the
+performance results you achieved. 
+The programs should be complete, sound, and well-documented.
+
+A makefile that compiles and builds your program with clearly
+documented options (if needed) is required.
+
+You should make a tar file named exactly as your login account with
+all your documents and code (DO NOT include core files or object fles)
+and email the tar file as an attachment to cs437@cs.jhu.edu. The
+subject of the email should be "Exercise 3 submission <account name>",
+and in the body of the email write the names of the students that
+worked on the exercise.
+
+Please bring a printed version of the your submission to class Wednesday
+November 15.

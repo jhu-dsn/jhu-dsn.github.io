@@ -1,0 +1,144 @@
+        Exercise 2
+        ==========
+Construct a semi-reliable multicast tool using UDP/IP.  The
+semi-reliable multicast will assume no network partitions or processor
+crashes, but it WILL handle all kinds of message omissions over a
+local area network.
+
+1. The assignment:
+
+Using the non-reliable UDP/IP protocol, you should write a tool that 
+reliably multicasts packets between n machines that reside on the same
+network segment, so that one broadcast message may get to all of them.
+
+The tool consists of two programs: 
+	mcast - the tool's process. 
+	start - a process signaling the mcast processes to start.
+The mcast process should be run as follows:
+
+mcast <num_of_packets> <machine_index> <total number of machines>
+
+The num_of_machines indicates how many mcsat machines will be run. The
+maximal number of num_of_machines should be a constant and should be
+set to 6.
+
+The num_of_packets indicates how many packets THIS mcast has to
+initiate.  This number might be in the order of 10,000 packets and
+even more.  Each packet should contain the creating machine_index, a
+packet_index, and a random number, each of them is stored in a 4 bytes
+integer.  The random number is an integer, picked at the time of the
+creation of the packet, randomly selected from the range 1-1000.
+Therefore each packet should contain 12 bytes + additional bytes in
+case your protocol needs them.
+
+After all the mcast processes have been started, the start process is executed,
+signaling the mcast processes to start the protocol by sending a special 
+broadcast message.
+
+Output:
+-------
+On delivery of a packet the mcast should write to a file, in ASCII format,
+the packet data as follows:
+	fprintf( fd, "%5d, %6d, %5d\n", packet->machine, packet->index, packet->random_data );
+
+The output file name will be <machine_index>.out
+
+Required Task:
+--------------
+The requirement for the mcast is: You should deliver all packets 
+reliably according to FIFO order.
+
+For those who take 600.337: you can assume that only one mcast will
+get positive <num_of_packets> and the rest will get 0 as the 
+num_of_packets.
+
+For those who take 600.437: Any mcast may get a non-negative
+num_of_packet.
+
+Evaluation and Testing:
+-----------------------
+In order to be able to check the software, the mcast program should
+call a coat routine named recv_dbg instead of the recv system call.
+The coat routine has the same interface as recv (see man 2 recv).  The
+recv_dbg routine will randomly decide to discard packets in order to
+create additional network message omissions.  
+
+EVERY RECV CALL in the mcast program MUST use the recv_dbg call EXCEPT
+the first one which receives the start packet.  At the beginning of
+the mcast program it should wait for the start packet to arrive. This
+will be done by calling recv directly (without the coat routine). Only
+after that packet arrives, the reliable protocol should be
+invoked. The start process purpose is to help us avoid membership
+problems.
+
+For Java you should use the MulticastSocketDBG class instead of
+MulticastSocket.  The receive method of this class will randomly
+drop packets, dropped packets will have a length of 0 and will
+trigger a special exception that you can handle. 
+The source and a class file is in ~cs437/exercises/ex2/
+
+To test your design you should run a test where a total of 12000
+packets are sent and time how long the test takes. For 337 students,
+one node should be the sender of all 12000 packets. For 437 students,
+a test with 6 nodes should be run and each node should send 2000
+packets.
+
+Everyone should run these tests 5 times, each time with a different
+loss rate (0% 1% 5% 10% 30%) and graph the results with the X-axis
+being the loss rate and the Y-axis being the time the packet
+transmission took. 
+
+Thus, you should turn in results comparing five experiments:
+1. mcast  (zero loss rate)
+2. mcast with %1 loss rate
+3. mcast with %5 loss rate
+4. mcast with %10 loss rate
+5. mcast with %30 loss rate
+Please have a table with all 5 results and a graph as described above.
+
+2. Submission:
+You should work on this exercise in pairs, just like the first
+assignment. There are two separate submissions required.
+
+1) A design document. Due October 18, 2000 at the beginning of class.
+2) A final submission of documentation, writeup and code. Due 
+November 1 at the beginning of class.
+
+The design document should be a well-written, complete design of your
+file-copy program and the protocols used to make it reliable, deliver
+the messages in FIFO order, and provide some flow control. We expect
+it to be 1-3 pages with diagrams as needed to explain the protocol.
+
+The design document is required and makes up about 10% of your final
+grade.
+
+For the final submission you should included an updated version of
+your design document as part of your final report. You should include
+any changes you made to the design during the project and why you
+believe those chanes were needed.
+
+This final report should also include a brief discussion of the
+performance results you achieved and discuss the comparison of how the
+protocol worked under different percentages of loss.
+
+Put the sources and executables of the programs with the 
+supplementary documentation in your home directory, under 
+
+        ~username/cs437/ex2
+
+At submission deadline, make sure there is a world read permission for
+the files (and search and read permission for the directories).
+In addition, please submit a printed version of your submission
+(sources, documentations, and results).
+
+Failure to comply with submission instructions may result in a lower
+grade.  Issues such as correctness, design, documentation, and, most
+importantly, efficiency will be considered.
+
+The initial design document is due Wednesday, Oct 18, 2000 in class.
+Final Submission date is Wednesday, Nov. 1, 2000, in class.
+
+There will be no extensions. A failure to submit by the deadline will
+result in a zero score for the exercise.
+
+

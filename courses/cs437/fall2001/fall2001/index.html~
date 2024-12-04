@@ -1,0 +1,230 @@
+<html>
+
+<head><title>Computer Science 337/437 Fall 2001: Distributed Systems
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<img src="/pics/cs437_logo.gif" alt="Distributed Systems: CS437"><p>
+
+</CENTER>
+
+<p>
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0 WIDTH="100%">
+<TR>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html"><STRONG>Home</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="news.html"><STRONG>News</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#classinfo"><STRONG>Class Information</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#lectures"><STRONG>Lectures</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#exercises"><STRONG>Exercises</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="http://lists.cnds.jhu.edu/mailman/listinfo/cs437-2001"><STRONG>Mail List</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="ref.html"><STRONG>Reference Material</STRONG></a></TD>
+</TR></TABLE>
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+<TR><TD BGCOLOR="9f9fFF"><DD><a href="news.html"><STRONG>News</STRONG></a></TD></TR>
+<TR><TD>
+
+<dl>
+<dt><em>Exercise 3 deadline extended</em> (November 17, 2001)
+<dd>
+<p>Because of the unavailability of the ugrad network on saturday Nov. 17th. I 
+am extending the deadline for ex3 to Tuesday, November 20th at NOON. Because
+we do not have class. You should turn in all the written materials to my 
+mailbox in the main CS department office. </p>
+<p>The deadline of NOON is strict as I will pick them up exactly at 
+that time and give them to the graders, so late assignemnts will not be able
+to be graded until after Thanksgiving and thus will be quite late.</p>
+</dd>
+</dl>
+
+<dl>
+<dt><em>Exercise 2 and final Project available</em> (November 15, 2001)
+<dd>
+<p>Exercise 2 and the final Project ideas area available below. Exercise 3 is due next monday,
+November 19th. The design of your project is due the following monday, November 26th.</p>
+</dd>
+</dl>
+
+<dl>
+<dt><em>Theory Homework 2 and Exercise 2 handed out</em> (October 10, 2001)
+<dd>
+<p>Theory Homework 2 was handed out. See below for a copy see Lecture 5 for the 
+algorithm the homework is based on.</p>
+<p>Exercise 2 was handed out. A copy can be found below. The design document is due next wednesday.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><em>For older news check the <a href="news.html">News Page</a>.</em>
+<dd></dd>
+</dl>
+
+</TD></tr>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="classinfo"><STRONG>Class Information</STRONG></a></TD></TR>
+<TR><TD>
+<h5>Instructor</h5>
+<ul>
+<li><a href="http://www.cnds.jhu.edu/~jonathan/">Jonathan Stanton</a> <a href="mailto:jonathan@cnds.jhu.edu">jonathan@cnds.jhu.edu</a>.
+</ul>
+<h5>Teaching Assistants</h5>
+<ul>
+<li>Xiaoqi Lu <a href="mailto:xiaoqilu@cs.jhu.edu">xiaoqilu@cs.jhu.edu</a>.
+</ul>
+<p>
+The course teaches how to design and implement efficient tools,
+protocols and systems in a distributed environment.
+The course tries to give some hands-on experience as well as some
+theoretical background.
+The programming assignments and the project in the course can be 
+done in either C/C++ or Java. These assignments will use a cluster 
+of workstations as well as several software research tools.
+</p>
+For more information about the course please contact the instructor. 
+Their email and phone number can be found on this web page.</p>
+
+<table CELLPADDING=10 CELLSPACING=0 BORDER=0>
+<tr><td>
+<h5>Prerequisites:</h5> 
+<ul>
+<li>Intermediate Programming Course
+<li>Data Structures ( 600.226 )
+</ul>
+</td>
+<td>
+<h5>Class Schedule</h5>
+<ul>
+<li>Monday 3-4pm, Shaffer 303
+<li>Wednesday 3-5pm, Shaffer 303
+</ul>
+</td></tr></table>
+Some of the monday course meetings may occur at other
+locations that will be announced in class. 
+
+<h5>Office Hours</h5>
+<ul>
+<li>Jonathan Stanton (email me)
+<li>Xiaoqi Lu (TBA)
+</ul>
+
+<h5>Academic Integrity</h5>
+<p>Academic Honesty and Ethical behavior are required in this course, as it is in all 
+courses at Johns Hopkins University. This course will strictly enforce the Computer Science 
+Department Academic Integrity policy which can be found by following the link above. </p>
+<p>The essence of the policy is that you must work on your own on all assignments, unless told
+otherwise in writing. This includes discussing how to work on it and sharing code or solutions. 
+You are also prohibited from altering or falsifying the output of programs. We run all code submissions
+ourselves and grade based on how they work when we run them. If it appears that you have falsified the
+reported results it will be treated as severely as if you had cheated or plagerized someone elses work.</p>
+<p>You are encouraged to talk with the professor about any questions you have about what is permitted
+on any particular assignment.</p>
+
+</TD></tr>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="lectures"><STRONG>Lectures</STRONG></a></TD></TR>
+<TR><TD>
+For each lecture we will have a link to the slides or lecture notes 
+and a link to any recommended reference material for that lectures topic.</p>
+
+<ol>
+<li><a href="http://www.cnds.jhu.edu/courses/cs437/week1-2001/index.htm">Introduction and Network Protocols.</a>(also available in <a href="http://www.cnds.jhu.edu/courses/cs437/week1-2001-slides.ps">postscript</a> and <a href="http://www.cnds.jhu.edu/courses/cs437/week1-2001-slides.ps.gz">compressed postscript</a>)<br>
+<li><a href="http://www.cnds.jhu.edu/courses/cs437/week2-2001/index.htm">Synchronous Models for Consensus.</a>(also available in <a href="http://www.cnds.jhu.edu/courses/cs437/week2-2001-slides.ps">postscript</a> and <a href="http://www.cnds.jhu.edu/courses/cs437/week2-2001-slides.ps.gz">compressed postscript</a>)<br>
+<li><a href="http://www.cnds.jhu.edu/courses/cs437/week3-2001/index.htm">Multicast.</a>(also available in <a href="http://www.cnds.jhu.edu/courses/cs437/week3-2001-slides.ps">postscript</a> and <a href="http://www.cnds.jhu.edu/courses/cs437/week3-2001-slides.ps.gz">compressed postscript</a>)<br>
+<li><a href="http://www.cnds.jhu.edu/courses/cs437/week4-2001/index.htm">Group Communication.</a>(also available in <a href="http://www.cnds.jhu.edu/courses/cs437/week4-2001-slides.ps">postscript</a> and <a href="http://www.cnds.jhu.edu/courses/cs437/week4-2001-slides.ps.gz">compressed postscript</a>)<br>
+<li><a href="http://www.cnds.jhu.edu/courses/cs437/week5-2001/index.htm">Asynchronous Consensus Models.</a>(also available in <a href="http://www.cnds.jhu.edu/courses/cs437/week5-2001-slides.ps">postscript</a> and <a href="http://www.cnds.jhu.edu/courses/cs437/week5-2001-slides.ps.gz">compressed postscript</a>)<br>
+</ol>
+
+<a href="ref.html">Reference material</a> for the class, including 
+useful books, web sites, articles, etc are available.</p>
+
+Last years lectures are available at <a href="fall2000/index.html">last years web site.</a> 
+The content of the course changes some every year but some of the material from past years is applicable.
+
+</td></tr>
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="exercises"><STRONG>Exercises & Section</STRONG></a></TD></TR>
+<TR><TD>
+
+Currently the following exercises have been assigned:
+<table cellpadding=4>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test reliable point to point file-transfer protocol</h3>
+Due Wednesday October 3, 2001 in class<br>
+Assignment was handed out during week 1 in lecture. It is also available 
+<a href="exercise1.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Theory Homework 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Synchronous Consensus</h3>
+Due Wednesday October 10, 2001 in class<br>
+Assignment was handed out during week 2 in lecture. It is also available in
+<a href="homework.ps">postscript.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 2</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test reliable multicast protocol</h3>
+Due Wednesday October 31, 2001 in class<br>
+The Initial Design document is due Wednesday October 17th in class.<br>
+Assignment was handed out during week 5 in lecture. It is also available 
+<a href="exercise2.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Theory Homework 2</td>
+<td align=left bgcolor="ffeeee">
+<h3>Asynchronous Consensus</h3>
+Due Wednesday October 24, 2001 in class<br>
+Assignment was handed out during week 5 in lecture. It is also available in
+<a href="homework2.ps">postscript.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 3</td>
+<td align=left bgcolor="ffeeee">
+<h3>Ordered multicast using Spread</h3>
+Due Monday November 19, 2001 in class<br>
+Assignment was handed out during lecture. It is also available 
+<a href="exercise3.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Final Project</td>
+<td align=left bgcolor="ffeeee">
+<h3>Major final class project</h3>
+Design due Monday November 26, 2001 in class<br>
+You must signup for a submissiong timeslot by December 13th at noon.
+Assignment was handed out during week 10 in lecture. It is also available 
+<a href="project.txt">here.</a>
+</td></tr>
+
+
+</table>
+
+
+The <a href="ref.html">Reference Section</a> has documentation, faqs, programming guides, etc to assist with 
+doing the exercises and project.</p>
+
+The course usually includes at least the following assignments:
+<ul>
+<li>a few theoretically based homework assignments.
+<li>3 practical programming exercises.
+<li>a major final project.
+</ul>
+
+</table>
+
+</TD></TR></TABLE>
+<hr>
+<a href="http://www.cs.jhu.edu/"><IMG ALIGN=CENTER
+BORDER=0 SRC="/pics/cslogo.gif" ALT="Department of Computer Science"</a>
+
+<a href="http://www.jhu.edu/"><img border=0 ALIGN=CENTER
+src="/pics/jhu.gif" alt="The Johns Hopkins University"></a>
+
+
+
+
+<!--#include virtual="/includes/footer"-->

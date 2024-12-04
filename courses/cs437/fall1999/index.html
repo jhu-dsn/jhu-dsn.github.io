@@ -1,0 +1,229 @@
+<html>
+
+<head><title>Computer Science 337/437 Fall 1999: Distributed Systems
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<img src="/pics/cs437_logo.gif" alt="Distributed Systems: CS437"><p>
+
+</CENTER>
+
+<p>
+
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+<TR><TD BGCOLOR="0000FF"><DD><STRONG>News</STRONG></TD></TR>
+<TR><TD>
+<dl>
+<dt><em>Testing Configuration for Programming Assignment</em></a> (November 5, 1999)
+<dd>
+The configuration to be used for the 12000 packet tests is given below. This file should be exactly
+used for anyone doing the assignment in C. If you use Java, you should use the same graph configuration, <em>BUT</em>
+you should change the machines to be ANY 6 WinNT machines in the CS TEACHING LAB. 
+They should be all equivelent in strength. I have heard that there are problems with the 
+WinNT machines in the regular undergrad lab so you probably don't want to use them. 
+The file can also be downloaded as <a href="test.config">test.config</a>.
+<br><pre>
+Graph 6
+(1,2)
+(1,3)
+(3,4)
+(3,5)
+(5,6)
+Machines
+1 128.220.13.181
+2 128.220.13.182
+3 128.220.223.28
+4 128.220.223.29
+5 128.220.223.30
+6 128.220.223.34
+</pre>
+As before blank lines and lines starting with a '#' character should be ignored.<p>
+</dd>
+</dl>
+</TD></tr>
+<TR><TD>
+<dl>
+<dt><em>Correction to Programming Assignment</em></a> (October 27, 1999)
+<dd>
+A correction to the file format of the configuration file for the programming assignment. As noted in class
+there is currently no way to know which machine number corresponds to which real-world machine (i.e. IP address).
+The new config file will solve this by giving the wancast process the ip addresses of each machine. The new format
+is as follows:
+<br><pre>
+Graph <num of machines>
+(1,2)
+(1,3)
+(3,4)
+Machines
+1 128.220.13.30
+2 128.220.13.87
+3 128.220.223.100
+4 128.220.223.50
+</pre>
+As before blank lines and lines starting with a '#' character should be ignored.<p>
+The ip addresses I gave in the above file are MADE UP and SHOULD NOT be used in your actual tests. Just create
+your own config file with the ip addresses of the machines you would like to use.
+</dd>
+</dl>
+</TD></tr>
+<TR><TD>
+<dl>
+<dt><em>New Theory and Programming Assignment handed out</em></a> (October 20, 1999)
+<dd>
+A new Thoery assignment was given in class today, it can be found in the Week 6 slides and is due November 10.
+Also, the second programming assignment was handed out. In it you have to build a reliable multicast application
+that uses point-to-point reliable channels and can work over arbitrary tree networks. A design document is due
+next Wednesday October 27 and the full project is due November 8.
+<p>
+A new version of the sendto_dbg.c function is available which allows you to set the percentage of loss. A Java
+version is also available. Both can be found in the ~cs437/exercises/ex1 directory on the undergrad machines.
+</dd>
+</dl>
+</TD></tr>
+<TR><TD>
+<dl>
+<dt><em>Programming project deadline extended to MONDAY October 18,1999</em></a> (October 11, 1999)
+<dd>
+The programming project to build a reliable file transfer application deadline has been extended. Also a new version of the sendto_dbg.c function is available which allows you to set the percentage of loss. A Java version is also available. Both can be found in the ~cs437/exercises/ex1 directory on the undergrad machines.
+</dd>
+</dl>
+</TD></tr>
+<TR><TD>
+<dl>
+<dt><a href="http://www.cnds.jhu.edu/courses/cs437/"><em>CS 337/437 Page opens</em></a> (October 6, 1999)
+<dd>
+This page will have information about the CS337/437 Distributed Systems class held during Fall of 1999.
+</dd>
+</dl>
+</TD></tr>
+
+<TR><TD BGCOLOR="0000FF"><DD><STRONG>Class Information</STRONG></TD></TR>
+<TR><TD>
+<p> Taught by 
+<a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a> and 
+<a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a>.
+</p>
+<p>
+The course teaches how to design and implement efficient tools,
+protocols and systems in a distributed environment.
+The course tries to give some hands-on experience as well as some
+theoretical background.
+The programming assignments and the project in the course can be 
+done in either C/C++ or Java. These assignments will use a cluster 
+of workstations as well as several software research tools.
+</p>
+<em>Prerequisites:</em> 
+<ul>
+<li>Computer Systems Fundamentals( 600.333 ) 
+<li>Data Structures ( 600.226 )
+</ul>
+
+</TD></tr>
+
+<TR><TD BGCOLOR="0000FF"><DD><STRONG>Lectures</STRONG></TD></TR>
+<TR><TD>
+For each lecture we will have a link to the slides or lecture notes and a link to any recommended reference material for that lectures topic.
+<ol>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week1/index.htm">Introduction.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week1.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week2/index.htm">Basic communication protocols.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week2.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week3/index.htm">Synchronized consensus models.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week3.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="week4/index.htm">Multicast.</a> (also available in <a href="week4-multicast.ps">postscript</a>)<br>
+Some online reference material is <a href="mcast_resources.html">available.</a>
+<li><a href="week5/index.htm">Group Communications.</a> (also available in <a href="week5-group-communication.ps">postscript</a>)<br>
+Some online reference material is <a href="gcs_resources.html">available.</a>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week6/index.htm">Asynchronous Consensus Models.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week6.ps">postscript</a>)<br>
+No online reference material is available.</a>
+<li><a href="week7/index.htm">Distributed Operating Systems.</a> (also
+available in <a href="week7-dos.ps">postscript</a>)<br>
+Some online reference material is <a href="dos_resources.html">available.</a>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week8/index.htm">Distributed Transactions.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week8.ps">postscript</a>)<br>
+No online reference material is available.</a>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week9/index.htm">Replication.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week9.ps">postscript</a>)<br>
+No online reference material is available.</a>
+<li><a href="week10/index.htm">Distributed Objects.</a> (also
+available in <a href="week10-do.ps">postscript</a>)<br>
+No online reference material is available.</a>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week11/index.htm">Communication and Knowledge.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week11.ps">postscript</a>)<br>
+No online reference material is available.</a>
+
+</ol>
+</td></tr>
+<TR><TD BGCOLOR="0000FF"><DD><STRONG>Exercises & Section</STRONG></TD></TR>
+<TR><TD>
+Currently the following exercises have been assigned:
+<table cellpadding=4>
+
+<tr valign=top><td align=center bgcolor="ffffff">Theory 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Proof and algorithm for consensus problem</h3>
+Due October 6, 1999 in class<br>
+Assignment is in the lecture notes from week 3.
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test reliable point to point file-transfer protocol</h3>
+Due Wednesday October 13, 1999 in class<br>
+Assignment was handed out during week 3 and 4 in section. It is also available 
+<a href="exercise1.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Theory 2</td>
+<td align=left bgcolor="ffeeee">
+<h3>Asynchronous byzantine failure proof and algorithm</h3>
+Due Wednesday November 10, 1999 in class<br>
+Assignment was handed out during week 6 in lecture.
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 2</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test fifo reliable multicast over tree-networks</h3>
+Design document due Wednesday October 27, 1999 in class<br>
+Program, results and code due Monday November 8, 1999 in class<br>
+Assignment was handed out during week 6 lecture. It is also available 
+<a href="exercise2a.txt">here.</a> The configuration file
+to be used during performance runs (<a href="test.config">test.config</a>is available
+and please read the instructions at the top of this web page. 
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 3</td>
+<td align=left bgcolor="ffeeee">
+<h3>Create a multicast tool using Spread</h3>
+Due Monday November 22, 1999 in class<br>
+The assignment is available 
+<a href="exercise3.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Final Project</td>
+<td align=left bgcolor="ffeeee">
+<h3>Final class project--3 choices</h3>
+Due Monday December 13, 1999 or January xxxx, 2000.<br>
+The three options are:
+<ol>
+<li>Build a replicated, distributed Mail Server that can provide mail messages and keep track of the state of messages even when partitions and crashes occur. The assignment is available at
+<a href="project1.txt">this web site</a> and in the ~cs437 directory on the undergrad machines.
+<li>Explore high-performance computing on a cluster of workstations using the MOSIX distributed operating system. This will involve writing a program that computes a matrix multiplication in a parallel way and a second program that plays the game of life and utilizes the most possible resources out of a cluster of machines. Talk to Yair for more information.
+<li>Any other idea you come up with that fits in with the course. Come talk to us, we are always interested in new ideas.
+</ol>
+</td></tr>
+
+</table>
+
+</TD></TR></TABLE>
+<hr>
+<a href="http://www.cs.jhu.edu/"><IMG ALIGN=CENTER
+BORDER=0 SRC="/pics/cslogo.gif" ALT="Department of Computer Science"</a>
+
+<a href="http://www.jhu.edu/"><img border=0 ALIGN=CENTER
+src="/pics/jhu.gif" alt="The Johns Hopkins University"></a>
+
+
+
+
+<!--#include virtual="/includes/footer"-->

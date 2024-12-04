@@ -1,0 +1,318 @@
+                            Distributed Systems
+                            ===================
+                               Final  Project
+                               ==============
+
+
+The goal of the final project is to produce a distributed software
+system that demonstrates what you have learned in this class and
+provides a useful service.
+
+The focus of your project should be on the distributed aspects
+and correctness of the system and not the graphical, GUI, or other
+peripheral issues.
+
+REQUIREMENTS for all projects
+-----------------------------
+
+- Efficient use of messages -- Don't send them unnecessarily.
+
+- An organized Makefile is required.
+
+- A detailed description of the algorithm and the system design should be
+  provided. The initial design should be in the first design document.
+  The final report should include an enhanced and updated design document.
+
+- System produces correct results for all inputs, except those specificly
+  listed as not required.
+
+Delivery Date
+-------------
+
+Initial design document is due Monday November 26 in class. We will
+discuss your designs in class that day, so be prepared to present
+your design to the class in a few minutes.
+
+The final projects will be graded during a meeting with me that will
+last between 1 and 2 hours. You will schedule a timeslot during which
+I will read your documentation and code, discuss your design with you
+and test your program in the undergrad lab. 
+
+You must signup for a timeslot by Thursday, December 13th at noon. 
+The timeslots will be during the week between December 13th afternoon
+and December 20th. 
+Penalty for not signing up on time is 3/100.
+
+PROJECTS
+--------
+
+There are four choices for the final project:
+
+1) Fault-tolerant distributed mail server.
+2) Parallelized sorting and searching on a mosix cluster.
+3) Real-time synchronized distributed game.
+4) Any other idea that you propose and Jonathan agrees to.
+
+We will describe the first three here in detail.
+
+==================================================
+Project 1: Fault-tolerant distributed mail server
+==================================================
+
+Construct a reliable and efficient mail service for users over a 
+network of computers.
+
+The service:
+
+Every user can connect via a mail client to any one of replicated servers. 
+
+The mail service provides the following capabilities:
+
+1. Login as a user.
+
+   The client needs to login with a user name to perform any of the tasks 
+   below. You should allow the client to login as a new user as part of the 
+   menu by specifying the user name.
+
+2. Connecting to a server.
+
+   The client needs to connect to a server to perform any of the tasks below.
+
+   You should allow the client to change its server as
+   part of the menu, by specifying the server index. 
+
+   * At any point, the client may be connected to one server only.
+   * To connect to a server, all a client needs to do is to set this
+     server as its serving server. Client/Server communication should
+     be done using Spread via the private group of each.
+
+   In the Java Applet version, you can still do that even in the
+   presence of the sandbox because you are connecting through Spread, and
+   so you can direct messages to the different private groups. Running
+   the applet when your browser/appletviewer is run on a computer, will
+   allow you to connect to the Spread daemon running on this machine.
+
+3. View list of headers of received mail (The service should distinguish 
+   between mail that was already read and unread mail):
+
+   Result: 
+	The view should include the user name, the responding server index 
+	and a list of messages. The messages in the list will be numbered 
+	(1, 2, 3, ...) and the sender and subject of each message will be 
+	displayed.
+
+	* Each request for a view should result in the most updated 
+	information possible.
+
+4. Mail a message to a user:
+   	to:  <user name>
+        subject:  <subject string>
+        <msg string>           
+
+          * 'to' and 'subject' are fields that should be added
+            as part of the header, as in the Unix mail service.
+            Note that the size of the msg string can be bounded 1000 bytes.
+
+	    Using Java, this can be a form to fill (or in X-windows). 
+
+
+5. Delete a mail message (read or unread):
+
+   Will allow to delete a message either by its number or by pointing on it.
+
+6. Read a received mail (read or unread):
+
+   Will allow to read the content of a message either by its number or by 
+   pointing on it.  The message should be marked as read thereafter.
+
+7. Print the view of the servers in the current server's network component.
+
+
+The Servers:
+
+The mail client connects to one of the server processes. Each of the
+server processes is a background daemon.  
+The server may crash and may subsequently recover.
+Connections may also fail, creating network partitions and re-merges.
+The overall set of servers is fixed and is known in advance - there are 
+exactly five servers, each running on a ugrad machine.
+The server is started with its id as a parameter:
+	% server [1-5]
+
+The users must always receive a consistent view of their mail, 
+regardless of which server is consulted (of course, as consistent  
+as possible, according to the network connectivity).
+The view should be consistent as to which messages have been received, 
+read or deleted.  Each server may save information separately on disk.
+
+The membership simulation:
+
+The simulation will be managed by a 'simulator' interactive process or 
+applet. The simulator can redefine the membership configuration at any time 
+by defining for each server which network component it belongs to, or 
+defining the server as crashed.  For a set of 5 servers, we may give the 
+following configuration: 
+	A B A crash C    
+meaning servers 1, and 3 belong to network component A, server 2 belongs to
+component B, server 4 has crashed and server 5 belongs to component C.
+Or the following configuration:
+        A B C D E
+meaning each server is in it's own network component.
+
+Each simulated membership event contains the configuration and a unique
+configuration identifier.  The simulator MULTICASTS these membership messages
+to the servers USING SPREAD, telling them to which network component they 
+belong, or that they have crashed. Each membership event is exactly one 
+Spread message which is multicasted to all of them. A crashed server exits 
+the program immediately! It is not legal to write to disk after a server 
+receives a simulator's membership message indicating it has crashed!
+
+To activate a dead server, it will be re-run from the shell.  
+Note that a recovering server cannot join the protocol and begin working 
+until it has received the first configuration message from the simulator 
+(this is also correct for the first time a server ever comes up).
+
+The membership simulation should be complete by having all of the servers
+communicate among themselves using certain process groups. After receiving
+a membership change from the simulator, servers should ignore messages
+that were sent by servers that are not part of their current component.
+
+Note:
+
+The users are not known beforehand, and their number is not bounded.
+
+CS 600.337 students can assume that no server crashes ever. They only need
+to handle network partitions. Therefore, they do not need to write to
+or read from disk. This also simplifies the rest of the project.
+
+Summary
+-------
+
+These are 3 programs:
+
+The simulator (Applet/application in Java)
+The client (Applet/application in Java). 
+The server (daemon / application in Java). 
+
+
+
+==========================================================
+Project 2: Parallelized sorting and searching on a cluster
+==========================================================
+
+The idea of this project is to explore performance tradeoffs in
+parallelizing algorithms such as sorting, vector math, and the Game of
+Life on a local area cluster of workstations running the MOSIX
+distributed operating system.
+
+MOSIX will provide process migration and load balancing to your
+project. You need to provide the smart data-decomposition and
+parallelization ideas and implement the algorithms using forked
+proecesses in unix.
+
+Two sets of algorithms will be parallelized,
+
+1) A vector multiply using two nxn matrices where n is approximately
+500 to 10000.  
+
+2) Either the Game of Life (Conway 72) or some other
+interesting/complex problem area (maybe sorting). These should utilize
+large data-sets (possibly even larger then the available memory in any
+one machine.
+
+Your design should include how you are breaking down the problem, what
+approach you take, solutions to any problems you encounter, and a
+complete discussion of the performance results of a number of trial
+runs of different sizes and parameters.
+
+The real focus of this assignment is good performance, both getting
+good raw performance in your implementation of these algorithms AND
+exploring how your algorithms scale when the number of machines
+available in the cluster grows from 1 to around 10.
+
+
+==========================================================
+Project 3: Real-time synchronized distributed game
+==========================================================
+
+"Flubber vs. Professor Brainard"
+--------------------------------
+
+Construct a GUI application that maintains a consistent state
+between up to 5 instances of the program (called "flubber") as an object 
+moves around the screen and human users add and remove elements 
+from the screen.
+
+When a change is made to one machine (such as adding or removing a 
+wall, or that machine's ball of flubber moving) then all the
+other machines should reflect that change as soon as possible,
+certainly within a fraction of a second. A screen update rate of at
+least 10 frames per second should be achiveved.
+
+Just like in the movie flubber bounces off of everything it hits. 
+Also like the movie, flubber bounces VERY fast, you should set your
+velocity so that the balls move at least an inch per second. In
+this program you have a screen like below:
+
+--------------------------------------
+|            |         |        ___  |
+|    | |   |      | _  ______|       |
+|      |   |      |           -------|
+|      | *    |   |    -------       |
+|      |          ____|              |
+|       |  |          |       *      |
+|   |      |          |   -----------|
+| |--------           |              |
+|         *      |                   |
+--------------------------------------
+
+* = a ball of flubber
+|_- = walls
+
+The balls of flubber will just keep bouncing around following very
+basic laws of physics. They bounce off walls and floors at an angle
+equal to the angle of incidence but reflected off the
+perpendicular. When a flubber hits a wall it turns that segment of
+wall the same color as the flubber which hit it.
+
+For each process that starts another, differently colored, ball
+appears and begins bouncing around at a random location and random
+(but constrained) velocity.
+
+The only human interface is that a person who clicks on a wall
+location will cause the wall to disappear and if they click on a
+location that has no wall, a wall will appear in that location.
+The human should also be able to quit the program by selecting
+"Quit" and to restart the program without quitting by selecting "Restart".
+A Quit will cause the program to exit. A restart will cause all the 
+machines to default to simple startup layout of walls and reset the 
+balls of flubber to a random location, direction and velocity.
+
+The main goal of this project is to keep all the displays showing the
+same location of all the walls and balls at all times.
+
+The flubber program should handle network partitions and merges, but
+does not have to handle crashes. So if a group of 5 flubbers is
+partitioned into two subsets of size 2 and 3, the three who are still
+together should be kept synchronized and the two that are together
+should be synchronized, but all five may not be synchronized any
+more. When the partition is healed and the 5 machines are all together
+then the state of all the machines should be merged.
+
+A merge should require that all the walls present in any of the partitions 
+exist in the final merged game. The balls of flubber should appear whereever
+their owner (the machine who created them) thinks they should be.
+
+To test the network partition/merge handling you will also need to
+write a second program called "simulator" which is essentially
+identical to the simulator in project 1. This simulator should allow
+the user to send network membership events to the flubber program.
+
+For 437 students who do the flubber game, you must also have one more
+element to the game. In addition to creating and removing walls, the
+user should also be able to place a "teleport gate" which is represented
+by a small circle (the size of one block) anywhere on teh game board.
+When a ball hits that circle it should be teleported to a random, non-wall
+location on the board. The 'random' location should be the same for all 
+programs displaying the ball (i.e. all programs in the same component as
+the owner of the ball).

@@ -1,0 +1,40 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>AFS File Validation</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>AFS File Validation</H1> 
+ <P><UL>
+<LI><H2>Older AFS versions:
+</H2>
+<UL>
+<LI>On open: the Venus access the vice to see if its copy of the file is still valid. This causes a substantial delay even if the copy is valid.
+<LI>The Vice is stateless
+</UL></UL><UL>
+<LI><H2>Newer AFS versions:
+</H2>
+<UL>
+<LI>The Vice maintains lists of valid copies. If a file is modified the Vice invalidates other copies.
+<LI>On open: if the Venus has a valid copy it can open it immediately.
+<LI>If Venus crashes it has to invalidate its version or check their validity.</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld018.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld019.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

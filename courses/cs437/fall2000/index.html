@@ -1,0 +1,217 @@
+<html>
+
+<head><title>Computer Science 337/437 Fall 2000: Distributed Systems
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<img src="/pics/cs437_logo.gif" alt="Distributed Systems: CS437"><p>
+
+</CENTER>
+
+<p>
+
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+<TR><TD BGCOLOR="9f9fFF"><DD><STRONG>News</STRONG></TD></TR>
+<TR><TD>
+<dl>
+<dt><em>Project description</em></a> (November 27, 2000)
+<dd>A copy of the <a href="project.txt">project description</a> is available.
+</dd>
+<dt><em>Theory Homework 2 slides</em></a> (October 31, 2000)
+<dd>Some people had difficulty getting access to the theory 2 assignment because the CS webserver
+has had some problems. Here is the homework slide <a href="sld022.htm">Slide 22</a>.
+</dd>
+<dt><em>Deadline for Exercise 2</em></a> (October 31, 2000)
+<dd>To make sure everyone is aware. The deadline for ex2 is DURING class wednesday. 
+I will collect the online submissions at 5pm wednesday. Because the multicast assignment
+is causing significant disruption of the department network we will not extend the deadline.
+</p>
+We also request that you DO NOT run your multicast programs after the deadline. The only people
+who should run them are myself and the TA's when we are evaluating them.</p>
+</dd>
+<dt><em>Design comments on Exercise 2</em></a> (October 23, 2000)
+<dd>General comments on exercise 2 design
+<ol>
+<li>The sender needs to also receive all packets.
+<li>There is no graph of the nodes, no point-to-point links, no trees for this assignment.
+The network should be considered a local area network where one multicast packet can reach every mcast.
+<li>You need to discuss termination, and what happens if the last packet is lost a lot.
+<li>Your protocol should not use the information of how many packets will be sent to start
+your protocol. You should only tell the receivers that they have all the packets at the very end. Maybe
+by sending some type of "end" packet.
+<li>You can piggyback acks/nacks/messages with other messages.
+<li>If you use a sliding window, then make sure it 'slides' and doesn't 'jump'. For every packet that
+is acknowledged completely you should move your window base by one. You should not wait until the entire
+window is acknowedged before going onto new packets in the next window.
+<li>You must write packets to the file as soon as you receive them in order. You should not wait
+until the end of the program run before writing the entire packet set to disk.
+<li>Use multicast addresses (226.0.1.1) NOT broadcast (255.255.255.0).
+<li>You are not transfering files. You are sending packets.
+<li>Each "mcast" program writes to only ONE file. NOT one file per sender.
+<li>For performance reasons (and to make your lives debugging easier) minimize the number of threads used.
+</ol>
+</dd>
+<dt><em>First exercise handed out</em></a> (September 25, 2000)
+<dd>
+The first programming exercise was handed out in section today. See below in the Exercises section for details.
+</dd>
+<dt><em>Reference material added to website</em></a> (September 20, 2000)
+<dd>
+New reference material is now <a href="ref.html">available</a>. This includes useful books, programming
+guides, and websites about sockets.
+</dd>
+<dt><em>Class begins!</em></a> (September 11, 2000)
+<dd>
+Please make sure to you have a user account on the CS Department Undergrad machines.
+All of these machines are located in NEB 225 (accross from the department office). 
+You will <em>NEED</em> this account to turn in your assignments, get course information, 
+and test your programs. You must have an account on the SUN machines (hops, barley, ugrad1..n)
+If you want to use the NT machines you can also get an account on them. <em>HOWEVER</em>, ALL
+testing and evaluation of your assignments will be done on the SUN machines so your programs 
+must work correctly on the sun machines.
+</dd>
+</dl>
+</TD></tr>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><STRONG>Class Information</STRONG></TD></TR>
+<TR><TD>
+<h5>Instructors</h5>
+<ul>
+<li><a href="http://www.cs.jhu.edu/~yairamir/">Yair Amir</a> <a href="mailto:yairamir@cs.jhu.edu">yairamir@cs.jhu.edu</a> 
+<li><a href="http://www.cs.jhu.edu/~jonathan/">Jonathan Stanton</a> <a href="mailto:jonathan@cnds.jhu.edu">jonathan@cnds.jhu.edu</a>.
+</ul>
+<h5>Teaching Assistants</h5>
+<ul>
+<li>Yu Qiu <a href="mailto:yuqiu@cs.jhu.edu">yuqiu@cs.jhu.edu</a>
+</ul>
+<p>
+The course teaches how to design and implement efficient tools,
+protocols and systems in a distributed environment.
+The course tries to give some hands-on experience as well as some
+theoretical background.
+The programming assignments and the project in the course can be 
+done in either C/C++ or Java. These assignments will use a cluster 
+of workstations as well as several software research tools.
+</p>
+For more information about the course please contact either of the instructors. 
+Our email and phone numbers can be found on our web pages.</p>
+
+<table CELLPADDING=10 CELLSPACING=0 BORDER=0>
+<tr><td>
+<h5>Prerequisites:</h5> 
+<ul>
+<li>Intermediate Programming Course
+<li>Data Structures ( 600.226 )
+</ul>
+</td>
+<td>
+<h5>Class Schedule</h5>
+<ul>
+<li>Monday 3-4pm, Shaffer 303
+<li>Wednesday 3-5pm, Shaffer 303
+</ul>
+</td></tr></table>
+Some of the monday course meetings may occur at other
+locations that will be announced in class. 
+
+<h5>Office Hours</h5>
+<ul>
+<li>Yair Amir Monday 10:30am - 11:30am
+<li>Jonathan Stanton (email me)
+<li>Yu Qiu Tuesday 10:30am - 11:30am
+</ul>
+</TD></tr>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><STRONG>Lectures</STRONG></TD></TR>
+<TR><TD>
+For each lecture we will have a link to the slides or lecture notes 
+and a link to any recommended reference material for that lectures topic.</p>
+
+<a href="ref.html">Reference material</a> for the class, including 
+useful books, web sites, articles, etc are available.</p>
+
+<ol>
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week1/index.htm">Introduction.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week1.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week2/index.htm">Basic communication protocols.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week2.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week3/index.htm">Synchronous Consensus Models.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week3.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week4/index.htm">Multicast protocols.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week4.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week5/index.htm">Group Communication.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week5.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week6/index.htm">Asynchronous Consensus Models.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week6.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week7/index.htm">Distributed Operating Systems.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week7.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week8/index.htm">Distributed Transactions.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week8.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week9/index.htm">Replication.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week9.ps">postscript</a>)<br>
+No online reference material.
+<li><a href="http://www.cs.jhu.edu/~yairamir/cs437/week10/index.htm">Distributed Objects.</a> (also available in <a href="http://www.cs.jhu.edu/~yairamir/cs437/week10.ps">postscript</a>)<br>
+A good intro 
+<a href="http://www-4.ibm.com/software/developer/library/l-gn-cor/?n-l-1160">article</a> 
+to using CORBA.
+</ol>
+Last years lectures are available at <a href="/courses/cs437/fall1999/index.html">last years web site.</a> 
+The content of the course changes some every year but some of the material from past years is applicable.
+
+</td></tr>
+<TR><TD BGCOLOR="9f9fFF"><DD><STRONG>Exercises & Section</STRONG></TD></TR>
+<TR><TD>
+Currently the following exercises have been assigned:
+<table cellpadding=4>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 2</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test reliable multicast protocol</h3>
+Due Wednesday November 1, 2000 in class<br>
+Assignment was handed out during week 5 in lecture. It is also available 
+<a href="exercise2.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Exercise 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Design, Program and Test reliable point to point file-transfer protocol</h3>
+Due Wednesday October 11, 2000 in class<br>
+Assignment was handed out during week 3 in section. It is also available 
+<a href="exercise1.txt">here.</a>
+</td></tr>
+
+<tr valign=top><td align=center bgcolor="ffffff">Theory Homework 1</td>
+<td align=left bgcolor="ffeeee">
+<h3>Synchronous homework problems</h3>
+Due Wednesday October 4, 2000 in class<br>
+Assignment was handed out during week 3 in lecture. 
+</td></tr>
+
+</table>
+
+The <a href="ref.html">Reference Section</a> has documentation, faqs, programming guides, etc to assist with 
+doing the exercises and project.</p>
+
+The course usually includes at least the following assignments:
+<ul>
+<li>a few theoretically based homework assignments.
+<li>3 practical programming exercises.
+<li>a major final project.
+</ul>
+
+</table>
+
+</TD></TR></TABLE>
+<hr>
+<a href="http://www.cs.jhu.edu/"><IMG ALIGN=CENTER
+BORDER=0 SRC="/pics/cslogo.gif" ALT="Department of Computer Science"</a>
+
+<a href="http://www.jhu.edu/"><img border=0 ALIGN=CENTER
+src="/pics/jhu.gif" alt="The Johns Hopkins University"></a>
+
+
+
+
+<!--#include virtual="/includes/footer"-->

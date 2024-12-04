@@ -1,0 +1,24 @@
+<html>
+
+<head><title>CS 337/437 Fall 1999: Distributed Systems: Multicast Resources
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<img src="/pics/cs437_logo.gif" alt="Distributed Systems: CS437"><p>
+
+</CENTER>
+
+<p>
+<h1>Resources for IP-Multicast and General Multicast problems</h1>
+<ul>
+<li>White papers and documents about IP-Multicast protocols and deployment can
+be found at the <a href="http://www.ipmulticast.com/techcent.htm">IP-Multicast Initive</a>.
+<li>Lots of documentation and papers about 
+<a href="http://www.cs.huji.ac.il/labs/transis/index.html">Transis</a> are also available.
+
+</ul>
+
+<!--#include virtual="/includes/footer"-->

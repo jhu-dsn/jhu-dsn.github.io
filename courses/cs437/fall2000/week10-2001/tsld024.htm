@@ -1,0 +1,53 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Example Program cont.</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Example Program cont.</H1> 
+ <P><UL>
+Public class HelloWorld {
+</UL><UL>
+	public static void main(String[] args) {
+</UL><UL>
+		Message msg = new Message( “Hello World”, 0);
+</UL><UL>
+		JavaSpace space = SpaceAcessor.getSpace();
+</UL><UL>
+		space.write(msg, null, Lease.FOREVER);
+</UL><UL>
+		Message template = new Message();
+</UL><UL>
+		for (;;) {
+</UL><UL>
+			Message result = (Message)space.read(template, null, Long.MAX_VALUE);
+</UL><UL>
+			system.out.println(result);
+</UL><UL>
+			Thread.sleep(1000);
+</UL><UL>
+		}
+</UL><UL>
+	}
+</UL><UL>
+}</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld023.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld025.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld024.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

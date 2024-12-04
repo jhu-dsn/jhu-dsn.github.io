@@ -1,0 +1,43 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Spread Ordering Algorithm</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Spread Ordering Algorithm</H1> 
+ <P><UL>
+<LI><H2>Messages are stamped with several sequence values when created:
+</H2>
+<UL>
+<LI>Site Sequence number (one sequence per site)
+<LI>LTS (Lamport Time Stamp) (one sequence overall)
+<LI>FIFO Sequence number (one sequence per client)
+</UL></UL><UL>
+<LI><H2>Complete received messages are stored in a queue ordered by LTS and SiteID
+</H2>
+</UL><UL>
+<LI><H2>The highest FIFO sequence value that is deliverable in each session is stored
+</H2>
+</UL><UL>
+<LI><H2>Each daemon stores a My_Site_ARU value (my site has all messages with an LTS less then that) and an ARU value (everyone has all messages with an LTS less then that).</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld014.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld016.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld015.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

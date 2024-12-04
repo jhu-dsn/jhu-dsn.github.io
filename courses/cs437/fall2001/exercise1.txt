@@ -1,0 +1,123 @@
+        Exercise 1
+        ==========
+
+
+Construct a reliable point-to-point basic file transfer tool using UDP/IP.
+
+1. The assignment:
+
+Using the non-reliable UDP/IP protocol, you should write a tool that 
+reliably copies a file to another machine.
+
+The tool consists of two programs: 
+	ncp - the sender process.
+	rcv - the receiver process.
+
+In order to perform a file transfer operation, a receiver process (rcv) 
+should be run on the target machine.
+
+A sender process (ncp) should be run on the source machine using the 
+following interface:
+
+ncp <source_file_name> <dest_file_name>@<comp_name>
+
+A receiver process (rcv) should handle UNLIMITED number of file-transfer 
+operations, but it is allowed to handle one operation at a time 
+(sequence them). If a sender comes along while the receiver is busy, the 
+sender should be blocked until the receiver compelets the current transfer.
+The sender should know about this and report this.
+
+A sender process (npc) handles one operation and then terminates. You can 
+assume that the source file name represents a specific single file.
+
+In order to be able to check the software, each process (both rcv and npc) 
+should have a version of them (rvc_dbg and ncp_dbg) calling a coat routine 
+named sendto_dbg instead of the sendto system call. the coat routine will
+allow control of a simulated network loss.
+
+THIS SHOULD BE DONE FOR EVERY SEND OPERATION IN THE CODE.
+
+The coat routine has the same interface as sendto (see man 2 sendto). 
+The sendto_dbg routine will randomly decide to discard packets in order to 
+create additional network message omissions. 
+The source of a sendto_dbg routine is available in the course 
+home directory ~cs437/exercises/ex1/
+
+For Java you should use the DatagramSocketDBG class instead of 
+DatagramSocket. It acts just like the sendto_dbg and will randomly drop 
+packets. The source and a class file is in ~cs437/exercises/ex1/
+
+2. Performance:
+
+Using the reliable TCP/IP protocol, implement the corresponding t_ncp 
+and t_rcv.
+
+Compare the performance of (ncp rcv) to (ncp_dbg rcv_dbg) to (t_ncp t_rcv) 
+by measuring the time it takes to copy a large (4 Mbytes) file 
+from one machine to another machine.
+
+You should run these tests for the ncp_dbg/rcv_dbg 4 times, each time with 
+a different loss rate (1% 5% 10% 30%) and graph the results with the X-axis 
+being the loss rate and the Y-axis being the time the copy took. 
+
+Thus, you should turn in results comparing six experiments:
+1. t_ncp/t_rcv
+2. ncp/rcv  (zero loss rate)
+3. ncp_dbg/rcv_dbg with %1 loss rate
+4. ncp_dbg/rcv_dbg with %5 loss rate
+5. ncp_dbg/rcv_dbg with %10 loss rate
+6. ncp_dbg/rcv_dbg with %30 loss rate
+
+Please have a table with all 6 results and a graph as discribed above.
+
+3. Submission:
+
+There are two separate submissions required.
+
+1) A design document. Due September 24, 2000 at the beginning of class.
+
+2) A final submission of documentation, writeup, makefile and code. 
+Due October 3 at the beginning of class.
+
+The design document should be a well-written, complete design of your 
+file-copy program and the protocols used to make it reliable. We expect 
+it to be 1-3 pages with diagrams as needed to explain the protocol. 
+
+The design document is required and makes up about 10% of your final grade. 
+
+For the final submission you should included an updated version of your 
+design document as part of your final report. You should include any 
+changes you made to the design during the project and why you believe 
+those chanes were needed.
+
+This final report should also include a brief discussion of the performance
+results you achieved and discuss the comparison of how the protocol worked 
+under different percentages of loss.
+
+The programs should be complete, sound, and well documented. 
+
+A makefile that compiles and builds your complete program with clearly
+documented options (if needed) is required.
+
+Put the sources and executables of the programs with the supplementary 
+documentation in your home directory, under 
+
+        ~/cs437/ex1
+
+At submission deadline, make sure there is a world read permission for the 
+files (and search and read permission for the directories).
+
+In addition, please submit a printed version of your submission (sources,
+documentations, and results).
+
+Failure to comply with submission instructions may result in a lower grade.
+Issues such as correctness, design, documentation, and, of course, 
+efficiency will be considered.
+
+You can work on it in groups with at most 2 students.
+
+Final Submission date is Wednesday, Oct. 3, 2001, in class.
+The initial design document is due Monday, Sept. 24, 2001 in class. 
+There will be no extensions. A failure to submit by the deadline will result
+in a zero score for the exercise.
+

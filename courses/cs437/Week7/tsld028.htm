@@ -1,0 +1,48 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>E3PC Recovery Procedure</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>E3PC Recovery Procedure</H1> 
+ <P><UL>
+<LI><H2>Elect a coordinator - send state and 2 counters.
+</H2>
+</UL><UL>
+<LI><H2>upon getting the Max_elected from the coordinator, set Last_elected = Max_elected+1.
+</H2>
+</UL><UL>
+<LI><H2>If the coordinator decision is not to block
+</H2>
+<UL>
+<LI>It sets Last_attempt = Last_elected.
+<LI>move to the calculated state and multicast decision.
+</UL></UL><UL>
+<LI><H2>Upon receiving Prepare-Commit/Prepare-Abort, the DM:
+</H2>
+<UL>
+<LI>Sets Last_attempt = Last_elected.
+<LI>Changes state to PC or PA and sends OK.
+</UL></UL><UL>
+<LI><H2>If a fault happens - restart the recovery procedure, otherwise termination is guaranteed.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld027.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld029.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld028.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

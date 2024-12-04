@@ -1,0 +1,59 @@
+        Exercise 3
+        ==========
+
+1. The assignment:
+
+Using Spread, you should write a tool that reliably multicast messages 
+between n processes that reside on the same Spread domain. 
+
+The tool consists of only one program: 
+	mcast - the tool's process. 
+
+The mcast process should be run as follows:
+
+mcast <num_of_messages> <process_index> <num_of_processes>
+
+The num_of_processes indicates how many mcsat processes will be run. 
+The maximal number of num_of_processes is 6.
+
+The num_of_messages indicates how many messages THIS mcast has to initiate.
+This number might be in the order of 1000.
+Each message should contain the creating process_index, the message_index, 
+and a random number, each of which is stored in a 4 bytes integer.
+Therefore each message should contain 12 bytes at least.
+
+The requirement is for all of the processes to deliver all of the messages
+in the SAME ORDER.
+
+On delivery of a message the mcast should write to a file, in ASCII format,
+the packet id as follows:
+	fprintf( fd, "%5d, %6d, %5d\n", 
+	       message->process_index, message->index, message->random_data );
+
+The output file name will be <process_index>.out
+
+After all the mcast processes have been run, they get membership messages 
+and wait until all of them are running. (because of that, there is no need 
+for a separate start program).
+
+More information about spread can be found at ~cs437/spread
+and at http://www.spread.org/
+
+2. Submission 
+
+You should work on this exercise in pairs.
+Put the sources and executables of the mcast program, and the 
+supplementary documentation in your home directory, under 
+        ~/cs437/ex3
+
+The program should be complete, sound, and well documented. A short 
+external design documentation should be included. Describe your work 
+with relation to the process groups used.
+
+In addition, please submit a printed version of your submission 
+(sources, documentations, and results).
+Failure to comply with submission instructions may result in a 
+lower grade. Issues such as correctness, design, documentation, 
+and efficiency will be considered.
+
+Submission date is Monday November 19.  No late submissions.

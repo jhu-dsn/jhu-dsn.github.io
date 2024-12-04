@@ -1,0 +1,156 @@
+        Exercise 1
+        ==========
+
+
+Construct a reliable point-to-point basic file transfer tool using UDP/IP.
+
+1. The assignment:
+
+Using the non-reliable UDP/IP protocol, you should write a tool that 
+reliably copies a file to another machine.
+
+The tool consists of two programs: 
+	ncp - the sender process.
+	rcv - the receiver process.
+
+In order to perform a file transfer operation, a receiver process (rcv) 
+should be run on the target machine.
+
+A sender process (ncp) should be run on the source machine using the 
+following interface:
+
+ncp <loss_rate_percent> <source_file_name> <dest_file_name>@<comp_name>
+where <comp_name> is the name of the computer where the server runs
+(ugrad1, ugrad2, etc.)
+
+A receiver process (rcv) should handle UNLIMITED number of file-transfer 
+operations, but it is allowed to handle one operation at a time 
+(sequence them). If a sender comes along while the receiver is busy, the 
+sender should be blocked until the receiver completes the current transfer.
+The sender should know about this and report this.
+The receiver process has the following interface:
+rcv <loss_rate_percent>
+where loss rate is the percentage loss of sent packets. w.g. rcv 10 will drop
+10 percent before sending.
+
+A sender process (npc) handles one operation and then terminates. You can 
+assume that the source file name represents a specific single file.
+
+In order to be able to check the software, each process (both rcv and npc) 
+should be calling a coat routine  named sendto_dbg instead of the sendto 
+system call. the coat routine will allow control of an emulated network 
+loss percentage for each sent packet .
+
+THIS SHOULD BE DONE FOR EVERY SEND OPERATION IN THE CODE (both for the 
+sender and the receiver).
+
+The coat routine has a similar interface as sendto (see man 2 sendto) but
+it add one additional parameter for loss rate. 
+The sendto_dbg routine will randomly decide to discard packets in order to 
+create additional network message omissions based on the loss rate. 
+The source of a sendto_dbg routine is available in the course 
+home directory ~cs437/exercises/ex1/
+
+Both the sender (ncp, ncp_dbg) and the receiver (rcv, rcv_dbg) programs
+should report two statistics every 100Kbytes of data sent/received
+IN ORDER (all the data from the beginning of the file to that point
+was received with no gaps):
+	1) The total amount of data (in Kbytes) successfully transferred
+by that time
+	2) The average transfer rate of the last 100Kbytes sent/received
+(in Kbits/sec).
+
+At the end of the transfer, both sender and receiver programs should
+report the size of the file transferred, the amount of time required for
+the transfer, and the average rate at which the communication occurred (in
+Kbits/sec).
+
+2. Performance:
+
+Using the reliable TCP/IP protocol, implement the corresponding t_ncp 
+and t_rcv. These should report the amount of data transferred and the 
+rate, the same way as ncp and rcv programs. 
+
+Compare the performance of (ncp rcv) to (t_ncp t_rcv) 
+by measuring the time it takes to copy a 10 Mbytes file 
+from one machine to another machine.
+
+You should run these tests for the ncp/rcv 5 times, each time with 
+a different loss rate (0% 1% 5% 10% 25%) and graph the results with the X-axis 
+being the loss rate and the Y-axis being the time the copy took. 
+
+Thus, you should turn in results comparing eight experiments:
+1. t_ncp/t_rcv
+2. ncp/rcv with zero loss rate
+3. ncp/rcv with %1 loss rate
+4. ncp/rcv with %5 loss rate
+5. ncp/rcv with %10 loss rate
+6. ncp/rcv with %25 loss rate
+7. ncp/rcv with zero loss rate, run AT THE SAME TIME with t_ncp/t_rcv
+  (this will evaluate your protocol when COMPETING with TCP)
+
+Please have a table with all 7 results and a graph as described above.
+
+3. Submission:
+
+There are two separate submissions required.
+
+1) A paper submission of your design. 
+Due September 29 at the beginning of class. All the submission documents
+should be computer printed (not hand-written !)
+
+The design document should be a well-written, complete design of your 
+file-copy program and the protocols used to make it reliable. We expect 
+it to be 2-3 pages with diagrams as needed to explain the protocol. 
+
+The design document is required and makes up about 20% of your final grade. 
+
+2) An electronic submission of all the documents/code described above.
+Due October 5 at 11:00pm. You should make a tar file named exactly 
+as your login account with all your documents and code (DO NOT include 
+the 10 Mb file transferred, core file, object fles, or executables) and 
+email the tar file as an attachment to cs437@cs.jhu.edu. The subject 
+of the email should be "Exercise 1 submission <account name>", and in the body of the 
+email write the names of the students that worked on the exercise.
+
+The complete submission should include your final design. 
+It should also include a discussion of the performance results you 
+achieved and discuss the comparison of how the 
+protocol worked under different percentages of loss.
+
+The programs should be complete, sound, and well documented. 
+
+A makefile that compiles and builds your complete program with clearly
+documented options (if needed) is required.
+
+You can work on it in groups with at most 2 students. It is highly
+advisable to work on it in groups of exactly 2 students.
+
+Example for creating the tar file:
+
+If your login account on ugrad machines is <yourname>, then create a 
+directory named <yourname> and copy all your source code, makefile, 
+documentation and design in that directory. DO NOT copy there the 10 Mb file 
+you used for testing your programs, and any intermediate other files. 
+Outside of the <yourname> directory run the following command:
+
+tar -cf <yourname>.tar <yourname>
+
+Failure to comply with submission instructions may result in a lower grade.
+Issues such as correctness, design, documentation, and, of course, 
+efficiency will be considered.
+
+Final Submission date is Tuesday, October 5, 2004, 11:00pm.
+
+
+Suggestions:
+------------
+
+1. Come talk with us on your design before implementing it.
+2. Experiment with window size and packet size.
+3. Make sure the program works with any file, not only ascii files.
+4. Check that the received file is identical to the original file (diff).
+5. Make sure files are local to the computers you are using (not via NFS) - 
+   for example, you could use the tmp directory for that but then make sure
+   you erase all these files every time you log off.
+

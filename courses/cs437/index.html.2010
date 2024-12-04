@@ -1,0 +1,191 @@
+<html>
+
+<head><title>Computer Science 337/437 Fall 2010: Distributed Systems
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<img src="/pics/cs437_logo.gif" alt="Distributed Systems: CS437"><p>
+
+</CENTER>
+
+<p>
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0 WIDTH="100%">
+<TR>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html"><STRONG>Home</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#classinfo"><STRONG>Class Information</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#lectures"><STRONG>Lectures</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#exercises"><STRONG>Exercises</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="http://lists.cnds.jhu.edu/mailman/listinfo/cs437-2010"><STRONG>Mail List</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="ref.html"><STRONG>Reference Material</STRONG></a></TD>
+</TR></TABLE>
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+<TR><TD BGCOLOR="9f9fFF"><DD><STRONG>News</STRONG></a></TD></TR>
+<TR><TD>
+
+
+<dl>
+
+<dd>
+Announcement will be made on the mailing list. Please join it.
+</dd>
+</dl>
+
+<p>
+</TD></tr>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="classinfo"><STRONG>Class Information</STRONG></a></TD></TR>
+<TR><TD>
+<h5>Instructor</h5>
+<ul>
+<li><a href="http://www.cs.jhu.edu/~yairamir">Yair Amir</a> <a href="mailto:cs437-help@dsn.jhu.edu">cs437-help@dsn.jhu.edu</a>.
+</ul>
+<h5>Teaching Assistant</h5>
+<ul>
+<li>Eddie Holzinger <a href="mailto:cs437-help@dsn.jhu.edu">cs437-help@dsn.jhu.edu</a>.
+</ul>
+<!--
+<h5>Special Help</h5>
+<ul>
+<li><a href="http://www.cs.jhu.edu/~jak">Jonathan Kirsch</a>, <a href="http://www.cs.jhu.edu/~ralucam">Raluca Musaloiu-Elefteri</a> <a href="mailto:cs437-help@dsn.jhu.edu">cs437-help@dsn.jhu.edu</a>.
+</ul>
+-->
+<p>
+The course teaches how to design and implement efficient tools, protocols
+and systems in a distributed environment.  The course gives some hands-on
+experience as well as some theoretical background.  The programming
+assignments and the project in the course should be done in C / C++.
+User interface parts of programs can be built in java if that is desired.  
+The assignments will be evaluated on the Ugrad1-Ugrad20 cluster in 
+the undergrad lab.  </p> 
+
+For more information about the course please contact the instructor.
+
+<table CELLPADDING=10 CELLSPACING=0 BORDER=0>
+<tr><td>
+<h5>Prerequisites:</h5> 
+<ul>
+<li>Intermediate Programming Course
+<li>Data Structures ( 600.226 )
+</ul>
+</td>
+<td>
+<h5>Class Schedule</h5>
+<ul>
+<li>Monday    3:00pm - 4:15pm, Shaffer 304
+<li>Wednesday 3:00pm - 4:15pm, Shaffer 304
+</ul>
+</td></tr></table>
+
+<h5>Office Hours</h5>
+<ul>
+<li>Yair Amir - Monday 2pm-3pm. You can e-mail at any time or drop by office or lab (NEB313 or NEB316).
+</ul>
+
+<h5>Academic Integrity</h5>
+<p>Academic honesty and ethical behavior are required in this course, as they are in all 
+courses at Johns Hopkins University. This course will strictly enforce the 
+<a href="http://www.cs.jhu.edu/integrity-code">Computer Science Department Academic Integrity policy</a>, 
+which can be found at the department's web page. </p>
+
+<p>
+<p>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="lectures"><STRONG>Lectures</STRONG></a></TD></TR>
+<TR><TD>
+For each lecture we will have a link to the slides or lecture notes 
+and a link to any recommended reference material for that lectures topic.</p>
+
+<!-- here is how to comment -->
+
+<p>
+Fall 2010 Lectures:
+
+<ul>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week1.pdf">Introduction and basic protocols.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week2.pdf">Synchronous Models for Consensus.</a> 
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week3.pdf">Multicast Protocols.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week4.pdf">Group Communication.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week5.pdf">Asynchronous Models for Consensus.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week6.pdf">Distributed Transactions.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week7.pdf">Replication.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week8.pdf">Resilient Replication.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week9.pdf">Overlay Networks.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week11.pdf">Peer to Peer & Probabilistic Protocols.</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week12.pdf">Communication and Knowledge.</a>
+</ul>
+
+
+
+<p>
+Old Fall 2009 Lectures:
+
+<ul>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/Week10.pdf">Wireless Mesh Networks.</a>
+</ul>
+
+<p>
+
+<a href="ref.html">Reference material</a> for the class, including 
+useful books, web sites, articles, etc are available.</p>
+
+</td></tr>
+<br>
+<br>
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="tutorials"><STRONG>Tutorials</STRONG></a></TD></TR>
+<TR><TD>
+All the source code presented during tutorials is also available on the ugrad machines in the directory ~cs437/tutorials/
+
+<ul>
+<p>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/week1_tutorial.tar"> Week 1 tutorial sample programs</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/week1_tutorial_slides.pdf"> Week 1 tutorial slides</a>
+<li> <a href="http://www.cnds.jhu.edu/courses/cs437/week2_tutorial.tar">Week 2 tutorial sample programs</a> 
+</ul>
+</TD></TR>
+
+<br>
+
+<TR><TD BGCOLOR="9f9fFF"><DD><a name="exercises"><STRONG>Exercises & Homeworks</STRONG></a></TD></TR>
+<TR><TD>
+
+<p>
+<p>
+</table>
+<p>
+<p>
+
+The course includes the following assignments:
+<ul>
+<li>Two theoretically-based homework assignments.
+<ul>
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/Theory_1.pdf">Theoretical assignment 1</A>.
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/Theory_2.pdf">Theoretical assignment 2</A>.
+</ul>
+
+<li>3 practical programming exercises:
+<ul>
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/exercises/Ex1_2010.txt"> Exercise 1</A>.
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/exercises/Ex2_2010.txt"> Exercise 2</A>.
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/exercises/Ex3_2010.txt"> Exercise 3</A>.
+</ul>
+<li>  <A href="http://www.cnds.jhu.edu/courses/cs437/exercises/Proj_2010.txt">Final Project</A>.
+
+<ol>
+</ol>
+
+</ul>
+
+</table>
+
+</TD></TR></TABLE>
+<hr>
+<a href="http://www.cs.jhu.edu/"><IMG ALIGN=CENTER
+BORDER=0 SRC="/pics/cslogo.gif" ALT="Department of Computer Science"</a>
+
+<a href="http://www.jhu.edu/"><img border=0 ALIGN=CENTER
+src="/pics/jhu.gif" alt="The Johns Hopkins University"></a>
+
+<!--#include virtual="/includes/footer"-->

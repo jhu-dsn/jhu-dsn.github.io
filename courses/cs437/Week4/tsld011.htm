@@ -1,0 +1,45 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Isis Causal Order</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Isis Causal Order</H1> 
+ <P><UL>
+<LI><H2>Each process maintains a time vector of size n.
+</H2>
+</UL><UL>
+<LI><H2>Initially VT[i] = 0.
+</H2>
+</UL><UL>
+<LI><H2>When p sends a new message m: VT[p]++
+</H2>
+</UL><UL>
+<LI><H2>Each message is stamped with VTm which is the current VT of the sender.
+</H2>
+</UL><UL>
+<LI><H2>When p delivers a message, p updates its vector: for k in 1..n: 
+</H2>
+</UL><UL>
+<H2>				VTp[k] = max{ VTp[k], VTm[k] }.</H2>
+</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

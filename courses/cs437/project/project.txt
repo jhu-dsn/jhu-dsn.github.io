@@ -1,0 +1,248 @@
+                            Distributed Systems
+                            ===================
+                               Final  Project
+                               ==============
+
+
+The goal of the final project is to produce a distributed software
+system that demonstrates what you have learned in this class and
+provides a useful service.
+
+The focus of your project should be on the distributed aspects
+and correctness of the system and not the graphical, GUI, or other
+peripheral issues.
+
+REQUIREMENTS for all projects
+-----------------------------
+
+- Efficient use of messages -- Don't send messages unnecessarily.
+
+- An organized Makefile is required.
+
+- A detailed description of the algorithm and the system design should be
+  provided. The initial design should be in the first design document.
+  The final report should include an enhanced and updated design document.
+
+- System produces correct results for all inputs, except those specificly
+  listed as not required.
+
+Delivery Date
+-------------
+
+Initial design document is due Monday  Nov. 25 in class. Final delivery date 
+is Friday December 13 at noon. 
+
+
+PROJECTS
+--------
+
+There are three choices for the final project:
+
+1) Fault-tolerant distributed news server.
+2) Real-time synchronized distributed game.
+3) Any other idea that you propose and we agree to. If you choose this 
+   option, a full proposal should be submitted by Monday, Nov. 18 in class.
+
+We will describe the first two here in detail.
+
+=================================================
+Project 1: Fault-tolerant distributed news server
+=================================================
+
+
+Construct a reliable and efficient news service for users over a 
+network of computers (with only one news group).
+
+The service:
+------------
+
+Every user can connect via a news client to any one of replicated servers. 
+
+The news service provides the following capabilities:
+
+1. Login as a user.
+
+   The client needs to login with a user name to perform any of the tasks 
+   below. You should allow the client to login as a new user as part of 
+   the menu by specifying the user name.
+
+2. Connecting to a server.
+
+   The client needs to connect to a server to perform any of the tasks below.
+
+   You should allow the client to change its server as
+   part of the menu, by specifying the server index. 
+
+   * At any point, the client may be connected to one server only.
+   * To connect to a server, all a client needs to do is to set this
+     server as its serving server. Client/Server communication can
+     be done separately or using Spread via a private group for each.
+
+3. View list of headers of available messages (The service should distinguish 
+   between messages that were already read by this user, and unread messages):
+
+   Result: 
+	The view should include the user name, the responding server index and 
+	a list of message headers. The headers in the list will be numbered 
+	(1, 2, 3, ...) the header should contain a subject and author. 
+
+	* Each request for a view should result in the most updated information 
+	  possible.
+
+4. Post a message:
+        subject:  <subject string>
+        <msg string>           
+
+          * Note that the size of the msg string can be bounded to 1000 bytes.
+
+	    Using Java, this can be a form to fill (also using X if you like).
+
+5. Delete a message (read or unread):
+
+   Will allow to delete a message from this user's view only, by its number 
+   or by pointing on it.
+
+6. Read a message (read or unread):
+
+   Will allow the user to retrieve the content of a message by its number.
+   The message should be marked as read for this user thereafter.
+
+7. Print the view of the servers in the current server's network component.
+
+
+The News Servers:
+-----------------
+
+The news client connects to one of the server processes. Each of the
+server processes is a background daemon that connects to a Spread network.  
+The server may crash and may subsequently recover. The network between the 
+servers may partition to several components and may re-merge.
+The overall set of servers is fixed and is known in advance - there are 
+exactly FIVE servers, each running on an ugrad machine.
+The server is started with its id as a parameter:
+	% server [1-5]
+
+The users must always receive a consistent view of the single news group, 
+regardless of which server is consulted (of course, as consistent  
+as possible, according to the network connectivity).
+The view should be consistent as to which messages are available, 
+have been read or deleted by this user.  Each server should save information 
+separately on disk.
+
+A news message should be expired by the system 300 seconds after its creation.
+After expiration, the message should not be available for users.
+At some point after expiration, the message should be deleted without trace to 
+it in the system's data structures (garbage collection).
+
+The membership emulation:
+--------------------------
+
+The membership emulation will be managed by spmonitor, an interactive program 
+provided with the spread toolkit. spmonitor can redefine the membership 
+configuration at any time by defining for each server which network component it 
+belongs to, or defining some servers as crashed. Note that spmonitor will generate 
+spread daemon partitions and crashes, but your program should also handle user 
+crashes (Ctrl+C) of the spread daemons, news servers, and news clients.  
+
+When a spread daemon crashes, the news server attached to it crashes (exits) 
+also. A crashed server exits the program immediately! It is not legal to 
+write to disk after a server looses its connection to Spread!
+
+When a server crashes, clients connected to that server will report the loss of 
+connection to the user, so that the user can connect to another server and continue
+posting/receiving messages. 
+
+Note:
+
+The users are not known beforehand, and their number is not bounded.
+
+CS 600.337 students can assume that no server or Spread daemons crashes ever. 
+They only need to handle network partitions. Therefore, they do not need to 
+write to or read from disk. This also simplifies the rest of the project.
+
+Summary
+-------
+
+These are 2 programs:
+
+The client 
+The server 
+
+You also need to run your own Spread daemons in order to instantiate the network,
+partitions and crashes.
+
+
+==========================================================
+Project 2: Real-time synchronized distributed game
+==========================================================
+
+NOTE: This project is not as well defined as the others. If you
+are interested in it you need to come talk to us personally.
+
+"Flubber vs. Professor Brainard"
+--------------------------------
+
+Construct a GUI application that maintains a consistent state
+between up to 5 instances of the program (called "flubber") as an object 
+moves around the screen and human users add and remove elements 
+from the screen.
+
+When a change is made to one machine (such as adding or removing a wall, or that machine's ball of flubber moving) then all the
+other machines should reflect that change as soon as possible,
+certainly within a fraction of a second. A screen update rate of at
+least 10 frames per second should be achiveved.
+
+Just like in the movie flubber bounces off of everything it hits. In
+this program you have a screen like below:
+
+--------------------------------------
+|            |         |        ___  |
+|    | |   |      | _  ______|       |
+|      |   |      |           -------|
+|      | *    |   |    -------       |
+|      |          ____|              |
+|       |  |          |       *      |
+|   |      |          |   -----------|
+| |--------           |              |
+|         *      |                   |
+--------------------------------------
+
+* = a ball of flubber
+|_- = walls
+
+The balls of flubber will just keep bouncing around following very
+basic laws of physics. They bounce off walls and floors at an angle
+equal to the angle of incidence but reflected off the
+perpendicular. When a flubber hits a wall it turns that segment of
+wall the same color as the flubber which hit it.
+
+For each process that starts another, differently colored, ball
+appears and begins bouncing around at a random location and random
+(but constrained) velocity.
+
+The only human interface is that a person who clicks on a wall
+location will cause the wall to disappear and if they click on a
+location that has no wall, a wall will appear in that location.
+The human should also be able to quit the program and restart it. A 
+restart will cause all the machines to default to simple startup layout
+of walls and reset the balls of flubber to a random location, direction 
+and velocity.
+
+The main goal of this project is to keep all the displays showing the
+same location of all the walls and balls at all times.
+
+The flubber program should handle network partitions and merges, but
+does not have to handle crashes. So if a group of 5 flubbers is
+partitioned into two subsets of size 2 and 3, the three who are still
+together should be kept synchronized and the two that are together
+should be synchronized, but all five may not be synchronized any
+more. When the partition is healed and the 5 machines are all together
+then the state of all the machines should be merged.
+
+A merge should require that all the walls present in any of the partitions 
+exist in the final merged game. The balls of flubber should appear whereever
+their owner (the machine who created them) thinks they should be.
+
+To test the network partition/merge handling you will need to use spmonitor, 
+like in Project 1. 
+
