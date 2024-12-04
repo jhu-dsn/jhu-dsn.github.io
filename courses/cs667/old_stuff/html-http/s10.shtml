@@ -1,0 +1,26 @@
+<html><head><title>Programming the Web</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Programming the Web
+</h1>
+
+<big>All web programming is platform independent from the perspective of
+the user.  From the perspective of the developer, this may not be the
+case... </big>
+
+<font size=7>
+
+<h2>FastCGI</h2>
+<ul>
+<li>Server independent
+<li>Usable with (almost) any language
+<li>Significantly faster than CGI due to continually running CGI process
+<li>Runs on any machine
+</ul>
+
+</font>
+
+<a href="http://www.fastcgi.com/">FastCGI</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

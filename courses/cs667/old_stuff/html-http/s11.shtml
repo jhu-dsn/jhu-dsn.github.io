@@ -1,0 +1,32 @@
+<html><head><title>Programming the Web</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Programming the Web
+</h1>
+
+<font size=7>
+
+<h2>Server APIs</h2>
+<ul>
+<li>Totally server dependent
+<li>Fewer languages available
+<li>Fewer platforms available
+<li>Code is written <em>into</em> the server.
+<ul>
+<li>Security issue
+<li>Server stability issue
+<li>Ease of modification issue
+<li>Ease of programming issue
+</ul>
+</ul>
+
+</font>
+
+<a href="http://www.apache.org/docs/misc/API.html">Apache server
+API</a><br>
+<a
+href="http://home.netscape.com/misc/developer/conference/proceedings/s5/index.html">Netscape
+server API (NSAPI)</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

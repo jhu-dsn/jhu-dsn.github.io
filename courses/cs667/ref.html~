@@ -1,0 +1,83 @@
+<html>
+
+<head><title>Computer Science 337/437 Fall 2000: Distributed Systems: Reference Material
+</title></head>
+
+<body link="#117F78" bgcolor="#FFFFFF">
+
+<center>
+
+<h1>Advanced Distributed Systems and Networks
+<br>
+600.667</h1>
+
+
+</CENTER>
+
+<p>
+
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0 WIDTH="100%">
+<TR>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html"><STRONG>Home</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="index.html#classinfo"><STRONG>Class Information</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="http://lists.cnds.jhu.edu/mailman/listinfo/cs667-2003"><STRONG>Mail List</STRONG></a></TD>
+<TD BGCOLOR="FF9f9f"><DD><a href="ref.html"><STRONG>Reference Material</STRONG></a></TD>
+</TR></TABLE>
+<TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+<TR><TD BGCOLOR="9f9fFF"><STRONG>Reference Material</STRONG></TD></TR>
+<TR><TD>
+This page contains useful web links, and other documentation and reference material 
+related to CS 667. Some of this material is provided by other web sites and may 
+change, so please tell us if you notice a problem with these links..
+</TD></tr>
+
+<tr></table>
+</TR></TABLE>
+<br>
+<H2>Secure DNS</H2>
+<LI> <a href="http://www.ietf.org/rfc/rfc2535.txt"> Domanin Name Systems Security Extensions </a><br>
+<LI> <a href="http://www.ietf.org/internet-drafts/draft-ietf-dnsext-dnssec-intro-04.txt"> DNS Security Introduction and Requirements (draft-ietf-dnsext-dnssec-intro-04)</a><br>
+<br>
+
+<H2>Byzantine Fault-Tolerance</H2>
+
+<LI> Byzantine Generals Problem, L. Lamport, R. Shostak and M. Pease. 
+<LI> <a href="http://citeseer.nj.nec.com/reiter95rampart.html">
+      The Rampart Toolkit for Building High-Integrity Services. Mike Reiter</a> 
+<LI> <a href="http://citeseer.nj.nec.com/kihlstrom98securering.html"> 
+     The SecureRing Protocols for Securing Group Communication. 
+Kim Potter Kihlstrom, L. E. Moser, P. M. Melliar-Smith </a>
+<LI> <a href="http://citeseer.nj.nec.com/castro01practical.html"> 
+     Practical Byzantine Fault Tolerance.
+     Miguel Castro </a>
+
+<LI> <a href="http://www.cs.huji.ac.il/~dalia/pubs.html">
+A Generic Scheme for Building Overlay Networks in Adversarial Scenarios.  
+I. Abraham, B. Awerbuch, Y. Azar, Y. Bartal, D. Malkhi and E. Pavlov. </a>
+<br>
+
+<H2>Intrusion Detection </H2>
+<LI>Autonomic Response to Distributed Denial of Service Attacks.
+Dan Sterne, Kelly Djahandari, Brett Wilson,  Bill Babson,Dan Schnackenberg,
+ Harley Holliday, and Travis Reid<br>
+<br>
+
+<H2>Overlay Networks</H2>
+<LI> <a href="http://www.spines.org"> Spines </a>
+<LI> <a href="http://nms.lcs.mit.edu/ron/"> Resilient Overlay Networks (RON) </a>
+<LI> <a href="http://www.isi.edu/xbone/"> X-Bone </a><br>
+<br>
+
+<hr>
+<a href="http://www.cs.jhu.edu/"><IMG ALIGN=CENTER
+BORDER=0 SRC="/pics/cslogo.gif" ALT="Department of Computer Science"</a>
+<br>
+
+
+<a href="http://www.jhu.edu/"><img border=0 ALIGN=CENTER
+src="/pics/jhu.gif" alt="The Johns Hopkins University"></a>
+
+
+
+
+<!--#include virtual="/includes/footer"-->

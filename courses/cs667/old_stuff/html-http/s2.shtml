@@ -1,0 +1,20 @@
+<html><head><title>
+Gopher vs. the World Wide Web
+</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>Gopher vs. the World Wide Web</h1>
+
+<font size=7>
+<ul>
+<li>Simple menuing vs. Freeform text
+<li>Preset vs "Live" media typing
+<li>Anchors
+<li>Server Parsed tokens
+</ul>
+</font>
+
+<a href="http://www.boutell.com/faq/">The WWW FAQ</a>
+
+<!--#include virtual="bottom.cgi" -->
+
+</body></html>

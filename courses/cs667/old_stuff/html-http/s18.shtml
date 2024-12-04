@@ -1,0 +1,44 @@
+<html><head><title>Security</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+Security
+</h1>
+
+<font size=7>
+
+<ul>
+<li>Basic HTML - no possible attacks.
+<li>JavaScript & Java make attacks possible
+<li>Haste to bring new features to market causes problems
+<li>Little thought given to security
+</ul>
+
+</font>
+
+<a href="HostileThreads.html">Java denial-of-service attack</a>.
+<blockquote><font
+color=red>DON'T RUN THIS UNLESS YOU KNOW WHAT YOU ARE
+DOING!</font></blockquote>
+
+<a href="http://www-genome.wi.mit.edu/WWW/faqs/www-security-faq.html">The
+WWW Security FAQ</a><p>
+
+<a href="http://www.cs.princeton.edu/sip/pub/secure96.html">Java
+Security: From HotJava to Netscape and Beyond</a>:
+
+<blockquote>"We conclude that the Java system in its current form cannot
+easily be made secure.  Significant redesign of the language, the bytecode
+format, and the runtime system appear to be necessary steps toward
+building a higher-assurance system."</blockquote>
+
+<a href="http://www.math.gatech.edu/~mladue/HostileApplets.html">Hostile
+Java applets</a><p>
+<a href="http://www.osf.org/~loverso/javascript/">JavaScript holes</a><p>
+
+<a
+href="http://www.packet.com/packet/schrage/97/01/index1a.html">JavaScript
+processor cycle stealer</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

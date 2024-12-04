@@ -1,0 +1,26 @@
+<html><head><title>The Web Protocols</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+The Web Protocols
+</h1>
+
+<font size=7>
+
+<h2>HTTP-NG: "The Next Generation"</h2>
+<ul>
+<li>Multithreaded
+<li>Multichannel (control + data channels)
+	<ul>
+	<li>Metainformation and redirections
+	</ul>
+<li>Distributed object store
+</ul>
+
+</font>
+
+<a
+href="http://www.w3.org/pub/WWW/Protocols/HTTP-NG/http-ng-status.html">HTTP-NG</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

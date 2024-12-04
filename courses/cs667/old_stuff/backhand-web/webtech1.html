@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Web Server Technology</title>
+<script language="JavaScript">
+
+<!--
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+if (browserName == "Netscape" && browserVer >= 3) version = "n3";
+else version = "n2";
+if (version == "n3") {
+
+SSon = new Image(256, 256);
+SSon.src = "images/SingleServerModel_On.jpg";
+SSoff = new Image(256, 256);
+SSoff.src = "images/SingleServerModel_Off.jpg";
+PSon = new Image(256, 256);
+PSon.src = "images/ServerProxyModel_On.jpg";
+PSoff = new Image(256, 256);
+PSoff.src = "images/ServerProxyModel_Off.jpg";
+DSon = new Image(256, 256);
+DSon.src = "images/DNSRotationModel_On.jpg";
+DSoff = new Image(256, 256);
+DSoff.src = "images/DNSRotationModel_Off.jpg";
+BSon = new Image(256, 256);
+BSon.src = "images/BackhandServerModel_On.jpg";
+BSoff = new Image(256, 256);
+BSoff.src = "images/BackhandServerModel_Off.jpg";
+Blank = new Image(256, 256);
+Blank.src = "images/Blank.jpg";
+}
+
+function img_act(imgName) {
+if (version == "n3") {
+imgOn = eval(imgName + ".src");
+document ["Model"].src = imgOn;
+}
+}
+
+//-->
+
+
+</script>
+  </head>
+
+  <body bgcolor=#ffffff text=#000000>
+  <img src="images/webservertech_tag.jpg">
+  <hr>
+  <center>
+  <table border=0 cellpadding=3 cellspacing=0>
+  <tr><td colspan=3><img src="images/summary.jpg"></td></tr>
+  <tr bgcolor=#bbbbbb><td width=48></td><td align=center><B>Server Models Discussed</B></td>
+      <td align=center><b>Model Overview</b></td>
+  <tr><td></td><td align=center><a href="webtech2.html"
+           onMouseover="img_act('SSoff')" onMouseout="img_act('Blank')">
+           <B>Single Server Model</b></a> <a href="webtech2.html"
+           onMouseover="img_act('SSon')" onMouseout="img_act('Blank')">
+           (Activated)</a><br><br>
+                       <a href="webtech3.html"
+           onMouseover="img_act('PSoff')" onMouseout="img_act('Blank')">
+           <b>Proxied Servers Model</b></a> <a href="webtech3.html"
+           onMouseover="img_act('PSon')" onMouseout="img_act('Blank')">
+           (Activated)</a><br><br>
+                       <a href="webtech4.html"
+           onMouseover="img_act('DSoff')" onMouseout="img_act('Blank')">
+           <b>DNS Server Rotation Model</b></a> <a href="webtech4.html"
+           onMouseover="img_act('DSon')" onMouseout="img_act('Blank')">
+           (Activated)</a><br><br>
+                       <a href="webtech5.html"
+           onMouseover="img_act('BSoff')" onMouseout="img_act('Blank')">
+           <b>Backhand Model</b></a> <a href="webtech5.html"
+           onMouseover="img_act('BSon')" onMouseout="img_act('Blank')">
+           (Activated)</a></td>
+      <td><img name="Model" height=256 width=256 
+           src="images/Blank.jpg"></td></tr>
+  </table>
+  <hr>
+  </center>
+  <a href="webtech2.html">First model</a>
+    <center>
+    <hr>
+    <address><a href="mailto:jesus@cs.jhu.edu">Theo Schlossnagle</a></address>
+    </center>
+<!-- Created: Sun Mar 29 19:47:58 EST 1998 -->
+<!-- hhmts start -->
+Last modified: Wed Apr  1 21:55:40 EST 1998
+<!-- hhmts end -->
+  </body>
+</html>

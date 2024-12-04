@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 9</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+<H1 ALIGN=center>MPEG-1 Encoding</H1>
+<FONT SIZE=7>
+<IMG SRC="IntraFrame.gif">
+<P>Actually uses 4 types of compression:
+<UL>
+<LI>Subsampling the source
+<LI>Discrete Cosine Transformation
+<LI>Huffman encoding and RLE
+<LI>Motion compensation
+</UL>
+
+</FONT>
+
+<!--#include virtual="bottom.cgi" -->
+
+</BODY>
+</HTML>

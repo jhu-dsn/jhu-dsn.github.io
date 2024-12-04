@@ -1,0 +1,28 @@
+<html><head><title>Programming the Web</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+Programming the Web
+</h1>
+
+<font size=7>
+
+<h2>Combinations</h2>
+<blockquote>
+
+JavaScript, CGI/FastCGI, and Server-Parsed HTML can be mixed at will. 
+
+<p>
+
+The footer on all of these slides is a Server-Parsed CGI program that
+creates and sends to the browser a custom JavaScript program on the fly to
+implement the left/right buttons.
+
+</blockquote>
+
+</font>
+
+<a href="bottom.txt">Source code for the program</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

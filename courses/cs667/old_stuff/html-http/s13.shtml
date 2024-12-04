@@ -1,0 +1,34 @@
+<html><head><title>Programming the Web</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+Programming the Web
+</h1>
+
+<font size=7>
+<center>
+<table border=10>
+<tr><td align=center>
+<applet code="Bubbles.class" width=500 height=200>
+</applet></td></tr>
+</table>
+</center>
+
+<h2>Java</h2>
+<ul>
+<li>An object-oriented language
+<li>Platform independent (not truly achieved yet)
+<li>Significantly greater capabilities than JavaScript
+<li>Strict variable typing
+<li>Syntax similar to C++
+<li>Works within the browser
+<li>Fairly heavy weight - the applet must be downloaded seperately
+</ul>
+
+</font>
+
+<a href="Bubbles.java">Source code for "bubbles"</a><br>
+<a href="http://www.javasoft.com/">JavaSoft</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

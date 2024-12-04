@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 11</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>MPEG-1 Audio</H1>
+<FONT SIZE="7">
+
+
+<H2>Audio Streams</H2>
+<UL>
+<LI>Encoded at 8Kbs-256Kbs
+<LI>Usually sampled at 44kHZ with 2 channels
+</UL>
+
+<H2>Demonstration of MPEG-1 playback</H2>
+<A HREF="MusicVideo.mpg">Music Video (2.7MB)</A>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

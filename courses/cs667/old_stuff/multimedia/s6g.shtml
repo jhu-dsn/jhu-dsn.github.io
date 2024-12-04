@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 13</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Video - MPEG-4</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>Key Observations
+<UL>
+<LI>Not Frame based
+<LI>VLBW
+<LI>Multiplexes many streams of objects
+<LI>Interactive (has return control stream)
+</UL>
+
+</UL>
+
+
+<IMG SRC="mpeg-4_scene_comp.gif">
+<IMG SRC="mpeg-4_framework.gif">
+<IMG SRC="mpeg-4_audio_apps.gif">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

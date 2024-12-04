@@ -1,0 +1,37 @@
+<html><head><title>
+The Origins of the Web
+</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>The Origins of the Web</h1>
+
+<font size=7>
+
+<ul>
+<li>People
+<ul>
+<li>Vanevar Bush
+<li>Doug Engelbart
+<li>Ted Nelson
+<li>Tim Berners-Lee
+</ul>
+<li>Programs
+<ul>
+<li>ENQUIRE (Berners-Lee/CERN, 1980)
+<li>Gopher (UMN, 1988(?))
+<ul><li>Gopher+ (1992)</ul>
+<li>World Wide Web (1989)
+</ul>
+</ul>
+
+</font>
+
+<a href="http://www.w3.org/pub/WWW/People/Berners-Lee/">Tim
+Berners-Lee</a><br>
+<a
+href="gopher://gopher.tc.umn.edu:70/11/Information%20About%20Gopher">About
+Gopher</a><br>
+<a href="http://www.w3.org/pub/WWW/WWW/">About the web</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

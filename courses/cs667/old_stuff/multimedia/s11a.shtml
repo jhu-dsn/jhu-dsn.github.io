@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 11a</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Hiarachal and Multicast Networks</H1>
+<FONT SIZE="7">
+
+
+<IMG SRC="media-net.gif">
+<BR>
+
+<UL>
+<LI>Advantages of Mulitcast
+<UL>
+<LI>Preserves Bandwidth on network
+<LI>Scalable
+</UL>
+<LI>Implementations
+<UL>
+<LI>Group Communication tools (like spread)
+<LI><A HREF="http://www.mbone.com/">Mbone</A>/IP-Multicast
+</UL>
+</UL>
+
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

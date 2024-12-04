@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 7</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Media-Video-MPEG-1</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI> MPEG-1 Streams
+<UL>
+<LI>	Video
+<LI>	Audio
+<LI>	System
+</UL>
+</UL>
+<P> System streams are meta-streams that include one or more video and audio streams as well as time-stamp information necessary to synchronize the audio and video tracks.
+<P>
+<H2>Video Streams</H2>
+<IMG SRC="mpeg-data-h.gif">
+<P>MPEG is a Complex encoding!
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

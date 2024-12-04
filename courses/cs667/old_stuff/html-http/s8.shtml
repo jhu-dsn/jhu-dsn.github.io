@@ -1,0 +1,45 @@
+<html><head><title>Server Parsed HTML</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Server Parsed HTML
+</h1>
+<font size=7>
+
+<h2>Server Side Includes</h2>
+<ul>
+<li>NCSA Style
+<ul><li>Basic file inclusions and token expansion</ul>
+<li>Apache Style (XSSI)
+<ul><li>NCSA Style plus conditionals (if/then/else)</ul> 
+</ul>
+
+<h2>More Advanced Systems</h2>
+<ul>
+<li>CGI as HTML
+<ul>
+<li>HTMLScript
+<li>MetaHTML
+</ul>
+
+<li>Server/Browser cooperation
+	<ul>
+	<li>Dynamic HTML (Netscape), and mostly hype.
+	<li>FrontPage (Microsoft), and mostly doesn't work unless you are
+all-Microsoft.
+	</ul>
+</ul>
+
+</font>
+
+<a href="http://hoohoo.ncsa.uiuc.edu/docs/tutorials/includes.html">NCSA
+SSI</a><br>
+<a href="http://www.apache.org/docs/mod/mod_include.html">Apache
+XSSI</a><br>
+<a href="http://www.htmlscript.com/">HTMLScript</a><br>
+<a href="http://www.metahtml.com/">MetaHTML</a><br>
+<a 
+href="http://home.netscape.com/comprod/products/communicator/features/Dynamic_HTML.html">Dynamic
+HTML</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 3</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Media-Audio</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>Digitized Sound
+<UL>
+<LI>WAV files
+<LI>u-law files
+<LI>Integrated
+</UL>
+<BR>
+<LI>Music
+<UL>
+<LI>MIDI (Small, very accurate)
+<LI>MPEG Audio (Good Compression, 44kHZ Stereo CD quality)
+</UL>
+<BR>
+<LI>Voice
+<UL>
+<LI>RealAudio
+<LI>H.261, 263
+</UL>
+</UL>
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

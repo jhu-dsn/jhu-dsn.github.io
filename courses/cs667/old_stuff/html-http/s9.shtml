@@ -1,0 +1,28 @@
+<html><head><title>Programming the Web</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Programming the Web
+</h1>
+
+<big>All web programming is platform independent from the perspective of
+the user.  From the perspective of the developer, this may not be the
+case... </big>
+
+<font size=7>
+
+<h2>The Common Gateway Interface (CGI)</h2>
+
+<ul>
+<li>Server independent
+<li>Usable with any language
+<li>Intrinsically slow due to restart with <em>every request</em>
+<li>Runs on web server machine
+</ul>
+
+</font>
+
+<a href="http://hoohoo.ncsa.uiuc.edu/cgi/">The Common Gateway
+Interface</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

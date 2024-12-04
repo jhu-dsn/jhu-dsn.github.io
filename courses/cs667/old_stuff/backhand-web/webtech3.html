@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Web Server Technology</title>
+<script language="JavaScript">
+
+<!--
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+if (browserName == "Netscape" && browserVer >= 3) version = "n3";
+else version = "n2";
+if (version == "n3") {
+
+Modelon = new Image(256, 256);
+Modelon.src = "images/ServerProxyModel_On.jpg";
+Modeloff = new Image(256, 256);
+Modeloff.src = "images/ServerProxyModel_Off.jpg";
+
+}
+
+function img_act(imgName) {
+if (version == "n3") {
+imgOn = eval(imgName + "on.src");
+document [imgName].src = imgOn;
+}
+}
+
+function img_inact(imgName) {
+if (version == "n3") {
+imgOff = eval(imgName + "off.src");
+document [imgName].src = imgOff;
+}
+}
+
+//-->
+
+
+</script>
+  </head>
+
+  <body bgcolor=#ffffff text=#000000>
+  <img src="images/webservertech_tag.jpg">
+  <center>
+  <hr>
+  <table cellpadding=0 cellspacing=0 border=0>
+  <tr bgcolor=#bbbbbb><td colspan=3><b>Design</b></td></tr> <tr><td
+  colspan=3>The DNS has one entry for the web server in question, when
+  the client attempts to resolve this name to an IP address the DNS
+  returns the actual IP address of the proxy server.  Then the client
+  connects to the proxy server and the proxy server decides which
+  underlying server is best suited to respond.  All transactions of
+  that session are then forwarded by the proxy to that
+  server.</td></tr>
+
+  <tr><td><table border=3>
+  <tr bgcolor=#bbbbbb><td align=center><B>Proxied Servers Model</td></tr>
+  <tr><td align=center><a href="" onMouseover="img_act('Model')"
+      onMouseout="img_inact('Model')"><img height=256 width=256
+      name="Model" src="images/ServerProxyModel_Off.jpg"></a></td></tr>
+  </table></td><td width=20></td>
+  <td align=center><table cellpadding=2 cellspacing=0 border=0>
+      <tr bgcolor=#bbbbbb><td align=left><B>Advantages:</B></td></tr>
+      <tr><td><dd><li>Dynamic load balancing is possible.</td></tr>
+      <tr><td><dd><li>CPU power, disk throughput
+                      expandable (add computers).</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Disadvantages:</B></td></tr>
+      <tr><td><dd><li>Limited bandwidth (into proxy).</td></tr>
+      <tr><td><dd><li>Proxy adds a small overhead to each connection.</td></tr>
+      <tr><td><dd><li>Compilcated configuration.</td></tr>
+      <tr><td><dd><li>Redundancy in the servers,
+                      but the proxy is a vertex cut</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Comments:</B></td></tr>
+      <tr><td><p>This model is extremely attractive when server CPU
+        utilization is high, because of the ability to intelligently
+        distribute requests.  However, the proxy is attractive point for
+        malicious hackers to focus denial of service (DOS) attacks.</td></tr>
+      </table>
+  </td></tr>
+  </table>
+  <hr>
+  </center>
+  <a href="webtech4.html">Next model</a>
+    <center>
+    <hr>
+    <address><a href="mailto:jesus@cs.jhu.edu">Theo Schlossnagle</a></address>
+    </center>
+<!-- Created: Sun Mar 29 19:47:58 EST 1998 -->
+<!-- hhmts start -->
+Last modified: Wed Apr  1 21:20:05 EST 1998
+<!-- hhmts end -->
+  </body>
+</html>

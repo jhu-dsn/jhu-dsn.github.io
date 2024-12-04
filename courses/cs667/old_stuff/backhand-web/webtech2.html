@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Web Server Technology</title>
+<script language="JavaScript">
+
+<!--
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+if (browserName == "Netscape" && browserVer >= 3) version = "n3";
+else version = "n2";
+if (version == "n3") {
+
+Modelon = new Image(256, 256);
+Modelon.src = "images/SingleServerModel_On.jpg";
+Modeloff = new Image(256, 256);
+Modeloff.src = "images/SingleServerModel_Off.jpg";
+
+}
+
+function img_act(imgName) {
+if (version == "n3") {
+imgOn = eval(imgName + "on.src");
+document [imgName].src = imgOn;
+}
+}
+
+function img_inact(imgName) {
+if (version == "n3") {
+imgOff = eval(imgName + "off.src");
+document [imgName].src = imgOff;
+}
+}
+
+//-->
+
+
+</script>
+  </head>
+
+  <body bgcolor=#ffffff text=#000000>
+  <img src="images/webservertech_tag.jpg">
+  <center>
+  <hr>
+  <table cellpadding=0 cellspacing=0 border=0>
+  <tr bgcolor=#bbbbbb><td colspan=3><b>Design</b></td></tr>
+  <tr><td colspan=3>The DNS has one entry for the web server in question, when the client attempts to resolve this name to an IP address the DNS returns the actual IP address of the web server.  Then the client and server communicate as would any typical client and server.</td></tr>
+  <tr><td>
+  <table border=3>
+  <tr bgcolor=#bbbbbb><td align=center><B>Single Server Model</td></tr>
+  <tr><td align=center><a href="" onMouseover="img_act('Model')"
+      onMouseout="img_inact('Model')"><img height=256 width=256 name="Model"
+      src="images/SingleServerModel_Off.jpg"></a></td></tr>
+  </table></td><td width=20></td>
+  <td align=center><table cellpadding=2 cellspacing=0 border=0>
+      <tr bgcolor=#bbbbbb><td align=left><B>Advantages:</B></td></tr>
+      <tr><td><dd><li>Easy configuration.</td></tr>
+      <tr><td><dd><li>Inexpensive configuration.</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Disadvantages:</B></td></tr>
+      <tr><td><dd><li>Limited bandwidth.</td></tr>
+      <tr><td><dd><li>Limited computational resources.</td></tr>
+      <tr><td><dd><li>No redundancy.</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Comments:</B></td></tr>
+      <tr><td><p>Due to its simplicity, this model reigns the Internet,
+	though high traffic sites must use alternate models to provide
+	for their demand, most small servers use this model.</td></tr>
+      </table>
+  </td></tr>
+  </table>
+  <hr>
+  </center>
+  <a href="webtech3.html">Next model</a>
+    <center>
+    <hr>
+    <address><a href="mailto:jesus@cs.jhu.edu">Theo Schlossnagle</a></address>
+    </center>
+<!-- Created: Sun Mar 29 19:47:58 EST 1998 -->
+<!-- hhmts start -->
+Last modified: Wed Apr  1 21:14:49 EST 1998
+<!-- hhmts end -->
+  </body>
+</html>

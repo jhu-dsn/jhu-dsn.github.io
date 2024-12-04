@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 2</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Local multimedia vs. Distributed Multimedia</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>Local
+<UL>
+<LI>CD-ROM/DVD
+<LI>Games (Myst, Doom, Ultima)
+<LI>Interactive Help (Quicken 5)
+<LI>Desktop Personalities ("Bob")
+<LI>Teaching
+</UL>
+
+<BR>
+
+<LI>Distributed
+<UL>
+<LI>Conferencing
+<LI>MUDs
+<LI>Games
+<LI>Whiteboards/Collaborative Applications
+</UL>
+
+</UL>
+
+
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

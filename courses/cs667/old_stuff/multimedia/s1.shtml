@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 1</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<FONT SIZE="7">
+
+<H1 ALIGN=center>What is Multimedia?</H1>
+
+<UL>
+
+<LI>What is Multimedia?
+<UL>
+<LI>Use of various Mediums (Video, Audio, Stills,...)
+<LI>Integration of several different media
+<LI>Vauge catchword that can mean almost anything
+
+</UL>
+<BR>
+
+<LI>Overview of types of multimedia
+<UL>
+<LI>Local vs. Distributed
+<LI>Non-Text media separately or integrated
+<LI>Timeliness of data
+</UL>
+
+</UL>
+
+
+</FONT>
+
+
+
+
+
+
+
+
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

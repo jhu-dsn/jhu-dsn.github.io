@@ -1,0 +1,23 @@
+<html><head><title>The Web Protocols</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+The Web Protocols
+</h1>
+
+<font size=7>
+
+<h2>HTTP/1.0</h2>
+<ul>
+<li>New connection for every item (brings out the worst in TCP)
+<li>Simple "give me if newer than" semantics
+<li>Vanity domains use up IP addresses
+</ul>
+
+</font>
+
+<a href="http://www.cis.ohio-state.edu/htbin/rfc/rfc1945.html">RFC-1945:
+HTTP/1.0</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

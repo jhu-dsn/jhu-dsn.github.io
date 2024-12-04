@@ -1,0 +1,174 @@
+<pre>
+
+Internet programming
+
+html+, cgi, java, javascripts
+
+current state of the art (45 mins)
+
+The World Wide Web grew out of several other document retrieval 
+systems, most notably ENQUIRE, by Tim Berners-Lee at CERN.  Add a few 
+ideas from Nelson, Bush, and Engelbart, mix well, and you have the 
+original web.
+
+The original HTTP specification was a extremely simple system, partially
+based on the University of Minnesota "Gopher" system.  Gopher was more of
+a document retrieval system, and was heavily dependent on the
+implementation of the filesystem underneath it, which was originally UNIX. 
+
+With the growth of the web, Gopher could not compete, and in 1992, Gopher+
+was proposed.  Gopher+ allowed for many of the features that are now
+common on the web: fill out forms, document attributes (last modification
+date, file size, etc.), and even a feature which is only now being added
+to the web:  the ability to send different types of the same document
+depending on what the client can process.  For example, there is very
+little point in sending a large graphic to a user who is not running a
+graphical system - it would be better to send a small description of the
+graphic.  A picture may be worth a thousand words, but even a few words
+are better than raw binary gibberish. 
+
+There were (and occasionally still are) a few attempts to give Gopher more
+web-like features, but even so most Gopher development ended in 1995,
+overtaken by the ever-accelerating growth of the web. 
+
+The main feature that the Web had over Gopher was the HyperText Markup
+Language (HTML).  HTML is based on the Standard Generalized Markup
+Language (SGML), which defines documents in terms of their structure.  By
+adding the ability to declare a portion of a document a "link" which can
+then point to another document, or to an "anchor" within that document, a
+new world of possibilities was opened up over the Gopher just-the-files
+design. 
+
+Recently, HTML has been revamped into HTML 3.2 (there was no HTML 3.0).  
+This adds "style sheets" which give an author much greater control over 
+their documents without using proprietary HTML extensions.
+
+Proprietary extensions to HTML generally only work on one or two browsers.
+It forces page designers to go through amazing silliness (hundreds of
+small images, for example) to lay out a page that works on all browsers. 
+
+The World Wide Web uses the idea of the Uniform Resource Indentifier (URI)
+to specify what item is to be retrieved.  A Uniform Resource Locator (URL)
+is a URI with the protocol to be followed in retrieving the document (eg,
+HTTP, FTP, GOPHER, etc.) specified as part of the address. 
+
+
+
+
+
+UNIX where gopher reigned supreme for many years
+
+I'm not going to cover Java extensively in this paper, as it is not really
+a
+
+problems:
+
+security "innovations" in all directions - the metafile problem
+(realaudio, etc) MIME innovation
+
+background
+
+content
+
+examples
+
+who is working on it.
+cern
+w3 consortium
+netscape
+not so much microsoft
+
+In actuality, there is not so much being done in the language or
+presentation part of the web by Microsoft.  So far, they have been content
+to merely duplicate Netscape's innovations. 
+
+predictions for the nexxt 2 and 5 years (20 minutes)
+
+the problems here are less technological rather than socialogical.  There
+are a few technological problems that are inherent in the system as it
+stands today.  To resolve them, it would require a grounds up redesign of
+the web. 
+
+even the ubiquitous ~username syntax, clearly added to the system by a
+UNIX shell programmer
+
+Mosaic
+
+The year 1993 is particularly interesting to show the explosion-like
+growth of the Web.  In January, 1993, there were only 50 known HTTP
+servers on the net.  By March, HTTP traffic was measured as 0.1% of the
+traffic on the NSF backbone.  By September, it was 1%. 
+
+In March, 1993, HTTP traffic was measured as 0.1% of the total traffic on
+the NSF backbone.  By September it was 1%, and the growth curve exploded
+shortly after that.  While no hard numbers are available due to the
+dismantling of the NSF backbone in 1994, even the most conservative
+estimates peg HTTP traffic as the single largest load on the global
+Internet. 
+
+security issues
+style SHEETS!
+
+the extensions problem (the mozilla headache)
+crawlers and indexers
+
+http://www.packet.com/packet/schrage/97/01/index1a.html
+http://server.berkeley.edu/~cdaveb/anybrowser.html
+
+
+Root server statistics
+
+A quick summary from Mark Kosters <markk@internic.net> for
+a.root-servers.net. On 1
+November 1994 the figure was 70 queries per second. Queries per second for
+May 1995 
+
+    1.69 
+    2.90 
+    3.62 
+    4.80 
+    5.84 
+    6.64 
+    7.54 
+
+In comparison, figures for May 1996 
+
+    1.375 
+    2.408 
+    3.368 
+    4.215 
+    5.228 
+    6.364 
+    7.355 
+
+frontpage
+fastcgi
+
+whihc actually work by implementing a common cgi program to parse out the 
+
+a more extreme example of server-parsed html
+
+</pre>
+http://wwwcream.une.edu.au/Materials/Internet3.html
+
+
+
+NSAPI
+
+netscape server API
+
+There is a stylistic difference between the Netsacpe and Apache API
+systems.  In Apache, the idea is to only use the API if you must extend
+the server's capabilities.  In Netscape, the idea was to use the API for
+general web programming.
+
+The idea of an API has more leaned toward the Apache way of thinking, as
+Java has become more predominant and can do several of the things that
+were being done within the server.
+
+
+While the Internet doubles in size every 10 months, the Web grows even
+faster - at an annual rate of 3,000 percent. In 1993 there were fewer than
+100 Web servers; today there are thousands and the number is said to
+double every 52 days. 
+

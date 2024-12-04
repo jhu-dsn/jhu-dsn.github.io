@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 30</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Web Resources</H1>
+
+<H2>Software</H2>
+<DL><p>
+    <DT><A HREF="http://www-us.philips.com/sv/newtech/mpeg/mpgplay.html" >MPGPlayer Home Page</A>
+    <DT><A HREF="http://www.heuris.com/mpeginfo.html" >HEURIS--MPEG Encoding Solutions</A>
+    <DT><A HREF="http://www.mpegtv.com/" ADD_DATE="860539617">MpegTV - Software MPEG Video Player for Unix (with Audio/Sync)</A>
+    <DT><A HREF="http://hulk.bu.edu/" ADD_DATE="860539812">Multimedia Communications Laboratory</A>
+</DL>
+<H2>General Information</H2>
+<DL><P>
+    <DT><A HREF="http://melon.kotel.co.kr/imgs/programs/mpeg/documents/qanda-1.html">MPEG-1 FAQ</A>
+    <DT><A HREF="http://www-dept.cs.ucl.ac.uk/staff/jon/dummy/">Distributed Multimedia</A>
+    <DT><A HREF="http://www.cdrevolution.com/text/mpeginfo.htm">Background on MPEG-1 & MPEG-2</A>
+    <DT><A HREF="http://www.datx.com/drwp.html">MPEG - All Systems Are Not Equal: A Technical Guide for Choosing Digital Video Systems</A>
+    <DT><A HREF="http://bmrc.berkeley.edu/projects/mpeg/faq/MPEG-2-FAQ.html" >MPEG-2 FAQ</A>
+    <DT><A HREF="http://www.vol.it/MPEG/" >MPEG Moving Picture Expert Group Information</A>     <DT><A HREF="http://wfn-shop.princeton.edu/foldoc/cgi-script?action=Home&query=">Computing Dictionary</A>
+    <DT><A HREF="http://viswiz.gmd.de/MultimediaInfo/">Index to Multimedia Information Sources</A>
+    <DT><A HREF="http://www.it.kth.se/~klemets/vatplay.html">MICE seminars and Media on Demand</A>
+    <DT><A HREF="http://www.powerweb.de/mpeg/mpegfaq/">MPEG-FAQ 4.1</A>
+    <DT><A HREF="http://ganges.cs.tcd.ie:80/4ba2/multicast/magnus/index.html">MTP : Multicast Transport Protocol.</A>
+    <DT><A HREF="http://www.cmpcmm.com/cc/standards.html">Standards (and Cross References)</A>
+    <DT><A HREF="http://indy.luton.ac.uk/Convergence/">Convergence: Introduction</A>
+
+
+<DT><A HREF="http://www.cs.ucla.edu/~simonw/sigcom/sigcom.html">Multicast Routing on Wormhole LAN's</A>
+<DT><A HREF="http://www.techweb.com/encyclopedia/defineterm.cgi?sstring=SNMP">Encyclopedia of Computing</A>
+<DT><A HREF="http://snapple.cs.washington.edu/mobile/">Mobile Computing Research</A>
+<DT><A HREF="http://developer.intel.com/ial/ind_init/netmm/index.htm">Net-Media Project at Intel(IP Multicast,RSVP,H.323)</A>
+<DT><A HREF="http://developer.intel.com/design/mmx/">Intel MMX</A>
+<DT><A HREF="http://developer.intel.com/pc-supp/platform/agfxport/">Intel AGP</A>
+<DT><A HREF="http://developer.intel.com/intel/march24/foils/yu/sld014.htm">Intel AGP Slide</A>
+<DT><A HREF="http://developer.intel.com/ial/jmedia/">Intel Java Media Kit</A>
+<DT><A HREF="http://www.cselt.stet.it/ufv/leonardo/paper/isce96.htm#TheMPEG">MPEG 4 Info</A>
+<DT><A HREF="http://drogo.cselt.stet.it/mpeg/mpeg_7.htm">MPEG Site 7</A>
+<DT><A HREF="http://drogo.cselt.stet.it/mpeg/">MPEG Main Site</A>
+
+</DL>
+
+
+
+
+
+<H2>Research Sites</H2>
+<DL><P>
+<DT><A HREF="http://www.media.mit.edu/groups/spi/holovideo.html">The MIT Holographic Video Page</A>
+<DT><A HREF="http://www.media.mit.edu/MediaLab/Research.html">Media Lab Research</A>
+<DT><A HREF="http://viswiz.gmd.de/MultimediaInfo/">Index to Multimedia Information Sources</A>
+</DL>
+
+<H2>Commercial Sites</H2>
+<DL><P>
+	<DT><A HREF="http://www.techweb.com/se/directlink.cgi?WIR1997012303">IP-Multicast Video-conf Product</A>
+	<DT><A HREF="http://www.techweb.com/se/directlink.cgi?WIR1997022413">DVD decoders arrive for PC's</A>
+
+    <DT><A HREF="http://www.macromedia.com/" ADD_DATE="861570886" LAST_VISIT="861570883" LAST_MODIFIED="861570883">http://www.macromedia.com/</A>
+    <DT><A HREF="http://www.intervu.com/" ADD_DATE="861570890" LAST_VISIT="861577070" LAST_MODIFIED="861570888">InterVU - the Video Delivery Company</A>
+   <DT><A HREF="http://www.candystand.com/fs/fshome.htm" ADD_DATE="861573291" LAST_VISIT="861577339" LAST_MODIFIED="861573288">FRUIT STRIPE</A>
+    <DT><A HREF="http://www.sega.com/gameroom/" ADD_DATE="861574192" LAST_VISIT="861574182" LAST_MODIFIED="861574182">Welcome to the Rec Room!</A>
+    <DT><A HREF="http://www.intervu.com/partners/menu.html#mlb" ADD_DATE="861577273" LAST_VISIT="861577377" LAST_MODIFIED="861577266">InterVU Video Guide</A>
+</DL><p>
+
+
+
+
+
+
+
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

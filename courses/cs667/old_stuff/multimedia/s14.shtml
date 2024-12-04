@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 14</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Video MPEG-4 (2)</H1>
+<FONT SIZE="7">
+
+<IMG SRC="mpeg-4_framework.gif">
+<P>MPEG-4 works in two stages. Initially some class libraries of code and a starting set of data is downloaded to the client. From then on the server sends updates and new objects that are created in the model and the client sends control messages back.
+<BR>
+
+
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

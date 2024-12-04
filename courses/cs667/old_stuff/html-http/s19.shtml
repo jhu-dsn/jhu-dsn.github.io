@@ -1,0 +1,29 @@
+<html><head><title>What's next?</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+What's next?
+</h1>
+
+<font size=7>
+<h2>Very, very soon</h2>
+<ul>
+<li>Style sheets will help put an end to extension wars
+<li>CGI will not be going away any time soon
+<li>JavaScript & Java are here to stay
+<li>The HTML portion of the different browsers will get even
+closer, which means....
+<li>Market wise, companies will have to do something else to sell
+their browsers
+<li>Portable Network Graphics
+<li>Better HTML
+</ul>
+</font>
+
+<a href="http://www.w3.org/pub/WWW/TR/REC-CSS1.html">Style sheets</a><br>
+<a href="http://www.w3.org/pub/WWW/TR/REC-png.html">Portable Network
+Graphics</a><br>
+<a href="http://www.w3.org/pub/WWW/MarkUp/Math/">HTML Math</a><br>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

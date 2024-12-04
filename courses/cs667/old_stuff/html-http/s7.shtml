@@ -1,0 +1,25 @@
+<html><head><title>The URI</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+The URI
+</h1>
+<font size=7>
+
+<ul>
+<li>Universal Resource Identifier
+<ul><li>(The ideal)</ul>
+<li>Universal Resource Locator
+<ul><li>(The "realistic" URI)</ul>
+<li>Universal Resource Name
+<ul><li>(The "permanent" URI)</ul>
+
+</ul>
+
+</font>
+
+<a href="http://www.w3.org/pub/WWW/Addressing/rfc1630.txt">Universal
+Resource Identifiers in WWW</a>
+
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

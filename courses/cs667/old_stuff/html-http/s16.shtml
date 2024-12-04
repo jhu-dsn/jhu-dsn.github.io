@@ -1,0 +1,27 @@
+<html><head><title>The Web Protocols</title></head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+The Web Protocols
+</h1>
+
+<font size=7>
+
+<h2>HTTP/1.1</h2>
+<ul>
+<li>Multiple items over one cached connection
+<li>Ageing of files is possible
+<li>More control of how (or if) an item is cached
+<li>More complex "give me this language" semantics possible
+<li>Host specification added - no more wasted IP addresses
+<li>MD5 integrity checks
+<li>Protocol upgrading on open connection
+</ul>
+
+</font>
+
+<a href="http://www.cis.ohio-state.edu/htbin/rfc/rfc2068.html">RFC-2068:
+HTTP/1.1</a><br>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

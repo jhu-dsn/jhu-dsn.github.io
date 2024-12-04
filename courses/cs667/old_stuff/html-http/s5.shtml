@@ -1,0 +1,22 @@
+<html><head><title>Changes in HTML</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Changes in HTML
+</h1>
+<font size=7>
+
+<h2>HTML 3.2 adds</h2>
+
+<ul>
+<li>Style Sheets
+<li>Greater control over document rendering
+<li>Less need to resort to proprietary extentions
+</ul>
+
+</font>
+
+<a href="http://www.w3.org/pub/WWW/MarkUp/html-spec/">HTML 2.0</a><br>
+<a href="http://www.w3.org/pub/WWW/MarkUp/Wilbur/">HTML 3.2</a><br>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

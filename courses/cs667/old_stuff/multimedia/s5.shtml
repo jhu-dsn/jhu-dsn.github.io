@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 5</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Media-Video-Encoding Overview</H1>
+<FONT SIZE="7">
+
+
+<IMG SRC="Coding-mpeg.gif">
+<BR>
+<P>
+Different protocols and compression algorithms are used for different kinds of video.
+<P>
+The tradeoffs between quality and speed and size change depending on the goal.  For example, MPEG-1 even though it can produce a 10Mbs stream would not provide nearly the same quality 10Mbs stream as a MPEG-2 encoding would at the same bitrate.
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

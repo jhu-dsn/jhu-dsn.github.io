@@ -1,0 +1,26 @@
+<html><head><title>The Browser Wars</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+The Browser Wars
+</h1>
+<font size=7>
+
+Proprietary extensions to HTML generally only work on one or two browsers.
+It forces page designers to go through amazing silliness (hundreds of
+small images, for example) to lay out a page that works on all browsers.
+
+</font>
+
+<p>
+
+
+<a href="http://www-swiss.ai.mit.edu/wtr/stable-user-interface.html">User
+Interface Stability</a><br>
+<a href="http://www-swiss.ai.mit.edu/philg/research/shame-and-war.html">We
+Have Chosen Shame and Will Get War</a><p>
+
+<a href="http://server.berkeley.edu/~cdaveb/anybrowser.html">
+<img src="anybrowser.gif" width=88 height=31></a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

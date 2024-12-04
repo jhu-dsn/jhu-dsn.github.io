@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 12</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>MPEG-1 -- MPEG-2 Comparison</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>Quality
+<UL>
+<LI>Input stream should be filtered and edited prior compression
+<LI>Smoothing
+<LI>Remove colors
+<LI>Oversampling
+<LI>Thickening lines
+</UL>
+<LI>MPEG-2 improvements
+<UL>
+<LI>Better motion prediction
+<LI>More quantization options
+<LI>Scalable encoding
+</UL>
+
+
+
+
+
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

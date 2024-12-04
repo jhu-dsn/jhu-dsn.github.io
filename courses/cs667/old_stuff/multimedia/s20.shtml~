@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 20</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Technical-Networks</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>		Bandwith and latency demands
+<UL>
+<LI>			Home/Last-Leg links
+<UL>
+<LI>				Telephone Network 2400-128Kbs, 1-40Mbs
+<LI>				Cable Network 1-36Mbs
+<LI>				Wireless Network 9600-56Kbs,640-10Mbs
+</UL>
+<BR>
+<LI>			WAN Links/Backbones
+<UL>			
+<LI>				ATM 155-640 Mbs
+<LI>				T1/T3/ Leased Lines 1.5Mbs +
+<LI>				MCI Testing 40Gbs Single mode fiber link (
+		<A HREF="http://www.light-wave.com/">Mar 1997</A>)
+</UL>
+<LI>			LAN links (max distance 2-5km)
+<UL>
+<LI>				Ethernet 10Mb-100Mbs
+<LI>			 	FDDI 155Mbs
+<LI>				Myrinet, Gigabit Ethernet 640Mb-1.2Gbs 
+<LI>				ATM 155-640 Mbs
+</UL>
+<BR>
+
+</UL>
+<BR>
+<LI>		Integrated Services
+<UL>
+<LI>			Voice, Data, Fax, Video, on Shared lines
+<LI>			Supports many levels of service
+</UL>
+<BR>
+<LI>		Hiararchical Networks
+<UL>
+<LI>			Either--Local fast, remote slow or <BR>
+				Slow 1st link, Fast LAN, Slow WAN
+<LI>			Reality--not going away
+</UL>
+<BR>
+<LI>		Multicast
+<UL>
+<LI>			Improves effeciency on WAN links
+<LI>			Limited implementation currently
+</UL>
+
+</UL>
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 6</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Media-Video-Encodings</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>		MPEG-1 
+<UL>
+<LI>			QCIF, Video-CD, Multimedia presentations (&lt;1.5Mbs)
+</UL>
+<BR>
+<LI>		MPEG-2
+<UL>
+<LI>			CIF, HDTV,
+<LI>			Higher bitrates, numerous image enhancements,
+<LI>			support for scalable/hierarchical encoding
+<UL>
+<LI>				Spatial(simulcast)
+<LI>				Data(separate low and high frequency)
+<LI>				SNR
+<LI>				Temporal(real-time)
+</UL>
+</UL>
+<BR>
+<LI>		MPEG-4 
+<UL>
+<LI>			Very low bit-rate(64Kb)
+<LI>			Interactive-Object oriented
+<LI>			Draft Standard Nov 1997, Int. Std. Nov 1998
+</UL>
+<BR>
+<LI>		MPEG-7
+<UL>
+<LI>			Meta standard for labeling and searching multimedia
+<LI>			Draft Standard in 1999/2000
+<LI>			Does NOT do Image recognition
+</UL>
+<BR>
+<LI>		H.261 
+<UL>
+<LI>			Video conferencing at 64Kbs and up (ISDN)
+</UL>
+<BR>
+<LI>		H.263 
+<UL>
+<LI>			Video conferencing at 14Kbs and up(POTS &amp; Modem)
+</UL>
+<BR>
+<LI>		Intel Indeo, Cinepak 
+<UL>
+<LI>			Proprietary, mostly video conferencing and Video-CDs
+</UL>
+</UL>
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

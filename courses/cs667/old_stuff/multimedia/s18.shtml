@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 18</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>How do we Use Multimedia?</H1>
+
+<FONT SIZE="7">
+
+<UL>
+<LI>	Art and Games
+<UL>
+<LI>		Created demand for CD's 
+<LI>		Animation and movie playback
+<LI>		Interactive graphical worlds desired
+</UL>
+<BR>	
+<LI>	Enhance Traditional Applications
+<UL>
+<LI>		Multimedia Email--NeXT has had this since 1989
+<LI>		Databases--OODB
+<LI>		Web page with video and sound
+<UL>
+<LI>			<A HREF="http://www.real.com/">RealPlayer</A>
+<LI>			<A HREF="http://www.intervu.com/">InterVu</A>
+<LI>			<A HREF="http://www.macromedia.com/">Shockwave</A>
+</UL>
+</UL>
+<BR>			
+<LI>	New Applications
+<UL>
+<LI>		Conferencing
+<LI>		VOD
+<LI>		Videophone		
+</UL>
+
+</UL>
+
+<H2>Demos</H2>
+<A HREF="http://www.music.sony.com/Music/Multimedia/realaudio30.html">RealPlayer</A>
+<BR><A HREF="http://www.intervu.com/partners/menu.html#mlb">InterVu</A>
+<BR><A HREF="http://www.candystand.com/fs/fshome.htm">Shockwave</A>
+
+</FONT>
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

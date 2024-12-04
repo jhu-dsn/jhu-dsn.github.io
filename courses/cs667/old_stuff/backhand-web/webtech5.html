@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Web Server Technology</title>
+<script language="JavaScript">
+
+<!--
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+if (browserName == "Netscape" && browserVer >= 3) version = "n3";
+else version = "n2";
+if (version == "n3") {
+
+Modelon = new Image(256, 256);
+Modelon.src = "images/BackhandServerModel_On.jpg";
+Modeloff = new Image(256, 256);
+Modeloff.src = "images/BackhandServerModel_Off.jpg";
+
+}
+
+function img_act(imgName) {
+if (version == "n3") {
+imgOn = eval(imgName + "on.src");
+document [imgName].src = imgOn;
+}
+}
+
+function img_inact(imgName) {
+if (version == "n3") {
+imgOff = eval(imgName + "off.src");
+document [imgName].src = imgOff;
+}
+}
+
+//-->
+
+
+</script>
+  </head>
+
+  <body bgcolor=#ffffff text=#000000>
+  <img src="images/webservertech_tag.jpg">
+  <center>
+  <hr>
+  <table cellpadding=0 cellspacing=0 border=0>
+  <tr bgcolor=#bbbbbb><td colspan=3><b>Design</b></td></tr> <tr><td
+  colspan=3>The DNS has multiple entries for the web server in question.  Therefore, clients contact the servers in the same manner as they would under a DNS rotation scheme.  However, now the servers themsevles have the ability to redistribute the transactions as they deem appropriate.  This "transaction rerouting" would ideally be run on a separate physical network than the network providing incoming connections.</td></tr>
+
+  <tr><td><table border=3>
+  <tr bgcolor=#bbbbbb><td align=center><B>Backhand Server Model</td></tr>
+  <tr><td align=center><a href="" onMouseover="img_act('Model')"
+      onMouseout="img_inact('Model')"><img height=256 width=256
+      name="Model" src="images/BackhandServerModel_Off.jpg"></a></td></tr>
+  </table></td><td width=20></td>
+  <td align=center><table cellpadding=2 cellspacing=0 border=0>
+      <tr bgcolor=#bbbbbb><td align=left><B>Advantages:</B></td></tr>
+      <tr><td><dd><li>Configuration is simple.</td></tr>
+      <tr><td><dd><li>Dynamic load balancing is possible.</td></tr>
+      <tr><td><dd><li>Redundancy in the servers (more so than 
+                      in the simple DNS rotation scheme)</td></tr>
+      <tr><td><dd><li>Unlimited bandwidth by adding servers.</td></tr>
+      <tr><td><dd><li>CPU power, disk throughput
+                      expandable (add computers).</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Disadvantages:</B></td></tr>
+      <tr><td><dd><li>Small overhead in forwarding connections
+             from server to server. (tiny when well implemented)</td></tr>
+      <tr><td><br></td></tr>
+      <tr bgcolor=#bbbbbb><td align=left><B>Comments:</B></td></tr>
+      <tr><td><p>The main downside, is that all five people know about
+                 this system design and thus it has little popularity.
+                 Of course, if the results are good, that will change.
+                 </td></tr>
+      </table>
+  </td></tr>
+  </table>
+  <hr>
+  </center>
+  <a href="index.html">Next topic</a>
+    <center>
+    <hr>
+    <address><a href="mailto:jesus@cs.jhu.edu">Theo Schlossnagle</a></address>
+    </center>
+<!-- Created: Sun Mar 29 19:47:58 EST 1998 -->
+<!-- hhmts start -->
+Last modified: Wed Apr  1 20:33:48 EST 1998
+<!-- hhmts end -->
+  </body>
+</html>

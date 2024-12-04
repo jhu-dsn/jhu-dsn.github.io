@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 7</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Media-Video-MPEG-1</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI> MPEG-1 Streams
+<UL>
+<LI>	Video
+<LI>	Audio
+<LI>	System
+</UL>
+</UL>
+<P> System streams are meta-streams that include one or more video and audio streams as well as time-stamp information necessary to synchronize the audio and video tracks.
+<P>
+
+
+
+
+
+<H2>Video Streams</H2>
+<IMG SRC="mpeg-data-h.gif">
+<P>MPEG is a Complex encoding!
+<BR>
+
+<IMG SRC="IntraFrame.gif">
+<P>Actually uses 4 types of compression:
+<UL>
+<LI>Subsampling the source
+<LI>Discrete Cosine Transformation
+<LI>Huffman encoding and RLE
+<LI>Motion compensation
+</UL>
+
+<IMG SRC="mpeg-struct.gif">
+
+<H2>Inter-frame Motion Compression</H2>
+<IMG SRC="mpeg-bid-pred.gif">
+<IMG SRC="mpeg-for-pred.gif">
+<P>The P and B frames can be much smaller then the I frames because of the small displacements of identifiable patterns in the picture.  B frames are not used as a base for the prediction of other B or P frames, only I and P frames are used for this.
+<BR>
+
+<IMG SRC="predictedPictures.gif">
+<P>MPEG-1 allows accuracy to 1/2 or 1 Pel, and searches upto +-128 Pels for the best match.
+
+<H2>Audio Streams</H2>
+<UL>
+<LI>Encoded at 8Kbs-256Kbs
+<LI>Usually sampled at 44kHZ
+</UL>
+
+<H2>Demonstration of MPEG-1 playback</H2>
+<A HREF="MusicVideo.mpg">Music Video (2.7MB)</A>
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

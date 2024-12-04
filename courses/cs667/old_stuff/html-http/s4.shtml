@@ -1,0 +1,24 @@
+<html><head><title>Structure of HTML</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+Structure of HTML
+</h1>
+<font size=7>
+
+<ul>
+
+<li>the Head
+<ul>
+<li>the Title
+<li>Indexing information
+</ul>
+<li>the Body
+<ul>
+<li>comprised of plain text, anchors, and other markup tags.
+</ul>
+
+</ul>
+
+</font>
+<!--#include virtual="bottom.cgi" -->
+</body></html>

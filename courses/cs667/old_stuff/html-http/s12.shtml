@@ -1,0 +1,95 @@
+<html><head><title>Programming the Web</title></head>
+<script language="JavaScript">
+<!-- Hide the script from old browsers --
+
+// Michael P. Scholtis (mpscho@planetx.bloomu.edu)
+// All rights reserved.  December 26, 1995
+// You may use this JavaScript example as you see fit, as long as the
+// information within this comment above is included in your script.
+ 
+
+function calc(form) {
+        form.result.value=eval(form.expr.value); }
+
+// --End Hiding Here -->
+</script>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>
+Programming the Web
+</h1>
+
+<font size=7>
+
+<h2>JavaScript</h2>
+<ul>
+<li>Despite the name, has nothing to do with Java (it used to be
+"LiveScript").
+<li>Platform independent
+<li>A object-based scripting language
+<ul>
+	<li>No inheritance
+	<li>Automatic variable typing (like PERL)
+	<li>Syntax similar to C/PERL
+	<li>Cannot write to local disk (beyond its scope)
+</ul>
+<li>Mixed in with the HTML
+<li>Significantly lighter weight than Java
+</ul>
+
+</font>
+<center>
+<table border>
+<tr><th>Simple JavaScript samples:</th></tr>
+<tr><td align=center>
+<form name="theform">
+<input type="button" value="Click me" onClick="alert('Hi there')">
+</form>
+</td></tr>
+
+<tr><td align=center>
+<form name=form2>
+<input name="demo" type="text" value="Where's the mouse?">
+<br>
+<a href="#"
+  onMouseOver="document.form2.demo.value='Ah, here\'s the mouse!'" 
+  onMouseOut="document.form2.demo.value='Where\'s the mouse?'">
+Point the mouse at me!</a>
+</form>
+</td></tr>
+
+<tr><td align=center>
+<a href="#" 
+  onMouseOver="document.myImage2.src='img2.gif'" 
+  onMouseOut="document.myImage2.src='img1.gif'">
+<img src="img1.gif" name="myImage2" width=160 height=50 border=0></a>
+</td></tr>
+
+<tr><td align=center>
+
+<form>
+<table border=3 cellspacing=2 width=350>
+<tr align=center><th align=right>Equasion:</th> <td><input type=text
+name=expr size=15></td> <td rowspan=2><input type=button value=" Calculate
+" onclick="calc(this.form)"></td></tr>
+<tr align=center><th align=right>Answer:</th> <td><input type=text
+name=result size=15></td></tr>
+</table>
+</form>
+
+</td></tr>
+
+<tr><td align=center>
+<a href="http://www.hidaho.com/colorcenter/cc.html">ColorCenter</a>
+</td></tr></table>
+</center>
+
+<p>
+
+<a
+href="http://home.netscape.com/comprod/products/navigator/version_2.0/script/index.html">JavaScript
+Reference</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

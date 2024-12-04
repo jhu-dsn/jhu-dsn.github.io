@@ -1,0 +1,21 @@
+<html><head><title>HTML</title></head>
+<body bgcolor="#FFFFFF">
+<h1 align=center>
+HTML
+</h1>
+<font size=7>
+
+<ul>
+
+<li>A Standard Generalized Markup Language (SGML) 
+<li>Platform independent display
+<li>Named anchors / HREFs
+
+</ul>
+
+</font>
+
+<a href="http://www.w3.org/pub/WWW/MarkUp/">HTML Reference</a>
+
+<!--#include virtual="bottom.cgi" -->
+</body></html>

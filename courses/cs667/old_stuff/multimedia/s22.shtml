@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 22</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Technical-Clients</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI>		CPU, Memory Bandwidth, and Disk requirements
+<UL>
+<LI>		Pentium 120 can decode a MPEG-1 Video stream at 30fps
+			Video and audio at 24fps in software
+<LI>		Disk space plentiful
+<LI>		<A HREF="http://developer.intel.com/design/mmx/">MMX</A>
+	 and <A HREF="http://developer.intel.com/pc-supp/platform/agfxport/">
+	Advanced Graphics Port</A> (Intel)
+<LI>		Disk and Memory Latency is NOT improving fast (<A HREF="http://www.i2osig.org/">I20</A>)
+
+</UL>
+<LI>		NetPC
+
+<LI>		Mobile Computers		
+<LI>		Parallel/Multiprocesser Machines
+<UL>
+<LI>			Graphics, Sound, MPEG, I20, all add processors
+<LI>			SMP Machines have become commodities
+</UL>
+
+</UL>
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

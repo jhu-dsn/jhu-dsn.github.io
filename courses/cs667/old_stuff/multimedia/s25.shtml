@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 25</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Social-Costs of Networks</H1>
+
+<FONT SIZE="7">
+<UL>
+
+<LI>LAN and Last-Leg bandwith will improve (non-shared costs)
+<LI>Backbone is improving, (not fast enough) (shared cost)
+<LI>Example--<A HREF="http://www.lfw.com/www/lw/1997/march/03news03.htm">
+	TPC#5 completed at $1.24billion cost, 5Gbs Ring</A><BR>
+	<IMG SRC="tpc5-news03_1.jpg">
+
+<LI>ATM and IPv6 Both allow better accounting for network usage
+
+
+</UL>
+
+
+
+
+
+</FONT>
+
+
+
+
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>

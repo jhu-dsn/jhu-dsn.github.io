@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//AdvaSoft//DTD HTML 3.2 experimental 961018//EN">
+<HTML>
+<HEAD>
+ <TITLE>Multimedia Presentation Page 16</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1 ALIGN=center>Integrated and "New" Media</H1>
+<FONT SIZE="7">
+
+<UL>
+<LI> "Multi" media or Integrated Media
+<UL>
+<LI>	Objects
+<LI>	Interactivity
+</UL>
+<BR>
+<LI> New media
+<UL>
+<LI>	<A HREF="http://www.media.mit.edu/groups/spi/holovideo.html">3D Images</A> and Worlds
+<LI>	Rendered Models of Real or Virtual Objects
+<LI>	Multimodal input
+</UL>
+
+</UL>
+
+
+
+
+
+
+
+
+
+
+
+</FONT>
+
+
+<!--Include controls at bottom-->
+<!--#include virtual="bottom.cgi" -->
+
+
+</BODY>
+</HTML>
