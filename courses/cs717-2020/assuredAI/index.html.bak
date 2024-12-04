@@ -1,0 +1,159 @@
+<html>
+<head>
+	<title></title>
+	<link href="http://svc.webspellchecker.net/spellcheck31/lf/scayt3/ckscayt/css/wsc.css" rel="stylesheet" type="text/css" />
+</head>
+<body aria-readonly="false" class="vsc-initialized" style="padding-left:50; padding-right:50">
+<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0a119fb2-7fff-4312-71fd-f636432a96a3"><span style="font-size: 52pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Assured Artificial Intelligence</span></span></p>
+
+<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0a119fb2-7fff-4312-71fd-f636432a96a3"><span style="font-size: 36pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Resilient Traffic Grids</span></span></p>
+
+<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:22px;"><span id="docs-internal-guid-e5a7e9e1-7fff-7322-24c1-8afbd7d27879"><span style="font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Aidan Smith and Brian Wheatman</span></span></span></p>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-58343b8f-7fff-9a44-113f-0a656b016f3c"><span style="font-size: 28pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why is Assured Artificial Intelligence something you should care about?</span></span></p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0f8a74f2-7fff-d905-b5d7-0188e771ce04"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">AI systems have the capability to be more efficient than standard methods most of the time. Recent Research has shown AI systems are capable of solving increasingly complicated problems with increasingly high accuracy.</span></span></p>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0f8a74f2-7fff-d905-b5d7-0188e771ce04"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">However, due to the black-box and evolving nature of AI, it is difficult to make theoretical guarantees about performance. It is possible that the system will perform differently on the training set as during real world operation.</span></span></p>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:16pt;"><span id="docs-internal-guid-0f8a74f2-7fff-d905-b5d7-0188e771ce04"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">It is not feasible to train an AI on every situation it could ever encounter, and some current research believes that edge cases are inherent to most deep learning methods.</span></span></p>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0f8a74f2-7fff-d905-b5d7-0188e771ce04"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">These edge cases can be an issue for systems where safety is at risk and mistakes can have serious consequences.</span></span></p>
+	</li>
+</ul>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-813db979-7fff-135a-8235-f348e426ce79"><span style="font-size: 28pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our Project Goals</span></span></p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We plan to test out a block box monitoring approach to assuring Artificial </span></span>Intelligence.</p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li dir="ltr" style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We will have a black box monitor which checks over the AI and takes control using a simpler known good algorithm when it detects issues. This means that when the AI performs well we will gain all the benefits, but when the AI performs poorly we can mitigate this by switching to the known and trusted algorithm. </span></span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Specifically we are looking into the problem of a smart controller for a city traffic light system.</span></span></p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li dir="ltr" style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We can have a default traffic light algorithm which simply switches all lights on a set timer. This means that cars will stop at most some known period of time for each turn that they make. Which allows us to bound the wasted time for each car.</span></span></p>
+		</li>
+		<li dir="ltr" style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:16pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Out goal is to create a system that performs better than our default algorithm in the average case, but is guaranteed to not do much worse than the default algorithm in the worst case.</span></span></p>
+		</li>
+		<li dir="ltr" style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-db9fe1ee-7fff-33e9-fde3-a9a7f5df4b51"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We will measure the success of system by vehicle trip times and total waiting time.</span></span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-ed4cb626-7fff-6365-c419-fcc364df774a"><span style="font-size: 28pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><a href="https://projects.eclipse.org/projects/technology.sumo">SUMO</a></span></span></p>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5e59ea4e-7fff-81b2-2e18-80830ab0bf2e"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We chose to use the SUMO traffic simulator as it provides all of the functionality we need without being overly complex</span></span></p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li dir="ltr" style="list-style-type: circle; font-size: 14pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5e59ea4e-7fff-81b2-2e18-80830ab0bf2e"><span style="font-size: 14pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">It allows us to use arbitrary Python code to control traffic lights. This will allow us to use Python&rsquo;s Machine Learning libraries to build an AI system</span></span></p>
+		</li>
+		<li dir="ltr" style="list-style-type: circle; font-size: 14pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:16pt;"><span id="docs-internal-guid-5e59ea4e-7fff-81b2-2e18-80830ab0bf2e"><span style="font-size: 14pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We can import data from OpenStreetMap so we can test on an actually city&rsquo;s grid.</span></span></p>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5e59ea4e-7fff-81b2-2e18-80830ab0bf2e"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our first few weeks of the project were spent writing tools for SUMO that allow us to quickly generate n-by-n traffic grids and randomly generate cars.</span></span></p>
+	</li>
+</ul>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e960cc68-7fff-af90-45b1-3e8f8bd52081"><span style="font-size: 28pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">First attempt at an AI system</span></span></p>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6fe01f72-7fff-d846-aa82-1513dee1c59d"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">As a proof-of-concept, we began by creating a simple linear model to control the traffic lights. We let the number of vehicles on each edge of the grid be the features for the model. We multiply these features by an </span><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">n</span><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-size:0.6em;vertical-align:super;">2</span></span><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-by-4n</span><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-size:0.6em;vertical-align:super;">2</span></span><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> matrix to get values for how to control each of the traffic lights.</span></span></p>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:16pt;"><span id="docs-internal-guid-6fe01f72-7fff-d846-aa82-1513dee1c59d"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We preset the matrix to control the lights in a way such that the direction with the most incoming cars will always be green. We then repeatedly add random noise to the matrix and retest the system, moving the matrix in that direction if it performs better.</span></span></p>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6fe01f72-7fff-d846-aa82-1513dee1c59d"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">While we succeeding in being able to control the lights using this system, the model failed to learn any thing after training it for over a day. This means that to build a real AI, we will need to use a more complex model, perhaps with fewer features.</span></span></p>
+	</li>
+</ul>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e35f865d-7fff-04d2-5aee-77b14c1179d8"><span style="font-size: 28pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Next Steps</span></span></p>
+
+<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+
+<ul style="margin-top:0;margin-bottom:0;">
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Create a more accurate AI</span></span></p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We need to create an AI which is is able to better minimize the average trip times</span></span></p>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Design a more general AI</span></span></p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We want to create an AI which can be trained on one map and work on other maps</span></span></p>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr" style="list-style-type: disc; font-size: 18pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+	<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 18pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Enable the simulation of edge cases</span></span></p>
+
+	<ul style="margin-top:0;margin-bottom:0;">
+		<li style="list-style-type: circle; font-size: 16pt; font-family: Arial; color: rgb(89, 89, 89); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; ">
+		<p dir="ltr" role="presentation" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-441013c0-7fff-2835-cfa8-e65373aff19b"><span style="font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We can make the simulator generate large bursts of cars from certain directions in order to test our controller under unusual scenarios​</span></span></p>
+		</li>
+	</ul>
+	</li>
+	<li role="presentation" style="color: rgb(89, 89, 89); font-family: Arial; font-size: 24px;  line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;">More realistic maps​
+	<ul>
+		<li style="list-style-type: circle; font-size: 16pt; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline;">
+		<p dir="ltr" role="presentation" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;">We want to expand from just working on n x n grinds to general maps​</p>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p dir="ltr" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+
+<div>&nbsp;</div>
+</body>
+</html>

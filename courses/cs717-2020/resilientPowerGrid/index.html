@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<!--
+	Urban by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Optimization and ML-based Intrusion Detection for Resilient Power Grids</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Section -->
+					<section class="wrapper">
+						<header class="align-center">
+							<h1>Optimization and ML-based Intrusion Detection for Resilient Power Grids</h1>
+							<p>
+								<a href="http://www.cs.jhu.edu/~sahiti">Sahiti Bommareddy</a> &nbsp;
+								<a href="https://www.linkedin.com/in/daniel-qian/">Daniel Qian</a> &nbsp;
+								<a href="https://www.linkedin.com/in/parv-saxena/">Parv Saxena </a>
+							</p>
+							<a href="Presentation.pdf" class="button">Presentation (.pdf)</a>
+							<a href="IntrusionDetection.zip" class="button">Code (.zip)</a>
+							<a href="https://github.com/parvsaxena/IntrusionDetection" class="button">Code (Github)</a>
+
+						</header>
+					</section>
+					<section class="wrapper style1">
+						<div class="inner">
+
+							<div class="flex flex-2">
+								<h3>Overview </h3>
+								<p>Critical infrastructure should be resilient to both network and system-level attacks. Our goal was to extend the <a href="http://www.dsn.jhu.edu/spire/">Spire</a> intrusion tolerant SCADA system in the following three ways:</p>
+								<ul>
+								<li>Optimizing performance for single site configuration
+
+								</li>
+								
+								<li>Building a ML-based network intrusion detection component
+								</li>	
+								
+								<li>Developing attack vectors for testing
+								</li>	
+								
+								</ul>
+							</div>
+							<hr class="minor" />
+							<div class="flex flex-2">
+								<div class="col col3">
+									<h5>Performance optimization </h5>
+									<p>With the setting of N=6 machines (f=1,k=1) in the single site configuration, each update transaction was bencmarked to have an average time of around 44ms. With minimal changes to Spire code the average transaction time is reduced to 18ms. More specific technical details can be found in the presentation.
+									</p>
+								</div>
+							</div>
+							<hr class="minor" />
+
+							<div class="flex flex-2">
+
+								<div class="col col3">
+
+									<h5>ML Based Network Intrusion Detection </h5>
+								</div>
+							</div>
+							<div class="flex flex-2">
+
+								<div class="col">
+									<p>
+										Although Spire is intrusion tolerant (i.e. potential attackers cannot execute malicious operations or significantly affect the timeliness of the system), it does not provide alerts or feedback about potential compromises. Implementing such a system to allow for situational awareness could be invaluable to system operators, allowing them to diagnose and fix problems. From previous field tests of Spire as well as our own research, we decided that using Machine Learning would be the best way to approach this problem, as it would allow for detection of novel attcks. Following is a general overview of our system:
+									</p>
+									<ul>
+											<li>
+												Collection of Spire's normal network traffic using SPAN
+											</li>
+											
+											<li>
+												Data pipeline that parses packets and then stores for training or predicts on them (see diagram)
+											</li>	
+											
+											<li>
+												Traffic pattern based prediction using packet counts per minute. Better at detecting larger scale attacks such as denial of service
+											</li>
+
+											<li>
+												Packet analysis based prediction that clusters similar individual packets. Can detect packets that are unusual with respect to normal system operation
+											</li>								
+
+											<li>
+												Majority voting between different algorithms to reduce false positive rate
+											</li>
+									</ul>
+									<p>
+										For both types of predictions, we used sklearns implementation of various novelty detection algorithms (an overview of these can be found <a href="https://scikit-learn.org/stable/modules/outlier_detection.html ">here</a>). More technical details can be found in the presentation. 
+									</p>
+								</div>
+								<div class="col" style="display:flex;justify-content:center;align-items:center;">
+									<div class="image main">
+										<img src="images/MLArch.png" alt="Architecture of ML based IDS" />
+									</div>
+								</div>
+							</div>
+							<hr class="minor" />
+
+							<div class="flex flex-2">
+								<div class="col col3 first">
+									<h5>Attack Vectors: </h5>
+									<p>To test our ML models, we generated attack vectors that replicate some well known network level attacks:
+									</p>
+									<ul>
+										<li>
+											Port Scanning
+										</li>
+										<li>
+											Denial of Service (DOS)
+										</li>
+										<li>
+											Address Resolution Protocol (ARP) Poisoning
+										</li>
+										<li>
+											Replay Attacks
+										</li>
+									</ul>
+									<p>
+										To generate out testbed, we systematically varied parameters in our attack generation scripts, so that different variations of the above mentioned attacks are generated.
+									</p>
+									<p>
+										We ran the Spire system, and launched these attacks in parallel, to find the performance of our ML models, which is summarised in the table on right.
+									</p>
+								</div>
+								<div class="col" style="display:flex;justify-content:center;align-items:center;">
+									<table>
+										<tr>
+											<th></th>
+											<th>Packet Analysis Model</th>
+											<th>Traffic Pattern Model</th>
+											<th>Overall System</th>
+										</tr>
+										<tr>
+											<th>Accuracy</th>
+											<th>25/28(89.2%)</th>
+											<th>22/28(78.6%)</th>
+											<th>27/28(96.5%)</th>
+										</tr>
+									</table>
+								</div>
+
+							</div>
+                        
+						</div>
+							
+
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					<p>Template from: <a href="https://templated.co">TEMPLATED</a>. 
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
