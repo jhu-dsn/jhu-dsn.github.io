@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <img src="logo.svg" width="200" height="150">
+        <h1>Increased Resiliency for Tor</h1>
+
+        <h3>Overview</h3>
+        <p>In current Tor implementation, it require each directory server as well as each client to know each of the relay nodes in the Tor 
+        network. Each relay node needs to periodically sign and send its public key, bandwidth, port, and other informations to the Tor 
+        directory server. Meanwhile, the Tor directory servers need to periodically generate a consensus view of the current relay nodes, by 
+        sign and send individual view of the Tor network to others. After all the directory servers reach consensus, they will make the view 
+        of current Tor network available to each Tor relay, and Tor client. This approach makes Tor  vulnerable to be censored. If the ISP 
+        block the access the Tor directory servers, then tor client cannot get a view of the current Tor network and will not be able to work 
+        properly.</p>
+
+        <p>
+        In order to make Tor more resilient to censorship, Domain Name System Security Extensions (DNSSEC) can be used to replace the Tor 
+        directory server.  Instead of asking the directory server for the information of each relay nodes in current Tor network, Tor client 
+        can query the DNSSEC for those information. As mentioned previously, in current Tor implementation, each client need to download a 
+        consus view of the current Tor nodes, which include: node name, node fingerprint, IP address, port, time of appearing,  bandwidth, 
+        version of Tor running. Those information can be put on one or several DNSSEC servers. Meanwhile, Tor will have hundreds of regular 
+        changed domain names that is based on a hash function, and each domain name only responsible for a subset of the Tor nodes. The query 
+        result of each domain name is encrypted with  correspondent domain name key which is also changed regularly. This will make sure as 
+        long as one domain name is not blocked, then Tor is still available.
+        </p>
+
+        <h3>Resource</h3>
+        <a href="Tor-present.pptx">Presentation</a>
+        <br>
+        <a href="private-tor.tar.gz">My shell script to set up private tor</a>  
+        <h3>Other useful links</h3>
+        <a href="https://gitweb.torproject.org/nickm/chutney.git">Python script that sets up a private Tor network</a>
+        <br>
+        <a href="https://www.torproject.org/docs/documentation.html.en">Tor documentation</a>
+    </body>
+</html>

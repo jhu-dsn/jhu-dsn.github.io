@@ -1,0 +1,80 @@
+<html> <head> <title>Toward Wireless Mesh with WiFi-Direct Apps</title> <meta
+name="author" content="Paul O'Neil and Steven Presser"> <meta name="date"
+content="2013-5-2T00:00:00-0000"> <meta name="copyright" content=""> <meta
+name="keywords" content="Android Phone, ad hoc network, mesh network, wifi
+direct"> <meta name="description" content="Ad hoc network using WiFi Direct">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW"> <meta
+http-equiv="content-type" content="text/html; charset=UTF-8"> <meta
+http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> <meta
+http-equiv="content-style-type" content="text/css"> <meta http-equiv="expires"
+content="0"> </head> <body> 
+ 
+<h2>Toward Wireless Mesh with WiFi-Direct Apps<h2> <h4>A project using WiFi Direct and
+the Andoird platform.</h4> Paul O'Neil and Steven Presser<br><br><br> 
+ 
+<b>Overview</b><br><br> 
+ 
+<p>&nbsp;&nbsp;&nbsp;
+In a disaster, it is not unusual for many of the infrastructure-based networks
+(e.g.: cellular or internet) to be damaged or destroyed.  However, wide-area
+first responder communication and information dissemination within a disaster
+zone could be greatly improved by the availability of a network.  Repairing
+infrastructure may need to wait until after the disaster situation is
+alleviated and mobile replacements may be impractical or spotty.  However,
+those in the affected ares are likely to still have any battery powered devices
+they had which used these networks - i.e.: cell phones.  We looked at how
+cellular devices could be used in order to create a communication network to
+the outside world for those who could not reach infrastructure networks and how
+communication within a disaster zone could be accomplished using these devices.
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;
+We chose to use Android devices.  Some newer Android devices (for example, the
+Nexus 4 and 7) support a protocol called WiFi Direct.  WiFi Direct is intended
+to allow two devices to communicate without infrastructure.  The target use
+case for WiFi Direct is simple communication between two devices.  For example,
+WiFi Direct could be used to stream media from your phone to your television.
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;
+We were aiming to use WiFi Direct as a link-layer transport method and build a
+network on top of it.  Unfortunately, we found that this had significant
+difficulty.  For example, WiFi Direct devices sometimes have very divergent
+views of the world.  For example, one device believes it is connected to
+another, while the second is unaware of the existence of the first.
+Additionally, the Android implementation of WiFi Direct appears to only allow
+one to one associations between devices.  Additionally, disconnecting from one
+device and connecting to another without manual user intervention does not
+appear to function correctly.  For this reason, though WiFi Direct as described
+online appears to be an ideal solution, we were unable to implement this due to
+the buggy nature of the Android Implementation.  Should this improve
+sufficiently in the future to overcome these problems, we could revisit this
+project and turn it into a much broader project.
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;
+However, we are able to demonstrate that, should WiFi Direct work as
+advertised, our solution would be feasible.  In order to do so, we've built a
+relatively simple demo.  We start with two devices.  Device one is connected to
+a wider network - perhaps the cell network.  In a disaster situation, this
+would be a device at the edge of the affected area, which is able to speak to
+undamaged infrastructure.  Device two cannot see this infrastructure network,
+but can connect to device one over WiFi Direct.  It is then able to transmit
+all of its traffic to device one via the WiFi Direct link.  Device one then
+acts as a gateway and passes this traffic to the wider world.
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;
+The most novel part of our implementation of this idea is the requirements.  We
+took advantage of the VPNService interface, which appeared in Android API 14 to
+capture the systems traffic.  In this way we achieve two important goals:
+First, the device does not need any modification or rooting to run our system -
+simply an application install.  Second, applications do not need to be aware of
+our application to use it - traffic is transparently passed through our
+network.
+</p>
+
+<br><br> <b>Resources</b><br><br> <a href="Presentation.pdf"
+target="new">Project Presentation</a>
+ 
+</body> </html> 

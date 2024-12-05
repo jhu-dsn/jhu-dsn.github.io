@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title>Big Data and Consistency</title>
+  <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+  <meta name="author" content="Amy Babay"/>
+  <meta name="description" content="Understanding consistency and big data"/>
+  <meta name="keywords" content="amy, babay, amybabay, amy babay, babay amy, hopkins, johns hopkins, big data, consistency, replication"/>
+
+<style type="text/css">
+body {font-family: Georgia, "Times New Roman", serif; font-size: .95em; margin: 1em;}
+.section {margin-left: 2em;}
+#picture {float: left; width 10em; margin-bottom: 1em;}
+#contact {margin-left: 10em; margin-bottom: 1em;}
+#main {clear: both;}
+</style>
+</head>
+
+
+<body>
+
+<h1> Big Data and Consistency </h1>
+
+<p> Amy Babay </p>
+
+<h2> Project Overview </h2>
+
+<p> The rise of "Big Data" and the increasing need to store terabytes or
+petabytes of data across many machines and multiple data centers has lead to
+the proliferation of large-scale data storage systems. This project
+investigated the guarantees provided by these systems, looking specifically at
+<a href="http://cassandra.apache.org/">Cassandra</a> as an example of a popular
+system of this type,  and examined approaches for achieving full consistency in
+such systems.</p>
+
+<p> I considered four Big Data use-patterns: (1) write once/read many, (2)
+simple key-value updates, (3) compound key-value updates, and (4) database
+transactions. Each use-pattern places distinct requirements on the data storage
+system. In order to use Big Data effectively, it is necessary to select or
+design a system that provides the appropriate guarantees for the specific use
+case. In this project, I examined existing solutions for the first two uses
+cases and evaluated the applicability of consistent replication techniques to
+use cases three and four. While replication engines are a possible approach to
+solving the problem of compound updates, more general agreement protocols are
+necessary to implement distributed transactions. </p>
+
+<h2> Project Materials </h2>
+
+<a href="FinalPresentation.pdf">Presentation</a>
+
+</body>
+</html>
