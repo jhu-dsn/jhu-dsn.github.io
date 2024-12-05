@@ -1,0 +1,49 @@
+<html> 
+<head> 
+<title>Remote Telesurgery</title> 
+<meta name="author" content="Daniel Obenshain and Tom Tantillo"> 
+<meta name="date" content="2011-5-10T00:00:00-0000"> 
+<meta name="copyright" content=""> 
+<meta name="keywords" content="Telesurgery, da Vinci, robot"> 
+<meta name="description" content="Enabling remote telesurgery"> 
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW"> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> 
+<meta http-equiv="content-style-type" content="text/css"> 
+<meta http-equiv="expires" content="0"> 
+</head> 
+<body> 
+ 
+<h2>Remote Telesurgery<h2> 
+<h4>Enabling remote telesurgery via overlay networks.</h4> 
+Daniel Obenshain and Tom Tantillo<br><br><br> 
+ 
+<b>Overview</b><br><br> 
+ 
+<p>&nbsp;&nbsp;&nbsp;Telesurgery refers to the practice of using robotic tools to perform surgery
+as opposed to traditional laproscopic tools or open surgery. Remote telesurgery furthers
+this idea by allowing the surgeon and the patient to be very far from each other, 
+even as far as thousands of miles.</p>
+
+<p>&nbsp;&nbsp;&nbsp;Notably, remote telesurgery has already succeeded as a proof of concept. In 2001, Dr. Jacques Marescaux
+was able to perform a gall bladder surgery on a patient in France while he was in New York. Since then,
+Dr. Mehran Anvari has performed many sucessful remote telesurgeries in Canada. Both of these examples used private networks, which
+do not scale well and are not cost effective.</p>
+
+<p>&nbsp;&nbsp;&nbsp;The da Vinci robot has become the de facto telesurgical device. It consists of two parts, the surgeon's
+console and the patient side. Commands are sent from the surgeon's console to the patient side and video data is sent
+from the patient side to the surgeon's side. The demanding part of this application is sending both these signals with high
+reliability and low latency, over normal internet (not private networks).</p>
+
+<p>&nbsp;&nbsp;&nbsp;In this project we investigated how to provide remote telesurgery with the reliability needed for surgery,
+while maintaining extremely low latencies. We used the LTN overlay network to send video data from one location to another
+with high reliability and low latency.</p>
+ 
+<br><br> 
+<b>Resources</b><br><br> 
+<!-- <a href="RemoteTelesrugery.pdf" target="new">Project Report</a><br><br> -->
+<a href="RemoteTelesurgery.pdf" target="new">Project Presentation</a><br><br> 
+<a href="RemoteTelesurgery.tar.gz" target="new">Source Code</a> 
+ 
+</body> 
+</html> 
