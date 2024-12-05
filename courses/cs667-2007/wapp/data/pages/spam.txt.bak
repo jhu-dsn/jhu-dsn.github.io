@@ -1,0 +1,24 @@
+This is a simple main page :-P
+
+====== Results ======
+
+====== Log ======
+This is a [[log]] of things we did.
+
+====== Plugins ======
+Here are the plugins available so far.
+
+**host_plugin** [April 2, 2007]\\
+Any email which is not generated locally, is marked if there is no hostname associated with the IP address. 
+
+**ip_heuristic** [April 2, 2007]\\
+Any server which connects and sends a spam is added in a local blacklist used to mark all the following messages coming from that server.
+
+**dnsbl_plugin** [April 2, 2007]\\
+All the connecting servers are checked against //sbl-xbl.spamhaus.org// and //bl.spamcop.net// blacklists.
+
+====== TODO =====
+
+[[ralucam-todo]]
+
+[[cpitman-todo]]

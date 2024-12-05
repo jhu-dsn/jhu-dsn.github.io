@@ -1,0 +1,265 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#summary" class="toc">Summary</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#general_results" class="toc">General Results</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#heuristic_results" class="toc">Heuristic Results</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#graphs" class="toc">Graphs</a></span></div></li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="summary" id="summary">Summary</a></h1>
+<div class="level1">
+
+<p>
+ Data was observed from 04/03 to 04/09.  During this time the IP_REPEAT, DNSBL, and HOSTNAME heuristics were active.
+</p>
+
+</div>
+<!-- SECTION "Summary" [1-140] -->
+<h1><a name="general_results" id="general_results">General Results</a></h1>
+<div class="level1">
+
+</div>
+
+<h5><a name="totals" id="totals">Totals</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  2135
+Total Marked Spam Messages:  1944
+Total Unmarked Spam Messages:  191
+Total Nonspam Messages:  86
+</pre>
+
+</div>
+
+<h5><a name="hostname_statistics" id="hostname_statistics">HostName Statistics</a></h5>
+<div class="level5">
+<pre class="code">
+Total Marked Spam with HNAME:  1447     0.744
+Total Unmarked Spam with HNAME:  157    0.822
+Total Nonspam with HNAME:  86   1.000
+</pre>
+
+</div>
+
+<h5><a name="marked_spam_statistics" id="marked_spam_statistics">Marked Spam Statistics</a></h5>
+<div class="level5">
+<pre class="code">
+Average HLEN 859.202
+Average BLEN 7518.486
+Average MLEN 8377.688
+</pre>
+
+</div>
+
+<h5><a name="unmarked_spam_statistics" id="unmarked_spam_statistics">Unmarked Spam Statistics</a></h5>
+<div class="level5">
+<pre class="code">
+Average HLEN 976.236
+Average BLEN 11835.031
+Average MLEN 12811.267
+</pre>
+
+</div>
+
+<h5><a name="spam_statistics" id="spam_statistics">Spam Statistics</a></h5>
+<div class="level5">
+<pre class="code">
+Average HLEN 869.672
+Average BLEN 7904.650
+Average MLEN 8774.322
+</pre>
+
+</div>
+
+<h5><a name="nonspam_statistics" id="nonspam_statistics">Nonspam Statistics</a></h5>
+<div class="level5">
+<pre class="code">
+Average HLEN 1951.988
+Average BLEN 612905.500
+Average MLEN 614857.488
+</pre>
+
+</div>
+
+<h5><a name="how_many_ips_send_only_spam_non-spam_aggregate" id="how_many_ips_send_only_spam_non-spam_aggregate">How many IPs send only spam, non-spam, aggregate?</a></h5>
+<div class="level5">
+<pre class="code">
+                        Total IPs:      Total Messages  Messages/IP
+Spam:                   1395            1778            1.275
+Nonspam:                18              77              4.278
+Aggregate:              2               366             183.000
+</pre>
+
+</div>
+
+<h5><a name="how_many_ips_sent_both_marked_and_unmarked_spam" id="how_many_ips_sent_both_marked_and_unmarked_spam">How many IPS sent both marked and unmarked spam?</a></h5>
+<div class="level5">
+<pre class="code">
+                                Total Ips:      Messages:
+Only Marked:                    1290            1634
+Only Unmarked:                  97              108
+Both Marked and Unmarked:       10              393
+</pre>
+
+</div>
+<!-- SECTION "General Results" [141-1534] -->
+<h1><a name="heuristic_results" id="heuristic_results">Heuristic Results</a></h1>
+<div class="level1">
+
+</div>
+
+<h5><a name="ip_repeat_only" id="ip_repeat_only">IP_REPEAT Only</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  466
+Total Marked Spam Messages:  388
+Total Unmarked Spam Messages:  78
+</pre>
+
+</div>
+
+<h5><a name="dnsbl_only" id="dnsbl_only">DNSBL Only</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  479
+Total Marked Spam Messages:  470
+Total Unmarked Spam Messages:  9
+</pre>
+
+</div>
+
+<h5><a name="hostname_only" id="hostname_only">HOSTNAME Only</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  124
+Total Marked Spam Messages:  94
+Total Unmarked Spam Messages:  30
+</pre>
+
+</div>
+
+<h5><a name="ip_repeat_dnsbl" id="ip_repeat_dnsbl">IP_REPEAT &amp; DNSBL</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  126
+Total Marked Spam Messages:  126
+Total Unmarked Spam Messages:  0
+</pre>
+
+</div>
+
+<h5><a name="ip_repeat_hostname" id="ip_repeat_hostname">IP_REPEAT &amp; HOSTNAME</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  17
+Total Marked Spam Messages:  17
+Total Unmarked Spam Messages:  0
+</pre>
+
+</div>
+
+<h5><a name="dnsbl_hostname" id="dnsbl_hostname">DNSBL &amp; HOSTNAME</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  251
+Total Marked Spam Messages:  248
+Total Unmarked Spam Messages:  3
+</pre>
+
+</div>
+
+<h5><a name="ip_repeat_dnsbl_hostname" id="ip_repeat_dnsbl_hostname">IP_REPEAT &amp; DNSBL &amp; HOSTNAME</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  76
+Total Marked Spam Messages:  76
+Total Unmarked Spam Messages:  0
+</pre>
+
+</div>
+
+<h5><a name="ip_repeat_from_all" id="ip_repeat_from_all">IP_REPEAT from ALL</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  685
+Total Marked Spam Messages:  607
+Total Unmarked Spam Messages:  78
+</pre>
+
+</div>
+
+<h5><a name="dnsbl_from_all" id="dnsbl_from_all">DNSBL from ALL</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  932
+Total Marked Spam Messages:  920
+Total Unmarked Spam Messages:  12
+</pre>
+
+</div>
+
+<h5><a name="hostname_from_all" id="hostname_from_all">HOSTNAME from ALL</a></h5>
+<div class="level5">
+<pre class="code">
+Total Spam Messages:  468
+Total Marked Spam Messages:  435
+Total Unmarked Spam Messages:  33
+</pre>
+
+<p>
+DNSBL adds little extra value to the prediction of unmarked, but performs well with marked, likely because it is already a significant component of Spam Assassin.
+</p>
+
+<p>
+IP_REPEAT performs quite well, detecting 78/191 unmarked spam messages.  It also identifies quite a large number of marked messages, perhaps b/c IP_REPEAT is a blacklist and may find addresses in common with the DNSBL.
+</p>
+
+<p>
+HOSTNAME finds a smaller, but still reasonable number of unmarked messages: 33/191.  Of the three tests it identifies the smallest number of marked messages: 435.  This is probably b/c this test is not employed by spam assassin.
+</p>
+
+</div>
+<!-- SECTION "Heuristic Results" [1535-3499] -->
+<h1><a name="graphs" id="graphs">Graphs</a></h1>
+<div class="level1">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist.png" class="media" title="spam_assassin:spam_assassin_dist.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_flagged.png" class="media" title="spam_assassin:spam_assassin_dist_flagged.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_flagged.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_none.png" class="media" title="spam_assassin:spam_assassin_dist_none.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_none.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_dsnbl.png" class="media" title="spam_assassin:spam_assassin_dist_dsnbl.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_dsnbl.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_hname.png" class="media" title="spam_assassin:spam_assassin_dist_hname.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_hname.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_ipr.png" class="media" title="spam_assassin:spam_assassin_dist_ipr.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_ipr.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_1.png" class="media" title="spam_assassin:spam_assassin_dist_unmarked_1.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_1.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=heuristic_dist_04_03-04_09&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_2.png" class="media" title="spam_assassin:spam_assassin_dist_unmarked_2.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_2.png" class="media" title="" alt="" /></a>
+</p>
+
+</div>
+<!-- SECTION "Graphs" [3500-] -->

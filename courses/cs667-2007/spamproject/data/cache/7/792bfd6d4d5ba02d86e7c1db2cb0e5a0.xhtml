@@ -1,0 +1,15 @@
+
+
+
+<h1><a name="addressing_smtp-based_mass-mailing_activity_within_enterprise_networks" id="addressing_smtp-based_mass-mailing_activity_within_enterprise_networks">Addressing SMTP-based Mass-Mailing Activity Within Enterprise Networks</a></h1>
+<div class="level1">
+
+<p>
+ This paper takes the approach of preventing outgoing spam in an enterprise network.  The idea is that only mail servers should be conducting <acronym title="Domain Name Server">DNS</acronym> MX record requests.  A client who wishes to send a legitimate email will connect to such a mail server, which will then perform a <acronym title="Domain Name Server">DNS</acronym> MX record request to locate the destination mail server corresponding to the recipient address.  A client that is a zombie will act as its own mail server, conducting the DSN MX request itself and directly connecting to the destination mail server.  It is shown that in a network of approximately 300 clients there is no legitimate reason for clients to perform their own <acronym title="Domain Name Server">DNS</acronym> MX lookups.  Thus the administrators of the enterprise network should scan for such behavior and disable port 25 connections of such offending clients.
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/fetch.php?id=enterprise_networks&amp;cache=cache&amp;media=93.pdf" class="media mediafile mf_pdf" title="93.pdf">Read the Paper</a> 
+</p>
+
+</div>

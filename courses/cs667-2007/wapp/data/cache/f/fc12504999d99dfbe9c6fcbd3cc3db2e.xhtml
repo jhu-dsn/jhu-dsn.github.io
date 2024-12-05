@@ -1,0 +1,114 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="clear">
+
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#graphs" class="toc">Graphs</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#howto" class="toc">Howto</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#data" class="toc">Data</a></span></div></li></ul>
+</li></ul>
+</div>
+</div>
+
+
+
+<h2><a name="graphs" id="graphs">Graphs</a></h2>
+<div class="level2">
+
+<p>
+<a href="/courses/cs667-2007/wapp/lib/exe/detail.php?id=smtp_path_length&amp;cache=cache&amp;media=path.length.png" class="media" title="path.length.png"><img src="/courses/cs667-2007/wapp/lib/exe/fetch.php?w=450&amp;h=&amp;cache=cache&amp;media=path.length.png" class="media" title="" alt="" width="450" /></a> <a href="/courses/cs667-2007/wapp/lib/exe/detail.php?id=smtp_path_length&amp;cache=cache&amp;media=path.length2.png" class="media" title="path.length2.png"><img src="/courses/cs667-2007/wapp/lib/exe/fetch.php?w=450&amp;h=&amp;cache=cache&amp;media=path.length2.png" class="media" title="" alt="" width="450" /></a>
+</p>
+
+</div>
+<!-- SECTION "Graphs" [1-71] -->
+<h2><a name="howto" id="howto">Howto</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> generate the smtp_path file:</div>
+</li>
+</ul>
+<pre class="code">
+time ./smtp_path.py /storage/projects/spamproject/snapshot.5/messages.log &gt; smtp_path.5
+</pre>
+<ul>
+<li class="level1"><div class="li"> extract the IP addresses from marked and unmarked inbox:</div>
+</li>
+</ul>
+<pre class="code">
+./extract_ip.py yair_spam_unmarked smtp_path.5 &gt; out.unmarked.5
+./extract_ip.py yair_spam_marked smtp_path.5 &gt; out.marked.5
+</pre>
+<ul>
+<li class="level1"><div class="li"> reduce local.log to the interval covered by marked and unmarked inboxes:</div>
+</li>
+</ul>
+<pre class="code">
+./split_local.py local.log yair_spam_marked yair_spam_unmarked &gt; local.log.yair.5
+</pre>
+<ul>
+<li class="level1"><div class="li"> extract the IP addresses of nonspam messages:</div>
+</li>
+</ul>
+<pre class="code">
+./extract_yair_nonspam.py yair_spam_all.5 local.log.yair.5 smtp_path.5 &gt; out.nonspam.5
+</pre>
+
+</div>
+<!-- SECTION "Howto" [72-752] -->
+<h2><a name="data" id="data">Data</a></h2>
+<div class="level2">
+<pre class="code">
+[ralucam@sky1 trunk]$ ./smtp_histogram.py out.marked.5 smtp_path.5 
+0       0        0.00
+1       5087    45.41
+2       4463    39.84
+3       1308    11.68
+4       224      2.00
+5       95       0.85
+6       26       0.23
+[ralucam@sky1 trunk]$ ./smtp_histogram.py out.unmarked.5 smtp_path.5 
+0       0        0.00
+1       135     11.55
+2       718     61.42
+3       219     18.73
+4       55       4.70
+5       30       2.57
+6       9        0.77
+7       1        0.09
+8       0        0.00
+9       0        0.00
+10      0        0.00
+11      2        0.17
+[ralucam@sky1 trunk]$ ./smtp_histogram.py out.nonspam.5 smtp_path.5 
+0       0        0.00
+1       48       5.81
+2       210     25.42
+3       240     29.06
+4       53       6.42
+5       154     18.64
+6       50       6.05
+7       21       2.54
+8       5        0.61
+9       7        0.85
+10      26       3.15
+11      12       1.45
+[ralucam@sky1 trunk]$ ./smtp_histogram.py out.allspam.5 smtp_path.5 
+0       0        0.00
+1       5222    42.21
+2       5181    41.88
+3       1527    12.34
+4       279      2.26
+5       125      1.01
+6       35       0.28
+7       1        0.01
+8       0        0.00
+9       0        0.00
+10      0        0.00
+11      2        0.02
+</pre>
+
+</div>
+<!-- SECTION "Data" [753-] -->

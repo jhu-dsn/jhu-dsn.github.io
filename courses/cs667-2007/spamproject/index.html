@@ -1,0 +1,494 @@
+<html> 
+<head> 
+<title></title> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> <meta http-equiv="content-style-type" content="text/css"> 
+<meta http-equiv="expires" content="0"> 
+</head> 
+<body> 
+
+<h2>AntiSpam Project</h2>
+
+<h4>Team Members:</h4>
+
+Wyatt Chaffee <br>
+Chris Pitman <br>
+Raluca Musaloiu-E. <br>
+
+<h4>Problem</h4>
+
+The influx of spam has caused email to become a less effective tool for
+communication, and the problem is getting worse. Despite the application of
+today’s best filters spam continues to find its way into our inboxes in ever
+increasing numbers.
+
+<p>
+The nature of the email system makes it susceptible to spam. Email allows the
+sender to falsify many of the fields contained within the message including the
+sender address and email server history. This leaves no way to determine
+accountability and hinders the ability to filter spam and enforce spamming
+laws. Email also carries no cost. Unlike sending a letter through the postal
+system, email is free and carries little performance cost. This means that
+spammers can send large volumes of spam every day. Even if filters operate with
+a high rate of accuracy they will still allow a large number of spam messages
+into the user’s inbox relative to the number of legitimate messages.
+
+<p>
+Spammers are also constantly working to bypass anti-spam techniques, and the
+amount of spam being sent is constantly increasing. It is estimated that spam
+costs corporations about $2000 per employee per year in lost productivity, and
+the same corporations have reported a 6% reduction in spam filter effectiveness
+over the course of 10 months. The total cost of spam in 2003 was estimated at
+$20 billion dollars.
+
+<p>
+As we approached the issue of spam it became clear that a major difficulty is
+that most metrics we tried for comparing spam and non-spam were inconclusive.
+Most of them might show a probabilistic chance of a message being one or the
+other, but often the difference between the two was weak and difficult to apply
+to individual messages. However, a few methods were very effective at clearly
+distinguishing the two, and they became the methods that we adopted.
+
+<p>
+<h4>Goals</h4>
+
+<p>
+The goals of this project are as follows:
+
+<p>
+<ol>
+<li>Decrease the number of uncaught spam messages by 50%. </li>
+<li>Impose a cost on the sender for delivering a spam message. </li>
+</ol>
+
+<h4>Decreasing Uncaught Spam</h4>
+
+<p>
+We wish to decrease the number of uncaught spam messages in our own network by
+50%. We are already employing a major spam filter known as Spam Assassin. In
+order to improve the effectiveness of spam filtering, we attempt to attempt to
+identify new tests that can accurately label a message as either spam or as a
+non-spam. We will utilize any information available to the email server
+including the previous history of received email.
+
+<p>
+As stated previously email lacks accountability which makes the prevention of
+spam a tougher problem. However one piece of information we do know to be
+correct is the IP address of the computer delivering the message directly to
+our server. This is a requirement of the TCP/IP communication system on which
+Email operates. Thus we will utilize this piece of information in many of our
+tests.
+
+<p>
+<h5>Environment</h5>
+
+<p>
+The Distributed Systems and Networks Lab maitains its own email server hosting
+a number of email accounts. For each account a user specific instance of Spam
+Assassin attempts to filter out spam using a variety of techniques such as DNS
+blacklists and Bayesian Content Filtering. The filter adds a unique tag to the
+subject of each message it has identified as spam. We introduce our own filters
+to the exim server which add additional tags to the subject of the email, one
+for each test which identifies the message as spam. For a selection of the
+accounts the email is hand filtered into non-spam, marked spam, and unmarked
+spam categories. We then analyze the email to determine how many of the
+messages not marked by Spam Assassin were caught by one of our filters. Of
+course we also investigate how many legitimate messages were flagged as spam.
+
+<p>
+The email flow is defined in steps as follows:
+
+<p>
+<ol>
+<li>Sender connects and provides From and To Email Addresses.</li>
+<li>Message is rejected if problems exist with addresses (i.e., sender cannot be verified or the
+recipient doesn’t exist on the server).</li>
+<li>Message is passed to exim_local_scan script for testing.</li>
+<li>Heuristics are run and subject is augmented with flags.</li>
+<li>Message is passed to user specific Spam Assassin.</li>
+<li>Message is delivered to user inbox.</li>
+</ol>
+
+<p>
+<img src="fetch.png">
+
+<p>
+<h4>Initial Questions</h4>
+
+<p>
+In determining which heuristics to deploy, we sought the answers to several
+questions regarding the properties of our email. Those questions and answers
+can be viewed here.
+
+<p>
+<h4>Tests</h4>
+
+<p>
+Ultimately we implemented the following heuristics:
+
+<p>
+<h5>Hostname</h5>
+
+<p>
+Any email which is not generated locally is marked if there is no
+hostname associated with the connecting IP address. This rule is based on the
+fact that a legitimate server will always have a host name.
+
+<ul>
+<li>If there is no host name associated:</li>
+  <ul>
+  <li>Flag the message with NO_HOSTNAME</li>
+  </ul>
+</ul>
+
+<h5>IP Repeat</h5>
+
+<p>
+Any server which connects and sends a spam (a decision based on the user-based
+SpamAssassin score, with a threshold of 5) is added to a local blacklist. The
+blacklist is then utilized to mark all the proceeding messages coming from that
+server as spam.  Potentially, this rule can easily generate false positives as
+servers can send both spam and non-spam messages (for example, botnets which
+send spam through the ISP mail server). The following steps are performed:
+
+<ul>
+<li>Identify the closest IP address outside of Hopkins address space using SMTP
+  path included in the message header.  Closest IP address is defined more
+clearly as the first IP address which doesn't belong to Hopkins, in the reverse
+order of the SMTP path. </li>
+
+<li>Is the IP address on the IP_Repeat blacklist?</li>
+  <ul>
+  <li>Yes:</li>
+     <ul>
+     <li>Flag the message with IP_REPEAT and also add a header to the message
+       containing debug information</li>
+     <li>Increment flagged counter in IP_Repeat blacklist</li>
+     </ul>
+  <li>No:</li>
+   <ul>
+     <li>If the Spam Assassin score is above the threshold (in our case 5) then
+       add the IP address on the IP_Repeat blacklist (id of the message,
+       timestamp and counter)</li>
+  </ul>
+</ul>
+</ul>
+
+<h5>Aggregate Score (IP Repeat)</h5>
+<p>
+Since the IP Repeat heuristic may generate false positives, it would be better
+to use it in combination with other tests. Thus the Aggregate Score (IP Repeat)
+heuristic flags the message if it is satisfies the conditions of IP Repeat as
+described above and it has a user-based Spam Assassin score for the message is
+between 3 and 5. It was seen that the bulk of unmarked spam messages occured in
+this range, as can be seen in this photo. The following steps are performed:
+
+<ul>
+<li>Is marked with IP Repeat?</li>
+<ul>
+  <li>Yes:</li>
+<ul>
+    <li>Is Spam Assassin score between 3 and 5?</li>
+<ul>
+      <li>Yes:</li>
+<ul>
+	 <li>Flag with AGG_SCORE</li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<p>
+<h5>DNS Blacklist</h5>
+
+<p>
+All the servers are checked against a set of known DNS blacklists
+(in our case sbl-xbl.spamhaus.org and bl.spamcop.net). Note that SpamAssassin
+score is based on its own checks against DNSBLs. A brief comparison of several
+DNSBLs shows how are the IP addresses added and removed on these lists and by
+whom. As in IP_Repeat, we are using the first IP outside Hopkins, because we
+know they are legitimate servers. Ideally, we can check here the entire SMTP
+path.
+
+<ul>
+<li>Identify the closest IP address outside of Hopkins address space using SMTP
+  path included in the message header.</li>
+<li>If the IP address is on any of the blacklists:</li>
+  <ul>
+  <li>Flag the message with DNSBL_FOUND</li>
+  </ul>
+</ul>
+
+<p>
+<h5>Dynamic Blacklist</h5>
+All the connecting servers are checked against a set of dynamic IP blacklists
+(specifically, pbl.spamhaus.org and dul.dnsbl.sorbs.net). The idea is to flag
+all the messages coming from dialup and DHCP IP address space that is not meant
+to be initiating SMTP connections (they should use the ISP mail server
+instead).
+
+<ul>
+<li>If the connecting IP address is on any of the dynamic IP blacklists:</li>
+<ul>
+  <li>Flag the message with DYNAMIC_FOUND</li>
+</ul>
+</ul>
+
+<p>
+<h5>IP Reject Log</h5>
+Any server whose connection has been rejected is placed on a local blacklist. A
+message can be rejected for many reasons, such as an invalid recipient or
+sender address.  The blacklist is then utilized to mark all the proceeding
+messages coming from that server as spam. As IP_Repeat, this rule can
+potentially generate easily false positives as servers can send both spam and
+non-spam messages.
+
+<p>
+A daemon is running in background parsing the Exim reject
+log. Any IP address found here is added to the IP_Reject blacklist. This daemon
+accepts TCP connections from the clients asking for an IP address.
+
+<ul>
+<li>If the IP address belongs to a legitimate server which frequently connects
+  (we listed here ''blaze.cs.jhu.edu''):</li>
+  <ul>
+  <li>return</li>
+  </ul>
+<li>If the IP address is on the IP_Reject blacklist:</li>
+  <ul>
+  <li>Flag the message with IP_REJECT and also add a header to the message
+    containing debug information</li>
+  </ul>
+</ul>
+
+<h5>IP Address Replacement:</h5> The DNS Blacklist and
+the IP Repeat heuristics both utilize the closest IP address outside of
+Hokpins. This decision was made because there are many legitimate messages
+which come to Commedia from another Hopkins SMTP server. The presence of a
+single spam from any one of these would trigger many false positives, thus the
+next IP in the path is utilized. For instance, some accounts of the format,
+address@jhu.edu are forwarded to a Commedia account. When a spam message is
+sent to such an address, it comes through the Hopkins SMTP Server for jhu.edu.
+
+<p>
+Look at a message in which this occured.
+
+<p>
+<h4>Results</h4>
+
+<p>
+In this section we discuss the results given a snapshot taken from April 18 to
+April 23 with the following properties:
+
+<p>
+Total Spam Messages:  2062 Total Marked Spam Messages:  1916 Total Unmarked
+Spam Messages:  146 Total Nonspam Messages:  100 Given the sample of 2162
+messages, we were able to flag 109 of the 146 unmarked messages by
+SpamAssassin. That is equal to about 74% of the messages during this time. The
+graph below shows the number of emails flagged with each heuristic and the spam
+assassin score assigned to each of these emails.
+
+
+
+<p>
+It is important to note that some messages are flagged by multiple heuristics.
+Thus the sum of each point won’t equal, but would exceed, the total number
+flagged since there is some overlap.
+
+<p>
+		Unmarked	Marked IP Repeat: 	62		553
+Host Name:	34		595 DNS BlackList:	4		1167
+Agg Score: 	58		4 Reject:		27		89
+Dynamic:	25		1049 The graph and data show that IP Repeat
+performs very well on our sample. Host Name is also very good at predicting
+spam. Since IP Repeat has a good chance of false positives, we added Agg Score,
+which catches most (58/62) of the same messages except those with low spam
+assassin scores. The Reject and Dynamic do a fair job at detecting spam.
+Finally, the DNS blacklist is of little value because Spam Assassin already
+uses DNS Blacklists in its evaluation of the message.
+
+<p>
+In-Depth Analysis of this Snapshot Future Work Cross-User Analysis It would be
+interesting to see how often messages with the same subject/content/sender-IP
+are sent across users.  Grey Listing Though we wrote a script for this we did
+not have time to deploy it. Doing so would also affect our results and be
+difficult to monitor, so we held off on this one.  Forgiveness Statistics on
+the relative timing of messages blocked with IP Repeat have been gathered, with
+the possible focus of adding a concept of “forgiveness” to the blacklist to
+remove IPs after time.  Imposing Cost
+
+<p>
+Currently the cost of sending a spam message is equal to that of sending a
+legitimate message. We wish to change this. In order to do so we will cause the
+spammer to repeat the transmission of the network packets that combine to form
+the email. We hope the increase in traffic will cause the spammer’s network to
+become congested and prevent the transmission of as many messages over the same
+amount of time.
+
+<p>
+Verification of Technique
+
+<p>
+In order to verify the technique we wrote a small test program. The program
+uses libpcap and libnet, offering the ability to sniff packets on the wire and
+inject packets respectively. There are two modes of operation, normal and
+misbehaving mode. Under normal operation the program acts as closely as
+possible to a legitimate TCP/IP connection. Under misbehaving mode it only ACKs
+one packet per timeout interval. The timeout interval is tuned to occur after
+the sender transmits its entire window but before those packets are
+retransmitted from a sender timeout. Thus for each window transfer, the
+misbehaving mode acknolwedges only one packet. That acknowedgment may be
+duplicated 3, 6, or 9 times to study the affect of fast-retransmission via ACK
+spoofing.
+
+<p>
+The results indicate that the number of packets for a payload similar to the
+average experienced spam, 10KB, the sender will transmit roughly four times
+that amount under misbehaving mode. If progress is prevented, the size can be
+dramatically increased [stats coming].
+
+<p>
+View the TCP/IP Trace for a 10KB file with ACK_NUM_1
+
+
+<p>
+10KB		Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B
+Bytes A<-B	Time(s) ACK_NUM_1	47	44301	11		1019
+36		43282		0.897365 ACK_NUM_3	73	45777	25
+1775		48		44002		1.057954 ACK_NUM_6	112
+47991	46		2909		66		45082
+0.942003 ACK_NUM_9	151	50197	67		4043		84
+46154		1.208762 NORMAL_MODE	23	11230	12		1073
+11		10157		0.146188 FIREFOX		25	11407
+13		1190		12		10217		0.168774
+
+20KB		Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B
+Bytes A<-B	Time(s) ACK_NUM_1	117	142983	17		1343
+100		141640		1.63701 ACK_NUM_3	167	145841	43
+2747		124		143094		1.672872 ACK_NUM_6	242
+150093	82		4853		160		145240
+1.725495 ACK_NUM_9	317	154359	121		6959		196
+147400		2.05343 NORMAL_MODE	37	21244	19		1451
+18		19793		0.437771 FIREFOX		37	21308
+19		1514		18		19794		0.18423
+
+40KB		Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B
+Bytes A<-B	Time(s) ACK_NUM_1	389	517498	30		2045
+359		515453		3.32168 ACK_NUM_3	491	523282	82
+4853		409		518429		3.34379 ACK_NUM_6	644
+532018	160		9065		484		522953
+3.376438 ACK_NUM_9	797	540754	238		13277		559
+527477		3.865532 NORMAL_MODE	63	41163	32		2153
+31		39010		0.816009 FIREFOX		50	40480
+21		1579		29		38901		0.132839
+
+80KB		Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B
+Bytes A<-B	Time(s) ACK_NUM_1	1014	1419523	55		3395
+959		1416128		6.492397 ACK_NUM_3	1193	1397070	157
+8903		1036		1388167		6.367675 ACK_NUM_6	1519
+1448293	310		17165		1209		1431128
+6.534806 ACK_NUM_9	1822	1465627	463		25427		1359
+1440200		7.293122 NORMAL_MODE	125	81535	63		3827
+62		77708		1.57043 FIREFOX		83	79331	28
+2000		55		77331		0.119629 For a 10KB file, we
+extend the ACK_NUM_1 test to repeat the same ack N times over N timeouts. This
+is different from tests such as ACK_NUM_3 where we send 1 Ack and 2 Duplicates
+as fast as possible. In this test, we want to slow progress so as to repeat a
+greater number of packets.
+
+					
+Repeat	Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B	Bytes
+A<-B 0	47	44301	11		1019		36		43282
+1	451	563280	11		1019		440		562261
+25	639	636503	83		4907		556		631596
+50	841	723247	158		8957		683		714290
+100	1235	882521	308		17057		927		865464
+200	1644	1115645	440		24185		1204		1091460
+400	1733	1228681	447		24563		1286		1204118
+Why does it take so many repeats? This is because there is actually a small bug
+in the program. Ideally it will repeat an ACK after it receives the window from
+the sender. However, if it timesout 1 or more times b/w this point, it will use
+up some of its repeats. So it is not operating under the most ideal conditions
+but still can be useful in showing potential for growth.
+
+<p>
+Implementation
+
+<p>
+In order to achieve this misbehaving ability in a production level environment
+we modify our design to be more robust. Our previous solution was fairly hard
+coded. We modify an implementation of the Light-Weight TCP/IP Stack LWIP to
+perform this ack spoofing when configured to do so. Packets destined for the
+mail server are forwarded by the Linux Firewall to a virtual network device
+(Tun/Tap) on which this ‘user-level’ stack operates. Exim is modified to
+utilize the new stack.
+
+<p>
+This is still a work in progress. The light-weight stack introduces
+complications in that it does not include DNS resolving code, a few IOCTL
+features, and quite a few structs native to the Linux TCP/IP implementation.
+The code currently compiles with the lwip share library extension and header
+files but needs additional improvements to work fully. We were also considering
+developing a linux module instead of this technique.
+
+<p>
+Results
+
+<p>
+Snap Shot 9 Complete Analysis Spam Assassin Distributions for Mail Flagged by
+Custom Heuristics Ack Spoofing SpamAssassin score comparison SMTP path lengh
+histogram Paper Reviews
+
+<p>
+During the course of this project we read a few papers which we found to be
+relevant to the topic. The reviews for each paper are listed here.
+
+<p>
+Understanding the Network-Level Behavior of Spammers Characterizing a Spam
+Traffic SMTP Path Analysis Addressing SMTP-based Mass-Mailing Activity Within
+Enterprise Networks An Analysis of the Behaviour of Botnets
+
+<p>
+Spam Resources
+
+<p>
+Spammers Continue Innovation This article summarizes many of the evolving
+issues caused by spammers exploring new techniques to send spam.  Sent to us by
+Gabriel Landau Cats to help thwart net spammers An interesting attempt to use
+various pictures for Captchas Sent to us by Uma Chingunde A Plan for Spam An
+argument for content based filtering based based on bayesian methods.  Sent to
+us by Uma Chingunde SpamHaus Free for servers that have low traffic, Spamhaus
+is one fo the major blacklists available.  Log
+
+<p>
+This is a log of things we did.
+
+<p>
+Plugins
+
+<p>
+Here are the plugins available so far.
+
+<p>
+host_plugin [April 2, 2007] Any email which is not generated locally, is marked
+if there is no hostname associated with the IP address.
+
+<p>
+ip_heuristic [April 2, 2007] Any server which connects and sends a spam is
+added in a local blacklist used to mark all the following messages coming from
+that server.
+
+<p>
+dnsbl_plugin [April 2, 2007] All the connecting servers are checked against
+sbl-xbl.spamhaus.org and bl.spamcop.net blacklists.
+
+<p>
+dynbl_plugin [April 15, 2007] All the connecting servers are checked not to be
+dynamic IPs (pbl.spamhaus.org and dul.dnsbl.sorbs.net).
+
+<p>
+ip_reject_plugin [April 21, 2007] Any server whose connection is rejected is
+placed on a blacklist. Any subsequent email sent by it will be tagged with
+IP_REJECT.
+
+</body> </html>

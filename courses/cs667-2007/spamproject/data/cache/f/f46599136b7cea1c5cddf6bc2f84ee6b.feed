@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/lib/styles/feed.css" type="text/css"?>
+<rss version="2.0">
+    <channel>
+        <title>Spam Project wiki</title>
+        <description></description>
+        <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+        <lastBuildDate>Sun, 25 Aug 2013 17:20:51 -0400</lastBuildDate>
+        <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
+        <image>
+            <url>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/lib/images/favicon.ico</url>
+            <title>Spam Project</title>
+            <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+        </image>
+        <item>
+            <title>wiki:dokuwiki</title>
+            <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=wiki:dokuwiki&amp;amp;rev=1308067998</link>
+            <description>[Array] DokuWiki is a standards compliant, simple to use wp&gt;Wiki, mainly aimed at creating documentation of any kind. It is targeted at developer teams, workgroups and small companies. It has a simple but powerful syntax which makes sure the datafiles remain readable outside the Wiki and eases the creation of structured texts. All data is stored in plain text files -- no database is required.</description>
+            <pubDate>Tue, 14 Jun 2011 12:13:18 -0400</pubDate>
+        </item>
+        <item>
+            <title>wiki:syntax</title>
+            <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=wiki:syntax&amp;amp;rev=1308067998</link>
+            <description>DokuWiki supports some simple markup language, which tries to make the datafiles to be as readable as possible. This page contains all possible syntax you may use when editing the pages. Simply have a look at the source of this page by pressing the Edit this page button at the top or bottom of the page. If you want to try something, just use the playground page. The simpler markup is easily accessible via quickbuttons, too.</description>
+            <pubDate>Tue, 14 Jun 2011 12:13:18 -0400</pubDate>
+        </item>
+    </channel>
+</rss>

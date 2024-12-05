@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/lib/styles/feed.css" type="text/css"?>
+<rss version="2.0">
+    <channel>
+        <title>Spam Project</title>
+        <description></description>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/</link>
+        <lastBuildDate>Mon, 17 Jan 2011 13:22:23 -0500</lastBuildDate>
+        <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
+        <image>
+            <url>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/lib/images/favicon.ico</url>
+            <title>Spam Project</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/</link>
+        </image>
+        <item>
+            <title>10kb-dup_ack_num_1</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=10kb-dup_ack_num_1&amp;amp;rev=1177483528</link>
+            <description>Note only one packet is acked per transmission interval.  The sender to experiences a timeout frequently and retransmits many of the packets.</description>
+            <pubDate>Wed, 25 Apr 2007 02:45:28 -0500</pubDate>
+        </item>
+        <item>
+            <title>ack_spoofing</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ack_spoofing&amp;amp;rev=1176152888</link>
+            <description>Here we investigate manipulating the TCP/IP transfer in order to increment the cost to the sender.
+
+The application makes use of packet sniffing and packet injection to do whatever it wants.  To initiate the transfer, the application makes a request for an html page from an Apache web server I have running in Windows XP.</description>
+            <pubDate>Mon, 09 Apr 2007 17:08:08 -0500</pubDate>
+        </item>
+        <item>
+            <title>botnet_behaviour</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=botnet_behaviour&amp;amp;rev=1177523513</link>
+            <description>This paper delves into the observed behaviour of botnets, the networks of infiltrated computer systems that are controlled by remote users.  Their study was carried out by “capturing” bot programs on a specially setup network and analyzing their actions.  Here are some of the more nteresting details revealed:</description>
+            <pubDate>Wed, 25 Apr 2007 13:51:53 -0500</pubDate>
+        </item>
+        <item>
+            <title>characterizing_spam_traffic</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=characterizing_spam_traffic&amp;amp;rev=1176705204</link>
+            <description>Over 360 thousand incoming emails into a university with 22 thousand students are collected over the course of eight days.  The email server used is Exim, while SpamAssassin is used to determine the status of an email as being either spam or not spam.  A set of parameters is analyzed based on information available in the email headers such as email size, number of recipients per email and the email arrival process.  The sender ip-addresses are not used in the analysis, only the sender domain is …</description>
+            <pubDate>Mon, 16 Apr 2007 02:33:24 -0500</pubDate>
+        </item>
+        <item>
+            <title>cpitman-todo</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=cpitman-todo&amp;amp;rev=1176754714</link>
+            <description>Research the viability of a dynamic web trap for harvesters and other ways of diluting the “information density” of the internet for spammers.</description>
+            <pubDate>Mon, 16 Apr 2007 16:18:34 -0500</pubDate>
+        </item>
+        <item>
+            <title>enterprise_networks</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=enterprise_networks&amp;amp;rev=1176705160</link>
+            <description>This paper takes the approach of preventing outgoing spam in an enterprise network.  The idea is that only mail servers should be conducting DNS MX record requests.  A client who wishes to send a legitimate email will connect to such a mail server, which will then perform a DNS MX record request to locate the destination mail server corresponding to the recipient address.  A client that is a zombie will act as its own mail server, conducting the DSN MX request itself and directly connecting to t…</description>
+            <pubDate>Mon, 16 Apr 2007 02:32:40 -0500</pubDate>
+        </item>
+        <item>
+            <title>heuristic_dist_04_03-04_09</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=heuristic_dist_04_03-04_09&amp;amp;rev=1176748151</link>
+            <description>Data was observed from 04/03 to 04/09.  During this time the IP_REPEAT, DNSBL, and HOSTNAME heuristics were active.
+
+Totals
+
+
+Total Spam Messages:  2135
+Total Marked Spam Messages:  1944
+Total Unmarked Spam Messages:  191
+Total Nonspam Messages:  86</description>
+            <pubDate>Mon, 16 Apr 2007 14:29:11 -0500</pubDate>
+        </item>
+        <item>
+            <title>initial_questions</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=initial_questions&amp;amp;rev=1177525064</link>
+            <description>How many IPs send only spam, non-spam, aggregate?
+
+ The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed. It contained 2062 spam messages, 1916 of which were marked by Spam Assassin, and 100 Nonspam messages.</description>
+            <pubDate>Wed, 25 Apr 2007 14:17:44 -0500</pubDate>
+        </item>
+        <item>
+            <title>ip_address_replace_msg</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ip_address_replace_msg&amp;amp;rev=1177957239</link>
+            <description>The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+
+
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: &lt;someone.com@somedomain.com&gt;
+Envelope-to: &lt;&lt;address3&gt;&gt;@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXa…</description>
+            <pubDate>Mon, 30 Apr 2007 14:20:39 -0500</pubDate>
+        </item>
+        <item>
+            <title>ip_address_replace_msg_a</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ip_address_replace_msg_a&amp;amp;rev=1177960215</link>
+            <description>The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+
+
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: &lt;someone.com@somedomain.com&gt;
+Envelope-to: &lt;&lt;address3&gt;&gt;@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXa…</description>
+            <pubDate>Mon, 30 Apr 2007 15:10:15 -0500</pubDate>
+        </item>
+        <item>
+            <title>iprepeat_stats</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=iprepeat_stats&amp;amp;rev=1177450553</link>
+            <description>We were interested identifying the frequency with which spam is sent by the same spammers.  The following was performed on snapshot 9, occuring from 4/18 to 4/23.
+
+Total Spam Messages:  1915 Total Marked Spam Messages:  1806 Total Unmarked Spam Messages:  109 Total Nonspam Messages:  100</description>
+            <pubDate>Tue, 24 Apr 2007 17:35:53 -0500</pubDate>
+        </item>
+        <item>
+            <title>log</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=log&amp;amp;rev=1187318222</link>
+            <description>[August, 16, 2007] Fixed a bug in IP_REJECT plugin that caused reject-daemon.py to crash.
+
+[July 16, 2007] I added file locks in IP_REPEAT plugin to prevent file corruption which happens quite often, and I also switched from pickle to cPickle to improve performance.</description>
+            <pubDate>Thu, 16 Aug 2007 22:37:02 -0500</pubDate>
+        </item>
+        <item>
+            <title>network_level_behavior</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=network_level_behavior&amp;amp;rev=1176705230</link>
+            <description>A 17-month trace from April 2004 to December 2005 of over 10 million spam messages collected at an Internet sinkhole is analyzed to determine the network-level behavior of spammers.  In addition to the emails collected at the sinkhole, 700,000 legitimate emails from a provider’s server hosted at a different domain and sent on June 13, 2006 are inspected.  A 1.5 day trace of hosts infected with the “Bobax” worm is captured starting on April 28, 2005 by reconfiguring the DNS resolving the bo…</description>
+            <pubDate>Mon, 16 Apr 2007 02:33:50 -0500</pubDate>
+        </item>
+        <item>
+            <title>ralucam-todo</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ralucam-todo&amp;amp;rev=1177362737</link>
+            <description>In a random order.
+
+	*  SMTP path length histogram.
+	*  write a plugin to check each connecting server against dnsbl.sorbs.net and pbl.spamhaus.org (dialup and DHCP addresses that are not supposed to initiate SMTP connections). From these, I want to exclude connection coming from authenticated users (on commedia).
+	*  build the SMTP path tree and analyze it. Ideally I want to have for each node the scores and the number of messages originated from it, the scores of the number of messages routed …</description>
+            <pubDate>Mon, 23 Apr 2007 17:12:17 -0500</pubDate>
+        </item>
+        <item>
+            <title>sa_score_comparison</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=sa_score_comparison&amp;amp;rev=1177349736</link>
+            <description>Results
+
+ These graphs compare the SpamAssassin score generated by local_scan (’local score’) and the one recovered from Yair marked and un-marked spam inbox files (’real score’). The plot is from February 28 until April 18. The first two graphs show the absolute value for both scores, while the last two plot the difference between the two values. We can see how the scores of unmarked messages become more close after March 26 (around email 900), when we switched from global to user-based…</description>
+            <pubDate>Mon, 23 Apr 2007 13:35:36 -0500</pubDate>
+        </item>
+        <item>
+            <title>smtp_path_analysis</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=smtp_path_analysis&amp;amp;rev=1176705181</link>
+            <description>This paper presents a learning algorithm for assigning reputations to IP addresses based on the history of email sent from those respective IPs.  In the case of zombies, since the sender IP address may not have been seen previously, the range in which the sender IP address falls is used to determine whether the email is spammy or not-spammy based on previous history.  IP addresses are divided into a tree according to the bytes in the address.  The number of spams received at each node is recorde…</description>
+            <pubDate>Mon, 16 Apr 2007 02:33:01 -0500</pubDate>
+        </item>
+        <item>
+            <title>smtp_path_lengh_histogram</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=smtp_path_lengh_histogram&amp;amp;rev=1175725121</link>
+            <description>Moved to smtp_path_length.</description>
+            <pubDate>Wed, 04 Apr 2007 18:18:41 -0500</pubDate>
+        </item>
+        <item>
+            <title>smtp_path_length</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=smtp_path_length&amp;amp;rev=1175725032</link>
+            <description>Graphs
+
+ 
+
+Howto
+
+	*  generate the smtp_path file:
+
+
+time ./smtp_path.py /storage/projects/spamproject/snapshot.5/messages.log &gt; smtp_path.5
+
+
+	*  extract the IP addresses from marked and unmarked inbox:
+
+
+./extract_ip.py yair_spam_unmarked smtp_path.5 &gt; out.unmarked.5
+./extract_ip.py yair_spam_marked smtp_path.5 &gt; out.marked.5</description>
+            <pubDate>Wed, 04 Apr 2007 18:17:12 -0500</pubDate>
+        </item>
+        <item>
+            <title>snap9_images-spam_assassin_dist.png</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=snap9_images-spam_assassin_dist.png&amp;amp;rev=1177483196</link>
+            <description></description>
+            <pubDate>Wed, 25 Apr 2007 02:39:56 -0500</pubDate>
+        </item>
+        <item>
+            <title>snap_shot_9</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9&amp;amp;rev=1177959302</link>
+            <description>The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed.
+
+
+Total Spam Messages:  2062
+Total Marked Spam Messages:  1916
+Total Unmarked Spam Messages:  146
+Total Nonspam Messages:  100</description>
+            <pubDate>Mon, 30 Apr 2007 14:55:02 -0500</pubDate>
+        </item>
+        <item>
+            <title>snap_snot_9a</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=snap_snot_9a&amp;amp;rev=1177960056</link>
+            <description>The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed.
+
+
+Total Spam Messages:  2062
+Total Marked Spam Messages:  1916
+Total Unmarked Spam Messages:  146
+Total Nonspam Messages:  100</description>
+            <pubDate>Mon, 30 Apr 2007 15:07:36 -0500</pubDate>
+        </item>
+        <item>
+            <title>spam</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=spam&amp;amp;rev=1177960272</link>
+            <description>Team Members
+
+[ ]
+ Wyatt Chaffee
+ Chris Pitman
+ Raluca Musăloiu-E.
+
+Problem
+
+ The influx of spam has caused email to become a less effective tool for communication, and the problem is getting worse.  Despite the application of today’s best filters spam continues to find its way into our inboxes in ever increasing numbers.</description>
+            <pubDate>Mon, 30 Apr 2007 15:11:12 -0500</pubDate>
+        </item>
+        <item>
+            <title>start</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=start&amp;amp;rev=1175625811</link>
+            <description>This page moved to spam.</description>
+            <pubDate>Tue, 03 Apr 2007 14:43:31 -0500</pubDate>
+        </item>
+        <item>
+            <title>wbchaf-todo</title>
+            <link>http://www.dsn.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=wbchaf-todo&amp;amp;rev=1177349846</link>
+            <description>IP-Repeat Statistics
+
+	*  Run more cost experiments. 
+		*  What’s max retransmissions.
+		*  Alter timeout.
+		*  Attempt on real server.
+
+	*  Investigate real life setup.
+
+	*  Investigate inter-arrival time of IP_REPEAT messages
+	*  Re-run results for the new snapshot.
+	*  Answer the “old” questions
+	*  Answer question regarding exclusion of mail-server and introduce this into home page.</description>
+            <pubDate>Mon, 23 Apr 2007 13:37:26 -0500</pubDate>
+        </item>
+    </channel>
+</rss>

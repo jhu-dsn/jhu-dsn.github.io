@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/styles/feed.css" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/feed.php">
+        <title>Web Application Privacy Protector</title>
+        <description></description>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/</link>
+        <image rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico" />
+       <dc:date>2011-01-17T12:50:22-05:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=cpitman-todo&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=log&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=ralucam-todo&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=sa_score_comparison&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_lengh_histogram&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_length&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=spam&amp;amp;rev=1176252229"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico">
+        <title>Web Application Privacy Protector</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/</link>
+        <url>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico</url>
+    </image>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=cpitman-todo&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>cpitman-todo</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=cpitman-todo&amp;amp;rev=1176252229</link>
+        <description>Research the viability of a dynamic web trap for harvesters and other ways of diluting the “information density” of the internet for spammers.</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-24T21:56:17-05:00</dc:date>
+        <title>feature_list</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177</link>
+        <description>Features Implemented
+
+	*  Provides protection for Google Docs and Zoho Writer.
+	*  Designed in a generic way, so adding protection to new web applications should be trivial and require no additional development.
+
+Features not Implemented
+
+	*  Currently password management has not been implemented completely.We plan to implement this soon.
+	*  Collaboration in the case where multiple users are editing the document simultaneously has not been handled.Some possible approaches to handle this have be…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=log&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>log</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=log&amp;amp;rev=1176252229</link>
+        <description>[April 04, 2007] Results for path length histogram added.
+
+[April 03, 2007] snapshot 5 created in /storage/projects/spamproject/snapshot.5
+
+[April 03, 2007] pathlen_plugin disabled. Not clear when to suspect a message is a spam.
+
+[April 03, 2007] Added a function to use the first IP outside Hopkins (128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0). Currently used by ip_heuristic and dnsbl_plugin.</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-21T14:10:51-05:00</dc:date>
+        <title>more_detailed_description</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051</link>
+        <description>JavaScript 
+
+First, it’s time for a quick crash course in DHTML and JavaScript.  JavaScript is a scripting language built into all modern browsers that facilitates many things.  If you’ve ever used GMail, Google Maps, or just about any other interactive web system, you’ve probably seen JavaScript in action.  JavaScript allows a web developer to do many, many things, including spell checking, mathematical calculations, input validation, etc.  Here’s a quick sample of JavaScript:</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=ralucam-todo&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>ralucam-todo</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=ralucam-todo&amp;amp;rev=1176252229</link>
+        <description>In a random order.
+
+	*  SMTP path length histogram.
+	*  write a plugin to check each connecting server against dnsbl.sorbs.net and pbl.spamhaus.org (dialup and DHCP addresses that are not supposed to initiate SMTP connections). From these, I want to exclude connection coming from authenticated users (on commedia).
+	*  build the SMTP path tree and analyze it. Ideally I want to have for each node the scores and the number of messages originated from it, the scores of the number of messages routed …</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-21T14:13:37-05:00</dc:date>
+        <title>roadmap</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217</link>
+        <description>To Do (High Priority)
+
+	*  Investigate how Gmail Notifier uses the Master Password system and replicate that functionality for our password storage.   ADDENDUM: Use the Master Password system to store a master key that encrypts the entire ProtectedFieldList.  Have the domain correspond to an unreachable domain, such as wapp.cnds.jhu.edu 
+	*  Add a hot-key for “Protect this field” because some web applications prevent you from getting a right-click context menu.  Maybe look into how FreeEnigm…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=sa_score_comparison&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>sa_score_comparison</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=sa_score_comparison&amp;amp;rev=1176252229</link>
+        <description>[Unmarked] [Marked]
+
+[Unmarked difference] [Unmarked difference]</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_lengh_histogram&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>smtp_path_lengh_histogram</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_lengh_histogram&amp;amp;rev=1176252229</link>
+        <description>Moved to smtp_path_length.</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_length&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>smtp_path_length</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=smtp_path_length&amp;amp;rev=1176252229</link>
+        <description>Graphs
+
+ 
+
+Howto
+
+	*  generate the smtp_path file:
+
+
+time ./smtp_path.py /storage/projects/spamproject/snapshot.5/messages.log &gt; smtp_path.5
+
+
+	*  extract the IP addresses from marked and unmarked inbox:
+
+
+./extract_ip.py yair_spam_unmarked smtp_path.5 &gt; out.unmarked.5
+./extract_ip.py yair_spam_marked smtp_path.5 &gt; out.marked.5</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=spam&amp;amp;rev=1176252229">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-10T20:43:49-05:00</dc:date>
+        <title>spam</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=spam&amp;amp;rev=1176252229</link>
+        <description>This is a simple main page :-P
+
+
+
+ Ack Spoofing
+
+SpamAssassin score comparison
+
+SMTP path lengh histogram
+
+This is a log of things we did.
+
+Here are the plugins available so far.
+
+host_plugin [April 2, 2007]
+ Any email which is not generated locally, is marked if there is no hostname associated with the IP address.</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-05-09T00:41:36-05:00</dc:date>
+        <title>start</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696</link>
+        <description>With the increasing popularity of online application providers such as Google Docs and Zoho Writer, more and more people are using these applications for creating and editing documents. Online application providers offer features such as reliable and continuous access to data, collaboration and flexibility. However by using these application providers, users are giving up control over their data to the application provider, in this case Google and Zoho. Potentially anyone can read this data. Web…</description>
+    </item>
+</rdf:RDF>

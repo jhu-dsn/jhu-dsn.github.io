@@ -1,0 +1,183 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#detailed_project_implementation" class="toc">Detailed Project Implementation</a></span></div>
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#push-to-talk_infrastructure_in_the_mesh_network" class="toc">Push-To-Talk Infrastructure in the mesh network</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#the_protocol" class="toc">The Protocol</a></span></div></li></ul>
+</li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="detailed_project_implementation" id="detailed_project_implementation">Detailed Project Implementation</a></h1>
+<div class="level1">
+
+<p>
+Each access point in the SMesh network will serve as a regular wireless access point(providing access to the Internet) and will in addition provide the push-to-talk service. The PTT service is provided by a special daemon running in every SMesh access point. This daemon is invoked every time a PTT client sends out a PTT message. A PTT client is any wireless device that runs the PTT client program. 
+</p>
+
+<p>
+ <strong> Figure 1 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture70.png" class="media" title="picture70.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture70.png" class="media" title="" alt="" /></a>
+</p>
+
+</div>
+<!-- SECTION "Detailed Project Implementation" [1-486] -->
+<h2><a name="push-to-talk_infrastructure_in_the_mesh_network" id="push-to-talk_infrastructure_in_the_mesh_network">Push-To-Talk Infrastructure in the mesh network</a></h2>
+<div class="level2">
+
+<p>
+Each PTT daemon running on the SMesh access point is a part of a <strong>default multicast group</strong> that is used for communication among the daemons. The communication infrastructure between the daemons is provided by <a href="http://www.spines.org" class="urlextern" title="http://www.spines.org"  rel="nofollow">Spines</a>. Each daemon in the network has the knowledge of all the PTT clients, which helps the daemons to quickly service the mobile clients as they move between access points.
+</p>
+
+</div>
+<!-- SECTION "Push-To-Talk Infrastructure in the mesh network" [487-959] -->
+<h2><a name="the_protocol" id="the_protocol">The Protocol</a></h2>
+<div class="level2">
+
+</div>
+
+<h4><a name="registration" id="registration">Registration</a></h4>
+<div class="level4">
+
+<p>
+ Each client must register itself to the nearest PTT daemon in order to use the PTT services. The PTT daemon that is closest to the client will serve the client until it can hear it. The registration information is distributed to all daemons in the network, such that each daemon now knows about the registered client. 
+</p>
+
+<p>
+<strong> Figure 2 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=pic2new.png" class="media" title="pic2new.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=pic2new.png" class="media" title="" alt="" /></a>
+</p>
+
+</div>
+
+<h4><a name="invitation" id="invitation">Invitation</a></h4>
+<div class="level4">
+
+<p>
+ Any client that wants to start a conference, can choose the invitees, from a list of online clients(which it can obtain from the nearest daemon). The PTT daemon that receives the Invite Request becomes the <strong>coordinator</strong> for the conference that is being setup. This Invite request is then multicast to the default group and every daemon that receives it checks to see if the invited client is being handled by it. If yes, then it forwards the invite request to the client. 
+</p>
+
+<p>
+<strong> Figure 3 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture32.png" class="media" title="picture32.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture32.png" class="media" title="" alt="" /></a> 
+</p>
+
+<p>
+<strong> ( Figure 3 : SMesh access points are a,b,c,d,e,f. Acess point &lsquo;d&rsquo; starts handling client 2 as it moves away from access point &lsquo;c&rsquo; )</strong>
+</p>
+
+<p>
+The coordinator creates a new multicast group for every new conference, for the purpose of sending control messages and data to clients participating in the conference.A client that receives the Invite can either accept it or reject it. Each daemon handling a client that accepted the invitation, will also join the multicast group corresponding to the conference. Thus the daemons handling the clients participating in the conference will all form part of the new multicast group.Thus, a conference can start as soon as one of the invited clients accepts the invitation.
+</p>
+
+<p>
+<strong> Figure 4 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture4.png" class="media" title="picture4.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture4.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> ( Figure 4 : PTT daemon at access point &lsquo;a&rsquo; becomes the coordinator, PTT daemons join the conference group when clients 2 and 3 accept the invitation for a conference ) </strong>
+</p>
+
+<p>
+<strong> Figure 5 </strong> <a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture51.png" class="media" title="picture51.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture51.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> ( Figure 5 : PTT daemons at &lsquo;b&rsquo; and &lsquo;f&rsquo; join the conference multicast group as they start handling clients 1 and 3. Daemon at &lsquo;a&rsquo; remains in the conference group since it is the coordinator, but PTT daemon at &lsquo;e&rsquo; leaves the conference group ) </strong>
+</p>
+
+</div>
+
+<h4><a name="floor_control" id="floor_control">Floor Control</a></h4>
+<div class="level4">
+
+<p>
+Every client that wishes to talk must first request for the floor, since the voice channel is half-duplex. All requests for the floor are sent to the coordinator of the conference. The requests for floor are queued in by the coordinator in <strong>FIFO</strong> order. 
+</p>
+
+<p>
+<strong> Figure 6 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture61.png" class="media" title="picture61.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture61.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> ( Figure 6 : Clients 2 and 3 request for the &lsquo;floor&rsquo;. The coordinator queues the request in the order in which they are queued ) </strong>
+</p>
+
+<p>
+A &lsquo;floor-grant message&rsquo; is sent to the client if the floor is either free or after a floor release by a client who had requested for the floor preceding it. A client that receives a floor grant can start his voice transmission and continue until he receives a floor revoked message from the coordinator.
+</p>
+
+<p>
+<strong> Figure 7 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture91.png" class="media" title="picture91.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture91.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> ( Figure 7: Client 3 receives floor grant and starts voice transmission ) </strong>
+</p>
+
+<p>
+  The &lsquo;floor revoke&rsquo; message ensures that the client does not continue to talk for extended periods of time, thus starving other clients.
+</p>
+
+</div>
+
+<h4><a name="leave_conference" id="leave_conference">Leave Conference</a></h4>
+<div class="level4">
+
+<p>
+ A client can leave the conference by sending a ' leave conference&rsquo; message. The daemon handling this client will foward the message to the coordinator of the conference. The coordinator also leaves the conference multicast group if it finds that it does not handle anyother client in that conference.
+</p>
+
+<p>
+<strong> Figure 8 </strong>
+</p>
+
+<p>
+<a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture101.png" class="media" title="picture101.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture101.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> Figure 9 </strong> <a href="/courses/cs667-2007/ptt-proj/lib/exe/detail.php?id=here&amp;cache=cache&amp;media=picture111.png" class="media" title="picture111.png"><img src="/courses/cs667-2007/ptt-proj/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=picture111.png" class="media" title="" alt="" /></a>
+</p>
+
+<p>
+<strong> ( Figure 9 : Client 2 leaves the conference group, daemon &lsquo;d&rsquo; also leaves the conference multicast group ) </strong>
+</p>
+
+</div>
+
+<h4><a name="conference_termination" id="conference_termination">Conference Termination</a></h4>
+<div class="level4">
+
+<p>
+The conference is terminated if the client that started the conference, decides to terminate it or if the coordinator finds that there is only one participant left in the conference.It sends out a conference &lsquo;terminate&rsquo; message to all the remaining participants before actually terminating the conference. 
+</p>
+
+</div>
+<!-- SECTION "The Protocol" [960-] -->

@@ -1,0 +1,5 @@
+====== SMTP Path Analysis ======
+
+This paper presents a learning algorithm for assigning reputations to IP addresses based on the history of email sent from those respective IPs.  In the case of zombies, since the sender IP address may not have been seen previously, the range in which the sender IP address falls is used to determine whether the email is spammy or not-spammy based on previous history.  IP addresses are divided into a tree according to the bytes in the address.  The number of spams received at each node is recorded, and that data is then used to assign a score to a new incoming mail based on where the sender IP addresses fall within the tree.  When the technique is combined with a Bayesian filter, the total accuracy is doubled when compared to the Baysian filter alone.
+
+{{176.pdf|Read the Paper}}

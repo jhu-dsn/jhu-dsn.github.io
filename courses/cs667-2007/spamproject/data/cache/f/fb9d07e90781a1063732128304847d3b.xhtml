@@ -1,0 +1,49 @@
+
+
+
+<h1><a name="example_of_spam_message_forwarded_through_hopkins_smtp_server" id="example_of_spam_message_forwarded_through_hopkins_smtp_server">Example of Spam Message Forwarded Through Hopkins SMTP Server</a></h1>
+<div class="level1">
+
+<p>
+ The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+</p>
+<pre class="code">
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: &lt;someone.com@somedomain.com&gt;
+Envelope-to: &lt;&lt;address3&gt;&gt;@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXam-0002n8-Gb
+        for &lt;&lt;address3&gt;&gt;@cnds.jhu.edu; Wed, 28 Feb 2007 17:48:14 -0500
+Received: from jhmin1.&lt;&lt;server&gt;&gt;.edu (jhmin1.&lt;&lt;server&gt;&gt;.edu [162.129.8.xx])
+        by &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu (8.13.7/8.13.7) with ESMTP id l1SMlxYN002668
+        for &lt;&lt;&lt;address2&gt;&gt;@cs.jhu.edu&gt;; Wed, 28 Feb 2007 17:48:02 -0500 (EST)
+Received: from &lt;&lt;smtp-server&gt;&gt;.johnshopkins.edu
+ (&lt;&lt;smtp-server&gt;&gt;.johnshopkins.edu [162.129.8.xx]) by jhmin1.&lt;&lt;server&gt;&gt;.edu
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ with ESMTPS id &lt;0JE700GTF3B5D600@jhmin1.&lt;&lt;server&gt;&gt;.edu&gt; for &lt;&lt;address2&gt;&gt;@cs.jhu.edu
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXam-0002n8-Gb
+        for &lt;&lt;address3&gt;&gt;@cnds.jhu.edu; Wed, 28 Feb 2007 17:48:14 -0500
+Received: from jhmin1.&lt;&lt;server&gt;&gt;.edu (jhmin1.&lt;&lt;server&gt;&gt;.edu [162.129.8.xx])
+        by &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu (8.13.7/8.13.7) with ESMTP id l1SMlxYN002668
+        for &lt;&lt;&lt;address2&gt;&gt;@cs.jhu.edu&gt;; Wed, 28 Feb 2007 17:48:02 -0500 (EST)
+Received: from &lt;&lt;smtp-server&gt;&gt;.johnshopkins.edu
+ (&lt;&lt;smtp-server&gt;&gt;.johnshopkins.edu [162.129.8.xx]) by jhmin1.&lt;&lt;server&gt;&gt;.edu
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ with ESMTPS id &lt;0JE700GTF3B5D600@jhmin1.&lt;&lt;server&gt;&gt;.edu&gt; for &lt;&lt;address2&gt;&gt;@cs.jhu.edu
+ (ORCPT &lt;&lt;address1&gt;&gt;@jhu.edu); Wed, 28 Feb 2007 17:47:59 -0500 (EST)
+Received: from unknown (HELO ipex2.johnshopkins.edu) ([84.76.223.xx])
+ by &lt;&lt;smtp-server&gt;&gt;.johnshopkins.edu with ESMTP/TLS/RC4-SHA; Wed,
+ 28 Feb 2007 17:47:57 -0500
+Received: from unknown (HELO localhost) ([84.76.223.xx])
+ by ipex2.johnshopkins.edu with SMTP; Wed, 28 Feb 2007 17:46:41 -0500
+Date: Wed, 28 Feb 2007 23:46:15 +0100
+From: First Last &lt;someone.com@somedomain.com&gt;
+Subject: [SPAM] [ JH-SUSP SPAM ][ JHSPAM-ALERT ] 75% discount
+To: &lt;&lt;address1&gt;&gt;@jhu.edu
+</pre>
+
+</div>

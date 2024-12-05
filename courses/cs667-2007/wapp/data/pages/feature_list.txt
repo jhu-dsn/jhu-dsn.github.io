@@ -1,0 +1,15 @@
+
+ ====== Features ======
+ 
+===== Features Implemented =====
+
+  - Provides protection for Google Docs and Zoho Writer.
+  - Designed in a generic way, so adding protection to new web applications should be trivial and require no additional development.
+
+
+===== Features not Implemented =====
+  - Currently password management has not been implemented completely.We plan to implement this soon.
+  - Collaboration in the case where multiple users are editing the document simultaneously has not been handled.Some possible approaches to handle this have been discussed but not implemented.
+  - Some features such as server side spell-check and search cannot be implemented in the current way. Alternative approaches have been discussed but not implemented
+
+

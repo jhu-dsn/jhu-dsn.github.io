@@ -1,0 +1,57 @@
+Here we investigate manipulating the TCP/IP transfer in order to increment the cost to the sender.
+
+The application makes use of packet sniffing and packet injection to do whatever it wants.  To initiate the transfer, the application makes a request for an html page from an Apache web server I have running in Windows XP.
+
+When set to NORMAL_MODE the app tries to act as closely as possible to a normal TCP/IP connection.   Therefore this test can be used to compare the sniffing/injection quality against the real thing.  Obviously we didn't implement the whole stack, so for instance the window size indicated in our packets remains constant while the real stack would change this based on previous events.  We make a request from Firefox utilizing the Linux TCP/IP stack to provide a trace for comparison.
+
+When set to MISBEHAVING_MODE, the sender sends its window of packets but is only sent one ACK for the very first packet.  Meaning it will have to retransmit all the other packets.  The app waits until a timeout (about .02 seconds) of the packet sniffer or until the earliest non-ACKed TCP packet is received for the second time, to send an ACK for that packet. 
+
+Ex to illustrate model behavior:
+
+(acknowledgment number is for next expected packet)
+SENDER: SEQ_NUMS: 1 2 3 4 5 6 7 8 9 10
+RECEIVER: ACK_NUMS: 2
+SENDER: SEQ_NUMS: 2 3 4 5 6 7 8 9 10
+RECEIVER: ACK_NUMS: 3
+SENDER: SEQ_NUMS: 3 4 5 6 7 8 9 10
+...
+
+The number of duplicate ACKS sent by the receiver varies with the different tests to see what benefit this technique has.  Ideally three duplicate ACKs should mean fast retransmission, and thus, quicker recovery of the transmission window.  More than three should inflate the sender's window allowing more packets to be sent despite the previous loss.
+
+Results:
+The results seem to indicate that sending duplicate ACKs doesn't impact the number of retransmissions that much.  There is a small increase in the total bytes sent by the sender which is the result of it ACKing each duplicate ACK.  It's good enough for the receiver just to send the one ACK.  For the typical size of our spam, 10KB, when the receiver operates under MISBEHAVING_MODE the sender sends a total of 40KB.  So it's pretty much exactly as we calculated in class, a 1:4 ratio.
+
+As seen can be seen in the tests, the amplification is larger with bigger pages, but this would flatten eventually and is irrelevant since spam isn't that big to begin with!
+
+<code>10KB		Address A	Port A	Address B	Port B	Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B	Bytes A<-B	Time(s)
+ACK_NUM_1	192.168.247.128	5581	192.168.209.1	http	47	44301	11		1019		36		43282		0.897365
+ACK_NUM_3	192.168.247.128	9034	192.168.209.1	http	73	45777	25		1775		48		44002		1.057954
+ACK_NUM_6	192.168.247.128	9594	192.168.209.1	http	112	47991	46		2909		66		45082		0.942003
+ACK_NUM_9	192.168.247.128	7690	192.168.209.1	http	151	50197	67		4043		84		46154		1.208762
+NORMAL_MODE	192.168.247.128	7216	192.168.209.1	http	23	11230	12		1073		11		10157		0.146188
+FIREFOX		192.168.247.128	36642	192.168.209.1	http	25	11407	13		1190		12		10217		0.168774
+
+20KB		Address A	Port A	Address B	Port B	Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B	Bytes A<-B	Time(s)
+ACK_NUM_1	192.168.247.128	5972	192.168.209.1	http	117	142983	17		1343		100		141640		1.63701
+ACK_NUM_3	192.168.247.128	7590	192.168.209.1	http	167	145841	43		2747		124		143094		1.672872
+ACK_NUM_6	192.168.247.128	9149	192.168.209.1	http	242	150093	82		4853		160		145240		1.725495
+ACK_NUM_9	192.168.247.128	8724	192.168.209.1	http	317	154359	121		6959		196		147400		2.05343
+NORMAL_MODE	192.168.247.128	9084	192.168.209.1	http	37	21244	19		1451		18		19793		0.437771
+FIREFOX		192.168.247.128	48231	192.168.209.1	http	37	21308	19		1514		18		19794		0.18423
+
+40KB		Address A	Port A	Address B	Port B	Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B	Bytes A<-B	Time(s)
+ACK_NUM_1	192.168.247.128	8367	192.168.209.1	http	389	517498	30		2045		359		515453		3.32168
+ACK_NUM_3	192.168.247.128	8295	192.168.209.1	http	491	523282	82		4853		409		518429		3.34379
+ACK_NUM_6	192.168.247.128	7117	192.168.209.1	http	644	532018	160		9065		484		522953		3.376438
+ACK_NUM_9	192.168.247.128	8236	192.168.209.1	http	797	540754	238		13277		559		527477		3.865532
+NORMAL_MODE	192.168.247.128	6212	192.168.209.1	http	63	41163	32		2153		31		39010		0.816009
+FIREFOX		192.168.247.128	42545	192.168.209.1	http	50	40480	21		1579		29		38901		0.132839
+
+80KB		Address A	Port A	Address B	Port B	Packets	Bytes	Packets A->B	Bytes A->B	Packets A<-B	Bytes A<-B	Time(s)
+ACK_NUM_1	192.168.247.128	9962	192.168.209.1	http	1014	1419523	55		3395		959		1416128		6.492397
+ACK_NUM_3	192.168.247.128	9015	192.168.209.1	http	1193	1397070	157		8903		1036		1388167		6.367675
+ACK_NUM_6	192.168.247.128	5027	192.168.209.1	http	1519	1448293	310		17165		1209		1431128		6.534806
+ACK_NUM_9	192.168.247.128	8379	192.168.209.1	http	1822	1465627	463		25427		1359		1440200		7.293122
+NORMAL_MODE	192.168.247.128	7984	192.168.209.1	http	125	81535	63		3827		62		77708		1.57043
+FIREFOX		192.168.247.128	48230	192.168.209.1	http	83	79331	28		2000		55		77331		0.119629
+</code>

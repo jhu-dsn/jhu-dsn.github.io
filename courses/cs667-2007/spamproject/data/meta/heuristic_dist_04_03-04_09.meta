@@ -1,0 +1,9 @@
+a:7:{s:5:"title";s:7:"Summary";s:11:"description";a:2:{s:8:"abstract";s:249:"Data was observed from 04/03 to 04/09.  During this time the IP_REPEAT, DNSBL, and HOSTNAME heuristics were active.
+
+Totals
+
+
+Total Spam Messages:  2135
+Total Marked Spam Messages:  1944
+Total Unmarked Spam Messages:  191
+Total Nonspam Messages:  86";s:15:"tableofcontents";a:4:{i:0;a:4:{s:3:"hid";s:7:"summary";s:5:"title";s:7:"Summary";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:15:"general_results";s:5:"title";s:15:"General Results";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:2;a:4:{s:3:"hid";s:17:"heuristic_results";s:5:"title";s:17:"Heuristic Results";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:3;a:4:{s:3:"hid";s:6:"graphs";s:5:"title";s:6:"Graphs";s:4:"type";s:2:"ul";s:5:"level";i:1;}}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:0:{}}s:4:"date";a:3:{s:5:"valid";a:0:{}s:7:"created";i:1176702238;s:8:"modified";i:1176748151;}s:7:"creator";s:13:"Wyatt Chaffee";s:11:"last_change";a:7:{s:4:"date";i:1176748151;s:2:"ip";s:11:"71.166.7.14";s:4:"type";s:1:"E";s:2:"id";s:26:"heuristic_dist_04_03-04_09";s:4:"user";s:6:"wbchaf";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:2:{i:0;N;s:6:"wbchaf";s:13:"Wyatt Chaffee";}}

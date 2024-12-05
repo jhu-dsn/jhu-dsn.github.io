@@ -1,0 +1,31 @@
+====== More Detailed Description ======
+
+** JavaScript **
+
+First, it's time for a quick crash course in DHTML and JavaScript.  JavaScript is a scripting language built into all modern browsers that facilitates many things.  If you've ever used GMail, Google Maps, or just about any other interactive web system, you've probably seen JavaScript in action.  JavaScript allows a web developer to do many, many things, including spell checking, mathematical calculations, input validation, etc.  Here's a quick sample of JavaScript: <html><input type=button onClick="alert('This message box was created with JavaScript!')" value="Click Me!"></html>
+
+** Dynamic HTML **
+
+A long time ago, web pages were static creatures.  Once a page was rendered (drawn) by the browser, it stayed that way until the user visited a new page.  Dynamic HTML, or DHTML, vastly improves upon HTML by allowing a developer to dynamically change the layout of a page after it's loaded.  Combined with JavaScript, this lays the foundation for the buzz phrase "Web 2.0"  Here's a quick sample of what you can do with DHTML + JavaScript:
+<html>
+<script>
+function AddChild() 
+{ 
+	var e = document.createElement('div');
+	e.innerHTML = 'New Element';
+	e.style.border = '1px solid red';
+	e.style.background = '#99FF99';
+	document.getElementById('thediv').appendChild(e); 
+}
+</script>
+<input type=button onClick="AddChild()" value="Click Me Several Times!">
+<div id=thediv></div>
+<br></html>
+
+** How WAPP Works **
+
+Okay.  Now that you've been introduced to JavaScript and DHTML, I can hopefully warm you up to how WAPP works.  WAPP is available as a Firefox extension (todo: link to download). Once installed users can select web pages to protect through the right-click menu available when the browser is open (Todo: screen shot of menu). See below for details on how WAPP remembers which pages are protected. When a protected web page loads, the WAPP extension creates a new <script> element, loads a block of JavaScript from a file (codeblock.js), injects that code block into the <script> element, then injects the <script> element as a child of the document's <head> element.  This allows the script in codeblock.js to run in the same space as the web application.  Next, WAPP instructs that injected JavaScript to protect a field.  WAPP accomplishes this by using Mozilla's __defineGetter__() and __defineSetter__() functions to specify custom 'getters' and 'setters' for the protected field's innerHTML property, because the innerHTML is typically used by web applications to read the contents of the field.
+
+** Getters and Setters **
+
+What's a getter or setter? A getter is called every time a property is read.  The getter determines what value to return.  The web application uses a getter to read the data entered or modified by a user. By hooking into the getter we encrypt the data before the web application sees it. This prevents the application from ever seeing plain text. Conversely, a setter is called every time a property is assigned.  The setter determines how to interpret the assigned value and actually modify the assigned property.  The custom setter thus decrypts data returned by the web application before setting it in the editor window so the user sees unencrypted plain text.

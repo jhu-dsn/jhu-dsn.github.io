@@ -1,0 +1,9 @@
+====== Detailed Project Implementation ======
+Each access point in the SMesh network will serve as a regular wireless access point(providing access to the Internet) and will in addition provide the push-to-talk service. The PTT service is provided by a special daemon running in every SMesh access point. This daemon is invoked every time a PTT client sends out a PTT message. A PTT client is any wireless device that runs the PTT client program. 
+
+
+Push-To-Talk Infrastructure in the mesh network :
+Each PTT daemon running on the SMesh access point is a part of a default multicast group that is used for communication among the daemons. The communication infrastructure between the daemons is provided by [[http://www.spines.org|Spines]]. Each daemon in the network has the knowledge of all the PTT clients, which helps the daemons to quickly service the mobile clients as they move between access points.
+
+The Protocol:
+Each client must register itself to the nearest PTT daemon in order to use the PTT services. The PTT daemon that is closest to the client will serve it until it can hear the client. This registration information is distributed to all daemons in the network, such that each daemon now knows about the registered client. Any client that wants to start a conference, can choose the invitees, from a list of online clients(which it can obtain from the nearest daemon). The PTT daemon that receives the Invite Request becomes the coordinator for the conference that is being setup. This Invite request is then multicast to the default group and every daemon that receives it checks to see if the invited client is being handled by it. If yes, then it forwards the invite request to the client.

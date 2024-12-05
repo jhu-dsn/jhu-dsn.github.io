@@ -1,0 +1,66 @@
+
+<p>
+<strong>WAPP Roadmap</strong> 
+</p>
+<ul>
+<li class="level1"><div class="li"> IMPORTANT - Find out why our accessor is stripping out HTML tags.</div>
+</li>
+<li class="level1"><div class="li"> Store values as XML instead of just using a piped header.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Store cipher and version in XML markup (see below)Store search fields including value and hash function used. Is it better to use a one-way hash or the same symmetric encryption function used to encrypt the body?  Symmetric encryption offers reversibility, while hashing does not, but hashing is cheaper (does cost matter?)</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Look into ways to escape the &lt; and &gt; characters in the XML so the web browser doesn&rsquo;t parse it as in-line HTML.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> In the preferences, store pairs of &lt;Field ID, URI&gt; with a CIPHER decorator in XML.  This will be stored as a preference and used to remember which fields are protected at which domains.  See below for sample implementation.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Allow users to right click on a field and select &ldquo;Protect this field.&rdquo;  When they select it, bring up a window (described in XUL) which asks them if it&rsquo;s a &lsquo;content&rsquo; field or a &lsquo;search&rsquo; field and, optionally, let them choose which cipher to use.  Search will default to hash, while &lsquo;content&rsquo; will default to their default cipher (&rsquo;TEA&rsquo; for now).  The &lsquo;content&rsquo;/&rsquo;search&rsquo; options are important functionality because it will determine if the accessor returns the whole XML setup or only the hash of the value.  We may also want to list the URI back to them and allow them to alter the URI or add wildcards (*) to make it more domain-specific and less URI-specific (similar to Adblock).</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigation of alternate approaches to solve the search problem. This may be very important from the advertising perspective.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigate how Gmail Notifier uses the Master Password system and replicate that functionality for our password storage.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Discuss how to handle passwords.  How will we handle the case of multiple &lsquo;Google Documents&rsquo; with different passwords because they&rsquo;re shared between different users?   Domain-specific?  Document-specific? </div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigation of implementation for spread-sheet. Need more information on the working of spread-sheets for Google and other providers.  Possibly look into <a href="http://www.activewidgets.com/javascript.forum.5085.7/xml-character-escaping.html" class="urlextern" title="http://www.activewidgets.com/javascript.forum.5085.7/xml-character-escaping.html"  rel="nofollow">http://www.activewidgets.com/javascript.forum.5085.7/xml-character-escaping.html</a> to see how they create a spreadsheet.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigate other implementations of document editors to see if our implementation is compatible with them. *WORKS WITH ZOHO*</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Add a hot-key for &ldquo;Protect this field&rdquo; because some web applications prevent you from getting a context menu.  Maybe look into how FreeEnigma allows users to select a field when it can&rsquo;t find the field on its own.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigate different encryption libraries and decide if we need to implement our own.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Add support for application specific customizations to support features such as Print View (with decryption so it&rsquo;s not ciphertext), disabling spell checking, etc.  This system will resemble plugins.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Investigation of methods to keep the application provider from reading the actual value of the fields by moving our protection functions back into privileged JavaScript.  How to protect against XPCNativeWrapper?</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Add a visual cue to let a user know that a field is protected</div>
+</li>
+</ul>

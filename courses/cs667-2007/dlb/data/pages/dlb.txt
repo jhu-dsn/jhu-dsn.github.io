@@ -1,0 +1,54 @@
+====== Introduction ======
+
+With the advent of social networking sites such as [[http://digg.com/|digg]], small websites accustomed to very little traffic can experience [[http://en.wikipedia.org/wiki/Slashdot_effect|sudden booms in traffic]], often crippling the server hosting the site.  This project aims to solve this problem, which is not restrained to the likes of digg, from the standpoint of a web hosting service provider by creating a means to actively and dynamically distribute the resources of a server cluster to the sites that need it most.  The techniques used to achieve this goal also allow for optimal distribution of sites across the servers in the cluster, thus allowing the hosting service to get the most out of the hardware resources available to them.  In addition, this project addresses the need for a load balancer module for Apache 2 which distributes requests using a "smart" algorithm based off of server load, not the "dumb" round-robin style algorithms currently available.
+
+====== Project Goals and Description ======
+
+Two main goals exist for this project: 
+  - Implement a load balancer for Apache 2 that makes decisions based on actual load
+  - Create a system to automatically increase or decrease the number of servers hosting a website
+
+Since these goals are not directly related, they were approached in series.
+
+===== Apache 2 Load Balancer =====
+
+==== Introduction ====
+Some inspiration for this project came from [[http://www.backhand.org/mod_backhand/|mod_backhand]], a project started by Theo Schlossnagle in this class several years ago.  However, implementation differs greatly from mod_backhand.  Firstly, because of the availability of [[http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html|mod_proxy_balancer]] since Apache 2.1, I did not write a standalone load balancer.  Instead, I modified mod_proxy_balancer to include the balancing method "bycost".  The "bycost" method uses the results of an exponential function which produces a unitless score of resource usage based on CPU and RAM metrics.  This approach is adapted from R. Sean Borgstrom's Ph.D. thesis, [[http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf|A Cost-Benefit Approach to Resource Allocation in Scalable Metacomputers]].  Information about system resources, used in calculating the resource usage score for each server in the cluster, is gathered and communicated via a daemon running on each machine.  
+
+==== The Daemon ====
+The daemon runs independent of Apache, gathering information about resource usage of the machine it is running on and distributing this information to the cluster.  Information comes from the Linux-specific pseudofiles ''/proc/stat'' and ''/proc/meminfo''.  Values are converted from raw form in the pseudofiles into percentages giving the total usage.  This data is then multicast to the cluster through the [[http://spread.org/|Spread Toolkit]].  Default settings have this process occuring once every second, providing the cluster with an up to date snapshot of the load on all machines.  Data received in the multicast group is placed into a shared memory segment where it can be read by Apache.  Thread safety is ensured through the use of semaphores.  
+
+==== The Load Distribution Algorithm ====
+Every ''n'' updates (default setting is ''n=1''), the daemon evaluates the entire set of data and produces a normalized "work quota", which determines how requests will be distributed across the cluster.  For example, if server 1 has a load score of 4, and server 2 has a load score of 2, the work quota will direct twice as much traffic to server 2 as server 1.  This approach, rather than directing all requests to the server with the least load, ensures that "burstiness" of requests is kept to a minimum, and load stays fairly normalized across the cluster.
+
+==== mod_proxy_balancer Modifications ====
+I implemeneted the custom ''lbmethod''  ''bycost'', which reads the work quota values from shared memory, and applies them to the existing load distribution algorithm used by the ''byrequests'' load balancing method, [[http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html#requests|described here]].
+
+==== Status ====
+I have implemented this load balancer and have tested it to work, distributing requests as expected based on server load.  Stress testing has been done with [[http://httpd.apache.org/docs/2.2/programs/ab.html|Apache's benchmarking tool]], and the results are stable.  However, no real performance benchmarks have been completed, and more evaluation and optimization is necessary to make the existing proof-of-concept into a tool ready for deployment in a production environment.
+
+===== Dynamic Instantiation Daemon =====
+
+==== Overview ====
+This half of the project deals with the task of optimally distributing websites across a cluster of servers in a shared hosting environment.  This differs from most clustered web hosting environments in the number of websites hosted.  This is not to be confused with the application of clustering to serving a large website which requires more resources than can fit in a single machine.  In this situation, resources are said to be statically allocated - adding more processing power involves adding more hardware, and manually adding the new machine to the cluster.  Since all these machines are dedicated to serving one large website, the website exists on all servers at all times.  Dynamic instantiation is meant for the situation where you have many servers, and are hosting many more websites.  Due to disk space limitations and other overhead, it is not economical to serve all websites from all machines.  But advantages in reliability and scalability lie in hosting websites on more than 1 machine.  It is possible to manually create small sub-clusters delegated to serving a subset of all websites, but this does not achieve optimal distribution of websites based on resource requirements.  This is where dynamic instantiation comes in:  with my system, the entire cluster decides autonomously which machines should serve which websites.  
+
+For example, a low-traffic website, site1.com could be hosted from server 1 and server 2 for reliability, while two large traffic websites could be hosted by servers 2, 3, 5, and 7, and 3, 4, and 5, respectively, and thousands of other low to medium traffic websites are distributed across servers 1-8, with each website appearing on 2 servers minimum for reliability.  Say, one day, site1.com completes a major renovation of its website, and gains sudden popularity by links to it appearing on Slashdot, digg, and reddit simultaneously.  This sudden influx of traffic would overwhelm normal servers, taking down site1.com along with all other websites hosted on the same machine.  However, under my system, the daemon recognizes the need for additional resources for site1.com, and (dynamically) instantiates it on servers 3-8.  Now, site1.com's load is distributed across all available servers, ensuring constant uptime and minimum slowdown for the entire cluster.  After the "slashdotting" has subsided, the system decides that due to the reduced traffic, the overhead associated with keeping site1.com on all 8 servers is not economical, so it removes it from servers 1, 2, 3, and 5.  In this way, the cluster has managed itself, dynamically expanding and contracting capacity when needed.  The ability to both expand and contract gives the ability for migration, so the cluster keeps all websites optimally distributed across nodes.
+
+==== Status ====
+Due to time constraints, the algorithm to decide where and when to expand and contract has not been implemented.  More information about the proposed algorithm can be found in the paper, [[http://commedia.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc|Base Decision Algorithm Overview]].  Although the decision algorithm does not yet exist, the mechanism for expanding and contracting websites does exist in proof-of-concept form, activated by manually typing a command.
+
+====== Resources ======
+
+I wrote these two papers during the course:
+
+  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Project Proposal-final.doc|Project Proposal]] //(February 12, 2007)//
+
+  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc|Base Decision Algorithm Overview]] //(March 5, 2007)//
+
+I gave a presentation using the following OpenOffice Impress presentation at the end of the course, summing up the work I did throughout the semester:
+
+  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/dlb.odp|Dynamic Load Balancing and Instantiation]] //(April 25, 2007)//
+
+Concepts from this thesis were used in the development of my project:
+
+  * [[http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf|A Cost-Benefit Approach to Resource Allocation in Scalable Metacomputers]] //(Ph.D. thesis by R. Sean Borgstrom, 2000)//

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="https://cnds.jhu.edu/~ralucam/spamproject/lib/styles/feed.css" type="text/css"?>
+<rss version="2.0">
+    <channel>
+        <title>Spam Project</title>
+        <description></description>
+        <link>https://cnds.jhu.edu/~ralucam/spamproject/</link>
+        <lastBuildDate>Tue, 03 Apr 2007 20:35:01 -0400</lastBuildDate>
+        <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
+        <image>
+            <url>https://cnds.jhu.edu/~ralucam/spamproject/lib/images/favicon.ico</url>
+            <title>Spam Project</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/</link>
+        </image>
+        <item>
+            <title>log</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/doku.php?id=log&amp;amp;rev=1175639796&amp;do=diff1175639796</link>
+            <description>[April 03, 2007] snapshot 5 created in /storage/projects/spamproject.
+
+[April 03, 2007] pathlen_plugin disabled. Not clear when to suspect a message is a spam.
+
+[April 03, 2007] Added a function to used the first IP outside Hopkins (128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0). Currently used by ip_heuristic and dnsbl_plugin.</description>
+            <author>Raluca Musaloiu-E.</author>
+            <pubDate>Tue, 03 Apr 2007 18:36:36 -0400</pubDate>
+        </item>
+        <item>
+            <title>ralucam-todo</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/doku.php?id=ralucam-todo&amp;amp;rev=1175637548&amp;do=diff1175637548</link>
+            <description>In a random order.
+
+	*  write a plugin to check each connecting server against dnsbl.sorbs.net and pbl.spamhaus.org (dialup and DHCP addresses that are not supposed to initiate SMTP connections). From these, I want to exclude connection coming from authenticated users (on commedia).</description>
+            <author>Raluca Musaloiu-E.</author>
+            <pubDate>Tue, 03 Apr 2007 17:59:08 -0400</pubDate>
+        </item>
+        <item>
+            <title>cpitman-todo</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/doku.php?id=cpitman-todo&amp;amp;rev=1175629149&amp;do=diff1175629149</link>
+            <description>Research the viability of a dynamic web trap for harvesters and other ways of diluting the “information density” of the internet for spammers.</description>
+            <author>Christopher Pitman</author>
+            <pubDate>Tue, 03 Apr 2007 15:39:09 -0400</pubDate>
+        </item>
+        <item>
+            <title>spam</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/doku.php?id=spam&amp;amp;rev=1175626183&amp;do=diff1175626183</link>
+            <description>This is a simple main page :-P
+
+
+
+This is a log of things we did.
+
+Here are the plugins available so far.
+
+host_plugin [April 2, 2007]
+ Any email which is not generated locally, is marked if there is no hostname associated with the IP address. 
+
+ip_heuristic [April 2, 2007]
+ Any server which connects and sends a spam is added in a local blacklist used to mark all the following messages coming from that server.</description>
+            <author>Raluca Musaloiu-E.</author>
+            <pubDate>Tue, 03 Apr 2007 14:49:43 -0400</pubDate>
+        </item>
+        <item>
+            <title>start</title>
+            <link>https://cnds.jhu.edu/~ralucam/spamproject/doku.php?id=start&amp;amp;rev=1175625811&amp;do=diff1175625811</link>
+            <description>This page moved to spam.</description>
+            <author>Raluca Musaloiu-E.</author>
+            <pubDate>Tue, 03 Apr 2007 14:43:31 -0400</pubDate>
+        </item>
+    </channel>
+</rss>

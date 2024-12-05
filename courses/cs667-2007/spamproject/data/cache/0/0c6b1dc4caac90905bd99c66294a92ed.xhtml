@@ -1,0 +1,374 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#antispam_project" class="toc">AntiSpam Project</a></span></div>
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#team_members" class="toc">Team Members</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#problem" class="toc">Problem</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#goals" class="toc">Goals</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#decreasing_uncaught_spam" class="toc">Decreasing Uncaught Spam</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#imposing_cost" class="toc">Imposing Cost</a></span></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><span class="li"><a href="#results1" class="toc">Results</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#paper_reviews" class="toc">Paper Reviews</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#spam_resources" class="toc">Spam Resources</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#log" class="toc">Log</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#plugins" class="toc">Plugins</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#todo" class="toc">TODO</a></span></div></li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="antispam_project" id="antispam_project">AntiSpam Project</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "AntiSpam Project" [1-32] -->
+<h2><a name="team_members" id="team_members">Team Members</a></h2>
+<div class="level2">
+
+<p>
+<a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=spam&amp;cache=cache&amp;media=logo3.jpg" class="media" title="logo3.jpg"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=logo3.jpg" class="medialeft" title=" " alt=" " /></a><br/>
+ Wyatt Chaffee<br/>
+ Chris Pitman<br/>
+ Raluca Musăloiu-E.
+</p>
+
+</div>
+<!-- SECTION "Team Members" [33-128] -->
+<h2><a name="problem" id="problem">Problem</a></h2>
+<div class="level2">
+
+<p>
+ The influx of spam has caused email to become a less effective tool for communication, and the problem is getting worse.  Despite the application of today’s best filters spam continues to find its way into our inboxes in ever increasing numbers.
+</p>
+
+<p>
+The nature of the email system makes it susceptible to spam.  Email allows the sender to falsify many of the fields contained within the message including the sender address and email server history.  This leaves no way to determine accountability and hinders the ability to filter spam and enforce spamming laws.  Email also carries no cost.  Unlike sending a letter through the postal system, email is free and carries little performance cost.   This means that spammers can send large volumes of spam every day.  Current estimates put that figure at around [] spam messages per day!  Even if filters operate with a high rate of accuracy they will still allow a large number of spam messages into the user’s inbox relative to the number of legitimate messages.
+</p>
+
+</div>
+<!-- SECTION "Problem" [129-1164] -->
+<h2><a name="goals" id="goals">Goals</a></h2>
+<div class="level2">
+
+<p>
+ The goals of this project are as follows: 
+</p>
+<ol>
+<li class="level1"><div class="li"> Decrease the number of uncaught spam messages by 50%.</div>
+</li>
+<li class="level1"><div class="li"> Impose a cost on the sender for delivering a spam message.</div>
+</li>
+</ol>
+
+</div>
+<!-- SECTION "Goals" [1165-1348] -->
+<h2><a name="decreasing_uncaught_spam" id="decreasing_uncaught_spam">Decreasing Uncaught Spam</a></h2>
+<div class="level2">
+
+<p>
+ We wish to decrease the number of uncaught spam messages in our own network by 50%.  In order to improve the effectiveness of spam filtering, we attempt to attempt to identify new tests that can accurately label a message as either spam or as a non-spam.  We will utilize any information available to the email server including the previous history of received email.
+</p>
+
+<p>
+As stated previously email lacks accountability which makes the prevention of spam a tougher problem.  However one piece of information we do know to be correct is the IP address of the computer delivering the message directly to our server.  This is a requirement of the TCP/IP communication system on which Email operates.  Thus we will utilize this piece of information in many of our tests.
+</p>
+
+</div>
+
+<h4><a name="environment" id="environment">Environment</a></h4>
+<div class="level4">
+
+<p>
+ The Distributed Systems and Networks Lab maitains its own email server hosting a number of email accounts.  For each account a user specific instance of Spam Assassin attempts to filter out spam using a variety of techniques such as <acronym title="Domain Name Server">DNS</acronym> blacklists and Bayesian Content Filtering.  The filter adds a unique tag to the subject of each message it has identified as spam.  We introduce our own filters to the exim server which add additional tags to the subject of the email, one for each test which identifies the message as spam.  For a selection of the accounts the email is hand filtered into non-spam, marked spam, and unmarked spam categories.  We then analyze the email to determine how many of the messages not marked by Spam Assassin were caught by one of our filters.  Of course we also investigate how many legitimate messages were flagged as spam.
+</p>
+
+<p>
+The email flow is defined in steps as follows: 
+</p>
+<ol>
+<li class="level1"><div class="li"> Sender connects and provides From and To Email Addresses.</div>
+</li>
+<li class="level1"><div class="li"> Message is rejected if problems exist with addresses (i.e., sender cannot be verified or the recipient doesn&rsquo;t exist on the server).</div>
+</li>
+<li class="level1"><div class="li"> Message is passed to exim_local_scan script for testing.</div>
+</li>
+<li class="level1"><div class="li"> Heuristics are run and subject is augmented with flags.</div>
+</li>
+<li class="level1"><div class="li"> Message is passed to user specific Spam Assassin.</div>
+</li>
+<li class="level1"><div class="li"> Message is delivered to user inbox.</div>
+</li>
+</ol>
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=spam&amp;cache=cache&amp;media=ds-flow-2.png" class="media" title="ds-flow-2.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=ds-flow-2.png" class="mediacenter" alt="" /></a>
+</p>
+
+</div>
+
+<h4><a name="initial_questions" id="initial_questions">Initial Questions</a></h4>
+<div class="level4">
+
+<p>
+ In determining which heuristics to deploy, we sought the answers to several questions regarding the properties of our email.  Those <a href="/courses/cs667-2007/spamproject/doku.php?id=initial_questions" class="wikilink1" title="initial_questions">questions and answers</a> can be viewed here.
+</p>
+
+</div>
+
+<h4><a name="tests" id="tests">Tests</a></h4>
+<div class="level4">
+
+<p>
+Ultimately we implemented the following heuristics:
+</p>
+<ol>
+<li class="level1"><div class="li"> <strong>Hostname</strong> </div>
+<ul>
+<li class="level2"><div class="li"> Any email which is not generated locally is marked if there is no hostname associated with the connecting IP address.  This rule is based on the fact that a legitimate server will always have a host name.<pre class="code">
+- If there is no host name associated:
+  - Flag the message with NO_HOSTNAME</pre>
+</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> <strong>IP Repeat</strong></div>
+<ul>
+<li class="level2"><div class="li"> Any server which connects and sends a spam (decision based on the user-based SpamAssassin score, with a threshold of 5) is added to a local blacklist.  The blacklist is then utilized to mark all the proceeding messages coming from that server as spam.  Potentially, this rule can easily generate false positives as servers can send both spam and non-spam messages (for example, botnets which send spam through the <acronym title="Internet Service Provider">ISP</acronym> mail server).  The following steps are performed:<pre class="code">
+- Identify the closest IP address outside of Hopkins address space using SMTP path included in the message header.
+  Closest IP address is defined more clearly as the first IP address which doesn't belong to Hopkins, in the reverse order of the SMTP path. 
+- Is the IP address on the IP_Repeat blacklist?
+   - Yes:
+     - Flag the message with IP_REPEAT and also add a header to the message containing debug information
+     - Increment flagged counter in IP_Repeat blacklist
+   - No:
+     - If the Spam Assassin score is above the threshold (in our case 5) then add the IP address on the IP_Repeat blacklist (id of the message, timestamp and counter)</pre>
+</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> <strong><acronym title="Domain Name Server">DNS</acronym> Blacklist</strong></div>
+<ul>
+<li class="level2"><div class="li"> All the servers are checked against a set of known <a href="http://en.wikipedia.org/wiki/DNSBL" class="urlextern" title="http://en.wikipedia.org/wiki/DNSBL"  rel="nofollow">DNS blacklists</a> (in our case <em>sbl-xbl.spamhaus.org</em> and <em>bl.spamcop.net</em>).  Note that SpamAssassin score is based on its own checks against DNSBLs.  A <a href="http://en.wikipedia.org/wiki/Comparison_of_DNS_blacklists" class="urlextern" title="http://en.wikipedia.org/wiki/Comparison_of_DNS_blacklists"  rel="nofollow">brief comparison</a> of several DNSBLs shows how are the IP addresses added and removed on these lists and by whom. As in IP_Repeat, we are using the first IP outside Hopkins, because we know they are legitimate servers. Ideally, we can check here the entire <acronym title="Simple Mail Transfer Protocol">SMTP</acronym> path.<pre class="code">
+- Identify the closest IP address outside of Hopkins address space using SMTP path included in the message header.
+- If the IP address is on any of the blacklists:
+  - Flag the message with DNSBL_FOUND</pre>
+</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> <strong>Dynamic Blacklist</strong></div>
+<ul>
+<li class="level2"><div class="li"> All the connecting servers are checked against a set of dynamic IP blacklists (specifically, <em>pbl.spamhaus.org</em> and <em>dul.dnsbl.sorbs.net</em>).  The idea is to flag all the messages coming from dialup and DHCP IP address space that is not meant to be initiating <acronym title="Simple Mail Transfer Protocol">SMTP</acronym> connections (they should use the <acronym title="Internet Service Provider">ISP</acronym> mail server instead).<pre class="code">
+- If the connecting IP address is on any of the dynamic IP blacklists:
+  - Flag the message with DYNAMIC_FOUND</pre>
+</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> <strong>IP Reject Log</strong></div>
+<ul>
+<li class="level2"><div class="li"> Any server whose connection has been rejected is placed on a local blacklist.  The blacklist is then utilized to mark all the proceeding messages coming from that server as spam.  As IP_Repeat, this rule can potentially generate easily false positives as servers can send both spam and non-spam messages. </div>
+</li>
+<li class="level2"><div class="li"> A daemon is running in background parsing the Exim reject log. Any IP address found here is added to the IP_Reject blacklist.  This daemon accepts TCP connections from the clients asking for an IP address. <pre class="code">
+- If the IP address belongs to a legitimate server which frequently connects (we listed here ''blaze.cs.jhu.edu''):
+  - return
+- If the IP address is on the IP_Reject blacklist:
+  - Flag the message with IP_REJECT and also add a header to the message containing debug information</pre>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+
+<p>
+The definition of IP for each heuristic which operates on an IP is the address of the server which connected to our mail server.  If the mail server was contained within the network, the next IP would be taken.  (Verify this assumption.....)
+</p>
+
+</div>
+
+<h4><a name="results" id="results">Results</a></h4>
+<div class="level4">
+
+<p>
+ Given a sample taken from April 04 to April 09 of 2221 messages (2135 spam, 86 nonspam) with a total of 191 unmarked messages by SpamAssassin we were able to flag 120 of them.  That is equal to about 63% of the messages during this time.  The graph below shows the number of emails flagged with each heuristic and the spam assassin score assigned to each of these emails. Only 3 tests were active at the time of this snapshot.
+</p>
+
+<p>
+The IP_Repeat heuristic dominates, reponsible for flagging approximately 2/3 of mail that was flagged by our heuristics.  The hostname heuristic was responsible for most of the rest.
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/doku.php?id=iprepeat_stats" class="wikilink1" title="iprepeat_stats">IP Repeat stats</a> <a href="/courses/cs667-2007/spamproject/lib/exe/detail.php?id=spam&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_2.png" class="media" title="spam_assassin:spam_assassin_dist_unmarked_2.png"><img src="/courses/cs667-2007/spamproject/lib/exe/fetch.php?w=&amp;h=&amp;cache=cache&amp;media=spam_assassin:spam_assassin_dist_unmarked_2.png" class="mediacenter" alt="" /></a>
+</p>
+
+</div>
+<!-- SECTION "Decreasing Uncaught Spam" [1349-8381] -->
+<h2><a name="imposing_cost" id="imposing_cost">Imposing Cost</a></h2>
+<div class="level2">
+
+<p>
+ Currently the cost of sending a spam message is equal to that of sending a legitimate message.  We wish to change this.  In order to do so we will cause the spammer to repeat the transmission of the network packets that combine to form the email.  We hope the increase in traffic will cause the spammer&rsquo;s network to become congested and prevent the transmission of as many messages over the same amount of time.
+</p>
+
+</div>
+
+<h4><a name="verification_of_technique" id="verification_of_technique">Verification of Technique</a></h4>
+<div class="level4">
+
+<p>
+ In order to verify the technique we wrote a small test program.  The program uses <a href="http://www.tcpdump.org/" class="urlextern" title="http://www.tcpdump.org/"  rel="nofollow">libpcap</a> and <a href="http://www.packetfactory.net/libnet/" class="urlextern" title="http://www.packetfactory.net/libnet/"  rel="nofollow">libnet</a>, offering the ability to sniff packets on the wire and inject packets respectively.  There are two modes of operation, normal and misbehaving mode.  Under normal operation the program acts as closely as possible to a legitimate TCP/IP connection.  Under misbehaving mode it only ACKs one packet per timeout interval.  The timeout interval is tuned to occur after the sender transmits its entire window but before those packets are retransmitted from a sender timeout.  Thus for each window transfer, the misbehaving mode acknolwedges only one packet.  That acknowedgment may be duplicated 3, 6, or 9 times to study the affect of fast-retransmission via ACK spoofing.
+</p>
+
+<p>
+The results indicate that the number of packets for a payload similar to the average experienced spam, 10KB, the sender will transmit roughly four times that amount under misbehaving mode.  If progress is prevented, the size can be dramatically increased [stats coming].
+</p>
+<pre class="code">
+10KB		Packets	Bytes	Packets A-&gt;B	Bytes A-&gt;B	Packets A&lt;-B	Bytes A&lt;-B	Time(s)
+ACK_NUM_1	47	44301	11		1019		36		43282		0.897365
+ACK_NUM_3	73	45777	25		1775		48		44002		1.057954
+ACK_NUM_6	112	47991	46		2909		66		45082		0.942003
+ACK_NUM_9	151	50197	67		4043		84		46154		1.208762
+NORMAL_MODE	23	11230	12		1073		11		10157		0.146188
+FIREFOX		25	11407	13		1190		12		10217		0.168774
+
+20KB		Packets	Bytes	Packets A-&gt;B	Bytes A-&gt;B	Packets A&lt;-B	Bytes A&lt;-B	Time(s)
+ACK_NUM_1	117	142983	17		1343		100		141640		1.63701
+ACK_NUM_3	167	145841	43		2747		124		143094		1.672872
+ACK_NUM_6	242	150093	82		4853		160		145240		1.725495
+ACK_NUM_9	317	154359	121		6959		196		147400		2.05343
+NORMAL_MODE	37	21244	19		1451		18		19793		0.437771
+FIREFOX		37	21308	19		1514		18		19794		0.18423
+
+40KB		Packets	Bytes	Packets A-&gt;B	Bytes A-&gt;B	Packets A&lt;-B	Bytes A&lt;-B	Time(s)
+ACK_NUM_1	389	517498	30		2045		359		515453		3.32168
+ACK_NUM_3	491	523282	82		4853		409		518429		3.34379
+ACK_NUM_6	644	532018	160		9065		484		522953		3.376438
+ACK_NUM_9	797	540754	238		13277		559		527477		3.865532
+NORMAL_MODE	63	41163	32		2153		31		39010		0.816009
+FIREFOX		50	40480	21		1579		29		38901		0.132839
+
+80KB		Packets	Bytes	Packets A-&gt;B	Bytes A-&gt;B	Packets A&lt;-B	Bytes A&lt;-B	Time(s)
+ACK_NUM_1	1014	1419523	55		3395		959		1416128		6.492397
+ACK_NUM_3	1193	1397070	157		8903		1036		1388167		6.367675
+ACK_NUM_6	1519	1448293	310		17165		1209		1431128		6.534806
+ACK_NUM_9	1822	1465627	463		25427		1359		1440200		7.293122
+NORMAL_MODE	125	81535	63		3827		62		77708		1.57043
+FIREFOX		83	79331	28		2000		55		77331		0.119629
+</pre>
+
+</div>
+
+<h4><a name="implementation" id="implementation">Implementation</a></h4>
+<div class="level4">
+
+<p>
+ In order to add such a feature to a production level environment we modify our design to be more robust.  We modify an implementation of the Light-Weight TCP/IP Stack <a href="http://savannah.nongnu.org/projects/lwip/" class="urlextern" title="http://savannah.nongnu.org/projects/lwip/"  rel="nofollow">LWIP</a> to perform this ack spoofing when configured to do so.  Packets destined for the mail server are forwarded to a virtual network device (Tun/Tap) on which this &lsquo;user-level&rsquo; stack operates.  Exim is modified to utilize the new stack.
+</p>
+
+<p>
+[Additional information coming]
+</p>
+
+</div>
+<!-- SECTION "Imposing Cost" [8382-12046] -->
+<h1><a name="results1" id="results1">Results</a></h1>
+<div class="level1">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9" class="wikilink1" title="snap_shot_9"> Snap Shot 9 Complete Analysis</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=heuristic_dist_04_03-04_09" class="wikilink1" title="heuristic_dist_04_03-04_09">Spam Assassin Distributions for Mail Flagged by Custom Heuristics</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=ack_spoofing" class="wikilink1" title="ack_spoofing">Ack Spoofing</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=sa_score_comparison" class="wikilink1" title="sa_score_comparison">SpamAssassin score comparison</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=smtp_path_length" class="wikilink1" title="smtp_path_length">SMTP path lengh histogram</a> <br/>
+
+</p>
+
+</div>
+<!-- SECTION "Results" [12047-12360] -->
+<h1><a name="paper_reviews" id="paper_reviews">Paper Reviews</a></h1>
+<div class="level1">
+
+<p>
+ During the course of this project we read a few papers which we found to be relevant to the topic.  The reviews for each paper are listed here. 
+</p>
+
+<p>
+<a href="/courses/cs667-2007/spamproject/doku.php?id=network_level_behavior" class="wikilink1" title="network_level_behavior">Understanding the Network-Level Behavior of Spammers</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=characterizing_spam_traffic" class="wikilink1" title="characterizing_spam_traffic">Characterizing a Spam Traffic</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=smtp_path_analysis" class="wikilink1" title="smtp_path_analysis">SMTP Path Analysis</a>  <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=enterprise_networks" class="wikilink1" title="enterprise_networks">Addressing SMTP-based Mass-Mailing Activity Within Enterprise Networks</a> <br/>
+
+</p>
+
+</div>
+<!-- SECTION "Paper Reviews" [12361-12828] -->
+<h1><a name="spam_resources" id="spam_resources">Spam Resources</a></h1>
+<div class="level1">
+
+<p>
+ Add resources here.
+</p>
+
+</div>
+<!-- SECTION "Spam Resources" [12829-12880] -->
+<h1><a name="log" id="log">Log</a></h1>
+<div class="level1">
+
+<p>
+This is a <a href="/courses/cs667-2007/spamproject/doku.php?id=log" class="wikilink1" title="log">log</a> of things we did.
+</p>
+
+</div>
+<!-- SECTION "Log" [12881-12935] -->
+<h1><a name="plugins" id="plugins">Plugins</a></h1>
+<div class="level1">
+
+<p>
+Here are the plugins available so far.
+</p>
+
+<p>
+<strong>host_plugin</strong> [April 2, 2007]<br/>
+ Any email which is not generated locally, is marked if there is no hostname associated with the IP address. 
+</p>
+
+<p>
+<strong>ip_heuristic</strong> [April 2, 2007]<br/>
+ Any server which connects and sends a spam is added in a local blacklist used to mark all the following messages coming from that server.
+</p>
+
+<p>
+<strong>dnsbl_plugin</strong> [April 2, 2007]<br/>
+ All the connecting servers are checked against <em>sbl-xbl.spamhaus.org</em> and <em>bl.spamcop.net</em> blacklists.
+</p>
+
+<p>
+<strong>dynbl_plugin</strong> [April 15, 2007]<br/>
+ All the connecting servers are checked not to be dynamic IPs (<em>pbl.spamhaus.org</em> and <em>dul.dnsbl.sorbs.net</em>).
+</p>
+
+<p>
+<strong>ip_reject_plugin</strong> [April 21, 2007]<br/>
+ Any server whose connection is rejected is placed on a blacklist. Any subsequent email sent by it will be tagged with <em>IP_REJECT</em>.
+</p>
+
+</div>
+<!-- SECTION "Plugins" [12936-13783] -->
+<h1><a name="todo" id="todo">TODO</a></h1>
+<div class="level1">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=wbchaf-todo" class="wikilink1" title="wbchaf-todo">wbchaf-todo</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=cpitman-todo" class="wikilink1" title="cpitman-todo">cpitman-todo</a> <br/>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=ralucam-todo" class="wikilink1" title="ralucam-todo">ralucam-todo</a> <br/>
+ 
+</p>
+
+</div>
+<!-- SECTION "TODO" [13784-] -->

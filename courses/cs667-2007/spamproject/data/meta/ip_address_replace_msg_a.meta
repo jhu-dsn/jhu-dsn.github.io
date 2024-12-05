@@ -1,0 +1,11 @@
+a:6:{s:5:"title";s:61:"Example of Spam Message Forwarded Through Hopkins SMTP Server";s:11:"description";a:2:{s:8:"abstract";s:503:"The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+
+
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: <someone.com@somedomain.com>
+Envelope-to: <<address3>>@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from <<backup-smtp>>.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from <someone.com@somedomain.com>)
+        id 1HMXa…";s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:61:"example_of_spam_message_forwarded_through_hopkins_smtp_server";s:5:"title";s:61:"Example of Spam Message Forwarded Through Hopkins SMTP Server";s:4:"type";s:2:"ul";s:5:"level";i:1;}}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:0:{}}s:4:"date";a:2:{s:5:"valid";a:0:{}s:7:"created";i:1177960215;}s:7:"creator";s:13:"Wyatt Chaffee";s:11:"last_change";a:7:{s:4:"date";i:1177960215;s:2:"ip";s:14:"128.220.221.12";s:4:"type";s:1:"C";s:2:"id";s:24:"ip_address_replace_msg_a";s:4:"user";s:6:"wbchaf";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";}}

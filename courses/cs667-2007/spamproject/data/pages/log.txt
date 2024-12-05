@@ -1,0 +1,53 @@
+====== Changelog ======
+
+[August, 16, 2007] Fixed a bug in IP_REJECT plugin that caused reject-daemon.py to crash.
+
+[July 16, 2007] I added file locks in IP_REPEAT plugin to prevent file corruption which happens quite often, and I also switched from pickle to cPickle to improve performance.
+
+[April 16, 2007] A happy 1.4GB snapshot is available in ''/storage/projects/spamproject/snapshot.7''. 
+
+[April 16, 2007] Added new heuristic DYNAMIC_FOUND that checks a blacklist that lists dynamic IPs that should not be connecting directly.
+
+[April 16, 2007] Added new tag AGG_SCORE that is added when heuristics have increased the SA score and pushed it over 5.
+
+[April 16, 2007] Hist Plot -> Spam Assassin Score for (unmarked, marked) spam and legitimate email marked w/ IP-Repeat in subject.
+
+[April 15, 2007] Because we plan to play with greylisting, I removed //blaze.cs.jhu.edu// as our backup MX server. 
+
+[April 11, 2007] Small change in //exim_local_scan.py// to not scan messages (i.e, run our plugins) coming from authenticated SMTP clients (on ''commedia''). Need to check if this actually works :-).
+
+[April 10, 2007] IP_REPEAT plugin modified to save the original timestamp and message id, and the number of flagged emails. If a message is flagged, a message header is added with those 3 data.
+
+[April 10, 2007] Small changes to //exim_local_scan.py// to better reflect the SpamAssassin score.
+
+[April 10, 2007] SpamAssassin [[sa_score_comparison|score comparison]] section created. 
+
+[April 09, 2007] Snapshot 6 created in ''/storage/projects/spamproject/snapshot.6''
+
+[April 09, 2007] [[ack_spoofing]] added.
+
+[April 04, 2007] Results for [[smtp_path_length|path length histogram]] added.
+
+[April 03, 2007] Snapshot 5 created in ''/storage/projects/spamproject/snapshot.5''
+
+[April 03, 2007] //pathlen_plugin// disabled. Not clear when to suspect a message is a spam.
+
+[April 03, 2007] Added a function to use the first IP outside Hopkins (''128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0''). Currently used by //ip_heuristic// and //dnsbl_plugin//.
+
+[April 03, 2007] Moved code to "skip" blaze ip from //exim_local_scan// to //ip_search// and upgraded to skip all local ips.  //exim_local_scan// no longer does this automatically, each interested plugin must do so. 
+
+[April 03, 2007] Promoted fix for excluding 127.0.0.1 from //ip_heuristic// to //exim_local_scan//
+
+[April 03, 2007] //pathlen_heuristic// added
+
+[April 03, 2007] Small change in //ip_heuristic// to exclude ''127.0.0.1'' (bounce messages from commedia).
+
+[April 03, 2007] Fixed a bug in //exim_local_scan.py//. When the connecting server was blaze, we considered the initiator instead of the second IP from the SMTP path. 
+
+[April 03, 2007] Fixed a bug in //dnsbl_plugin//. All the previously marked messages were wrong :).
+
+[April 02, 2007] Added the ability to mark messages only for specific users.
+
+[April 02, 2007] //ip_heuristic//, //host_plugin// and //dnsbl_plugin// added.
+
+[March 26, 2007] Added the ability to use user-based SpamAssassin score.

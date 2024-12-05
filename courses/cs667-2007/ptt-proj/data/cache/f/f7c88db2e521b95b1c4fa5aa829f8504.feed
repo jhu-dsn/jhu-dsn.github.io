@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/lib/styles/feed.css" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/feed.php">
+        <title>Push-To-Talk</title>
+        <description></description>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/</link>
+        <image rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/lib/images/favicon.ico" />
+       <dc:date>2011-02-23T13:19:50-05:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=start&amp;amp;rev=1177514182&amp;do=diff1177514182"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=the_project_implementation_details_are_here&amp;amp;rev=1177514148&amp;do=diff1177514148"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=here&amp;amp;rev=1177345877&amp;do=diff1177345877"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/lib/images/favicon.ico">
+        <title>Push-To-Talk</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/</link>
+        <url>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/lib/images/favicon.ico</url>
+    </image>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=start&amp;amp;rev=1177514182&amp;do=diff1177514182">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-25T11:16:22-05:00</dc:date>
+        <dc:creator>Pratibha Mallya</dc:creator>
+        <title>start</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=start&amp;amp;rev=1177514182&amp;do=diff1177514182</link>
+        <description>The goal of the project is to develop an audio-conferencing service, using Push-To-Talk technology, deployed over wireless mesh network(in this case SMesh)
+
+Push-To-Talk (PTT) is a two-way communication service, but one that works like a “walkie talkie”. While a normal phone call is full-duplex, meaning both parties can hear each other at the same time, PTT is half-duplex, the communication can only happen in one direction at any given time. PTT requires that the person who wishes to speak,p…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=the_project_implementation_details_are_here&amp;amp;rev=1177514148&amp;do=diff1177514148">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-25T11:15:48-05:00</dc:date>
+        <dc:creator>Pratibha Mallya</dc:creator>
+        <title>the_project_implementation_details_are_here - created</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=the_project_implementation_details_are_here&amp;amp;rev=1177514148&amp;do=diff1177514148</link>
+        <description>Each access point in the SMesh network will serve as a regular wireless access point(providing access to the Internet) and will in addition provide the push-to-talk service. The PTT service is provided by a special daemon running in every SMesh access point. This daemon is invoked every time a PTT client sends out a PTT message. A PTT client is any wireless device that runs the PTT client program.</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=here&amp;amp;rev=1177345877&amp;do=diff1177345877">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-23T12:31:17-05:00</dc:date>
+        <dc:creator>Pratibha Mallya</dc:creator>
+        <title>here</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/ptt-proj/doku.php?id=here&amp;amp;rev=1177345877&amp;do=diff1177345877</link>
+        <description>Each access point in the SMesh network will serve as a regular wireless access point(providing access to the Internet) and will in addition provide the push-to-talk service. The PTT service is provided by a special daemon running in every SMesh access point. This daemon is invoked every time a PTT client sends out a PTT message. A PTT client is any wireless device that runs the PTT client program.</description>
+    </item>
+</rdf:RDF>

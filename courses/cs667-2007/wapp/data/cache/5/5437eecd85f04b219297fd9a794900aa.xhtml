@@ -1,0 +1,84 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#wapp_roadmap" class="toc">WAPP Roadmap</a></span></div>
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#to_do_high_priority" class="toc">To Do (High Priority)</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#to_do_low_priority" class="toc">To Do (Low Priority)</a></span></div></li>
+<li class="level2"><div class="li"><span class="li"><a href="#done" class="toc">Done</a></span></div></li></ul>
+</li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="wapp_roadmap" id="wapp_roadmap">WAPP Roadmap</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "WAPP Roadmap" [1-28] -->
+<h2><a name="to_do_high_priority" id="to_do_high_priority">To Do (High Priority)</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> Investigate how Gmail Notifier uses the Master Password system and replicate that functionality for our password storage.  <strong> ADDENDUM: Use the Master Password system to store a master key that encrypts the entire ProtectedFieldList.  Have the domain correspond to an unreachable domain, such as wapp.cnds.jhu.edu </strong></div>
+</li>
+<li class="level1"><div class="li"> Add a hot-key for &ldquo;Protect this field&rdquo; because some web applications prevent you from getting a right-click context menu.  Maybe look into how FreeEnigma allows users to select a field when it can&rsquo;t find the field on its own.</div>
+</li>
+<li class="level1"><div class="li"> Give the option to store URIs as full URIs (including GET) parameters.  This will allow users to create entries for each google document, giving WAPP only one password to try when the document is loaded.</div>
+</li>
+<li class="level1"><div class="li"> For applications where the uri is not unique per document also add an id to the document (possibly a GUID) that will be used to store and lookup the password.</div>
+</li>
+<li class="level1"><div class="li"> Store a salted hash of the password in the |WAPPENCRYPTED| header.  This will be much quicker for verifying the password than decrypting the whole document and checking for a known header, especially for large documents.</div>
+</li>
+<li class="level1"><div class="li"> When a new document is loaded, ask the user to specify a password.  Don&rsquo;t just pull a password from the array injected into the page.</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "To Do (High Priority)" [29-1349] -->
+<h2><a name="to_do_low_priority" id="to_do_low_priority">To Do (Low Priority)</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> Allow users to right click on a field and select &ldquo;Protect this field.&rdquo;  When they select it, bring up a window (described in <acronym title="XML User Interface Language">XUL</acronym>) which asks them if it&rsquo;s a &lsquo;content&rsquo; field or a &lsquo;search&rsquo; field and, optionally, let them choose which cipher to use.  Search will default to hash, while &lsquo;content&rsquo; will default to their default cipher (&rsquo;TEA&rsquo; for now).  The &lsquo;content&rsquo;/&rsquo;search&rsquo; options are important functionality because it will determine if the accessor returns the whole <acronym title="Extensible Markup Language">XML</acronym> setup or only the hash of the value.  We may also want to list the <acronym title="Uniform Resource Identifier">URI</acronym> back to them and allow them to alter the <acronym title="Uniform Resource Identifier">URI</acronym> or add wildcards (*) to make it more domain-specific and less <acronym title="Uniform Resource Identifier">URI</acronym>-specific (similar to Adblock). <strong>PARTIALLY IMPLEMENTED.  THE REST IS LOW PRIORITY</strong></div>
+</li>
+<li class="level1"><div class="li">Store values as <acronym title="Extensible Markup Language">XML</acronym> instead of just using a piped header.</div>
+<ul>
+<li class="level2"><div class="li">Store cipher and version in <acronym title="Extensible Markup Language">XML</acronym> markup (see below)Store search fields including value and hash function used. Is it better to use a one-way hash or the same symmetric encryption function used to encrypt the body?  Symmetric encryption offers reversibility, while hashing does not, but hashing is cheaper (does cost matter?)</div>
+</li>
+<li class="level2"><div class="li">Look into ways to escape the &lt; and &gt; characters in the <acronym title="Extensible Markup Language">XML</acronym> so the web browser doesn&rsquo;t parse it as in-line <acronym title="HyperText Markup Language">HTML</acronym>.</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> Investigation of methods to keep the application provider from circumventing WAPP and reading the actual value of the fields by moving our protection functions back into privileged JavaScript.  How to protect against XPCNativeWrapper?</div>
+</li>
+<li class="level1"><div class="li"> Add support for application specific customizations to support features such as Print View (with decryption so it&rsquo;s not ciphertext), disabling spell checking, etc.  This system will resemble plugins.</div>
+</li>
+<li class="level1"><div class="li"> Investigate different encryption libraries and decide if we need to implement our own.</div>
+</li>
+<li class="level1"><div class="li"> Investigation of implementation for spreadsheet. Need more information on the working of spread-sheets for Google and other providers.  Possibly look into <a href="http://www.activewidgets.com/grid/" class="urlextern" title="http://www.activewidgets.com/grid/"  rel="nofollow">http://www.activewidgets.com/grid/</a> to see how they create a spreadsheet.</div>
+</li>
+<li class="level1"><div class="li"> Investigation of alternate approaches to solve the search problem. This may be very important from the advertising perspective.</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "To Do (Low Priority)" [1350-3528] -->
+<h2><a name="done" id="done">Done</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> IMPORTANT - Find out why our accessor is stripping out <acronym title="HyperText Markup Language">HTML</acronym> tags.</div>
+</li>
+<li class="level1"><div class="li"> Add a visual cue to let a user know that a field is protected</div>
+</li>
+<li class="level1"><div class="li"> Investigate other implementations of document editors to see if our implementation is compatible with them. *WORKS WITH ZOHO*</div>
+</li>
+<li class="level1"><div class="li"> In the preferences, store pairs of &lt;Field ID, <acronym title="Uniform Resource Identifier">URI</acronym>&gt; with a CIPHER decorator in <acronym title="Extensible Markup Language">XML</acronym>.  This will be stored as a preference and used to remember which fields are protected at which domains.  See below for sample implementation.</div>
+</li>
+<li class="level1"><div class="li"> Discuss how to handle passwords.  How will we handle the case of multiple &lsquo;Google Documents&rsquo; with different passwords because they&rsquo;re shared between different users?   Domain-specific?  Document-specific? </div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Done" [3529-] -->

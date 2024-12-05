@@ -1,0 +1,81 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#objective" class="toc">Objective</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#what_is_push-to-talk" class="toc">What is Push-To-Talk?</a></span></div>
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#audio_conferencing_using_push-to-talk" class="toc">Audio Conferencing using Push-To-Talk</a></span></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><span class="li"><a href="#project_description" class="toc">Project Description</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#current_status_of_the_project" class="toc">Current Status of the Project</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#creator" class="toc">Creator</a></span></div></li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="objective" id="objective">Objective</a></h1>
+<div class="level1">
+
+<p>
+ The goal of the project is to develop an audio-conferencing service, using Push-To-Talk technology, deployed over wireless mesh network(in this case <a href="http://www.smesh.org" class="urlextern" title="http://www.smesh.org"  rel="nofollow">SMesh</a>)
+</p>
+
+</div>
+<!-- SECTION "Objective" [1-215] -->
+<h1><a name="what_is_push-to-talk" id="what_is_push-to-talk">What is Push-To-Talk?</a></h1>
+<div class="level1">
+
+<p>
+Push-To-Talk (PTT) is a two-way communication service, but one that works like a &ldquo;walkie talkie&rdquo;. While a normal phone call is full-duplex, meaning both parties can hear each other at the same time, PTT is half-duplex, the communication can only happen in one direction at any given time. PTT requires that the person who wishes to speak,presses a button while talking and then releases it when he is done.The receiving party/parties hear the sender&rsquo;s voice without any action on their part, for example, without having to even answer the call
+</p>
+
+</div>
+<!-- SECTION "What is Push-To-Talk?" [216-798] -->
+<h2><a name="audio_conferencing_using_push-to-talk" id="audio_conferencing_using_push-to-talk">Audio Conferencing using Push-To-Talk</a></h2>
+<div class="level2">
+
+<p>
+The 1-to-many communication feature in PTT enables a user to setup a voice communication with multiple users, where the participants speak one at a time and the voice is carried to all the participants of the conference. Due to the half-duplex nature of PTT, each participant in the audio conference must wait until the current speaker has finished speaking, and therefore the challenge involved in conducting an audio conference is, the co-ordination among the participants in a manner that is fair to every participant
+</p>
+
+</div>
+<!-- SECTION "Audio Conferencing using Push-To-Talk" [799-1370] -->
+<h1><a name="project_description" id="project_description">Project Description</a></h1>
+<div class="level1">
+
+<p>
+ The original idea was to develop a completely distributed algorithm to handle the co-ordination among the various participants of the conference. But, due to lack of time and the additional complexities involved in the distributed algorithm, I decided to solve the problem of coordination using a semi-distributed approach, one that has a coordinator per conference rather than peer-to-peer which could have been achieved using the distributed approach. The project implementation details are <strong><a href="/courses/cs667-2007/ptt-proj/doku.php?id=here" class="wikilink1" title="here">here</a></strong>
+</p>
+
+</div>
+<!-- SECTION "Project Description" [1371-1912] -->
+<h1><a name="current_status_of_the_project" id="current_status_of_the_project">Current Status of the Project</a></h1>
+<div class="level1">
+
+<p>
+ I have finished the implementation of the control messaging except for the retransmissions of the messages which is required for reliability. Also, an application for capturing and playing voice is yet to be integrated into the client.
+</p>
+
+<p>
+The things I&rsquo;d like to add to the project:<br/>
+ 1. Additional realiability - in case where the co-ordinator of the conference crashes.<br/>
+ 2. Distribute the voice packets in an efficient manner.<br/>
+ 3. <acronym title="Graphical User Interface">GUI</acronym> for the client.<br/>
+
+</p>
+
+</div>
+<!-- SECTION "Current Status of the Project" [1913-2412] -->
+<h1><a name="creator" id="creator">Creator</a></h1>
+<div class="level1">
+
+<p>
+Pratibha Mallya for the Advanced Distributed Systems Course at Johns Hopkins University 
+</p>
+
+</div>
+<!-- SECTION "Creator" [2413-] -->

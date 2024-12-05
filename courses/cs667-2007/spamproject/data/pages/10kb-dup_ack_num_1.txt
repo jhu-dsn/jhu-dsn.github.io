@@ -1,0 +1,3 @@
+Note only one packet is acked per transmission interval.  The sender to experiences a timeout frequently and retransmits many of the packets.
+
+{{size_10kb-dup_ack_num_1.png|}}

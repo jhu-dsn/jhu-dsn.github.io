@@ -1,0 +1,15 @@
+====== An Analysis of Botnet Behaviour ======
+
+This paper delves into the observed behaviour of botnets, the networks of infiltrated computer systems that are controlled by remote users.  Their study was carried out by "capturing" bot programs on a specially setup network and analyzing their actions.  Here are some of the more nteresting details revealed:
+
+  * Botnets are used for multiple purposes, including spam and infiltrating additional computers. \\
+  * There are a couple bots that are significantly more widespread, and they are used by several botnet owners who are less sophisticated. \\
+  * Botnets communicate using extremely stripped down irc systems that require the correct username and password to access and are likely to throw out any client that does not behave in the expected way. \\
+
+  * Over 4 months they saw 100 botnets, with only 35 very active at any time. \\
+  * Most botnet irc servers hide their clients from each other to prevent identification, but those that don't allowed observation of 226,585 unique IP addresses. \\
+  * Some botnets are composed of a few hundred bots, but there are also several with upwards of 50,000 bots.  In the past studies have found botnets of several hundred thousand bots. \\
+  * Botnets have update mechanisms to refresh bot software that can be taken advantage of by other botnet harvesters and anyone else, sometimes leading to attempts to take over each others networks. \\
+  * Most botnets are run by "young males with surprisingly limited programming skills".
+
+[[http://www.honeynet.org/papers/bots/|Know your Enemy: Tracking Botnets]]

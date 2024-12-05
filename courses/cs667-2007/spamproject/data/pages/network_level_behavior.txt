@@ -1,0 +1,14 @@
+====== Understanding the Network-Level Behavior of Spammers ======
+
+
+A 17-month trace from April 2004 to December 2005 of over 10 million spam messages collected at an Internet sinkhole is analyzed to determine the network-level behavior of spammers.  In addition to the emails collected at the sinkhole, 700,000 legitimate emails from a provider's server hosted at a different domain and sent on June 13, 2006 are inspected.  A 1.5 day trace of hosts infected with the "Bobax" worm is captured starting on April 28, 2005 by reconfiguring the DNS resolving the botnet control domain to point to a honeypot.  The IPs of these hosts are compared with the IPs of the senders of spam sent to the sinkhole to attempt to determine the spamming behavior of botnets.
+
+The paper indicates that the majority of recieved spam arrives from a few concentrated portions of IP address space, but that most legitimate email also comes from that same space.  Though a small number of IP addresses sent more than 10,000 emails to the sinkhole, 85% of IP addresses sent less than 10 emails.  Thus the paper believes that IP addresses themselves cannot be utilized to help identify spam but that the address space can.
+
+The paper states that by observing several blacklists, about 80% of spam can be blocked, but that a new technique called "BGP spectrum agility" has a much higher immunity from this filtering technique.
+
+About 25% of spam from IPs also found in the botnet trace were received from hosts only appearing once.  Also, 99% of these bots that sent spam sent fewer than 100 total spam messages to the domain.
+
+The email server at the sinkhole was configured to accept all incoming email, whereas this may not have been the case for the provider of the legitimate emails.  I wonder if this may impact the behavior of the spammer.  For instance, if emails to all user combinations is accepted than a spammer employing a dictionary technique has no assurance that the email address points to a legitimate user, and might alter the number and frequency of emails sent to the users at that domain accordingly.
+
+{{p396-ramachandran-sigcomm06.pdf|Read the Paper}}

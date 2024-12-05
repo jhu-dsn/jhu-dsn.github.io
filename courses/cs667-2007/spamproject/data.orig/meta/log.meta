@@ -1,0 +1,7 @@
+a:6:{s:5:"title";s:9:"Changelog";s:11:"description";a:2:{s:8:"abstract";s:399:"[April 04, 2007] Results for path length histogram added.
+
+[April 03, 2007] snapshot 5 created in /storage/projects/spamproject/snapshot.5
+
+[April 03, 2007] pathlen_plugin disabled. Not clear when to suspect a message is a spam.
+
+[April 03, 2007] Added a function to use the first IP outside Hopkins (128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0). Currently used by ip_heuristic and dnsbl_plugin.";s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:9:"changelog";s:5:"title";s:9:"Changelog";s:4:"type";s:2:"ul";s:5:"level";i:1;}}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:1:{s:16:"smtp_path_length";b:0;}}s:4:"date";a:2:{s:5:"valid";a:0:{}s:7:"created";i:1176090002;}s:7:"creator";s:18:"Raluca Musaloiu-E.";s:11:"last_change";a:7:{s:4:"date";i:1176090002;s:2:"ip";s:14:"128.220.221.64";s:4:"type";s:1:"C";s:2:"id";s:3:"log";s:4:"user";s:7:"ralucam";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";}}

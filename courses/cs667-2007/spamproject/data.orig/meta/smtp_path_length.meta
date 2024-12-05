@@ -1,0 +1,17 @@
+a:6:{s:5:"title";s:6:"Graphs";s:11:"description";a:2:{s:8:"abstract";s:329:"Graphs
+
+ 
+
+Howto
+
+	*  generate the smtp_path file:
+
+
+time ./smtp_path.py /storage/projects/spamproject/snapshot.5/messages.log > smtp_path.5
+
+
+	*  extract the IP addresses from marked and unmarked inbox:
+
+
+./extract_ip.py yair_spam_unmarked smtp_path.5 > out.unmarked.5
+./extract_ip.py yair_spam_marked smtp_path.5 > out.marked.5";s:15:"tableofcontents";a:3:{i:0;a:4:{s:3:"hid";s:6:"graphs";s:5:"title";s:6:"Graphs";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:1;a:4:{s:3:"hid";s:5:"howto";s:5:"title";s:5:"Howto";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:4:"data";s:5:"title";s:4:"Data";s:4:"type";s:2:"ul";s:5:"level";i:2;}}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:0:{}}s:4:"date";a:2:{s:5:"valid";a:0:{}s:7:"created";i:1176090176;}s:7:"creator";s:18:"Raluca Musaloiu-E.";s:11:"last_change";a:7:{s:4:"date";i:1176090176;s:2:"ip";s:14:"128.220.221.64";s:4:"type";s:1:"C";s:2:"id";s:16:"smtp_path_length";s:4:"user";s:7:"ralucam";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";}}

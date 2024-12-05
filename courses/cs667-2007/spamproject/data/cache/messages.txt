@@ -1,0 +1,10 @@
+An XSS vulnerability was discovered, read the
+           <a href="http://bugs.splitbrain.org/index.php?do=details&task_id=1195">bug report</a>
+           for manual fixing or upgrading [<a href="http://wiki.splitbrain.org/wiki:update_check">10</a>]
+%
+New release available: 2007-06-26.
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">9</a>]
+%
+New release candidate available: 2007-05-24.
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">8</a>]
+%

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/styles/feed.css" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/feed.php">
+        <title>Web Application Privacy Protector</title>
+        <description></description>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/</link>
+        <image rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico" />
+       <dc:date>2011-02-14T17:43:35-05:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696&amp;do=diff1178685696"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177&amp;do=diff1177466177"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217&amp;do=diff1177179217"/>
+                <rdf:li rdf:resource="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051&amp;do=diff1177179051"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico">
+        <title>Web Application Privacy Protector</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/</link>
+        <url>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico</url>
+    </image>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696&amp;do=diff1178685696">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-05-09T00:41:36-05:00</dc:date>
+        <dc:creator>Uma Chingunde</dc:creator>
+        <title>start</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=start&amp;amp;rev=1178685696&amp;do=diff1178685696</link>
+        <description>With the increasing popularity of online application providers such as Google Docs and Zoho Writer, more and more people are using these applications for creating and editing documents. Online application providers offer features such as reliable and continuous access to data, collaboration and flexibility. However by using these application providers, users are giving up control over their data to the application provider, in this case Google and Zoho. Potentially anyone can read this data. Web…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177&amp;do=diff1177466177">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-24T21:56:17-05:00</dc:date>
+        <dc:creator>Uma Chingunde</dc:creator>
+        <title>feature_list</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=feature_list&amp;amp;rev=1177466177&amp;do=diff1177466177</link>
+        <description>Features Implemented
+
+	*  Provides protection for Google Docs and Zoho Writer.
+	*  Designed in a generic way, so adding protection to new web applications should be trivial and require no additional development.
+
+Features not Implemented
+
+	*  Currently password management has not been implemented completely.We plan to implement this soon.
+	*  Collaboration in the case where multiple users are editing the document simultaneously has not been handled.Some possible approaches to handle this have be…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217&amp;do=diff1177179217">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-21T14:13:37-05:00</dc:date>
+        <dc:creator>Gabriel Landau</dc:creator>
+        <title>roadmap</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=roadmap&amp;amp;rev=1177179217&amp;do=diff1177179217</link>
+        <description>To Do (High Priority)
+
+	*  Investigate how Gmail Notifier uses the Master Password system and replicate that functionality for our password storage.   ADDENDUM: Use the Master Password system to store a master key that encrypts the entire ProtectedFieldList.  Have the domain correspond to an unreachable domain, such as wapp.cnds.jhu.edu 
+	*  Add a hot-key for “Protect this field” because some web applications prevent you from getting a right-click context menu.  Maybe look into how FreeEnigm…</description>
+    </item>
+    <item rdf:about="http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051&amp;do=diff1177179051">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-21T14:10:51-05:00</dc:date>
+        <dc:creator>Gabriel Landau</dc:creator>
+        <title>more_detailed_description</title>
+        <link>http://www.dsn.jhu.edu/courses/cs667-2007/wapp/doku.php?id=more_detailed_description&amp;amp;rev=1177179051&amp;do=diff1177179051</link>
+        <description>JavaScript 
+
+First, it’s time for a quick crash course in DHTML and JavaScript.  JavaScript is a scripting language built into all modern browsers that facilitates many things.  If you’ve ever used GMail, Google Maps, or just about any other interactive web system, you’ve probably seen JavaScript in action.  JavaScript allows a web developer to do many, many things, including spell checking, mathematical calculations, input validation, etc.  Here’s a quick sample of JavaScript:</description>
+    </item>
+</rdf:RDF>

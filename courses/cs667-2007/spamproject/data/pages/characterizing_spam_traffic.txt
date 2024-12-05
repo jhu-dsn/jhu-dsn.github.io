@@ -1,0 +1,5 @@
+====== Characterizing a Spam Traffic ======
+
+Over 360 thousand incoming emails into a university with 22 thousand students are collected over the course of eight days.  The email server used is Exim, while SpamAssassin is used to determine the status of an email as being either spam or not spam.  A set of parameters is analyzed based on information available in the email headers such as email size, number of recipients per email and the email arrival process.  The sender ip-addresses are not used in the analysis, only the sender domain is used.  Some interesting findings were that although spam is responsible for 50% of the total emails, it accounts for only 10% of all bytes received.  Also, 24% of recipients receive only legitimate email, while another 37% receive a mixture of legitimate and spam emails accounting for 70% of all messages.  Spam exhibits more constant transfer times throughout the day whereas legitimate email tends to be concentrated during business hours of weekdays.  Finally, 15% of spams have more than one recipient while only 5% of non-spam have more than one recipient.
+
+{{p356-gomes.pdf|Read the Paper}}

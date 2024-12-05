@@ -1,0 +1,51 @@
+
+
+
+<h1><a name="changelog" id="changelog">Changelog</a></h1>
+<div class="level1">
+
+<p>
+ [April 03, 2007] snapshot 5 created in /storage/projects/spamproject.
+</p>
+
+<p>
+[April 03, 2007] <em>pathlen_plugin</em> disabled. Not clear when to suspect a message is a spam.
+</p>
+
+<p>
+[April 03, 2007] Added a function to used the first IP outside Hopkins (128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0). Currently used by <em>ip_heuristic</em> and <em>dnsbl_plugin</em>.
+</p>
+
+<p>
+[April 03, 2007] Moved code to &ldquo;skip&rdquo; blaze ip from <em>exim_local_scan</em> to <em>ip_search</em> and upgraded to skip all local ips.  <em>exim_local_scan</em> no longer does this automatically, each interested plugin must do so. 
+</p>
+
+<p>
+[April 03, 2007] Promoted fix for excluding 127.0.0.1 from <em>ip_heuristic</em> to <em>exim_local_scan</em>
+</p>
+
+<p>
+[April 03, 2007] <em>pathlen_heuristic</em> added
+</p>
+
+<p>
+[April 03, 2007] Small change in <em>ip_heuristic</em> to exclude 127.0.0.1 (bounce messages from commedia).
+</p>
+
+<p>
+[April 03, 2007] Fixed a bug in <em>exim_local_scan.py</em>. When the connecting server was blaze, we considered the initiator instead of the second IP from the <acronym title="Simple Mail Transfer Protocol">SMTP</acronym> path. 
+</p>
+
+<p>
+[April 03, 2007] Fixed a bug in <em>dnsbl_plugin</em>. All the previously marked messages were wrong :).
+</p>
+
+<p>
+[April 02, 2007] Added the ability to mark messages only for specific users.
+</p>
+
+<p>
+[April 02, 2007] <em>ip_heuristic</em>, <em>host_plugin</em> and <em>dnsbl_plugin</em> added. 
+</p>
+
+</div>

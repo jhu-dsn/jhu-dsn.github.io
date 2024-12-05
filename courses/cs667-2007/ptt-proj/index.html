@@ -1,0 +1,78 @@
+<html> 
+<head> 
+<title></title> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> <meta http-equiv="content-style-type" content="text/css"> 
+<meta http-equiv="expires" content="0"> 
+</head> 
+<body> 
+
+<h2>
+Objective
+</h2>
+
+The goal of the project is to develop an audio-conferencing service, using
+Push-To-Talk technology, deployed over wireless mesh network(in this case
+SMesh)
+
+<h2>
+What is Push-To-Talk?
+</h2>
+
+Push-To-Talk (PTT) is a two-way communication service, but one that works like
+a “walkie talkie”. While a normal phone call is full-duplex, meaning both
+parties can hear each other at the same time, PTT is half-duplex, the
+communication can only happen in one direction at any given time. PTT requires
+that the person who wishes to speak,presses a button while talking and then
+releases it when he is done.The receiving party/parties hear the sender’s voice
+without any action on their part, for example, without having to even answer
+the call
+
+<h4>
+Audio Conferencing using Push-To-Talk
+</h4>
+
+The 1-to-many communication feature in PTT enables a user to setup a voice
+communication with multiple users, where the participants speak one at a time
+and the voice is carried to all the participants of the conference. Due to the
+half-duplex nature of PTT, each participant in the audio conference must wait
+until the current speaker has finished speaking, and therefore the challenge
+involved in conducting an audio conference is, the co-ordination among the
+participants in a manner that is fair to every participant
+
+<h2>
+Project Description
+</h2>
+
+The original idea was to develop a completely distributed algorithm to handle
+the co-ordination among the various participants of the conference. However,
+there are several drawbacks to this approach. Instead, we decided to solve the
+problem of coordination using a semi-distributed approach, one that has a
+coordinator per conference rather than peer-to-peer which could have been
+achieved using the distributed approach. 
+
+The project implementation details are here
+
+<h2>
+Current Status of the Project
+</h2>
+
+I have finished the implementation of the control messaging except for the
+retransmissions of the messages which is required for reliability. Also, an
+application for capturing and playing voice is yet to be integrated into the
+client.
+
+The things I’d like to add to the project:
+<ol>
+<li>Additional realiability - in case where the co-ordinator of the conference crashes.</li>
+<li>Distribute the voice packets in an efficient manner.</li>
+<li>GUI for the client.</li>
+</ol>
+
+<h2>
+Creator
+</h2>
+
+Pratibha Mallya for the Advanced Distributed Systems Course at Johns Hopkins University
+
+</body>

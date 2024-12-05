@@ -1,0 +1,111 @@
+
+
+
+<h1><a name="changelog" id="changelog">Changelog</a></h1>
+<div class="level1">
+
+<p>
+ [August, 16, 2007] Fixed a bug in IP_REJECT plugin that caused reject-daemon.py to crash.
+</p>
+
+<p>
+[July 16, 2007] I added file locks in IP_REPEAT plugin to prevent file corruption which happens quite often, and I also switched from pickle to cPickle to improve performance.
+</p>
+
+<p>
+[April 16, 2007] A happy 1.4GB snapshot is available in <code>/storage/projects/spamproject/snapshot.7</code>. 
+</p>
+
+<p>
+[April 16, 2007] Added new heuristic DYNAMIC_FOUND that checks a blacklist that lists dynamic IPs that should not be connecting directly.
+</p>
+
+<p>
+[April 16, 2007] Added new tag AGG_SCORE that is added when heuristics have increased the SA score and pushed it over 5.
+</p>
+
+<p>
+[April 16, 2007] Hist Plot &rarr; Spam Assassin Score for (unmarked, marked) spam and legitimate email marked w/ IP-Repeat in subject.
+</p>
+
+<p>
+[April 15, 2007] Because we plan to play with greylisting, I removed <em>blaze.cs.jhu.edu</em> as our backup MX server. 
+</p>
+
+<p>
+[April 11, 2007] Small change in <em>exim_local_scan.py</em> to not scan messages (i.e, run our plugins) coming from authenticated <acronym title="Simple Mail Transfer Protocol">SMTP</acronym> clients (on <code>commedia</code>). Need to check if this actually works <img src="/courses/cs667-2007/spamproject/lib/images/smileys/icon_smile.gif" class="middle" alt=":-)" />.
+</p>
+
+<p>
+[April 10, 2007] IP_REPEAT plugin modified to save the original timestamp and message id, and the number of flagged emails. If a message is flagged, a message header is added with those 3 data.
+</p>
+
+<p>
+[April 10, 2007] Small changes to <em>exim_local_scan.py</em> to better reflect the SpamAssassin score.
+</p>
+
+<p>
+[April 10, 2007] SpamAssassin <a href="/courses/cs667-2007/spamproject/doku.php?id=sa_score_comparison" class="wikilink1" title="sa_score_comparison">score comparison</a> section created. 
+</p>
+
+<p>
+[April 09, 2007] Snapshot 6 created in <code>/storage/projects/spamproject/snapshot.6</code>
+</p>
+
+<p>
+[April 09, 2007] <a href="/courses/cs667-2007/spamproject/doku.php?id=ack_spoofing" class="wikilink1" title="ack_spoofing">ack_spoofing</a> added.
+</p>
+
+<p>
+[April 04, 2007] Results for <a href="/courses/cs667-2007/spamproject/doku.php?id=smtp_path_length" class="wikilink1" title="smtp_path_length">path length histogram</a> added.
+</p>
+
+<p>
+[April 03, 2007] Snapshot 5 created in <code>/storage/projects/spamproject/snapshot.5</code>
+</p>
+
+<p>
+[April 03, 2007] <em>pathlen_plugin</em> disabled. Not clear when to suspect a message is a spam.
+</p>
+
+<p>
+[April 03, 2007] Added a function to use the first IP outside Hopkins (<code>128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0</code>). Currently used by <em>ip_heuristic</em> and <em>dnsbl_plugin</em>.
+</p>
+
+<p>
+[April 03, 2007] Moved code to &ldquo;skip&rdquo; blaze ip from <em>exim_local_scan</em> to <em>ip_search</em> and upgraded to skip all local ips.  <em>exim_local_scan</em> no longer does this automatically, each interested plugin must do so. 
+</p>
+
+<p>
+[April 03, 2007] Promoted fix for excluding 127.0.0.1 from <em>ip_heuristic</em> to <em>exim_local_scan</em>
+</p>
+
+<p>
+[April 03, 2007] <em>pathlen_heuristic</em> added
+</p>
+
+<p>
+[April 03, 2007] Small change in <em>ip_heuristic</em> to exclude <code>127.0.0.1</code> (bounce messages from commedia).
+</p>
+
+<p>
+[April 03, 2007] Fixed a bug in <em>exim_local_scan.py</em>. When the connecting server was blaze, we considered the initiator instead of the second IP from the <acronym title="Simple Mail Transfer Protocol">SMTP</acronym> path. 
+</p>
+
+<p>
+[April 03, 2007] Fixed a bug in <em>dnsbl_plugin</em>. All the previously marked messages were wrong :).
+</p>
+
+<p>
+[April 02, 2007] Added the ability to mark messages only for specific users.
+</p>
+
+<p>
+[April 02, 2007] <em>ip_heuristic</em>, <em>host_plugin</em> and <em>dnsbl_plugin</em> added.
+</p>
+
+<p>
+[March 26, 2007] Added the ability to use user-based SpamAssassin score. 
+</p>
+
+</div>

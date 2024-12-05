@@ -1,0 +1,27 @@
+====== Changelog ======
+
+[April 04, 2007] Results for [[smtp_path_length|path length histogram]] added.
+
+[April 03, 2007] snapshot 5 created in ''/storage/projects/spamproject/snapshot.5''
+
+[April 03, 2007] //pathlen_plugin// disabled. Not clear when to suspect a message is a spam.
+
+[April 03, 2007] Added a function to use the first IP outside Hopkins (''128.220.0.0, 162.129.0.0, 10.0.0.0, 192.168.0.0''). Currently used by //ip_heuristic// and //dnsbl_plugin//.
+
+[April 03, 2007] Moved code to "skip" blaze ip from //exim_local_scan// to //ip_search// and upgraded to skip all local ips.  //exim_local_scan// no longer does this automatically, each interested plugin must do so. 
+
+[April 03, 2007] Promoted fix for excluding 127.0.0.1 from //ip_heuristic// to //exim_local_scan//
+
+[April 03, 2007] //pathlen_heuristic// added
+
+[April 03, 2007] Small change in //ip_heuristic// to exclude ''127.0.0.1'' (bounce messages from commedia).
+
+[April 03, 2007] Fixed a bug in //exim_local_scan.py//. When the connecting server was blaze, we considered the initiator instead of the second IP from the SMTP path. 
+
+[April 03, 2007] Fixed a bug in //dnsbl_plugin//. All the previously marked messages were wrong :).
+
+[April 02, 2007] Added the ability to mark messages only for specific users.
+
+[April 02, 2007] //ip_heuristic//, //host_plugin// and //dnsbl_plugin// added.
+
+[March 26, 2007] Added the ability to use user-based SpamAssassin score.

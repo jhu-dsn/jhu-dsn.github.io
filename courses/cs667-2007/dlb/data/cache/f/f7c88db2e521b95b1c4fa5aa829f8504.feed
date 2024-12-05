@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/lib/styles/feed.css" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/feed.php">
+        <title>dynamic load balancer</title>
+        <description></description>
+        <link>http://www.cnds.jhu.edu/courses/cs667-2007/dlb/</link>
+        <image rdf:resource="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/lib/images/favicon.ico" />
+       <dc:date>2007-04-26T04:09:27-04:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/doku.php?id=dlb&amp;amp;rev=1177536213&amp;do=diff1177536213"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/lib/images/favicon.ico">
+        <title>dynamic load balancer</title>
+        <link>http://www.cnds.jhu.edu/courses/cs667-2007/dlb/</link>
+        <url>http://www.cnds.jhu.edu/courses/cs667-2007/dlb/lib/images/favicon.ico</url>
+    </image>
+    <item rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/doku.php?id=dlb&amp;amp;rev=1177536213&amp;do=diff1177536213">
+        <dc:format>text/html</dc:format>
+        <dc:date>2007-04-25T17:23:33-04:00</dc:date>
+        <dc:creator>Brian Duddie</dc:creator>
+        <title>dlb</title>
+        <link>http://www.cnds.jhu.edu/courses/cs667-2007/dlb/doku.php?id=dlb&amp;amp;rev=1177536213&amp;do=diff1177536213</link>
+        <description>With the advent of social networking sites such as digg, small websites accustomed to very little traffic can experience sudden booms in traffic, often crippling the server hosting the site.  This project aims to solve this problem, which is not restrained to the likes of digg, from the standpoint of a web hosting service provider by creating a means to actively and dynamically distribute the resources of a server cluster to the sites that need it most.  The techniques used to achieve this goal …</description>
+    </item>
+</rdf:RDF>

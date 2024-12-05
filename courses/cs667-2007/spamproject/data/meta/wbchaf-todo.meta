@@ -1,0 +1,13 @@
+a:7:{s:5:"title";s:0:"";s:11:"description";a:2:{s:8:"abstract";s:395:"IP-Repeat Statistics
+
+	*  Run more cost experiments. 
+		*  What’s max retransmissions.
+		*  Alter timeout.
+		*  Attempt on real server.
+
+	*  Investigate real life setup.
+
+	*  Investigate inter-arrival time of IP_REPEAT messages
+	*  Re-run results for the new snapshot.
+	*  Answer the “old” questions
+	*  Answer question regarding exclusion of mail-server and introduce this into home page.";s:15:"tableofcontents";a:0:{}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:0:{}}s:4:"date";a:3:{s:5:"valid";a:0:{}s:7:"created";i:1176151599;s:8:"modified";i:1177349846;}s:7:"creator";s:13:"Wyatt Chaffee";s:11:"last_change";a:7:{s:4:"date";i:1177349846;s:2:"ip";s:11:"71.166.7.14";s:4:"type";s:1:"E";s:2:"id";s:11:"wbchaf-todo";s:4:"user";s:6:"wbchaf";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:4:{i:0;N;s:6:"wbchaf";s:13:"Wyatt Chaffee";s:7:"ralucam";s:18:"Raluca Musaloiu-E.";s:7:"cpitman";s:18:"Christopher Pitman";}}

@@ -1,0 +1,9 @@
+a:7:{s:5:"title";s:8:"Features";s:11:"description";a:2:{s:8:"abstract";s:503:"Features Implemented
+
+	*  Provides protection for Google Docs and Zoho Writer.
+	*  Designed in a generic way, so adding protection to new web applications should be trivial and require no additional development.
+
+Features not Implemented
+
+	*  Currently password management has not been implemented completely.We plan to implement this soon.
+	*  Collaboration in the case where multiple users are editing the document simultaneously has not been handled.Some possible approaches to handle this have be…";s:15:"tableofcontents";a:3:{i:0;a:4:{s:3:"hid";s:8:"features";s:5:"title";s:8:"Features";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:20:"features_implemented";s:5:"title";s:20:"Features Implemented";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:24:"features_not_implemented";s:5:"title";s:24:"Features not Implemented";s:4:"type";s:2:"ul";s:5:"level";i:2;}}}s:8:"relation";a:2:{s:7:"haspart";a:0:{}s:10:"references";a:0:{}}s:4:"date";a:3:{s:5:"valid";a:0:{}s:7:"created";i:1177465630;s:8:"modified";i:1177466177;}s:7:"creator";s:13:"Uma Chingunde";s:11:"last_change";a:7:{s:4:"date";i:1177466177;s:2:"ip";s:15:"128.220.223.155";s:4:"type";s:1:"E";s:2:"id";s:12:"feature_list";s:4:"user";s:3:"uma";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:2:{i:0;N;s:3:"uma";s:13:"Uma Chingunde";}}

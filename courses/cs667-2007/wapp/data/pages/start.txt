@@ -1,0 +1,54 @@
+====== Web Application Privacy Protector ======
+
+
+====== What is it? ======
+
+With the increasing popularity of online application providers such as [[http://docs.google.com|Google Docs]] and [[http://writer.zoho.com|Zoho Writer]], more and more people are using these applications for creating and editing documents. Online application providers offer features such as reliable and continuous access to data, collaboration and flexibility. However by using these application providers, users are giving up control over their data to the application provider, in this case Google and Zoho. Potentially anyone can read this data.
+Web Application Privacy Protector (WAPP) allows users to regain their privacy. It is an add-on for Firefox that allows you to use online applications such as Google Docs or Zoho Writer while keeping the contents of your documents private.
+
+
+
+====== How does it work? ======
+
+WAPP is an extension to the Firefox browser.  It inserts itself into the web application when you load that particular page (e.g when you open Google Docs). Any data that is entered in the Google Docs editor by the user is encrypted in the user's browser before being sent over to the Google server. This way, the data is encrypted before it leaves the user's browser. When the user tries to view or edit encrypted data, the extension will decrypt it in the browser before displaying it. The server never sees plain text. For a detailed view of the scenarios with and without WAPP, check out the images below.
+
+That's it.  It's that simple. :-)
+
+===== Without the WAPP extension =====
+
+{{wapp2.png|}}
+
+
+
+===== With the WAPP extension =====
+{{wapp.diagram.2.resized.png}}
+
+
+
+====== I want a more detailed description ======
+
+Okay.  You asked for it.  Here's the [[More Detailed Description]].
+
+====== Who made it? ======
+
+WAPP was created by Gabriel Landau and Uma Chingunde at the Johns Hopkins University [[http://dsn.jhu.edu|Distributed Systems and Networks Laboratory]].  It was designed as a project for [[http://www.dsn.jhu.edu/courses/cs667/|Advanced Topics in Distributed Systems]].
+
+
+====== How's it progressing? ======
+
+Check out our [[Roadmap]] to see how we are doing.
+
+
+
+
+====== Where can I get it? ======
+
+Get WAPP 0.2 alpha: <html><a onClick="InstallTrigger.install({'WAPP - Web Application Privacy Protector':'wapp.xpi'});" href="javascript:void(0)">Install</a> or <a href="wapp.xpi">Download</a></html>
+
+<html><b><font color=red>Warning:</font></b></html> This is alpha software.  Alpha means that the software is unstable and has not been throughly tested.  It is possible that you will lose information that is encrypted with WAPP.  Also, WAPP currently has static encryption passwords, so it doesn't provide any real security.  This is merely a proof of concept.  Uninstallation of WAPP has been tested and appears to work for us, but this does not guarantee that it will work for you.  ** You have been warned. **
+
+
+
+====== What do I need to use it? ======
+
+You do not need anything other than a Firefox browser and the WAPP extension. The extension can be installed as a standard Firefox extension (add-on). It should work on all platforms compatible with Firefox, but it has only been tested on Windows XP SP2.  The WAPP extension currently supports Google Docs and Zoho Writer in a limited way, but we  plan to support more features.  Check out our [[Feature list]] for more details.

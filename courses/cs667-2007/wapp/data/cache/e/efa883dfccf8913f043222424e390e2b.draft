@@ -1,0 +1,11 @@
+a:6:{s:2:"id";s:19:"sa_score_comparison";s:6:"prefix";s:0:"";s:4:"text";s:262:"====== Graphs ======
+
+{{ score.comparison.unmarked.png?300|Unmarked}}
+{{score.comparison.marked.png?300|Marked}}
+
+{{score.comparison.diff.unmarked.png?300|Unmarked difference}}
+{{score.comparison.diff.marked.png?300|Unmarked difference}}
+
+
+====== Results ======
+";s:6:"suffix";s:0:"";s:4:"date";s:10:"1176141003";s:6:"client";s:7:"ralucam";}

@@ -1,0 +1,38 @@
+Web Application Privacy Protector
+
+
+====== What is it? ======
+
+With the increasing popularity of online application providers such as [[http://docs.google.com|Google Docs]] and [[http://writer.zoho.com|Zoho Writer]] more and more people are using these applications for creating and editing documents. Online application providers offer features such as reliable and continuous access to data, collaboration and flexibility. However by using these application providers users are giving up control over their data to the application provider, in this case Google and Zoho. Potentially anyone can read this data.
+Web Application Privacy Protector (WAPP) allows users to regain their privacy. It is an add-on for Firefox that allows you to use online applications such as Google Docs or Zoho Writer while keeping the contents of your documents private.
+
+
+
+====== How does it work? ======
+
+Since WAPP is an extension to the Firefox browser it inserts itself into the web application when you load that particular page for e.g when you open Google Docs. Any data that is entered in the Google Docs editor by the user is encrypted in the user's browser before being sent over to the Google server. This way the data is encrypted before it leaves the users browser. When the user tries to view or edit encrypted data the extension will decrypt it in the browser before displaying it. The server never sees plain text.
+<html><br>|<img src="data/media/wappdiagram.png">|<br></html>
+{{wappdiagram.png?450|}}
+That's it.  It's that simple.
+
+
+====== I want a more detailed description ======
+
+Okay.  You asked for it.  
+
+====== Who made it? ======
+
+WAPP was created by Gabriel Landau and Uma Chingude at the Johns Hopkins University [[http://cnds.jhu.edu|Distributed Systems and Networks Laboratory]].
+
+====== How's it progressing? ======
+
+Check out our [[Roadmap]] to see how we're doing.
+
+====== Where can I get it? ======
+
+You can't, yet.  We're working on packaging it into an XPI format, the standard Firefox extension format, so Firefox users can easily install and use it.
+
+
+====== What do I need to use it? ======
+
+You do not need anything other than a Firefox browser and the WAPP extension. The extension can be installed as a standard Firefox extension. It can be used on all platforms compatible with Firefox. The WAPP extension currently supports Google Docs and Zoho Writer in a limited way. But we are plan to support more features. Check out our [[Feature list]] for more details.

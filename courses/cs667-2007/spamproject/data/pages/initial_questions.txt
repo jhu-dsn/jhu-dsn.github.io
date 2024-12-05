@@ -1,0 +1,150 @@
+=== How many IPs send only spam, non-spam, aggregate? ===
+
+The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair's email addresses was analyzed.
+It contained 2062 spam messages, 1916 of which were marked by Spam Assassin, and 100 Nonspam messages.
+
+For the most part, each IP sends a small number of messages.  There are some exceptions, such as with Omniti, which sends a total of 301 spam messages.
+
+(Omniti)  66.225.209.50 Sent 301 Spam and 3 nonspam, thus it accounts for many of the aggregate scores.\\
+(Omniti)   162.129.8.64 Sent 2   Spam and 13 Nonspam\\
+(Commedia)128.220.221.1 Sent 3   Spam and 25 Nonspam\\
+
+<code>
+                        Total IPs:      Total Messages  Messages/IP
+Spam:                   1265            1751            1.384
+Nonspam:                30              46              1.533
+Aggregate:              7               365             52.143
+</code>
+
+=== How many messages are received per sender IP address (spam / non-spam)? ===
+From this we see that most IP's sending spam send only 1 message.  This is only looking at Yair's spam and not the entire Commedia network however.  It should be noted that the IP Repeat blacklist is a product of spam assassin scores across more than just Yair's boxes.  Thus it can acheive better blocking than would be thought from the chart below.
+
+<code>
+spam  
+ # messages # servers
+         1:       940
+         2:       184
+         3:       138
+         4:         6
+         5:         1
+         7:         1
+       301:         1
+nonspam
+# messages # servers
+         1        25
+         2         4
+         3         1
+         4         1
+         5         1
+         6         1
+         9         1
+        13         1
+</code>
+
+=== How many spam messages not flagged as spam are sent by IPs that sent spam earlier? ===
+
+This is the same as the IP_REPEAT heuristic, and can be seen by looking at the IP_REPEAT data on our results page.
+
+=== For each spam, list the number of marked/unmarked spam sent previous to this point? ===
+
+Data too large to place here, but again similar to IP_REPEAT heuristic
+
+=== How many unflagged spam is sent by IPs that appeared in the reject log previous to the undetected spam? ===
+
+Covered by the IP REJECT heuristic
+
+=== With what frequency does the IP address appear in a blacklist? ===
+
+Covered by the DNSBL heurstic
+
+=== Distribution of Spam Assassin score for spam / non-spam messages? ===
+
+Can be seen in graphs on results page
+
+=== What is the average size of header / body for spam / non-spam messages? ====
+
+For the sample listed above, the results are as follows:
+
+**Marked Spam Statistics**
+<code>
+Average HLEN 860.628
+Average BLEN 7406.568
+Average MLEN 8267.196
+</code>
+
+**Unmarked Spam Statistics**
+<code>
+Average HLEN 987.678
+Average BLEN 9749.185
+Average MLEN 10736.863
+</code>
+
+**Spam Statistics**
+<code>
+Average HLEN 869.624
+Average BLEN 7572.437
+Average MLEN 8442.061
+</code>
+
+**Nonspam Statistics**
+<code>
+Average HLEN 1864.820
+Average BLEN 486080.360
+Average MLEN 487945.180
+</code>
+
+
+
+
+=== What is the average length of the SMTP path for spam / non-spam messages? ===
+Add this.
+
+=== What is the average number of recipients for spam and non-spam messages? ===
+Add this.
+
+=== What is the amount of non-spam messages that come from blaze.cs.jhu.edu vs commedia? ===
+Number is large, removed blaze from consideration.
+
+=== What is the duration (1 minute, 1 hour, 1 day, 1 month, etc.) with which an IP address may be found in the log for spam / non-spam / aggregate email? ===
+
+[[snap_shot_9#duration_and_frequency_analysis|Shown here]]
+
+=== What is the frequency with which emails are sent per IP address (ie. 10 / minute, 10 / hour, 10 / day, etc.) for spam / non-spam? ===
+
+[[snap_shot_9#duration_and_frequency_analysis|Shown here]]
+
+=== How many times do spammers send n messages within x minutes? ===
+
+[[snap_shot_9#duration_and_frequency_analysis|Shown here]]
+
+=== How many times do legitimate servers send n messages within x minutes? ===
+
+Performed, but needs to be uploaded.
+
+=== What impact does the presence of the hostname (HN) have on the likelihood of a message to be spam? ===
+This is a fairly good technique for this sample occuring from April 04 to April 09.
+
+**HostName Statistics**
+<code>
+Total Marked Spam with HNAME:  1321     0.689
+Total Unmarked Spam with HNAME:  112    0.767
+Total Nonspam with HNAME:  100  1.000
+</code>
+
+=== At what frequency and time of day do the spam / non-spam messages usually arrive? ===
+Will not help indicate spam from nonspam.
+
+=== Perform the same questions as above with sender domains instead of sender IPs? ===
+Not performed.
+
+=== Do the spam / non-spam messages come from an ISP mail server or are they sent directly? ===
+Not performed.
+
+=== What is the frequency with which the same messages are sent to different users? ===
+Not performed.
+
+=== Does the same message get sent to multiple users? ===
+Not performed.
+
+=== How many users receive only spam, non-spam, aggregate? ===
+We did not find this question important enough to investigate.

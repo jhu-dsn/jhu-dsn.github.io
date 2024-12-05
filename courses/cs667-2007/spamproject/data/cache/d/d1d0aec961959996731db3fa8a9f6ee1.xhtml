@@ -1,0 +1,281 @@
+
+<h4><a name="how_many_ips_send_only_spam_non-spam_aggregate" id="how_many_ips_send_only_spam_non-spam_aggregate">How many IPs send only spam, non-spam, aggregate?</a></h4>
+<div class="level4">
+
+<p>
+ The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair&rsquo;s email addresses was analyzed. It contained 2062 spam messages, 1916 of which were marked by Spam Assassin, and 100 Nonspam messages.
+</p>
+
+<p>
+For the most part, each IP sends a small number of messages.  There are some exceptions, such as with Omniti, which sends a total of 301 spam messages.
+</p>
+
+<p>
+(Omniti)  66.225.209.50 Sent 301 Spam and 3 nonspam, thus it accounts for many of the aggregate scores.<br/>
+ (Omniti)   162.129.8.64 Sent 2   Spam and 13 Nonspam<br/>
+ (Commedia)128.220.221.1 Sent 3   Spam and 25 Nonspam<br/>
+
+</p>
+<pre class="code">
+                        Total IPs:      Total Messages  Messages/IP
+Spam:                   1265            1751            1.384
+Nonspam:                30              46              1.533
+Aggregate:              7               365             52.143
+</pre>
+
+</div>
+
+<h4><a name="how_many_messages_are_received_per_sender_ip_address_spam_non-spam" id="how_many_messages_are_received_per_sender_ip_address_spam_non-spam">How many messages are received per sender IP address (spam / non-spam)?</a></h4>
+<div class="level4">
+
+<p>
+From this we see that most IP&rsquo;s sending spam send only 1 message.  This is only looking at Yair&rsquo;s spam and not the entire Commedia network however.  It should be noted that the IP Repeat blacklist is a product of spam assassin scores across more than just Yair&rsquo;s boxes.  Thus it can acheive better blocking than would be thought from the chart below.
+</p>
+<pre class="code">
+spam  
+ # messages # servers
+         1:       940
+         2:       184
+         3:       138
+         4:         6
+         5:         1
+         7:         1
+       301:         1
+nonspam
+# messages # servers
+         1        25
+         2         4
+         3         1
+         4         1
+         5         1
+         6         1
+         9         1
+        13         1
+</pre>
+
+</div>
+
+<h4><a name="how_many_spam_messages_not_flagged_as_spam_are_sent_by_ips_that_sent_spam_earlier" id="how_many_spam_messages_not_flagged_as_spam_are_sent_by_ips_that_sent_spam_earlier">How many spam messages not flagged as spam are sent by IPs that sent spam earlier?</a></h4>
+<div class="level4">
+
+<p>
+ This is the same as the IP_REPEAT heuristic, and can be seen by looking at the IP_REPEAT data on our results page.
+</p>
+
+</div>
+
+<h4><a name="for_each_spam_list_the_number_of_marked_unmarked_spam_sent_previous_to_this_point" id="for_each_spam_list_the_number_of_marked_unmarked_spam_sent_previous_to_this_point">For each spam, list the number of marked/unmarked spam sent previous to this point?</a></h4>
+<div class="level4">
+
+<p>
+ Data too large to place here, but again similar to IP_REPEAT heuristic
+</p>
+
+</div>
+
+<h4><a name="how_many_unflagged_spam_is_sent_by_ips_that_appeared_in_the_reject_log_previous_to_the_undetected_spam" id="how_many_unflagged_spam_is_sent_by_ips_that_appeared_in_the_reject_log_previous_to_the_undetected_spam">How many unflagged spam is sent by IPs that appeared in the reject log previous to the undetected spam?</a></h4>
+<div class="level4">
+
+<p>
+ Covered by the IP REJECT heuristic
+</p>
+
+</div>
+
+<h4><a name="with_what_frequency_does_the_ip_address_appear_in_a_blacklist" id="with_what_frequency_does_the_ip_address_appear_in_a_blacklist">With what frequency does the IP address appear in a blacklist?</a></h4>
+<div class="level4">
+
+<p>
+ Covered by the DNSBL heurstic
+</p>
+
+</div>
+
+<h4><a name="distribution_of_spam_assassin_score_for_spam_non-spam_messages" id="distribution_of_spam_assassin_score_for_spam_non-spam_messages">Distribution of Spam Assassin score for spam / non-spam messages?</a></h4>
+<div class="level4">
+
+<p>
+ Can be seen in graphs on results page
+</p>
+
+</div>
+
+<h4><a name="what_is_the_average_size_of_header_body_for_spam_non-spam_messages" id="what_is_the_average_size_of_header_body_for_spam_non-spam_messages">What is the average size of header / body for spam / non-spam messages?</a></h4>
+<div class="level4">
+
+<p>
+ For the sample listed above, the results are as follows:
+</p>
+
+<p>
+<strong>Marked Spam Statistics</strong> 
+</p>
+<pre class="code">
+Average HLEN 860.628
+Average BLEN 7406.568
+Average MLEN 8267.196
+</pre>
+
+<p>
+<strong>Unmarked Spam Statistics</strong> 
+</p>
+<pre class="code">
+Average HLEN 987.678
+Average BLEN 9749.185
+Average MLEN 10736.863
+</pre>
+
+<p>
+<strong>Spam Statistics</strong> 
+</p>
+<pre class="code">
+Average HLEN 869.624
+Average BLEN 7572.437
+Average MLEN 8442.061
+</pre>
+
+<p>
+<strong>Nonspam Statistics</strong> 
+</p>
+<pre class="code">
+Average HLEN 1864.820
+Average BLEN 486080.360
+Average MLEN 487945.180
+</pre>
+
+</div>
+
+<h4><a name="what_is_the_average_length_of_the_smtp_path_for_spam_non-spam_messages" id="what_is_the_average_length_of_the_smtp_path_for_spam_non-spam_messages">What is the average length of the SMTP path for spam / non-spam messages?</a></h4>
+<div class="level4">
+
+<p>
+Add this.
+</p>
+
+</div>
+
+<h4><a name="what_is_the_average_number_of_recipients_for_spam_and_non-spam_messages" id="what_is_the_average_number_of_recipients_for_spam_and_non-spam_messages">What is the average number of recipients for spam and non-spam messages?</a></h4>
+<div class="level4">
+
+<p>
+Add this.
+</p>
+
+</div>
+
+<h4><a name="what_is_the_amount_of_non-spam_messages_that_come_from_blaze.cs.jhu.edu_vs_commedia" id="what_is_the_amount_of_non-spam_messages_that_come_from_blaze.cs.jhu.edu_vs_commedia">What is the amount of non-spam messages that come from blaze.cs.jhu.edu vs commedia?</a></h4>
+<div class="level4">
+
+<p>
+Number is large, removed blaze from consideration.
+</p>
+
+</div>
+
+<h4><a name="what_is_the_duration_1_minute_1_hour_1_day_1_month_etc._with_which_an_ip_address_may_be_found_in_the_log_for_spam_non-spam_aggregate_email" id="what_is_the_duration_1_minute_1_hour_1_day_1_month_etc._with_which_an_ip_address_may_be_found_in_the_log_for_spam_non-spam_aggregate_email">What is the duration (1 minute, 1 hour, 1 day, 1 month, etc.) with which an IP address may be found in the log for spam / non-spam / aggregate email?</a></h4>
+<div class="level4">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9#duration_and_frequency_analysis" class="wikilink1" title="snap_shot_9">Shown here</a>
+</p>
+
+</div>
+
+<h4><a name="what_is_the_frequency_with_which_emails_are_sent_per_ip_address_ie._10_minute_10_hour_10_day_etc._for_spam_non-spam" id="what_is_the_frequency_with_which_emails_are_sent_per_ip_address_ie._10_minute_10_hour_10_day_etc._for_spam_non-spam">What is the frequency with which emails are sent per IP address (ie. 10 / minute, 10 / hour, 10 / day, etc.) for spam / non-spam?</a></h4>
+<div class="level4">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9#duration_and_frequency_analysis" class="wikilink1" title="snap_shot_9">Shown here</a>
+</p>
+
+</div>
+
+<h4><a name="how_many_times_do_spammers_send_n_messages_within_x_minutes" id="how_many_times_do_spammers_send_n_messages_within_x_minutes">How many times do spammers send n messages within x minutes?</a></h4>
+<div class="level4">
+
+<p>
+ <a href="/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9#duration_and_frequency_analysis" class="wikilink1" title="snap_shot_9">Shown here</a>
+</p>
+
+</div>
+
+<h4><a name="how_many_times_do_legitimate_servers_send_n_messages_within_x_minutes" id="how_many_times_do_legitimate_servers_send_n_messages_within_x_minutes">How many times do legitimate servers send n messages within x minutes?</a></h4>
+<div class="level4">
+
+<p>
+ Performed, but needs to be uploaded.
+</p>
+
+</div>
+
+<h4><a name="what_impact_does_the_presence_of_the_hostname_hn_have_on_the_likelihood_of_a_message_to_be_spam" id="what_impact_does_the_presence_of_the_hostname_hn_have_on_the_likelihood_of_a_message_to_be_spam">What impact does the presence of the hostname (HN) have on the likelihood of a message to be spam?</a></h4>
+<div class="level4">
+
+<p>
+This is a fairly good technique for this sample occuring from April 04 to April 09.
+</p>
+
+<p>
+<strong>HostName Statistics</strong> 
+</p>
+<pre class="code">
+Total Marked Spam with HNAME:  1321     0.689
+Total Unmarked Spam with HNAME:  112    0.767
+Total Nonspam with HNAME:  100  1.000
+</pre>
+
+</div>
+
+<h4><a name="at_what_frequency_and_time_of_day_do_the_spam_non-spam_messages_usually_arrive" id="at_what_frequency_and_time_of_day_do_the_spam_non-spam_messages_usually_arrive">At what frequency and time of day do the spam / non-spam messages usually arrive?</a></h4>
+<div class="level4">
+
+<p>
+Will not help indicate spam from nonspam.
+</p>
+
+</div>
+
+<h4><a name="perform_the_same_questions_as_above_with_sender_domains_instead_of_sender_ips" id="perform_the_same_questions_as_above_with_sender_domains_instead_of_sender_ips">Perform the same questions as above with sender domains instead of sender IPs?</a></h4>
+<div class="level4">
+
+<p>
+Not performed.
+</p>
+
+</div>
+
+<h4><a name="do_the_spam_non-spam_messages_come_from_an_isp_mail_server_or_are_they_sent_directly" id="do_the_spam_non-spam_messages_come_from_an_isp_mail_server_or_are_they_sent_directly">Do the spam / non-spam messages come from an ISP mail server or are they sent directly?</a></h4>
+<div class="level4">
+
+<p>
+Not performed.
+</p>
+
+</div>
+
+<h4><a name="what_is_the_frequency_with_which_the_same_messages_are_sent_to_different_users" id="what_is_the_frequency_with_which_the_same_messages_are_sent_to_different_users">What is the frequency with which the same messages are sent to different users?</a></h4>
+<div class="level4">
+
+<p>
+Not performed.
+</p>
+
+</div>
+
+<h4><a name="does_the_same_message_get_sent_to_multiple_users" id="does_the_same_message_get_sent_to_multiple_users">Does the same message get sent to multiple users?</a></h4>
+<div class="level4">
+
+<p>
+Not performed.
+</p>
+
+</div>
+
+<h4><a name="how_many_users_receive_only_spam_non-spam_aggregate" id="how_many_users_receive_only_spam_non-spam_aggregate">How many users receive only spam, non-spam, aggregate?</a></h4>
+<div class="level4">
+
+<p>
+We did not find this question important enough to investigate. 
+</p>
+
+</div>

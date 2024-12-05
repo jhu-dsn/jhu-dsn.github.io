@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://cnds.jhu.edu/courses/cs667-2007/spamproject/lib/styles/feed.css" type="text/css"?>
+<rss version="2.0">
+    <channel>
+        <title>Spam Project</title>
+        <description></description>
+        <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+        <lastBuildDate>Sun, 26 Oct 2008 05:29:28 -0400</lastBuildDate>
+        <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
+        <image>
+            <url>http://cnds.jhu.edu/courses/cs667-2007/spamproject/lib/images/favicon.ico</url>
+            <title>Spam Project</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+        </image>
+        <item>
+            <title>log</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=log&amp;amp;rev=1187318222&amp;do=diff1187318222</link>
+            <description>[August, 16, 2007] Fixed a bug in IP_REJECT plugin that caused reject-daemon.py to crash.
+
+[July 16, 2007] I added file locks in IP_REPEAT plugin to prevent file corruption which happens quite often, and I also switched from pickle to cPickle to improve performance.</description>
+            <author>Raluca Musaloiu-E.</author>
+            <pubDate>Thu, 16 Aug 2007 22:37:02 -0400</pubDate>
+        </item>
+        <item>
+            <title>spam</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=spam&amp;amp;rev=1177960272&amp;do=diff1177960272</link>
+            <description>Team Members
+
+[ ]
+ Wyatt Chaffee
+ Chris Pitman
+ Raluca Musăloiu-E.
+
+Problem
+
+ The influx of spam has caused email to become a less effective tool for communication, and the problem is getting worse.  Despite the application of today’s best filters spam continues to find its way into our inboxes in ever increasing numbers.</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Mon, 30 Apr 2007 15:11:12 -0400</pubDate>
+        </item>
+        <item>
+            <title>ip_address_replace_msg_a - created</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ip_address_replace_msg_a&amp;amp;rev=1177960215&amp;do=diff1177960215</link>
+            <description>The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+
+
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: &lt;someone.com@somedomain.com&gt;
+Envelope-to: &lt;&lt;address3&gt;&gt;@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXa…</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Mon, 30 Apr 2007 15:10:15 -0400</pubDate>
+        </item>
+        <item>
+            <title>snap_snot_9a - created</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=snap_snot_9a&amp;amp;rev=1177960056&amp;do=diff1177960056</link>
+            <description>The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed.
+
+
+Total Spam Messages:  2062
+Total Marked Spam Messages:  1916
+Total Unmarked Spam Messages:  146
+Total Nonspam Messages:  100</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Mon, 30 Apr 2007 15:07:36 -0400</pubDate>
+        </item>
+        <item>
+            <title>snap_shot_9</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=snap_shot_9&amp;amp;rev=1177959302&amp;do=diff1177959302</link>
+            <description>The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed.
+
+
+Total Spam Messages:  2062
+Total Marked Spam Messages:  1916
+Total Unmarked Spam Messages:  146
+Total Nonspam Messages:  100</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Mon, 30 Apr 2007 14:55:02 -0400</pubDate>
+        </item>
+        <item>
+            <title>ip_address_replace_msg</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=ip_address_replace_msg&amp;amp;rev=1177957239&amp;do=diff1177957239</link>
+            <description>The message should be read from bottom up.  The To: field indicates a jhu.edu address, but forwarding is performed to Commedia.
+
+
+From someone.com@somedomain.com Wed Feb 28 17:48:14 2007
+Return-path: &lt;someone.com@somedomain.com&gt;
+Envelope-to: &lt;&lt;address3&gt;&gt;@cnds.jhu.edu
+Delivery-date: Wed, 28 Feb 2007 17:48:14 -0500
+Received: from &lt;&lt;backup-smtp&gt;&gt;.cs.jhu.edu ([128.220.13.xx])
+        by commedia.cnds.jhu.edu with esmtp (Exim 4.66)
+        (envelope-from &lt;someone.com@somedomain.com&gt;)
+        id 1HMXa…</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Mon, 30 Apr 2007 14:20:39 -0400</pubDate>
+        </item>
+        <item>
+            <title>initial_questions</title>
+            <link>http://cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=initial_questions&amp;amp;rev=1177525064&amp;do=diff1177525064</link>
+            <description>How many IPs send only spam, non-spam, aggregate?
+
+ The following was performed on snapshot 9, occuring from 4/18 to 4/23.  A set of Yair’s email addresses was analyzed. It contained 2062 spam messages, 1916 of which were marked by Spam Assassin, and 100 Nonspam messages.</description>
+            <author>Wyatt Chaffee</author>
+            <pubDate>Wed, 25 Apr 2007 14:17:44 -0400</pubDate>
+        </item>
+    </channel>
+</rss>

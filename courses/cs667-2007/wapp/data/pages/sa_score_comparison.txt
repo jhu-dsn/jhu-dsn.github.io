@@ -1,0 +1,10 @@
+====== Graphs ======
+
+{{score.comparison.unmarked.png?100|Unmarked}}
+{{score.comparison.marked.png?100|Marked}}
+
+{{score.comparison.diff.unmarked.png?100|Unmarked difference}}
+{{score.comparison.diff.marked.png?100|Unmarked difference}}
+
+
+====== Results ======

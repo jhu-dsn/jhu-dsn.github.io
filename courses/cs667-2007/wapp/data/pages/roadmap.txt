@@ -1,0 +1,28 @@
+====== WAPP Roadmap ======
+
+===== To Do (High Priority) =====
+
+  * Investigate how Gmail Notifier uses the Master Password system and replicate that functionality for our password storage.  ** ADDENDUM: Use the Master Password system to store a master key that encrypts the entire ProtectedFieldList.  Have the domain correspond to an unreachable domain, such as wapp.cnds.jhu.edu **
+  * Add a hot-key for "Protect this field" because some web applications prevent you from getting a right-click context menu.  Maybe look into how FreeEnigma allows users to select a field when it can't find the field on its own.
+  * Give the option to store URIs as full URIs (including GET) parameters.  This will allow users to create entries for each google document, giving WAPP only one password to try when the document is loaded.
+  * For applications where the uri is not unique per document also add an id to the document (possibly a GUID) that will be used to store and lookup the password.
+  * Store a salted hash of the password in the |WAPPENCRYPTED| header.  This will be much quicker for verifying the password than decrypting the whole document and checking for a known header, especially for large documents.
+  * When a new document is loaded, ask the user to specify a password.  Don't just pull a password from the array injected into the page.
+
+===== To Do (Low Priority) =====
+  * Allow users to right click on a field and select "Protect this field."  When they select it, bring up a window (described in XUL) which asks them if it's a 'content' field or a 'search' field and, optionally, let them choose which cipher to use.  Search will default to hash, while 'content' will default to their default cipher ('TEA' for now).  The 'content'/'search' options are important functionality because it will determine if the accessor returns the whole XML setup or only the hash of the value.  We may also want to list the URI back to them and allow them to alter the URI or add wildcards (*) to make it more domain-specific and less URI-specific (similar to Adblock). **PARTIALLY IMPLEMENTED.  THE REST IS LOW PRIORITY**
+  *Store values as XML instead of just using a piped header.
+    *Store cipher and version in XML markup (see below)Store search fields including value and hash function used. Is it better to use a one-way hash or the same symmetric encryption function used to encrypt the body?  Symmetric encryption offers reversibility, while hashing does not, but hashing is cheaper (does cost matter?)
+    *Look into ways to escape the < and > characters in the XML so the web browser doesn't parse it as in-line HTML.
+  * Investigation of methods to keep the application provider from circumventing WAPP and reading the actual value of the fields by moving our protection functions back into privileged JavaScript.  How to protect against XPCNativeWrapper?
+  * Add support for application specific customizations to support features such as Print View (with decryption so it's not ciphertext), disabling spell checking, etc.  This system will resemble plugins.
+  * Investigate different encryption libraries and decide if we need to implement our own.
+  * Investigation of implementation for spreadsheet. Need more information on the working of spread-sheets for Google and other providers.  Possibly look into http://www.activewidgets.com/grid/ to see how they create a spreadsheet.
+  * Investigation of alternate approaches to solve the search problem. This may be very important from the advertising perspective.
+
+===== Done =====
+  * IMPORTANT - Find out why our accessor is stripping out HTML tags.
+  * Add a visual cue to let a user know that a field is protected
+  * Investigate other implementations of document editors to see if our implementation is compatible with them. *WORKS WITH ZOHO*
+  * In the preferences, store pairs of <Field ID, URI> with a CIPHER decorator in XML.  This will be stored as a preference and used to remember which fields are protected at which domains.  See below for sample implementation.
+  * Discuss how to handle passwords.  How will we handle the case of multiple 'Google Documents' with different passwords because they're shared between different users?   Domain-specific?  Document-specific? 

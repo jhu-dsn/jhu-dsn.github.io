@@ -1,0 +1,11 @@
+IP-Repeat Statistics
+  * Run more cost experiments. 
+    * What's max retransmissions.
+    * Alter timeout.
+    * Attempt on real server.
+  * Investigate real life setup.
+
+  * Investigate inter-arrival time of IP_REPEAT messages
+  * Re-run results for the new snapshot.
+  * Answer the "old" questions
+  * Answer question regarding exclusion of mail-server and introduce this into home page.

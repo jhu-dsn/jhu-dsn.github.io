@@ -1,0 +1,169 @@
+<div class="toc">
+<div class="tocheader toctoggle" id="toc__header">Table of Contents</div>
+<div id="toc__inside">
+
+<ul class="toc">
+<li class="level1"><div class="li"><span class="li"><a href="#introduction" class="toc">Introduction</a></span></div></li>
+<li class="level1"><div class="li"><span class="li"><a href="#project_goals_and_description" class="toc">Project Goals and Description</a></span></div>
+<ul class="toc">
+<li class="level2"><div class="li"><span class="li"><a href="#apache_2_load_balancer" class="toc">Apache 2 Load Balancer</a></span></div>
+<ul class="toc">
+<li class="level3"><div class="li"><span class="li"><a href="#introduction1" class="toc">Introduction</a></span></div></li>
+<li class="level3"><div class="li"><span class="li"><a href="#the_daemon" class="toc">The Daemon</a></span></div></li>
+<li class="level3"><div class="li"><span class="li"><a href="#the_load_distribution_algorithm" class="toc">The Load Distribution Algorithm</a></span></div></li>
+<li class="level3"><div class="li"><span class="li"><a href="#mod_proxy_balancer_modifications" class="toc">mod_proxy_balancer Modifications</a></span></div></li>
+<li class="level3"><div class="li"><span class="li"><a href="#status" class="toc">Status</a></span></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><span class="li"><a href="#dynamic_instantiation_daemon" class="toc">Dynamic Instantiation Daemon</a></span></div>
+<ul class="toc">
+<li class="level3"><div class="li"><span class="li"><a href="#overview" class="toc">Overview</a></span></div></li>
+<li class="level3"><div class="li"><span class="li"><a href="#status1" class="toc">Status</a></span></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><span class="li"><a href="#resources" class="toc">Resources</a></span></div></li></ul>
+</div>
+</div>
+
+
+
+<h1><a name="introduction" id="introduction">Introduction</a></h1>
+<div class="level1">
+
+<p>
+ With the advent of social networking sites such as <a href="http://digg.com/" class="urlextern" title="http://digg.com/"  rel="nofollow">digg</a>, small websites accustomed to very little traffic can experience <a href="http://en.wikipedia.org/wiki/Slashdot_effect" class="urlextern" title="http://en.wikipedia.org/wiki/Slashdot_effect"  rel="nofollow">sudden booms in traffic</a>, often crippling the server hosting the site.  This project aims to solve this problem, which is not restrained to the likes of digg, from the standpoint of a web hosting service provider by creating a means to actively and dynamically distribute the resources of a server cluster to the sites that need it most.  The techniques used to achieve this goal also allow for optimal distribution of sites across the servers in the cluster, thus allowing the hosting service to get the most out of the hardware resources available to them.  In addition, this project addresses the need for a load balancer module for Apache 2 which distributes requests using a &ldquo;smart&rdquo; algorithm based off of server load, not the &ldquo;dumb&rdquo; round-robin style algorithms currently available.
+</p>
+
+</div>
+<!-- SECTION "Introduction" [1-1008] -->
+<h1><a name="project_goals_and_description" id="project_goals_and_description">Project Goals and Description</a></h1>
+<div class="level1">
+
+<p>
+ Two main goals exist for this project: 
+</p>
+<ol>
+<li class="level1"><div class="li"> Implement a load balancer for Apache 2 that makes decisions based on actual load</div>
+</li>
+<li class="level1"><div class="li"> Create a system to automatically increase or decrease the number of servers hosting a website</div>
+</li>
+</ol>
+
+<p>
+ Since these goals are not directly related, they were approached in series.
+</p>
+
+</div>
+<!-- SECTION "Project Goals and Description" [1009-1354] -->
+<h2><a name="apache_2_load_balancer" id="apache_2_load_balancer">Apache 2 Load Balancer</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Apache 2 Load Balancer" [1355-1390] -->
+<h3><a name="introduction1" id="introduction1">Introduction</a></h3>
+<div class="level3">
+
+<p>
+Some inspiration for this project came from <a href="http://www.backhand.org/mod_backhand/" class="urlextern" title="http://www.backhand.org/mod_backhand/"  rel="nofollow">mod_backhand</a>, a project started by Theo Schlossnagle in this class several years ago.  However, implementation differs greatly from mod_backhand.  Firstly, because of the availability of <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html" class="urlextern" title="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html"  rel="nofollow">mod_proxy_balancer</a> since Apache 2.1, I did not write a standalone load balancer.  Instead, I modified mod_proxy_balancer to include the balancing method &ldquo;bycost&rdquo;.  The &ldquo;bycost&rdquo; method uses the results of an exponential function which produces a unitless score of resource usage based on CPU and RAM metrics.  This approach is adapted from R. Sean Borgstrom&rsquo;s Ph.D. thesis, <a href="http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf" class="urlextern" title="http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf"  rel="nofollow">A Cost-Benefit Approach to Resource Allocation in Scalable Metacomputers</a>.  Information about system resources, used in calculating the resource usage score for each server in the cluster, is gathered and communicated via a daemon running on each machine.  
+</p>
+
+</div>
+<!-- SECTION "Introduction" [1391-2436] -->
+<h3><a name="the_daemon" id="the_daemon">The Daemon</a></h3>
+<div class="level3">
+
+<p>
+The daemon runs independent of Apache, gathering information about resource usage of the machine it is running on and distributing this information to the cluster.  Information comes from the Linux-specific pseudofiles <code>/proc/stat</code> and <code>/proc/meminfo</code>.  Values are converted from raw form in the pseudofiles into percentages giving the total usage.  This data is then multicast to the cluster through the <a href="http://spread.org/" class="urlextern" title="http://spread.org/"  rel="nofollow">Spread Toolkit</a>.  Default settings have this process occuring once every second, providing the cluster with an up to date snapshot of the load on all machines.  Data received in the multicast group is placed into a shared memory segment where it can be read by Apache.  Thread safety is ensured through the use of semaphores.  
+</p>
+
+</div>
+<!-- SECTION "The Daemon" [2437-3217] -->
+<h3><a name="the_load_distribution_algorithm" id="the_load_distribution_algorithm">The Load Distribution Algorithm</a></h3>
+<div class="level3">
+
+<p>
+Every <code>n</code> updates (default setting is <code>n=1</code>), the daemon evaluates the entire set of data and produces a normalized &ldquo;work quota&rdquo;, which determines how requests will be distributed across the cluster.  For example, if server 1 has a load score of 4, and server 2 has a load score of 2, the work quota will direct twice as much traffic to server 2 as server 1.  This approach, rather than directing all requests to the server with the least load, ensures that &ldquo;burstiness&rdquo; of requests is kept to a minimum, and load stays fairly normalized across the cluster.
+</p>
+
+</div>
+<!-- SECTION "The Load Distribution Algorithm" [3218-3822] -->
+<h3><a name="mod_proxy_balancer_modifications" id="mod_proxy_balancer_modifications">mod_proxy_balancer Modifications</a></h3>
+<div class="level3">
+
+<p>
+I implemeneted the custom <code>lbmethod</code>  <code>bycost</code>, which reads the work quota values from shared memory, and applies them to the existing load distribution algorithm used by the <code>byrequests</code> load balancing method, <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html#requests" class="urlextern" title="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html#requests"  rel="nofollow">described here</a>.
+</p>
+
+</div>
+<!-- SECTION "mod_proxy_balancer Modifications" [3823-4173] -->
+<h3><a name="status" id="status">Status</a></h3>
+<div class="level3">
+
+<p>
+I have implemented this load balancer and have tested it to work, distributing requests as expected based on server load.  Stress testing has been done with <a href="http://httpd.apache.org/docs/2.2/programs/ab.html" class="urlextern" title="http://httpd.apache.org/docs/2.2/programs/ab.html"  rel="nofollow">Apache's benchmarking tool</a>, and the results are stable.  However, no real performance benchmarks have been completed, and more evaluation and optimization is necessary to make the existing proof-of-concept into a tool ready for deployment in a production environment.
+</p>
+
+</div>
+<!-- SECTION "Status" [4174-4670] -->
+<h2><a name="dynamic_instantiation_daemon" id="dynamic_instantiation_daemon">Dynamic Instantiation Daemon</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Dynamic Instantiation Daemon" [4671-4712] -->
+<h3><a name="overview" id="overview">Overview</a></h3>
+<div class="level3">
+
+<p>
+This half of the project deals with the task of optimally distributing websites across a cluster of servers in a shared hosting environment.  This differs from most clustered web hosting environments in the number of websites hosted.  This is not to be confused with the application of clustering to serving a large website which requires more resources than can fit in a single machine.  In this situation, resources are said to be statically allocated - adding more processing power involves adding more hardware, and manually adding the new machine to the cluster.  Since all these machines are dedicated to serving one large website, the website exists on all servers at all times.  Dynamic instantiation is meant for the situation where you have many servers, and are hosting many more websites.  Due to disk space limitations and other overhead, it is not economical to serve all websites from all machines.  But advantages in reliability and scalability lie in hosting websites on more than 1 machine.  It is possible to manually create small sub-clusters delegated to serving a subset of all websites, but this does not achieve optimal distribution of websites based on resource requirements.  This is where dynamic instantiation comes in:  with my system, the entire cluster decides autonomously which machines should serve which websites.  
+</p>
+
+<p>
+For example, a low-traffic website, site1.com could be hosted from server 1 and server 2 for reliability, while two large traffic websites could be hosted by servers 2, 3, 5, and 7, and 3, 4, and 5, respectively, and thousands of other low to medium traffic websites are distributed across servers 1-8, with each website appearing on 2 servers minimum for reliability.  Say, one day, site1.com completes a major renovation of its website, and gains sudden popularity by links to it appearing on Slashdot, digg, and reddit simultaneously.  This sudden influx of traffic would overwhelm normal servers, taking down site1.com along with all other websites hosted on the same machine.  However, under my system, the daemon recognizes the need for additional resources for site1.com, and (dynamically) instantiates it on servers 3-8.  Now, site1.com&rsquo;s load is distributed across all available servers, ensuring constant uptime and minimum slowdown for the entire cluster.  After the &ldquo;slashdotting&rdquo; has subsided, the system decides that due to the reduced traffic, the overhead associated with keeping site1.com on all 8 servers is not economical, so it removes it from servers 1, 2, 3, and 5.  In this way, the cluster has managed itself, dynamically expanding and contracting capacity when needed.  The ability to both expand and contract gives the ability for migration, so the cluster keeps all websites optimally distributed across nodes.
+</p>
+
+</div>
+<!-- SECTION "Overview" [4713-7522] -->
+<h3><a name="status1" id="status1">Status</a></h3>
+<div class="level3">
+
+<p>
+Due to time constraints, the algorithm to decide where and when to expand and contract has not been implemented.  More information about the proposed algorithm can be found in the paper, <a href="http://commedia.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc" class="urlextern" title="http://commedia.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc"  rel="nofollow">Base Decision Algorithm Overview</a>.  Although the decision algorithm does not yet exist, the mechanism for expanding and contracting websites does exist in proof-of-concept form, activated by manually typing a command.
+</p>
+
+</div>
+<!-- SECTION "Status" [7523-8044] -->
+<h1><a name="resources" id="resources">Resources</a></h1>
+<div class="level1">
+
+<p>
+ I wrote these two papers during the course: 
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Project Proposal-final.doc" class="urlextern" title="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Project Proposal-final.doc"  rel="nofollow">Project Proposal</a> <em>(February 12, 2007)</em></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc" class="urlextern" title="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc"  rel="nofollow">Base Decision Algorithm Overview</a> <em>(March 5, 2007)</em></div>
+</li>
+</ul>
+
+<p>
+ I gave a presentation using the following OpenOffice Impress presentation at the end of the course, summing up the work I did throughout the semester: 
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/dlb.odp" class="urlextern" title="http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/dlb.odp"  rel="nofollow">Dynamic Load Balancing and Instantiation</a> <em>(April 25, 2007)</em></div>
+</li>
+</ul>
+
+<p>
+ Concepts from this thesis were used in the development of my project: 
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf" class="urlextern" title="http://www.dsn.jhu.edu/~yairamir/RSean_thesis.pdf"  rel="nofollow">A Cost-Benefit Approach to Resource Allocation in Scalable Metacomputers</a> <em>(Ph.D. thesis by R. Sean Borgstrom, 2000)</em></div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Resources" [8045-] -->

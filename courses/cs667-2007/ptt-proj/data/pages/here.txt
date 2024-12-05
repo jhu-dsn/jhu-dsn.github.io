@@ -1,0 +1,77 @@
+====== Detailed Project Implementation ======
+Each access point in the SMesh network will serve as a regular wireless access point(providing access to the Internet) and will in addition provide the push-to-talk service. The PTT service is provided by a special daemon running in every SMesh access point. This daemon is invoked every time a PTT client sends out a PTT message. A PTT client is any wireless device that runs the PTT client program. 
+
+ ** Figure 1 **
+
+{{picture70.png|}}
+
+===== Push-To-Talk Infrastructure in the mesh network =====
+Each PTT daemon running on the SMesh access point is a part of a **default multicast group** that is used for communication among the daemons. The communication infrastructure between the daemons is provided by [[http://www.spines.org|Spines]]. Each daemon in the network has the knowledge of all the PTT clients, which helps the daemons to quickly service the mobile clients as they move between access points.
+
+===== The Protocol =====
+
+=== Registration ===
+
+Each client must register itself to the nearest PTT daemon in order to use the PTT services. The PTT daemon that is closest to the client will serve the client until it can hear it. The registration information is distributed to all daemons in the network, such that each daemon now knows about the registered client. 
+
+** Figure 2 **
+
+{{pic2new.png|}}
+
+=== Invitation ===
+
+Any client that wants to start a conference, can choose the invitees, from a list of online clients(which it can obtain from the nearest daemon). The PTT daemon that receives the Invite Request becomes the **coordinator** for the conference that is being setup. This Invite request is then multicast to the default group and every daemon that receives it checks to see if the invited client is being handled by it. If yes, then it forwards the invite request to the client. 
+
+** Figure 3 **
+
+{{picture32.png|}} 
+
+** ( Figure 3 : SMesh access points are a,b,c,d,e,f. Acess point 'd' starts handling client 2 as it moves away from access point 'c' )**
+
+The coordinator creates a new multicast group for every new conference, for the purpose of sending control messages and data to clients participating in the conference.A client that receives the Invite can either accept it or reject it. Each daemon handling a client that accepted the invitation, will also join the multicast group corresponding to the conference. Thus the daemons handling the clients participating in the conference will all form part of the new multicast group.Thus, a conference can start as soon as one of the invited clients accepts the invitation.
+
+** Figure 4 **
+
+{{picture4.png|}}
+
+** ( Figure 4 : PTT daemon at access point 'a' becomes the coordinator, PTT daemons join the conference group when clients 2 and 3 accept the invitation for a conference ) **
+
+** Figure 5 **
+{{picture51.png|}}
+
+** ( Figure 5 : PTT daemons at 'b' and 'f' join the conference multicast group as they start handling clients 1 and 3. Daemon at 'a' remains in the conference group since it is the coordinator, but PTT daemon at 'e' leaves the conference group ) **
+
+=== Floor Control ===
+Every client that wishes to talk must first request for the floor, since the voice channel is half-duplex. All requests for the floor are sent to the coordinator of the conference. The requests for floor are queued in by the coordinator in **FIFO** order. 
+
+** Figure 6 **
+
+{{picture61.png|}}
+
+** ( Figure 6 : Clients 2 and 3 request for the 'floor'. The coordinator queues the request in the order in which they are queued ) **
+
+A 'floor-grant message' is sent to the client if the floor is either free or after a floor release by a client who had requested for the floor preceding it. A client that receives a floor grant can start his voice transmission and continue until he receives a floor revoked message from the coordinator.
+
+** Figure 7 **
+
+{{picture91.png|}}
+
+** ( Figure 7: Client 3 receives floor grant and starts voice transmission ) **
+
+
+ The 'floor revoke' message ensures that the client does not continue to talk for extended periods of time, thus starving other clients.
+
+=== Leave Conference ===
+ A client can leave the conference by sending a ' leave conference' message. The daemon handling this client will foward the message to the coordinator of the conference. The coordinator also leaves the conference multicast group if it finds that it does not handle anyother client in that conference.
+
+** Figure 8 **
+
+{{picture101.png|}}
+
+** Figure 9 **
+{{picture111.png|}}
+
+** ( Figure 9 : Client 2 leaves the conference group, daemon 'd' also leaves the conference multicast group ) **
+
+=== Conference Termination ===
+The conference is terminated if the client that started the conference, decides to terminate it or if the coordinator finds that there is only one participant left in the conference.It sends out a conference 'terminate' message to all the remaining participants before actually terminating the conference.

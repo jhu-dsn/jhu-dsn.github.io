@@ -1,0 +1,20 @@
+New release available: 2006-11-06. Fixes several smaller bugs since last RC -
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">7</a>]
+%
+New release available: rc2006-10-18. Fixes a XSS vulnerability and multiple other bugs -
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">6</a>]
+%
+New release available: rc2006-10-08. Fixes a XSS vulnerability -
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">5</a>]
+%
+New release available: rc2006-09-28
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">4</a>]
+%
+Two security problems where just discovered. Upgrade immeadiately!
+          <a href="http://forum.dokuwiki.org/post/882">more info</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">3</a>]
+%
+Hello World. This is a second test message
+          <a href="http://www.splitbrain.org">go to here</a> [<a href="http://wiki.splitbrain.org/wiki:update_check">2</a>]
+%
+Hello World. This is a first test message [<a href="http://wiki.splitbrain.org/wiki:update_check">1</a>]
+%

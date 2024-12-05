@@ -1,0 +1,52 @@
+
+
+
+<h1><a name="more_detailed_description" id="more_detailed_description">More Detailed Description</a></h1>
+<div class="level1">
+
+<p>
+ <strong> JavaScript </strong>
+</p>
+
+<p>
+First, it&rsquo;s time for a quick crash course in <acronym title="Dynamic HyperText Markup Language">DHTML</acronym> and JavaScript.  JavaScript is a scripting language built into all modern browsers that facilitates many things.  If you&rsquo;ve ever used GMail, Google Maps, or just about any other interactive web system, you&rsquo;ve probably seen JavaScript in action.  JavaScript allows a web developer to do many, many things, including spell checking, mathematical calculations, input validation, etc.  Here&rsquo;s a quick sample of JavaScript: <input type=button onClick="alert('This message box was created with JavaScript!')" value="Click Me!">
+</p>
+
+<p>
+<strong> Dynamic <acronym title="HyperText Markup Language">HTML</acronym> </strong>
+</p>
+
+<p>
+A long time ago, web pages were static creatures.  Once a page was rendered (drawn) by the browser, it stayed that way until the user visited a new page.  Dynamic <acronym title="HyperText Markup Language">HTML</acronym>, or <acronym title="Dynamic HyperText Markup Language">DHTML</acronym>, vastly improves upon <acronym title="HyperText Markup Language">HTML</acronym> by allowing a developer to dynamically change the layout of a page after it&rsquo;s loaded.  Combined with JavaScript, this lays the foundation for the buzz phrase &ldquo;Web 2.0&rdquo;  Here&rsquo;s a quick sample of what you can do with <acronym title="Dynamic HyperText Markup Language">DHTML</acronym> + JavaScript: 
+<script>
+function AddChild() 
+{ 
+	var e = document.createElement('div');
+	e.innerHTML = 'New Element';
+	e.style.border = '1px solid red';
+	e.style.background = '#99FF99';
+	document.getElementById('thediv').appendChild(e); 
+}
+</script>
+<input type=button onClick="AddChild()" value="Click Me Several Times!">
+<div id=thediv></div>
+<br>
+</p>
+
+<p>
+<strong> How WAPP Works </strong>
+</p>
+
+<p>
+Okay.  Now that you&rsquo;ve been introduced to JavaScript and <acronym title="Dynamic HyperText Markup Language">DHTML</acronym>, I can hopefully warm you up to how WAPP works.  WAPP is available as a Firefox extension (todo: link to download). Once installed users can select web pages to protect through the right-click menu available when the browser is open (Todo: screen shot of menu). See below for details on how WAPP remembers which pages are protected. When a protected web page loads, the WAPP extension creates a new &lt;script&gt; element, loads a block of JavaScript from a file (codeblock.js), injects that code block into the &lt;script&gt; element, then injects the &lt;script&gt; element as a child of the document&rsquo;s &lt;head&gt; element.  This allows the script in codeblock.js to run in the same space as the web application.  Next, WAPP instructs that injected JavaScript to protect a field.  WAPP accomplishes this by using Mozilla&rsquo;s <em class="u">defineGetter</em>() and <em class="u">defineSetter</em>() functions to specify custom &lsquo;getters&rsquo; and &lsquo;setters&rsquo; for the protected field&rsquo;s innerHTML property, because the innerHTML is typically used by web applications to read the contents of the field.
+</p>
+
+<p>
+<strong> Getters and Setters </strong>
+</p>
+
+<p>
+What&rsquo;s a getter or setter? A getter is called every time a property is read.  The getter determines what value to return.  The web application uses a getter to read the data entered or modified by a user. By hooking into the getter we encrypt the data before the web application sees it. This prevents the application from ever seeing plain text. Conversely, a setter is called every time a property is assigned.  The setter determines how to interpret the assigned value and actually modify the assigned property.  The custom setter thus decrypts data returned by the web application before setting it in the editor window so the user sees unencrypted plain text. 
+</p>
+
+</div>

@@ -1,0 +1,11 @@
+====== Things to do next ======
+
+In a random order.
+  * <del>SMTP path length histogram.</del>
+  * write a plugin to check each connecting server against //dnsbl.sorbs.net// and //pbl.spamhaus.org// (dialup and DHCP addresses that are not supposed to initiate SMTP connections). From these, I want to exclude connection coming from authenticated users (on commedia).
+
+  * build the SMTP path tree and analyze it. Ideally I want to have for each node the scores and the number of messages originated from it, the scores of the number of messages routed by it, its status on DNSBLs and its SMTP response. 
+
+  * organize all known IPs in a hash store in a file, having the information mentioned above for each server.
+  * do something with the IPs from the reject log
+  * find why spamassassin works better on Yair's email.
