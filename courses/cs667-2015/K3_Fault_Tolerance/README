@@ -1,0 +1,17 @@
+The presentation pdf is in the top level directory.
+
+The web directory contains a simple web page describing the project, with links to the presentation pdfs and code base.
+
+The src directory contains several pieces of code built over the course of the project.
+  The codegen directory contains the file necessary to recognize and react to @:Membership annotations attached to a trigger.
+  The k3 directory contains the k3 implementations of the Amplab SQL query for 4 different levels of fault tolerance.
+    - None
+    - Terminate Gracefully
+    - Continue with missing data
+    - Replay any missing work.
+  It also includes YAML files required for deploying the application to 6 processes across 2 of the DSN's 'rain' machines.
+
+  The spread directory contains the C++ code added to the K3 runtime for connecting to Spread and forwarding membership change notifications.
+
+The full github repository for this project is located at https://github.com/jwheels/AdvancedDistributed.
+It is a fork of the K3 repository, and requires some effort to build, please contact jwheeler@cs.jhu.edu for help building and running K3.

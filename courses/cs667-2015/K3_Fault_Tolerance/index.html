@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Simple Template #3 from simpletemplates.org" />
+<meta name="keywords" content="simple #3, template, simpletemplates.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>Fault Tolerance in K3</title>
+</head>
+<body>
+<div id="wrap">
+
+<div id="header">
+<h1>Fault Tolerance in K3</h1>
+
+</div>
+<div id="menu">
+<div class="right"> 
+
+<ul>
+<li>Ben Glickman</li>
+<li>Josh Wheeler</li>
+<li>Amit Mehta</li>
+</ul>
+</div>
+</div>
+
+<div id="content">
+<p>
+This semester we added fault-tolerance capabilities to K3, a programming framework for building shared-nothing main-memory data systems, and explored several example applications with varying degrees of fault-tolerance.
+</p>
+<p>
+We used the Spread toolkit to detect membership changes during the execution of a K3 program. In our implementation, each K3 executable acts as a Spread client. When a K3 program is deployed, all of the participating 'peers' join a public Spread group, and any subsequent membership changes are forwarded to the K3 application for processing. We enable programmers to register a 'trigger' that specifies application-specific logic for reacting to a change in membership.
+</p>
+<p>
+During this project, we considered three models for fault tolerance. The first, and the most simple, model detects any failure and terminates the processes gracefully. The second model allows the programs to continue with the peers remaining after the crash in order to arrive at an approximate solution. The third, more sophisticated form of fault-tolerance does recovery by replaying the work lost by the crashed peer.
+</p>
+<p>
+We demonstrate a proof of concept application that implements the 3rd form of fault tolerance described above. The application is a multi-stage SQL query from the Amplab Big Data Benchmark. Our implementation tolerates as many faults as there are replicas of the input datasets, and is also resilient to the 'master' node crashing.
+</p>
+
+<p>
+More detailed description can be found in our presentation <a href ="./k3_fault_tolerance.pdf">here</a>. The source code for the work done in our project can be found in our <a href = "./src.tar.gz">here.</a>
+
+</p>
+
+</div>
+
+
+<div id="footer">
+
+<div class="left">
+CS667 - Advanced Distributed Systems
+</div>
+
+<div class="right"> 
+Design by <a href="http://www.simpletemplates.org">Simple Website Templates</a>
+</div>
+
+<div class="clear"> </div>
+
+</div>
+
+
+</div>
+</body>
+</html>

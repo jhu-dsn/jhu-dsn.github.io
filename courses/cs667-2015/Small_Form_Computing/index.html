@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bump-In-The-Wire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+</head>
+<body>
+  
+<div class="container">
+
+	<div class ="page-header">
+  		<h1 align="center">Small Form Computing using Nexx 3020H</h1>
+  	</div>
+   
+    <div class="row">
+  		<p align="center">Rujuta Deshpande and Ben Glickman</p> 
+  	</div>
+  	
+  	<div>
+		<img src="images/NexxWT3020F_2_clean.png" class ="img-rounded" width="300" height="236" align="center"></img>
+	</div>
+ <br/>
+	<div>
+		In order to explore the possibilities of working with very cheap computers (less than $20 each)
+                and their capabilities, we played with several NEXX routers running OpenWRT, a Linux operating 
+                system for embedded devices.
+
+                We chose to implement a specific project, "A Bump in the Wire", enabling secure communication between two hosts, seamlessly using a pair of NEXX routers. 
+                Two NEXX routers are connected over a WAN. They both act as access points to their respective internal LAN networks. When a machine in an internal network 
+		wants to communicate with another machine in another internal network, the data packets that are sent, are first intercepted 
+		by the access point and then encrypted before being sent out on the WAN. The other router, on receiving packets from the WAN,
+		destined for the internal network, decrypts them. This process is entirely transparent to the hosts at both ends.
+	        Local machines can connect to the router via either the local ethernet port or via the 802.11 wireless access.
+
+</div>   
+ 
+	<br/>
+	<div class="list-group">
+    	<a href="Bump-In-The-Middle-Presentation.pptx" class="list-group-item">
+      	<h4 class="list-group-item-heading">Presentation</h4>
+      	<p class="list-group-item-text">Click to view presentation</p>
+    	</a>
+    	<a href="Bump-In-The-Middle-Presentation.pdf" class="list-group-item">
+      	<h4 class="list-group-item-heading">Presentation as PDF</h4>
+      	<p class="list-group-item-text">Click to view presentation in PDF format</p>
+    	</a>
+    	<a href="small-form-computing.tar.gz" class="list-group-item">
+      	<h4 class="list-group-item-heading">Code</h4>
+      	<p class="list-group-item-text">Click to download TAR</p>
+    	</a>
+    	<a href="NexxWT3020Guide.pdf" class="list-group-item">
+      	<h4 class="list-group-item-heading">Nexx WT3020 Configuration Guide</h4>
+      	<p class="list-group-item-text">Click to view guide in PDF format</p>
+    	</a>
+    </div>
+  
+</div>
+
+</body>
+</html>
