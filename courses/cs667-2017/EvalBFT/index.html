@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Evaluating BFT Protocols for Spire</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<div id="wrapper" class="divided" style="-webkit-font-smoothing: antialiased !important;">
+			<section class="spotlight style1">
+				<div class="content">
+					<header>
+						<h2>Evaluating BFT Protocols for Spire</h2>
+						<p>Henry Schuh &amp; Sam Beckley</p>
+					</header>
+					<p>
+						Our goal is to survey Byzantine Fault Tolerance protocol implementations, and identify the best option that meets the performance and scalability requirements of the <a href="http://dsn.jhu.edu/spire">Spire</a> system. Benchmarking results, conclusions, and a discussion of next steps are available in the presentation slides. This project is for <a href="http://dsn.jhu.edu/courses/cs667/">Advanced Distributed Systems and Networks</a> (Spring 2017).
+					</p>
+					<ul class="actions">
+						<li>
+							<a href="presentation.pdf" class="button special icon fa-download">Presentation (PDF)</a>
+						</li>
+						<li>
+							<a href="presentation.key" class="button icon fa-download">Presentation (KEY)</a>
+						</li>
+						<li>
+							<a href="bft-smart-benchmarking.zip" class="button icon fa-file-archive-o">Benchmarking Source Code</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="wrapper style1 align-center">
+				<div class="inner" style="padding-top: 10px">
+					<div class="index align-left">
+						<section>
+							<header>
+								<h3>Overview</h3>
+							</header>
+							<div class="content">
+
+								<p>SCADA (<em>Supervisory Control And Data Acquisition</em>) systems run the world's infrastructure, controlling everything from regional power stations to nuclear aircraft carriers. In the past these systems communicated using proprietary protocols. As a result, there was little thought given to security, and very few cyber-threats to these systems, Stuxnet being the notable exception. Now, however, many of these systems are being plugged into the internet as a means of saving money and can no longer rely on an air gap to protect them. The DSN lab has developed a system, Spire, to provide SCADA systems with intrusion tolerance and other security features.</p>
+								<p>The core of Spire is Prime, an intrusion-tolerant consensus algorithm. While Prime guarantees bounded performance under attack - a must for SCADA systems that need to respond to events in 100s of milliseconds - it brings with it complexity that does not scale well, putting a limit on the number of Prime replicas there can be in the Spire system and ultimately limiting the number of intrusions the system can tolerate.</p>
+								<p>Our work has been looking into alternatives to the current Prime implemetation to provide better performance and scalability. We first considered using trusted hardware to reduce the number of replicas needed to tolerate a fault, though ultimately this proved unfeasible as the hardware was too slow. We then began a survey of other intrusion tolerant protocols, and ultimately selected BFT-SMART as a viable candidate to achieve high performance in Spire. Our results and discussion are available in the presentation slides.</p>
+
+							</div>
+						</section>
+
+						<section>
+							<header>
+								<h3>Resources</h3>
+							</header>
+							<div class="content">
+								<dl>
+									<dt>BFT-SMART</dt>
+									<dd>
+										<p>BFT-SMART is based on the BFT protocol defined in Cachin's <a href="https://www.zurich.ibm.com/~cca/papers/pax.pdf">Yet Another Visit to Paxos</a>. The implementation is presented in <a href="http://www.di.fc.ul.pt/~bessani/publications/dsn14-bftsmart.pdf">State Machine Replication for the Masses with BFT-SMART</a> by Sousa and Alchieri. The code is available on <a href="http://github.com/bft-smart/library">GitHub</a>.</p>
+									</dd>
+									<dt>Prime</dt>
+									<dd>
+										<p>Prime is presented in <a href="http://www.dsn.jhu.edu/pub/papers/Prime_tdsc_accepted.pdf">Prime: Byzantine Replication Under Attack</a> by Amir et al. Past versions are available at the <a href="http://www.dsn.jhu.edu/byzrep/prime.html">project site</a>.</p>
+									</dd>
+									<dt>PBFT</dt>
+									<dd>
+										<p>PBFT is presented Castro and Liskov's <a href="http://pmg.csail.mit.edu/papers/osdi99.pdf">Practical Byzantine Fault Tolerance</a>. Its implementation is available at the <a href="http://www.di.fc.ul.pt/~bessani/publications/dsn14-bftsmart.pdf">project site</a>.</p>
+									</dd>
+									<dt>Min-BFT</dt>
+									<dd>
+										<p>Min-BFT is presented in <a href="http://www.di.fc.ul.pt/~bessani/publications/tc11-minimal.pdf">Efficient Byzantine Fault Tolerance</a> by Veronse et al. Its implementation is available at the <a href="http://www.gsd.inesc-id.pt/~mpc/software/minimal/index.html">project site</a>.</p>
+									</dd>
+									<dt>Spinning</dt>
+									<dd>
+										<p>Spinning is presented in <a href="http://ieeexplore.ieee.org/document/5283369/">Spin One's Wheels? Byzantine Fault Tolerance with a Spinning Primary</a> by Veronse et al. Its implementation is available at the <a href="http://www.gsd.inesc-id.pt/~mpc/software/minimal/index.html">project site</a>.</p>
+									</dd>
+									<dt>BFT-Mencius</dt>
+									<dd>
+										<p>BFT-Mencius is presented in <a href="http://ieeexplore.ieee.org/document/6656262/">Bounded Delay in Byzantine-Tolerant State Machine Replication</a> by Milosevic et al. Currently, there is no available implementation.</p>
+									</dd>
+								</dl>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<footer class="wrapper style1 align-center">
+				<div class="inner">
+					<a href="http://dsn.jhu.edu">JHU Distributed Systems and Networks Lab</a>
+					<p>600.667 Spring 2017</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Emergency Vehicle Awareness - CS667 Spring 2017</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Francois+One|Open+Sans">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="wrapper header-wrapper">
+            <img src="images/ic_ambulance.png" alt="EVA Logo" class="header-logo">
+            <div class="header-title-group">
+                <h1 class="header-title"><em>E</em>mergency <em>V</em>ehicle <em>A</em>wareness</h1>
+                <h2 class="header-subtitle">CS667 Spring 2017</h2>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper content-wrapper">
+        <article class="content">
+            <h2>Problem</h2>
+            <section>
+                <p>Unforeseen disasters, tragic accidents, and emergency situations are all unavoidable elements of reality. The emergency response systems put in place here in the United States are often the only things standing between life and death in times of crisis. When these systems fail, or cannot perform to the fullest extent of their abilities, people lose their lives. As it stands now, there are too many accidents involving emergency vehicles and in particularly dense population centers, emergency vehicles often have trouble moving at the pace that the situation sometimes demands. While they serve their purposes, lights and sirens only work so well and by the time a driver becomes aware of an emergency vehicle, it is not always easy to get out of the way instantaneously, costing the emergency vehicle precious seconds.</p>
+                <p>With modern technology, we aim to change this. We devised a system that will allow emergency vehicles to broadcast their location to nearby vehicles on the road. With this early notice, vehicles can start making way for emergency responders earlier, allowing for the emergency vehicles to move faster with fewer delays. This will also decrease the risk of the emergency vehicle itself getting into an accident while responding to emergency situations. As we explored this problem and the wireless technologies available, we realized that there were two vastly different directions from which to approach the problem – radio frequency broadcasting and client / server communication. Instead of choosing one, we have opted to explore both options and observe the differences and tradeoffs of each.</p>
+            </section>
+
+            <h2>Screenshots</h2>
+            <section class="screenshots">
+                <img src="images/screenshot1.png" alt="Emergency Vehicle App Screenshot" class="screenshot">
+                <img src="images/screenshot2.png" alt="Civilian Vehicle App Screenshot" class="screenshot">
+            </section>
+
+            <h2>Solution</h2>
+            <section>
+                <p>Our RF approach creates an ad-hoc network of emergency and civilian vehicles. In our network, an emergency vehicle equipped with an RF radio broadcasts an alert message containing the vehicle’s position. Any civilian who receives that alert message can rebroadcast it, propagating the alert away from its source. We found that this approach could send messages more quickly than the wireless approach because messages are sent directly between cars. Our system also keeps alerts local to their source because messages are only allowed to propagate for a few hops. To implement this network, each vehicle used an Arduino microcontroller connected to an nRF24L01 radio for communication. The Arduinos were also connected to Android phones to fetch GPS location data and to provide a user interface.</p>
+                <p>For the client/server approach, we wanted to test the effectiveness of using the cellular (4G/LTE) network to alert nearby vehicles of an oncoming emergency vehicle. We prototyped this using an Android app, and thus, our methods were largely centered around Google's messaging service: Firebase Cloud Messaging. During the brainstorming phase, we identified three major approaches to this model. The first was to simply use Firebase as the only server. Firebase allows for group messaging, and we would have users join and leave groups based on geographical buckets associated with each group. The second approach was to use our server only, which would allow for better overall control, but would force us to handle mass messaging to users in a single instance. The final approach was to use a hybrid of the previous two: use our own server to keep track of users' locations, but when an emergency occurs, offload the messaging of individual devices to Firebase. Utimately, we chose to implement the final hybrid our server/firebase server approach. We used python flask for our server, along with using Redis as our database to store user location. Our app was written in Java (Android).</p>
+            </section>
+
+            <h2>Technology</h2>
+            <section>
+                <ul>
+                    <li>Android</li>
+                    <li>Arduino Uno</li>
+                    <li><a href="https://www.amazon.com/Nrf24l01-Antenna-Wireless-Transceiver-Communication/dp/B00OIQ8FS6">nRF24l01 SMA Antenna</a></li>
+                    <li><a href="https://github.com/nRF24/RF24Network">RF24</a></li>
+                    <li>Python/Flask (uwsgi)</li>
+                    <li>Golang</li>
+                    <li>nginx</li>
+                </ul>
+            </section>
+
+            <h2>Team</h2>
+            <section>
+                <ul>
+                    <li>Matthew Ige</li>
+                    <li>Rachel Kinney</li>
+                    <li>Bailey Parker</li>
+                    <li>Philip Piantone</li>
+                    <li>Andrew Zhu</li>
+                </ul>
+            </section>
+        </article>
+        <aside class="sidebar">
+            <ul class="sidebar-btns">
+                <li class="sidebar-btn">
+                    <a href="res/presentation.pdf" class="sidebar-btn-link">
+                        <i class="fa fa-file-pdf-o sidebar-btn-icon"></i>
+                        <span class="sidebar-btn-text">
+                            <span class="sidebar-btn-title">Download Presentation</span>
+                            <span class="sidebar-btn-subtitle">Adobe PDF (.pdf)</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="res/presentation.pptx" class="sidebar-btn-link">
+                        <i class="fa fa-file-powerpoint-o sidebar-btn-icon"></i>
+                        <span class="sidebar-btn-text">
+                            <span class="sidebar-btn-title">Download Presentation</span>
+                            <span class="sidebar-btn-subtitle">Microsoft Powerpoint (.pptx)</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="res/source.tgz" class="sidebar-btn-link">
+                        <i class="fa fa-file-archive-o sidebar-btn-icon"></i>
+                        <span class="sidebar-btn-text">
+                            <span class="sidebar-btn-title">Download Source</span>
+                            <span class="sidebar-btn-subtitle">Gzipped Tarball (.tgz)</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <footer class="footer">
+            Designed by <a href="http://baileyparker.com/">Bailey Parker</a> | <a href="http://cnds.jhu.edu/">JHU Distributed Systems and Networks Lab</a>
+        </footer>
+    </div>
+</body>
+</html>

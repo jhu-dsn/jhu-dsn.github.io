@@ -1,0 +1,92 @@
+ <!--
+Design by Bryant Smith
+http://www.bryantsmith.com
+http://www.aszx.net
+email: templates [-at-] bryantsmith [-dot-] com
+Released under Creative Commons Attribution 2.5 Generic.  In other words, do with it what you please; but please leave the link if you'd be so kind :)
+
+Name       : The Slant
+Version    : 1.0
+Released   : 2009-07-25
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>Distributed Learning</title>
+</head>
+
+<body>
+    <div id="page">
+		
+        <div id="header">
+        	<!--<h1>The Slant</h1>
+            <ul>
+           	   	<li><a href="#">Home</a></li>
+               	<li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>-->
+        </div>
+  
+        <div id="main">
+        
+        	<div class="main_top">
+            	<h1>Distributed Learning in Virtual Realistic Environment</h1>
+
+            </div>
+            
+           	<div class="main_body">
+
+                <p><b>Kaiyue (Karin) Wu, Weichao Qiu, Yuan Jing Vincent Yan</b></p>
+
+                <p>  </p>
+
+                <p>Reinforcement learning in Virtual Realistic Environment can be rather slow restricted by 
+                the computation capability of the machine if we run the learning algorithm and interactions with 
+                environment all on a single one. This project develops a distributed system to speed up 
+                the learning process by dividing the learning task and parallelizing onto multiple machines.</p>
+
+                <p>Our system has a two-stage speed-up architecture. First we separate out the part of the 
+                interactions with environment, run multiple interactions on different machines at the same time 
+                instead of originally only one on the same machine where the learning algorithm is running. 
+                Since in virtual realistic environment the interactions are a lot slower than the speed of 
+                learning algorithm, this way we are able to make the interactions keep up with the speed of learning. 
+                Second we parallelize the learning process, run the learning algorithm on multiple machines at the 
+                same time. This way we are able to let each machine do a part of job and get overall speed-up. 
+                We basically have two versions for this stage, one is centralized with a parameter server collecting 
+                data from all the learning processes (according to Tensorflow Distributed System), and the other one 
+                is a P2P version where multiple learning processes directly communicate with each other through 
+                multicasting.</p>
+
+                <p>Then we investigate the problem of applying our system to physical environments with an easy-to-get 
+                robotic arm. The real arm can be virtualized into an arm model, and we are able to gather data from 
+                the physical environments through the virtual model after analyzing the model with computer vision 
+                techniques, then our system can be applied to process these data and perform learning tasks. 
+                Hence we proved that our system has the potential capability to be applied to real environments. 
+                Some future work may focus on actually achieving this goal.</p>
+
+                <p>For more details, see our presentation slides as pdf 
+                <a href="Distributed_Learning_Final_Report.pdf">here</a>.</p>
+
+                <p>The code and documentation for this project can be found here: <a
+                href="VDL-v0.1.0.zip">code</a> <a href="VDL-v0.1.0/html/index.html">documentation</a></p>
+                
+            </div>
+            
+           	<div class="main_bottom"></div>
+            
+        </div>
+        
+        
+        
+        <div id="footer">
+        <p>
+        CS667 - Advanced Distributed Systems
+        </p>
+        </div>
+        
+        </div>
+</body>
+</html>
