@@ -1,0 +1,53 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Using a Lamport Time Stamp</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Using a Lamport Time Stamp</H1> 
+ <P><UL>
+<LI><H2>A Lamport Time Stamp contains two fields:
+</H2>
+<UL>
+<LI>Counter.
+<LI>Process id.
+</UL></UL><UL>
+<LI><H2>When sending a message.
+</H2>
+<UL>
+<LI>Increment your counter.
+<LI>Stamp your message.
+<LI>Send your message.
+</UL></UL><UL>
+<LI><H2>When receiving a message
+</H2>
+<UL>
+<LI>Adopt the counter on the message if it is bigger than your local counter. 
+</UL></UL><UL>
+<LI><H2>Unique for every message.
+</H2>
+</UL><UL>
+<LI><H2>Agreed order of messages can be achieved by comparing (counter, process id) on message.
+</H2>
+<UL>
+<LI>Might be useful to add an index that is incremented only when sending new messages (not part of LTS).</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld015.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld017.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld016.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

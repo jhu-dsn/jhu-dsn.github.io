@@ -1,0 +1,160 @@
+                            Distributed Systems
+                            ===================
+                               Final  Project
+                               ==============
+
+
+The goal of the final project is to produce a distributed software system
+that demonstrates what you have learned in this class and provides a useful
+service.
+
+The focus of your project should be on the distributed aspects and
+correctness of the system and not the graphical, GUI, or other 
+peripheral issues.
+
+REQUIREMENTS for all projects
+-----------------------------
+
+- Efficient use of messages - Don't send messages unnecessarily.
+
+- A detailed description of the algorithm and the system design should be
+  provided. The initial design should be in the first design document.
+  The final report should include an enhanced and updated design document.
+
+- System produces correct results for all inputs, except those specificly
+  listed as not required.
+
+- An organized Makefile is required.
+
+Delivery Date
+-------------
+
+Initial design document is due Monday Nov. 24 in class. Final delivery date 
+is Thursday December 11 at 11pm. 
+
+
+PROJECTS
+--------
+
+There are three choices for the final project:
+
+1) Fault-tolerant distributed mail server.
+2) A wireless backbone project based on availability (no more than 2 groups
+   due to lack of resources).
+3) Any other idea that you propose and we agree to. If you choose this 
+   option, talk with us by Wednesday Nov 19 and provide a full proposal 
+   by Monday, Nov. 24 in class, in lieu of a design document.
+
+We will describe the first project here in detail.
+
+=================================================
+Project 1: Fault-tolerant distributed mail server
+=================================================
+
+
+Construct a reliable and efficient mail service for users over a 
+network of computers.
+
+The service:
+------------
+
+Every user can connect via a mail client to any one of replicated servers. 
+
+The mail service provides the following capabilities, each capability
+is one option of a top level manu:
+
+1. Login as a user.
+
+   The client needs to login with a user name to perform any of the tasks below.
+   You should allow the client to login as a new user as part of the menu
+   by specifying the user name.
+
+2. Connecting to a mail server.
+
+   The client needs to connect to a mail server to perform any of the tasks below.
+
+   You should allow the client to change its mail server as
+   part of the menu, by specifying the mail server index. 
+
+   * At any point, the client may be connected to one mail server only.
+   * To connect to a mail server, all a client needs to do is to set this
+     mail server as its serving server. Client/Server communication should
+     be done using Spread via the private group of each.
+
+3. View list of headers of received mail (The service should distinguish 
+   between mail that was already read and unread mail):
+
+   Result: 
+	The view should include the user name, the responding mail server index and 
+	a list of messages. The messages in the list will be numbered 
+	(1, 2, 3, ...) and the sender and subject of each message will be 
+	displayed.
+
+	* Each request for a view should result in the most updated information 
+	  possible.
+
+4. Mail a message to a user:
+   	to:  <user name>
+        subject:  <subject string>
+        <msg string>           
+
+          * 'to' and 'subject' are fields that should be added
+            as part of the header, as in the Unix mail service.
+            Note that the size of the msg string can be bounded 1000 bytes.
+
+5. Delete a mail message (read or unread):
+
+   Will allow to delete a message either by its number or by pointing on it.
+
+6. Read a received mail (read or unread):
+
+   Will allow to read the content of a message either by its number or by 
+   pointing on it.  The message should be marked as read thereafter.
+
+7. Print the view of the servers in the current server's network component.
+
+
+The Mail Servers:
+
+The mail client connects to one of the mail server processes. Each of the
+mail server processes is a background daemon.  
+The mail server may crash and may subsequently recover.
+Connections may also fail, creating network partitions and re-merges.
+The overall set of mail servers is fixed and is known in advance - there are 
+exactly five mail servers, each running on a different ugrad machine.
+The mail server is started with its id as a parameter:
+	% server [1-5]
+
+The users must always receive a consistent view of their mail, 
+regardless of which mail server is consulted (of course, as consistent  
+as possible, according to the network connectivity).
+The view should be consistent as to which messages have been received, 
+read or deleted.  Each mail server should save information separately on disk.
+
+
+The membership emulation:
+--------------------------
+
+The membership emulation will be managed by spmonitor, an interactive program 
+provided with the spread toolkit. spmonitor can redefine the membership 
+configuration at any time by defining for each Spread daemon which network component it 
+belongs to, or defining some daemons as crashed. Note that spmonitor will generate 
+spread daemon partitions and crashes, but your program should also handle user 
+crashes (Ctrl+C) of the spread daemons, mail servers, and mail clients.  
+
+When a spread daemon crashes, the mail server attached to it has to crash (exit) 
+also. A crashed mail server exits the program immediately! It is not legal to 
+write to disk after a mail server looses its connection to Spread!
+
+When a mail server crashes, clients connected to that mail server will report the loss of 
+connection to the user, so that the user can connect to another mail server and continue
+mailing/receiving messages. 
+
+Note:
+
+The users are not known beforehand, and their number is not bounded.
+
+CS 600.337 students can assume that no mail server or Spread daemons crashes ever. 
+They only need to handle network partitions. Therefore, they do not need to 
+write to or read from disk. This also simplifies the rest of the project.
+

@@ -1,0 +1,138 @@
+                            Distributed Systems Final Project
+                            =================================
+
+The goal of the final project is to produce a distributed software system that 
+demonstrates what you have learned in this class and provides a useful service.
+The focus of your project should be on the distributed aspects and correctness 
+of the system and not the graphical, GUI, or other peripheral issues.
+
+General Requirements
+--------------------
+- Efficient use of messages - Don't send messages unnecessarily.
+
+- A detailed description of the algorithm and the system design should be
+  provided. The initial design should be in the first design document.
+  The final report should include an enhanced and updated design document.
+
+- System that produces correct results for all inputs.
+
+- An organized Makefile is required.
+
+Delivery Date
+-------------
+Initial design document is due Monday November 23 in class. 
+Final delivery date is Monday December 7, noon. 
+
+================================================================
+Project description: Fault-tolerant distributed discussion board 
+================================================================
+Construct a reliable and efficient discussion board service for users over 
+a network of computers.
+
+The service:
+------------
+Every user can connect via a discussion client to any one of the replicated servers. 
+
+The discussion service provides the following capabilities; each capability
+is one option of a client's top level menu:
+
+1. Connecting to a discussion server. "c 3"
+   The client needs to connect to a discussion server to perform any of the tasks below.
+
+   You should allow the client to change its discussion server as
+   part of the menu, by specifying the server's index. 
+
+   * At any point, the client may be connected to one discussion server only.
+   * To connect to a discussion server, all a client needs to do is to set this
+     server as its serving server. Client/Server communication should
+     be done using Spread via the private group of the client and a group
+     with only that server in it for the server.
+
+2. Join a discussion. "j board1"
+
+   Upon joining a discussion, the discussion board should be presented, such
+   that each object (see below) is presented in a line with the line index (starting
+   from 1) in front of it.
+   Example:
+
+   1. Hello 
+   2. How are you today?
+   3. Not sure yet.
+ 
+   After joining a discussion, upon an update to the discussion, the screen should 
+   automatically refresh (but only upon such an update).
+
+   A connected client can switch to a different discussion at any time by joining
+   the new discussion. The client needs to be in a discussion to perform any of 
+   the tasks below.
+
+3. Append to a discussion. "a" and then type a line.
+ 
+   The relevant discussion should be updated so that the new line is added
+   at the end of the discussion. Note that as a consequence of this update the
+   screen should be eventually refreshed. You can assume that the maximal number
+   of characters in an object (line) is 80.
+
+4. Edit an object in a discussion. "e 5" and then type a line
+
+   The relevant line on the screen will be replaced by the newly typed line.
+   Note that as a consequence of this update the screen should be eventually refreshed.
+   Note that editing an object means to edit the specific object that is currently
+   displayed by the client.
+
+5. Delete an object in a discussion. "d 5".
+
+   The relevant line on the screen will be deleted. 
+   Note that as a consequence of this update the screen should be eventually refreshed.
+   Note also that the numbers on the screen should be updated accordingly
+   (starting from 1, increasing sequentially).
+   Note that deleting an object means to delete the specific object that is currently
+   displayed by the client.
+
+6. Print the view of the servers in the current server's network component.
+
+The Discussion Servers:
+
+Discussion clients connect to one of the discussion server processes. 
+
+Each of the server processes is a background daemon.  The server may crash and may 
+subsequently recover.  The network between the server may partition and re-merge.
+The overall set of servers is fixed and is known in advance - there are exactly 
+five servers, each running on a different ugrad machine.
+The server is started with its id as a parameter:
+	% server [1-5]
+
+The clients must always receive a consistent view of the discussion they
+are joined to, regardless of which server is consulted (of course, as consistent  
+as possible, according to the network connectivity).
+The view should be consistent as to which objects are displayed. If objects
+are appended by different clients, possibly in different network partitions,
+they should all appear once the partition is healed, as much as possible
+based on network connectivity.
+
+Each server should save information separately on disk.
+Note that servers can be eventually consistent even if they are never
+directly connected (think about eventual path).
+
+The membership emulation:
+--------------------------
+The membership emulation will be managed by spmonitor, an interactive program 
+provided with the spread toolkit. spmonitor can redefine the membership 
+configuration at any time by defining for each Spread daemon which network component it 
+belongs to, or defining some daemons as crashed. Note that spmonitor will generate 
+spread daemon partitions and crashes, but your program should also handle
+crashes (Ctrl+C) of the spread daemons, discussion servers, and discussion clients.  
+
+When a spread daemon crashes, the discussion server attached to it has to crash (exit) 
+also. A crashed discussion server exits the program immediately! It is not allowed to 
+write to disk after a discussion server loses its connection to Spread!
+
+When a discussion server crashes, clients connected to that server will report the loss of 
+connection to the client, so that the user can connect to another discussion server and continue
+operation.
+
+Note:  The discussions are not known beforehand, and their number is not bounded.
+
+CS 600.337 students can assume that no discussion server or Spread daemons crashes ever. 
+They only need to handle network partitions. Therefore, they do not need to 
+write to or read from disk. This also simplifies the rest of the project.

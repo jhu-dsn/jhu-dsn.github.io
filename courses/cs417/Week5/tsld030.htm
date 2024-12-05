@@ -1,0 +1,35 @@
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Spread Ordering (cont.)</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Spread Ordering (cont.)</H1> 
+ <P><UL>
+<LI><H2>Delivery consists of applying 4 ordered tests to the Message List and delivering any messages which pass the tests to the session layer
+</H2>
+<UL>
+<LI>Any message &#060=“SAFE” (LTS&#060 ARU) can be delivered and deleted
+<LI>Then any message &#060= “AGREED” (LTS &#060 My_Site_ARU) upto first SAFE message
+<LI>Then any message &#060= “FIFO” for which (session_seq &#060  Max FIFO deliverable seq) or is RELIABLE
+<LI>Unreliable messages can be delivered anytime and might be delivered faster then identical RELIABLE messages </UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld029.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld031.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld030.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

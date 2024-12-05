@@ -1,0 +1,146 @@
+        Exercise 2
+        ==========
+Construct a semi-reliable multicast tool using UDP/IP.  The
+semi-reliable multicast will assume no network partitions or processor
+crashes, but it WILL handle all kinds of message omissions over a
+local area network.
+
+1. The assignment:
+
+Using the non-reliable UDP/IP protocol, you should write a tool that 
+reliably multicasts packets between n machines that reside on the same
+network segment, so that one multicast message may get to all of them.
+
+The tool consists of two programs: 
+	mcast - the tool's process. 
+	start - a process signaling the mcast processes to start.
+The mcast process should be run as follows:
+
+mcast <num_of_packets> <machine_index> <total number of machines>
+
+The <total number  of machines> indicates how many mcast machines 
+will be run. The maximal number of <total number of machines> should be 
+a constant and should be set to 6. Note that in a particular execution 
+there may be less or equal to 6 <total number of machines>. 
+
+The num_of_packets indicates how many packets THIS mcast has to
+initiate.  This number might be in the order of 10,000 packets and
+even more.  Each packet should contain the creating machine_index, a
+packet_index, and a random number, each of them is stored in a 4 bytes
+integer.  The random number is an integer, picked at the time of the
+creation of the packet, randomly selected from the range 1-9999.
+Therefore each packet should contain 12 bytes + additional bytes in
+case your protocol needs them.
+
+After all the mcast processes have been started, the start process is executed,
+signaling the mcast processes to start the protocol by sending one special 
+multicast message.
+
+Output:
+-------
+On delivery of a packet the mcast should write to a file, in ASCII format,
+the packet data as follows:
+  
+fprintf( fd, "%5d, %6d, %5d\n", packet->machine, packet->index, packet->random_data );
+
+The output file name will be <machine_index>.out
+
+Required Task:
+--------------
+For those who take 600.337: The requirement for the mcast is: You should 
+deliver all packets reliably according to FIFO order.
+
+For those who take 600.437: The requirement for the mcast is: You should 
+deliver all packets reliably according to AGREED order.
+
+Evaluation and Testing:
+-----------------------
+In order to be able to check the software, the mcast program should
+call a coat routine named recv_dbg instead of the recv system call.
+The coat routine has the same interface as recv (see man 2 recv).  The
+recv_dbg routine will randomly decide to discard packets in order to
+create additional network message omissions.  
+
+EVERY RECV CALL in the mcast program MUST use the recv_dbg call EXCEPT
+the first one which receives the start packet.  At the beginning of
+the mcast program it should wait for the start packet to arrive. This
+will be done by calling recv directly (without the coat routine). Only
+after that packet arrives, the reliable protocol should be
+invoked. The start process purpose is to help us avoid membership
+problems.
+
+You must ONLY run your program, AT ANY TIME, on the machines ugrad1 
+through ugrad7. You may NOT run it on the CS research machines, masters 
+machines, phd machines, etc. If you run it on other CS department 
+machines, you may find your machines cut off from the network 
+administratively. 
+
+DO NOT use broadcast addresses in your programs (or else the whole 
+CS network will be affected). You can ONLY use MULTICAST addresses 
+in order to multicast messages.
+
+To benchmark your program you should run a test with 5 machines where 
+only 4 of them send 5000 packets each, for a total of 20000 packets,
+and time how long the test takes. The other machine will get 0 as 
+<num_of_packets>.  
+
+You should run these tests 5 times, each time with a different
+loss rate (0% 1% 5% 10% 30%) and graph the results with the X-axis
+being the loss rate and the Y-axis being the time the packet
+transmission took. 
+
+Thus, you should turn in results comparing five experiments:
+1. mcast  (zero loss rate)
+2. mcast with %1 loss rate
+3. mcast with %5 loss rate
+4. mcast with %10 loss rate
+5. mcast with %30 loss rate
+Please have a table with all 5 results and a graph as described above.
+
+2. Submission:
+You should work on this exercise in pairs, if at all possible. 
+There are two separate submissions required.
+
+1) A design document. Due October 27, 2002 at the beginning of class.
+This is a paper submission. Please PRINT your design document.
+We will meet with each separately with each group to provide
+feedback on the design. Time slots will be assigned in class 
+on October 27.
+
+The design document should be a well-written, complete design of your
+programs and the protocols used to make it reliable, deliver
+the messages in order, and provide some flow control. We expect
+it to be 2-3 pages with diagrams as needed to explain the protocol.
+
+The design document is required and makes up about 10% of your final
+grade.
+
+2) A final submission of documentation, writeup and code. Due 
+Firday,  November 7 at 11pm. This is an electronic submission. 
+See instructions below.
+
+For the final submission you should include an updated version of
+your design document as part of your final report. You should mention
+any changes you made to the design during the project and why you
+believe those changes were needed.
+
+This final report should also include a brief discussion of the
+performance results you achieved and discuss the comparison of how the
+protocol worked under different percentages of loss.
+
+The programs should be complete, sound, and well documented.
+
+A makefile that compiles and builds your complete program with clearly
+documented options (if needed) is required.
+
+You should make a tar file named exactly as your login account with all 
+your documents and code (DO NOT include core files or object fles) and
+email the tar file as an attachment to cs437@cs.jhu.edu. The subject
+of the email should be "Exercise 2 submission <account name>", and in the body of the
+email write the names of the students that worked on the exercise.
+
+Please bring a printed version of the your submission to class Monday
+November 10.
+
+Issues such as correctness, design, documentation, and efficiency
+will be considered.

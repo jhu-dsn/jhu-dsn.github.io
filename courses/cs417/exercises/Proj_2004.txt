@@ -1,0 +1,164 @@
+                            Distributed Systems
+                            ===================
+                               Final  Project
+                               ==============
+
+
+The goal of the final project is to produce a distributed software system
+that demonstrates what you have learned in this class and provides a useful
+service.
+
+The focus of your project should be on the distributed aspects and
+correctness of the system and not the graphical, GUI, or other 
+peripheral issues.
+
+REQUIREMENTS for all projects
+-----------------------------
+
+- Efficient use of messages - Don't send messages unnecessarily.
+
+- A detailed description of the algorithm and the system design should be
+  provided. The initial design should be in the first design document.
+  The final report should include an enhanced and updated design document.
+
+- System produces correct results for all inputs, except those specificly
+  listed as not required.
+
+- An organized Makefile is required.
+
+Delivery Date
+-------------
+
+Initial design document is due Wednesday Dec. 1 in the beginning of class. 
+Final delivery date is officially Wednesday December 15 at 2pm.
+Penalty for submission after that time is 1 percent point.
+We cannot guarantee a grade before December 24 for late submissions.
+Students have to either submit at December 15 at 2pm, or fill an
+incomplete form no later than that date, to allow late submissions.
+Last day for late submission is Thursday January 27 at 2pm.
+
+Note that undergraduate students that have an incomplete grade might see
+it as an  F in their transcript until it is fixed. There is nothing we
+can do about that.
+
+
+
+PROJECTS
+--------
+
+There are two choices for the final project:
+
+1) Fault-tolerant persistent instant messaging system.
+2) Any other idea that you propose and we agree to. If you choose this 
+   option, talk with us by Monday Nov 29 and provide a full proposal 
+   by Wednesday, Dec 1st before class, in lieu of a design document.
+
+We will describe the first project here in detail.
+
+==============================================================
+Project 1: Fault-tolerant persistent instant messsaging system
+==============================================================
+
+
+Construct a reliable and efficient persistent instant messaging service 
+for users over a network of computers.
+
+The service:
+------------
+
+Every user can connect via a client to any one of replicated IM servers. 
+
+The IM service provides the following capabilities, each capability
+is one option of a top level menu of your own IM-like client:
+
+1. Login as a user.
+
+   The client needs to login with a user name to perform any of the tasks below.
+   You should allow the client to login as a new user as part of the menu
+   by specifying the user name. A user can login multiple times
+   simultaneousely at different IM servers and will be considered the same
+   client.
+
+2. Connecting to an IM server.
+
+   The client needs to connect to an IM server to perform any of the tasks below.
+
+   You should allow the client to change its IM server as
+   part of the menu, by specifying the IM server index. 
+
+   * At any point, the client may be connected to one IM server only.
+   * To connect to a server, all a client needs to do is to set this
+     server as its serving server. Client/Server communication should
+     be done using Spread via the private group of each.
+
+3. View all active messages for this user on connected server.
+
+   Result: 
+	The view should include the user name, the responding IM server index and 
+	a list of messages. The messages in the list will be numbered 
+	(1, 2, 3, ...) and include the sender name, the creation time, and 
+	the text of the message.
+
+	* The view should automatically updated/refreshed to include the newest 
+	  messages received for the client or deleted by the client (see below).
+          The client program remains in this mode until it goes back to the
+          main menu when the user presses 'q'.
+
+4. Send a message to a user:
+   	to:  <user name>
+        text: <message string>           
+
+          * Note that the size of the message string can be bounded to 200 bytes.
+
+5. Delete messages:
+
+   Will allow to delete a set of messages by specifing their numbers.
+
+6. Print the view of the servers in the current server's network component.
+
+
+The persistent IM Servers:
+
+The client connects to one of the persistent IM server processes. Each of the
+server processes is a background daemon. The server may crash and may subsequently 
+recover.  Connections between servers may also fail, creating network partitions 
+and re-merges.
+The overall set of servers is fixed and is known in advance - there are 
+exactly five persistent IM servers, each running on a different ugrad machine.
+The server is started with its id as a parameter:
+	% server [1-5]
+
+The users must always receive a consistent view of their messages, 
+regardless of which server is consulted (of course, as consistent  
+as possible, according to the network connectivity).
+
+The view should be consistent as to which messages are active (received and
+not yet deleted).
+Each persistent IM server should save information separately on disk.
+
+The membership emulation:
+--------------------------
+
+The membership emulation will be managed by spmonitor, an interactive program 
+provided with the spread toolkit. spmonitor can redefine the membership 
+configuration at any time by defining for each Spread daemon which network component it 
+belongs to, or defining some daemons as crashed. Note that spmonitor will generate 
+spread daemon partitions and crashes, but your program should also handle user 
+crashes (Ctrl+C) of the spread daemons, persistent IM servers, and clients.  
+
+When a spread daemon crashes, the IM server attached to it has to crash (exit) 
+also. A crashed server exits the program immediately! It is not legal to 
+write to disk after a server looses its connection to Spread!
+
+When a persistent IM server crashes, clients connected to that server will report the loss of 
+connection to the user, so that the user can connect to another IM server and continue
+sending/receiving messages and delete operations. 
+
+Note:
+
+The users are not known beforehand, and their number is not bounded.
+
+CS 600.337 students can assume that no persistent IM server or Spread daemons crashes ever. 
+They only need to handle network partitions. Therefore, they do not need to 
+write to or read from disk. This also simplifies the rest of the project.
+
