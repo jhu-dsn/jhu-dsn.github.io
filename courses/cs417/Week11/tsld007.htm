@@ -1,0 +1,61 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>TCP Congestion Control</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>TCP Congestion Control</H1> 
+ <P><UL>
+<LI> slow start (cwnd &#060 ssthresh) 
+</UL><UL>
+		Multiplicative Increase Multiplicative Decrease
+</UL><UL>
+	cwnd initialized with 1
+</UL><UL>
+	for every ACK received, add 1 to cwnd
+</UL><UL>
+
+</UL><UL>
+<LI> congestion avoidance (cwnd &#062 ssthresh) 
+<UL>
+	Additive Increase Multiplicative Decrease
+<BR></UL></UL><UL>
+	for every ACK received, add 1/cwnd to cwnd</UL></P>
+<P><UL>
+Two phases:</UL></P>
+<P><UL>
+cwnd       – congestion window (dynamic)
+</UL><UL>
+ssthresh – slow start threshold</UL></P>
+<P><UL>
+Go back n protocol</UL></P>
+<P><UL>
+Packet loss: ssthresh = cwnd / 2 
+</UL><UL>
+	         cwnd      = cwnd / 2 
+</UL><UL>
+Timeout:       ssthresh = cwnd / 2
+</UL><UL>
+	         cwnd = 1</UL></P>
+<P><UL>
+[Jacobson 88]</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld006.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld008.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld007.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

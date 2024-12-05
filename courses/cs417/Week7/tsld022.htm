@@ -1,0 +1,44 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Decision Rule for Recovery</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>Decision Rule for Recovery</H1> 
+ <P><UL>
+<LI><H2>If at least one DM aborted - decide to abort.
+</H2>
+</UL><UL>
+<LI><H2>If at least one DM committed - decide to commit.
+</H2>
+</UL><UL>
+<LI><H2>Otherwise if at least one DM in Pre-Commit and a quorum of DMs in (Pre-Commit and Wait) - move to Pre-Commit and send “prepare commit”.
+</H2>
+</UL><UL>
+<LI><H2>Otherwise if there is a quorum of DMs in (Wait and Pre-Abort) move to Pre-Abort and send “prepare abort”.
+</H2>
+</UL><UL>
+<LI><H2>Otherwise - Block.</H2>
+</UL></P>
+<P><UL>
+Collected States:</UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld021.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld023.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld022.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

@@ -1,0 +1,39 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>The Basic Idea</TITLE> 
+</HEAD>
+
+<BODY     >
+
+ <H1>The Basic Idea</H1> 
+ <P><UL>
+<LI><H2>Reduce database replication to Global Consistent Persistent Order
+</H2>
+<UL>
+<LI>Use group communication ordering to establish the Global Consistent Persistent Order on the updates.
+<LI>deterministic + serialized = consistent
+</UL></UL><UL>
+<LI><H2>Group Communication membership + quorum = primary partition.
+</H2>
+<UL>
+<LI>Only replicas in the primary component can commit updates.
+<LI>Updates ordered in a primary component are marked green and applied. Updates ordered in a non-primary component are marked red and will be delayed.</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld026.htm">Previous slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld028.htm">Next slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Back to first slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld027.htm">View graphic version</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>
