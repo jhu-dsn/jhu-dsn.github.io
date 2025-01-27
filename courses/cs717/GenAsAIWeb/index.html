@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Generalizing Assured AI for Traffic Control</title>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <div id="header-container">
+        <header>
+            <h1>Generalizing Assured AI for Traffic Control</h1>
+            <h3>Daniel Stambler, Evan Leung</h3>
+            <h4> Spring 2022</h4>
+            <div>
+                <div style="display:inline-block">
+                    <a class="button" href="presentation.pdf">Presentation (.pdf) <i class="fa fa-download"></i> </a>
+                </div>
+                <div style="display:inline-block">
+                    <a class="button" href="flow_advance_dist_22_proj.zip">Source (.zip) <i class="fa fa-download"></i> </a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+    <article>
+        <br>
+        <h1>Introduction</h1>
+        <h3>Assuring AI</h3>
+        <p>
+            Artificial intelligence is becoming an increasingly large part of society. AIs have demonstrated the ability to generally perform very well at many different tasks, including
+            providing search engine results, providing content recommendations, powering virtual assistants, controlling autonomous vehicles, and automatically translating different languages.
+            Despite AI's impressive track record, it often fails on edge cases. Because of this, AI cannot be applied to mission critical applications where failures cannot be tolerated.
+            To circumvent this flaw of AI, the AI can be observed using white box or black box monitors. When the AI is uncertain or near failure, a safer, determinstic algorithm can be used
+            until the AI regains confidence.
+        </p>
+
+        <h3> Previous Work</h3>
+        <p> 
+            Previous work has demonstrated the advantages and success of an <a href="https://www.cnds.jhu.edu/radics/">Assured AI traffic light controller</a>.
+            However, the AI was trained as a monolithic model,
+            requiring a long, costly training process for every different traffic grid topology to which the AI is applied.
+            Previous attempts include:
+            <ul>
+                <li><a href="https://www.cnds.jhu.edu/courses/cs717-2020/assuredAI/" target="blank"> 
+                    Spring 2020 Advanced Distrubuted Project First Monolithic Model Trained </a>
+                </li>
+                <li>Sumo Flow Monolithic Model Based on Speed</li>
+                <li>Gym CityFlow - A more lightweight simulation environment </li>
+                All credit goes to Jerry Chen and Brian Wheatman for their previous work on this project.
+            </ul>
+        </p>
+
+        <h3> Generalizing to Traffic Grid Topologies</h3>
+        <p> 
+            Our goal was to train a generalized model that can be applied to any N x M traffic grid topology
+            after being trained once.
+        </p>
+        <hr>
+
+        <h1>Methodology and Contributions</h1>
+        <p> 
+            Note: In all our measurements, we use <b>average speed of all observed cars</b> as our metric.
+            <p>
+                <b>Establishing a Baseline with all Safe Controllers</b>
+                <br>
+                To get a basline, we first ran the simulation over a 3x3 grid where each light is a pre-programmed safe controller.
+            </p>
+
+            <p>
+                <b>The Training Environment</b>
+                <br>
+                Environment for training at least 1 AI controller. The idea is to avoid placing a traffic light on the edge of the grid
+                to get even training. Some approaches include:
+                <ul>
+                    <li><b> AI Safe Model</b>: Train one AI controller in the center of a 3x3 environment, surrounded by safe controllers</li>
+                    <li><b> AI Look Ahead Model</b>: Train one AI controller in the center of a 5x5 environment, where the actions of its adjacent neighbors
+                        are fed into the model as features during the training process </li>
+                </ul>
+            </p>
+
+            <p>
+                <b>The Generalized Environment</b>
+                <br>
+                A model trained in the previous environment is convolved over each intersection over an NxM topology.
+                The model is used to make predictions over this generalized topology. Work here includes:
+                <ul>
+                    <li> Applying the above models to each traffic light during an evaluation step</li>
+                    <li> Padding the exterior of the environment with safe controllers and applying the above models
+                        to the interior traffic lights
+                    </li>
+                </ul>
+            </p>
+           
+           <p>
+                <b>Other Contributions to the Project:</b>
+                <ul>
+                    <li>
+                        Logging and plotting of metrics during training
+                    </li>
+                    <li>Script for evenly distributing training jobs across multiple machines, limiting to four jobs per machine</li>
+                    <li>Scripts for managing jobs across all machines </li>
+                </ul>
+           </p>
+           
+        <hr>
+
+        <h1>Results</h1>
+        <h3>Safe Controller Baseline</h3>
+        <p> 
+            Baselines:
+            <ul>
+                <li>
+                    <b> 3x3 Topology</b>: 5.57 m/s average speed
+                </li>
+                <li>
+                    <b> 5x5 Topology</b>: 5.39 m/s average speed
+                </li>
+            </ul> 
+
+            3x3 Safe Controller Video
+            <br>
+            <video class="video-section" src="videos/Final_3x3_Safe_Controller_Recording.mov" controls></video>
+        </p>
+    
+
+        <h3>The Train Environment</h3>
+        <p> 
+            Best Results:
+            <ul>
+                <li>
+                    <b> AI Safe Model</b>:  After <b>49,700,000</b> steps, we get an average speed of <b>6.429 m/s</b> as our best model
+                </li>
+                <li>
+                    <b> AI Look Ahead Model</b>:  After <b>44,350,000</b> steps, we get an average speed of 5.51 m/s, as our best model
+                </li>
+            </ul> 
+            AI Safe Model Training Plot
+            <div>
+                <img src="images/best_model_train_speeds.png" alt="AI with safe controller best training plot" class="medium-img">
+            </div>
+            AI Safe Model Video
+            <br>
+            <video class="video-section" src="videos/Final_Safe_Controller_Train_Run_3x3.mov" controls></video>    
+        </p>
+
+        <h3>The N x M Evaluation Environment</h3>
+        <p> 
+            Best Results:
+            <ul>
+                <li>
+                    <b> Any of our AI models to a 3x3 Topology</b>:  We get an average speed of  <b>4.3 m/s</b>  regardless of which model we apply
+                </li>
+                <li>
+                    <b> Any of our AI models to a 5x5 Topology</b>:  We get an average speed of  <b>4.22 m/s</b>  regardless of which model we apply
+                </li>
+            </ul> 
+            Best Model in a 3x3 Generalized Environment Video
+            <br/>
+            <video class="video-section" src="videos/Final_3x3_Generalized_Screen_Recording.mov" controls></video>
+            <br/>
+            <br/>
+            Best Model in a 5x5 Generalized Environment Video
+            <br/>
+            <video class="video-section" src="videos/Final_5x5_Generalized_Screen_Recording.mov" controls></video>
+            <br/>
+        </p>
+        <hr>
+
+        <h1>Conclusion and Future Work</h1>
+        <p> 
+            While we are able to succesfully train powerful models that outperform the safe controller
+            in our train environment, we were unable to get our model to generalize. No matter the model that we try to run
+            in our generalized environment, the average speed in the system remains unmoved,
+            and well below the safe controller baseline.
+        </p> 
+        <p>
+            Research has shown that generalizing
+            RL models is very challenging. Best approach going forward is to try
+            and train a model on multiple environments in parallel. 
+        </p>
+        <p> 
+            Given that each model takes about a week
+            or 50,000,000 timesteps to train with Sumo, the biggest challenges will be computational. One suggestion
+            would be to move away from using Sumo as a simulator and instead either use Gym CityFlow or a custom, fast environment
+            that is optimized to take advantage of GPU resouces. Then, train many models in different combinations of different
+            environments to get a generalized model.
+        </p>
+
+        <br>
+        <br>
+
+    </article>
+</body>
+</html>

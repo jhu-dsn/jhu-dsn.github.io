@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		.button {
+			background-color: white;
+			border-radius: 5px;
+			border: none;
+			padding: 15px;
+			margin-left: 20px;
+			margin-right: 10px;
+			font-size: large;
+			font-weight: bold;
+		}
+
+		.button:hover {
+			background-color: #ECEDF1 ;
+		}
+
+		a:link {
+			text-decoration: none;
+		}
+
+		.button a {
+			color: black;
+
+		}
+
+		.media {
+			display: flex; 
+			flex-direction: column; 
+			align-items: center; 
+			padding: 20px; 
+			justify-content: space-around;
+		}
+
+	</style>
+</head>
+
+<body style="font-family: sans-serif; font-size: large; line-height: 1.5; margin: 0; padding-bottom: 50px;">
+
+	<div style="background-color:#B7C7F7; padding-left: 30%; padding-right: 30%; text-align: center; padding-bottom: 70px; padding-top: 50px;">
+		<h1 style="overflow: wrap; font-size: 50px;">Real-Time Collaborative Virtual Reality Across the Continent</h1>
+		
+		<p>
+			<strong style="font-size: 25px;">Bohan Wu | Brandon Fremin | Junjie Lei | Melody Hsu</strong>
+		</p>
+
+		<div>
+			<button class="button"> 
+				<a download href="./interactive_vr_assets/attachments/Advanced Distributed Systems Final Presentation.pdf">
+					Presentation (.pdf)
+				</a>
+
+
+			</button>
+			
+			<button class="button"> 
+				<a download href="./interactive_vr_assets/attachments/VR-0.9.3.apk">
+					Application (.apk)
+				</a>
+			</button>
+		</div>
+	</div>
+
+	<div style="padding-left:25%; padding-right:25%;"> 
+		<h2>Overview</h2>
+		<p>
+			Virtual Reality (VR) is a rapidly evolving area of technology that is becoming increasingly prevalent in 
+			a wide area of applications such as art, education, business, entertainment, and much more. 
+
+			With such diversity in its applications, what our team aims to address is how we can use VR to develop
+			the future of virtual real-time collaboration and communication. Our goal is to ensure that within the 
+			continental United States, users joining a common virtual space are experiencing events and interacting 
+			at the same time. Additionally, all users should see a consistent view of the world as it changes in response 
+			to user input and interaction.
+			
+			Perhaps the most notable of the currently released VR devices (as of May 2022) is Meta's Oculus Quest 2, 
+			which is what our team uses in our project development. Using the Oculus Quest, Unity Engine for game 
+			development, and <a href="http://www.spines.org/">Spines</a> infrastructure to impose artificial latencies
+			in server-to-server communication, we created an application that is extensible to general VR devices and enables
+			players to interact in real-time (<em>&lt; 65 ms</em> delay).
+		</p>
+		<br />
+
+		<h2>System Architecture and Protocol</h2>
+		<p>
+				Each VR device has a local state about where the headset and controllers are positioned. Oftentimes, games 
+				update the local state, then update the server, then reconcile the local and server states. However, this
+				can lead to inconsistent representations of what users see, as it would always be the case that one's device
+				will first update its own state before reconciling its information with other devices. 
+
+				Our application instead updates the server first, then updates the local state based on the server state. 
+				This allows the server to consolidate information about all players and the world state before individual 
+				player views are rendered locally.
+
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/ADS-multiplayer-transparent.png" width="900">
+			</div>
+
+			Synchonous delivery is achieved by having the receiving servers store messages from clients and order them by 
+			timestamp in a priority queue. Following a 65 ms delay, server responses are sent back to the clients.
+			Messages sent between client and servers are formatted using a 
+			<a href="https://developers.google.com/protocol-buffers">protocol buffer</a>. 
+		</ul>
+
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/ADS-server-aggregatort-transparent.png" width="900">
+			</div>
+
+			Messages are sent between servers on the Spines overlay network, which connects all servers. In this manner, servers
+			collectively share information about an agreed world state that all players see.
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/ADS-topview-transparent.png" width="300">
+			</div>
+		</p>
+		<br />
+
+		<h2>Spines</h2>
+		<p>
+			On each of the 8 servers we had running in the <a href="https://www.cnds.jhu.edu/">Distributed Systems and Networks</a> 
+			lab, a Spines daemon was run to represent one of the below locations. Each link between two locations represents
+			the one-way trip time in miliseconds. By having a server represent each location and using Spines to create artificial 
+			links between servers, we emulated the transcontinental path that packets take when routed to and from different 
+			destinations across the United States.
+
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/continental_spines_overlay.PNG" width="600">
+			</div>
+
+			Each player is able to connect to a server at one of the 8 location. As players interact with other players connected
+			to servers for varying locations, their communication simulates the realistic experience of players interacting across
+			actual geographical distances.  
+
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/ADS-overlay-transparent.png" width="700">
+			</div>
+
+			
+		</p>
+		<br />
+
+		<h2>Proof of Concept</h2>
+		<p>
+			Our application allows up to 8 unique players to join a lobby, select a location, and interact with one another.
+			Movements made by a player are consistently represented among all player views at the same time, and an added
+			layer of interactivity is incorporated in the game objects placed in the environment. Below is the initial 
+			user interface that players will see and interact with to connect to a server and join a lobby.
+		</p>
+		
+		<div class="media">
+			<img style="margin: 20px;" src="./interactive_vr_assets/images/ui.jpg" width="600">
+		</div>
+
+		Players are able to claim posession over objects and move a sphere with their controllers. To provide a tactile 
+		demonstration of the synchronized delay between user input and server responses, haptic feedback is also built into 
+		this interactive component. Players can click a button to send a haptic message to all other players in the lobby, 
+		in which all players (including the player who sent the message) will feel a controller rumble 65 ms after the 
+		haptic message is sent.
+
+		<div class="media">
+			<img style="margin: 20px;" src="./interactive_vr_assets/images/overview.jpg" width="600">
+		</div>
+
+		Real-time metrics such as client-server ping time, packet round trip times, and message processing times can be 
+		evaluated while players are in the lobby. Players can additionally see which other players have joined the world.
+
+		<div class="media">
+			<img style="margin: 20px;" src="./interactive_vr_assets/images/statistics.jpg" width="600">
+		</div>
+		
+		<h2>Interactables</h2>
+		The below clip demonstrates how players can interact with objects and claim possession over them. Notice that
+		at most one player can claim possession over an object at any given time. This state of object possession is 
+		consitent among all players in the world.
+
+		<div class="media">
+			<video width="600" controls>
+				<source src="./interactive_vr_assets/videos/interactables.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		<br />
+
+		<h2>Metrics</h2>
+		<p>
+			All metrics were collected in a setting where the average round trip ping time was ~2 ms. Note that
+			this additional ping time factors into the overall latency seen in subsequent graphs.
+
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/player_pings.png" width="600">
+			</div>
+
+			Below are the examples of the time differences between when a player located in Washington, D.C. receives
+			and handles messages from players connected to other servers. The receive graph demonstrates that the 
+			latencies between destinations accurately reflect the expected overlay network that was reconstructed 
+			using spines.
+	
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/WAS_receive.png" width="600">
+			</div>
+
+			Since all servers deliver messages after a 65 ms delay, it is ensured that every player will receive 
+			updates to their world state in synchrony. This delay is confirmed by the following graph, which includes 
+			the additional client-server ping time.
+	
+			<div class="media">
+				<img style="margin: 20px;" src="./interactive_vr_assets/images/WAS_handle_dense.png" width="600">
+			</div>
+		</p>
+		<br />
+
+		For additional information and metrics for other locations, please refer to our presentation.
+	</div>
+</body>
+
+</html>
