@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Introducing Attack-Awareness for Spire</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<div id="wrapper" class="divided" style="-webkit-font-smoothing: antialiased !important;">
+			<section class="spotlight style1">
+				<div class="content">
+					<header>
+						<h2>Introducing Attack-Awareness for Spire</h2>
+						<p><a href="https://www.linkedin.com/in/tiger-g-840168119">Tiger Gao</a>, <a href="https://linkedin.com/in/daniel-qian">Dan Qian</a>, <a href="https://linkedin.com/in/ewong127">Elaine Wong</a> &amp; <a href="https://linkedin.com/in/jwongworks">Jason Wong</a></p>
+					</header>
+					<p>
+						Our goal is to introduce attack-awareness to the intrusion-tolerant SCADA system <a href="http://dsn.jhu.edu/spire">Spire</a>. We identify potential attacks on the Spire system, locate where they are handled, and build an alert system based on the current structure. This brings internal system awareness to the human operator level, so that any potential threat can be taken care of. This project is for <a href="http://dsn.jhu.edu/courses/cs310/">Software for Resilient Communities</a> (Spring 2018).
+					</p>
+                    <ul class="actions">
+						<li>
+							<a href="public/presentation.pdf" class="button special icon fa-download">Presentation (PDF)</a>
+						</li>
+						<li>
+							<a href="https://docs.google.com/presentation/d/1rd-uZpq7pyDChcBuBvZzZ50yyEUSQeTj2tIjf-4h3ZA/edit?usp=sharing" class="button icon fa-download">Presentation (Google)</a>
+						</li>
+						<li>
+							<a href="public/spire-src-cs310-2018.tar.gz" class="button special icon fa-download">Source Code (tar.gz)</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="wrapper style1 align-center">
+				<div class="inner" style="padding-top: 10px">
+					<div class="index align-left">
+						<section>
+							<header>
+								<h3>Overview</h3>
+							</header>
+							<div class="content">
+
+								<p>SCADA (Supervisory Control and Data Acquisition) systems run almost all of the world's critical infrastructure, from water systems to public transportation to power grids. At present day, most SCADA systems use proprietary protocols and rely on secrecy to remain secure. However, this cannot continue: as shown by the Stuxnet attack, these proprietary systems are incredibly vulnerable, especially now that many of these once unreachable, offline devices are being connected to the internet, thus becoming susceptible to remote attacks. To provide security and reliability, the DSN lab has developed Spire, an intrusion-tolerant SCADA system. This system has been shown to not only withstand, but continue to thrive under relentless attacks that rapidly collapse existing SCADA systems.</p>
+
+                                <p>While Spire has proven that it can hold its own, it currently deals with all threats and attacks internally, without notifying any human operators of the system. For example, while the system can continue to operate as normal even if one of the SCADA masters (the machines which deliver instructions to and facilitate communication between parts of the SCADA system) has been compromised, it will not alert the human operators to this attack. However, if the human operator were to have awareness of the attack, they could simply induce proactive recovery in the compromised machine to bring it back up or physically unplug the device. We see in this scenario that the operator lacks the awareness the system has internally, which prevents them from acting on an attack that is trivial to shut down.</p>
+
+                                <p>To address this issue, we have identified a number of attacks that the system currently detects and mitigates on its own. In this project, we develop an system that brings awareness to the human operator via displaying alert messages on the HMI (human-machine interface) for DDoS attacks and situations where the leading SCADA master of the Prime agreement protocol is behaving maliciously. Through this awareness, we hope to develop more robustness for the end-to-end system.</p>
+
+							</div>
+						</section>
+
+						<section>
+							<header>
+								<h3>Resources</h3>
+							</header>
+							<div class="content">
+								<ul>
+									<li><a href="http://www.dsn.jhu.edu/papers/scada_DSN_2018.pdf">Network-Attack-Resilient Intrusion-Tolerant SCADA for the Power Grid</a>: A paper about how Spire works, detailing many of its intrusion-tolerance and security features.</li>
+								</ul>
+							</div>
+
+						</section>
+
+			<footer class="wrapper style1 align-center">
+				<div class="inner">
+					<a href="http://dsn.jhu.edu">JHU Distributed Systems and Networks Lab</a>
+					<p>601.310 Spring 2018</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Improving Registration for the Johns Hopkins University Community</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/advisor.css">
+     <link rel="stylesheet" href="css/profiles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+
+<body>  
+    <!-- <nav>
+        header goes here
+    </nav> -->
+    <div class="content">
+        <div class="card" id="about">
+        <div class="col-md-12 col-xs-12">
+            <h1>Improving Registration for the Johns Hopkins University Community</h1>
+            <h2 class="colorful">Team Members</h2>
+            <div class="profile-container">
+              <div class="profile">
+              <img src="https://avatars0.githubusercontent.com/u/7339169?s=460&v=4" alt="picture">
+              <h1>Andrew Wong</h1>
+                <h3>Computer Science '19</h3>
+                <div class="social">
+                  <a href="https://github.com/andrewwong97/"><i class="fab fa-github"></i></a>
+                  <a href="https://linkedin.com/in/andrewwong97/"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="profile">
+              <img src="img/alex.jpg" alt="picture">
+              <h1>Alex Hecksher-Gomes</h1>
+                <h3>Computer Science '21</h3>
+                <div class="social">
+                  <a href="https://github.com/alexhecksher/"><i class="fab fa-github"></i></a>
+                  <!-- <a href="https://linkedin.com/in/andrewwong97/"><i class="fab fa-linkedin"></i></a> -->
+                </div>
+              </div>
+              <div class="profile">
+              <img src="https://avatars3.githubusercontent.com/u/14956724?s=460&v=4" alt="picture">
+              <h1>Kristin Yim</h1>
+                <h3>Computer Science '20</h3>
+                <div class="social">
+                  <a href="https://github.com/kristinyim/"><i class="fab fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/kristinyim"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="profile">
+              <img src="img/ry.jpg" alt="picture">
+              <h1>Ryenne Dietrick</h1>
+                <h3>Computer Science '19</h3>
+                <div class="social">
+                  <a href="https://github.com/rdtricky/"><i class="fab fa-github"></i></a>
+                  <!-- <a href="https://linkedin.com/in/andrewwong97/"><i class="fab fa-linkedin"></i></a> -->
+                </div>
+              </div>
+             </div>
+            <h3>Problem</h3>
+            <p>The current advisor-advisee relationship involves a series of emails between both parties, in which information can be lost over numerous email threads or oral communication. There is no history of interactions, and information is not centralized (excel sheets, SIS, email, etc.). In addition, there is no way to share schedules through SIS.</p> 
+            <h3>Solution</h3>
+            <p>We envision a solution connect students with advisors through Semester.ly to improve the advising process for both parties. At a minimum, advisors can view their advisee’s timetables. Advisees will search for their advisor and give them access to a timetable and advisors can login and view each of their advisees’ timetables, including those of previous semesters. Currently, this advising portal generalizes advisors and students to the same type of user because it is also common for upperclassmen to give underclassmen advice.</p>
+
+            <p>Our team has accomplished much of the main functionality of the advisor portal. While it is not yet ready for production, students on our open source implementation can share a timetable with an advisor by searching the advisor's email, and the advisor is able to view a read-only version of the timetable. In addition, advisors can delete the timetable from their viewing lists after they are finished advising it. Our team has also deployed a feature to the live <a href="https://jhu.semester.ly" class="sliding-middle-out">Semester.ly</a> web app, a button on the top right of the timetable to add the active timetable's courses to a student's SIS cart. Finally, we implemented a timetable commenting feature, which allows users and advisors to add comments to shared timetables.</p> 
+                        
+            <p>Future iterations of the advisor portal includes being able to view previously completed courses, degree requirements to help them make decisions (which can be generalized to a feature for general users), notifications for the advisor via web browser notifications or email, and introducing a button for advisors to release their advisee’s hold on SIS.</p>
+            <a href="https://docs.google.com/presentation/d/1k-U7KxNgQ9RaLj2m_jJlh8PiJfLAnSr9EILUMSnXX_8/edit?usp=sharing"><button class="slide-deck">Slide Deck</button></a>
+            <a href="img/Final Pres.pdf"><button class="slide-deck">Slide Deck PDF</button></a>
+            <a href="https://github.com/kristinyim/semesterly/tree/comments"><button class="slide-deck"><i class="fab fa-github" style="color:#fff;margin-right:7px;"></i>GitHub</button></a>
+            <a href="semesterly-comments.zip"><button class="slide-deck">Download Code</button></a>
+        </div>
+    </div>
+    <div class="card advisor">
+            <div class="description">
+                <h1>Advisor Portal Demo</h1>
+                <h2>Create an account with a timetable and share it with an advisor using their account email. The advisor receives read-only privileges on your shared timetable and can add comments on the lower right hand side.</h2>
+                <a href="http://semesterly-dev.sis.jhu.edu/"><button class="btn-more">Try it</button></a>
+            </div>
+            <div class="preview">
+                <img src="img/add_advisor.png">
+            </div>
+        </div>
+</div>
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</html>
+

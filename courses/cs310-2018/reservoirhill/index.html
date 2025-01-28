@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+     <title>Reservoir Hill Project</title>
+
+     <style type="text/css">
+        * { margin: 0; padding: 0; }
+        body { font: 16px Helvetica, Sans-Serif; line-height: 24px; background: url(images/noise.jpg); }
+        .clear { clear: both; }
+        #page-wrap { width: 800px; margin: 40px auto 60px; }
+        #pic { float: right; margin: -30px 0 0 0; }
+        h1 { margin: 0 0 16px 0; padding: 0 0 16px 0; font-size: 42px; font-weight: bold; letter-spacing: -2px; border-bottom: 1px solid #999; }
+        h2 { font-size: 20px; margin: 0 0 6px 0; position: relative; }
+        h2 span { position: absolute; bottom: 0; right: 0; font-style: italic; font-family: Georgia, Serif; font-size: 16px; color: #999; font-weight: normal; }
+        p { margin: 0 0 16px 0; }
+        a { color: #999; text-decoration: none; border-bottom: 1px dotted #999; }
+        a:hover { border-bottom-style: solid; color: black; }
+        ul { margin: 0 0 32px 17px; }
+        #objective { width: 500px; float: left; }
+        #objective p { font-family: Georgia, Serif; font-style: italic; color: #666; }
+        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
+        dd { width: 600px; float: right; }
+        dd.clear { float: none; margin: 0; height: 15px; }
+     </style>
+</head>
+
+<body>
+
+    <div id="page-wrap">
+
+
+        <div id="contact-info" class="vcard">
+
+            <!-- Microformats! -->
+
+            <h1 class="fn">Project for Reservoir Hill</h1>
+        </div>
+
+        <div id="objective">
+            <p>
+                Our project focuses on enabling self-service discovery and
+                scheduling of community center resources via a web-based
+                calendar and scheduling system, working with the <a href="http://www.stfranciscenter.org/">St. Francis Neighborhood Center</a>. The St. Francis Community Center, located
+                in the Reservoir Hill community, is one of the oldest
+                in Baltimore City. The center currently has a number of
+                programs and activities for the community to enroll in and
+                schedule. As the center looks to expand, manually scheduling
+                activities has become a burden. As such, our project aims to
+                ease this burden, by moving scheduling online.
+            </p>
+        </div>
+
+        <div class="clear"></div>
+
+        <dl>
+            <dd class="clear"></dd>
+
+            <dt>Team</dt>
+            <dd>
+                <p><a href="https://www.linkedin.com/in/evan-hsia-bab778105/"><strong>Evan Hsia</strong></a>, Computer Science '19<br />
+                   <a href="https://www.linkedin.com/in/sofyafreyman/"><strong>Sofya Freyman</strong></a>, Computer Science '19<br />
+                   <a href="https://www.linkedin.com/in/dcurrey/"><strong>Danielle Currey</strong></a>, Computer Science '21</p>
+            </dd>
+
+            <dd class="clear"></dd>
+
+            <dt>Framework</dt>
+            <dd>
+                <h2>Lutece</h2>
+                <p>In order to accomplish this, we used the open source framework Lutece, developed by a team in Paris,
+                  France. Lutece is a Java framework that at its core gives users a basic front office and back office
+                  web application. To extend the application, Lutece introduces the use of plugins, which allow future
+                  users and developers to add various functionalities to the site without having to touch code. Many
+                  plugins already exist for various purposes. For example, there is an appointment plugin which provides
+                  a calendar-based sign up for activities and events that the back office can track.
+                  <br />
+                  <br />
+                  Lutece also allows developers to create their own plugins in case the existing ones lack the necessary
+                  functionality. We used this feature to create a general enrollment form for programs that required
+                  enrollment as opposed to scheduling. This is where the main coding takes place.
+                  <br />
+                  <br />
+                  To run Lutece, we make use of Apache Tomcat and a MySQL database. Lutece currently powers many of
+                  the web applications in the city of Paris. As another part of our project, we wanted to evaluate
+                  Lutece and provide a basis for the city of Baltimore, and perhaps further, to use it.
+                </p>
+            </dd>
+
+            <dd class="clear"></dd>
+
+            <dt>Web Portal</dt>
+            <dd>
+                <a href="http://stfrancis-dev.sis.jhu.edu"><strong>stfrancis-dev.sis.jhu.edu</strong></a>
+                <p>(currently under development)</p>
+            </dd>
+
+            <dd class="clear"></dd>
+
+            <dt>Web Portal Code</dt>
+            <dd>
+                <a href="assets/lutece_portal.tar"><strong>lutece_portal.tar</strong></a>
+            </dd>
+
+            <dd class="clear"></dd>
+
+            <dt>More Information</dt>
+            <dd>
+              <h2>Mid-Semester Presentation</h2>
+              <a href="https://docs.google.com/presentation/d/1vyDF1-jglU7R8rn6v2MnhElDlJ3zSqNmuuusb1wG0Ys/edit?usp=sharing">
+          Presentation Google Slides</a>
+              <br />
+              <a href="assets/midsemester_presentation.pdf">Presentation PDF</a>
+              <br />
+              <br />
+              <h2>Final Presentation</h2>
+              <a href="https://docs.google.com/presentation/d/1s271V3AllKKwgcPkexJhnEPxktpGAZFoM6IKzKQi1IQ/edit?usp=sharing">
+          Presentation Google Slides</a>
+              <br />
+              <a href="assets/final_presentation.pdf">Presentation PDF</a>
+              <br />
+              <br />
+              <h2>More on Lutece</h2>
+              <a href="http://www.lutece.paris.fr/">Lutece Home Page</a>
+              <br />
+              <a href="https://github.com/lutece-platform/lutece-core">Lutece Core Github</a>
+            </dd>
+
+            <dd class="clear"></dd>
+        </dl>
+
+        <div class="clear"></div>
+
+    </div>
+
+</body>
+
+</html>
