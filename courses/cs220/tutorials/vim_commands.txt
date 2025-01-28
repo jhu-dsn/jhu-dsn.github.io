@@ -1,0 +1,86 @@
+Useful Vim commands
+    To learn more about these commands, you can use :help <command>    
+    Try :help quickref
+
+Basic Movement (Normal Mode -> Normal Mode)
+    h,j,k,l     -   Move left, down, up, right
+    ctrl-d      -   Move down by half a page
+    ctrl-u      -   Move up by half a page
+    ctrl-f      -   Move down by a full page
+    ctrl-b      -   Move up by a full page
+    ^           -   Move to the first character on the current line
+    $           -   Move to the last character on the current line
+    w/W         -   Move to the next beginning of a word (:help w)
+    b/B         -   Move to the previous beginning of a word (:help b)
+    e/E         -   Move to the next end of a word
+    gg          -   Move to the first line of the file
+    G           -   Move to the last line of the file
+    H,M,L       -   Move to the top, middle, and bottom of the screen, respectively
+    :<number>   -   Move to the line number (technically using ':' moves out of normal mode)
+    ctrl-o      -   Move to the cursor position before the last jump
+    ctrl-i      -   Move forward in the jump history (:help jump)
+    g;/g,       -   Move backwards/forwards through the locations of changes
+    m<char>     -   Mark a position with a character
+    '<char>     -   Move to the position marked with a character
+
+Searching (Normal Mode -> Normal Mode)
+    /foo        -   Search downward for the next occurrence of "foo" in the file 
+    ?foo        -   Search upward for the next occurrence of "foo" in the file 
+    n/N         -   Move to the next match for the current search (n is in the same direction, N is the reverse direction)
+    f/F <char>  -   Move to the next occurrence of char on the current line (F goes backwards)
+    t/T <char>  -   Move to the character before the next occurrence of char on the current line (T goes backwards)
+    ;/,         -   Repeat the last f/t search (, searches in the reverse direction)
+    */#         -   Search forward/backward for the word under the cursor
+
+Inserting text (Normal Mode -> Insert Mode) -- You should know all of these commands
+    i           -   Change to insert mode before the cursor
+    a           -   Change to insert mode after the cursor
+    I           -   Change to insert mode at the beginning of the current line
+    A           -   Change to insert mode at the end of the current line
+    o/O         -   Create a new line below/above the current line, and move into insert mode at the beginning of it
+
+Basic Yanking and Deleting (Normal Mode -> Normal Mode)
+    yy/Y     -   Yank a line
+    y<count>y   -   Yank count lines (ex: y2y)
+    dd          -   Delete a line
+    d<count>d   -   Delete count lines (ex: d2d)
+    D           -   Delete the rest of the line to the right of the cursor
+    d<motion>   -   Delete through motion (ex: dts - delete to the next 's')
+    y<motion>   -   Yank through motion (ex: y2w - yank to the second word start)
+    d<object>   -   Delete a text object (see next section)
+    y<object>   -   Yank a text object (see next section)
+    p           -   Paste whatever was yanked/deleted last after the cursor (if entire lines were yanked, it will paste to a new line)
+
+Text Objects (see :help text-objects)
+    aw          -   a word
+    iw          -   inner word (all of these commands have an inner version)
+    aB          -   a block (delimited by {})
+    ab          -   a block (delimited by ())
+    a"          -   a quoted string
+    a'          -   a single-quoted string
+
+The Dot Command (from Normal Mode)
+    .           -   Repeat the last command
+
+    This command gets its own section because it is very useful. Repeating
+    commands can save a lot of time. For a simple example, lets say I forgot
+    two dependencies in my Makefile for project 3.
+
+I have:
+    project3:   project3.o
+            $(CC) -o project3 project3.o
+
+But I want:
+    project3:   project3.o sl_repository.o rand100.o
+            $(CC) -o project3 project3.o sl_repository.o rand100.o
+
+I could just append to the first line, then repeat it for the second by going to the first line and typing:
+    A sl_repository.o rand100.o<Esc>j.
+
+Changing text (Normal -> Insert)
+    The change command deletes text, then moves to insert mode at the location of the deleted text. It allows the same motions and objects as d. Really, any command of the form "c<x>" can be replaced with "d<x>i".  The benefit to using the c-version is that it uses one command instead of two, which means it can be repeated with the dot command.
+    C           -   change everything on and to the right of the cursor
+    cc          -   change a line
+    c<motion>   -   change through motion
+    c<object>   -   change an object
+

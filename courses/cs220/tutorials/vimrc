@@ -1,0 +1,15 @@
+" this file contains vim settings
+" to use this file, copy it to your home directory as .vimrc:
+"   cp ~amir220/tutorials/vimrc ~/.vimrc
+
+syntax on
+set tabstop=4
+set shiftwidth=4
+set nu " turn on line numbering
+set smarttab autoindent " new lines will have the same indent as the previous line
+set expandtab " tab inserts spaces rather than real tab
+autocmd FileType text setlocal spell spelllang=en_us " turn on spellcheck for text files
+
+" If you use a black background, uncomment the following line for a nicer
+" color scheme:
+" set background=dark

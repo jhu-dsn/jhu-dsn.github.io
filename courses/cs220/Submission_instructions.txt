@@ -1,0 +1,102 @@
+Submitting a project for the Intermediate Programming course consists of the
+following two steps:
+
+(1) create a .tar file that encompasses all of the files you will be submitting
+(2) email the .tar file to us at amir220@cs.jhu.edu
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(1) Creating a .tar file:
+
+Before you begin, MAKE A BACKUP! It's very easy to overwrite your work if you
+get these commands wrong.
+
+Recall the command to copy a file:
+cp projectX.c projectX_backup.c
+
+(a) To make a tar file out of all of the files you want to submit do this:
+
+tar -cvf tarfile.tar submittedfile1 submittedfile2 submittedfile3
+
+For example, it could be something like:
+
+tar -cvf AmyBabay_ProjectX.tar design.txt results.txt projectX.c
+
+Here, c means "create", f means "file", v means "verbose" (ie, it will list all
+the files it puts in). "tarfile" is the name of the resulting tar file.
+
+* Please name it something unique to you, like YourName_ProjectX.tar *
+
+Note that it is important that you put the name of the tarfile that you want to
+create (eg. AmyBabay_ProjectX.tar) first. If you forget to do this, you will
+overwrite the first file in the list of files.
+
+(b) To look at the contents of a tar file (to check that your work is in
+there), do this:
+
+tar -tvf tarfile.tar
+
+If you still have questions, try "man tar" to look at the man page for tar.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(2) Emailing the tar file to us: There are two main options for getting us your
+submission.
+
+(a) The easiest thing to do is email your YourName_ProjectX.tar file
+directly from your ugrad account. This can be done by typing the following
+commands:
+
+From the folder which contains your YourName_ProjectX.tar file, type the
+following command:
+
+mailx -a YourName_ProjectX.tar amir220@cs.jhu.edu
+
+Then you will be asked for a subject of the email. Type the subject: "ProjectX
+Submission by YourName" and press enter. Then you will just get the cursor to
+go to a new line. This is where the body of the email goes. Then, either type .
+and a new line, or press CTRL+D to end the email.
+
+Note that you can also use this method to email your work to yourself by using
+your own email address rather than amir220@cs.jhu.edu.
+
+NOTE: Our submission system sends a confirmation email to the email address
+that the submission was sent from. If you use the above method, you will
+probably want to forward email received in your ugrad account to an account
+that you actually read. To do this, set up a .forward file by using the
+following command:
+
+vim ~/.forward
+
+Type the email address you want to forward your mail to on the first line and
+save the file.
+
+(b) Another option is to transfer the YourName_ProjectX.tar file from your
+ugrad account to your local machine, and then email amir220@cs.jhu.edu from
+your local machine. You can transfer the file using scp (Linux / Mac OSX) or
+WinSCP (Windows)
+
+(i) If using Windows, download WinSCP ( http://winscp.net/ ) and install. The
+login process is very similar to PUTTY. The host is ugrad#.cs.jhu.edu (where #
+can be any of the valid ugrad machines, i.e. 1-24), and the username/password
+is your ugrad account/password. Then, you will see your ugrad home directory on
+the right and your laptop's local directories on the left. Simply navigate to
+the YourName_ProjectX.tar file on the ugrad machine and drag and drop it where
+it should go on your laptop. Then, you can email with the YourName_ProjectX.tar
+file as an attachment.
+
+(ii) If using Mac/Linux, you can just open up a terminal and use the scp
+command (described below). Make sure that you are NOT ssh'd into the ugrad
+machines in that terminal. You want to just open the native terminal on
+your laptop. The scp works in the following way:
+
+scp username@ugrad#.cs.jhu.edu:<location of your file> <location to put file>
+
+In this command, <location of your file> is where you normally navigate to get
+to the file from your ugrad home directory, and <location to put file> is where
+you want to save the file on your laptop (possibly the desktop?). You will also
+be prompted for you ugrad account password. Here's an example:
+
+scp ipa00@ugrad2.cs.jhu.edu:ProjectX/YourName_ProjectX.tar ~/Desktop/YourName_ProjectX.tar
+
+If you have any questions about submission, you can email us at cs220-help@dsn.jhu.edu.

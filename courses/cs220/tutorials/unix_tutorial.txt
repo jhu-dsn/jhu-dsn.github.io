@@ -1,0 +1,263 @@
+CS220, Spring 2006
+Jonathan Kirsch
+Introduction to a Unix-like Environment
+
+Hello!  This document is intended to provide you with the background
+you'll need to work in a Unix-like environment, such as the one found
+on the ugrad machines.  If you're looking for a nice Unix book with
+more information, my personal recommendation is "Unix for Programmers
+and Users" by Glass and Ables.  
+
+A. Getting Started
+
+When working in Unix, you'll be interacting with a special program
+called a *shell*.  The shell acts as a middleman between you and the
+operating system.  You simply type your commands, and the shell handles
+the low-level work needed to get your programming running.  
+
+After invoking the shell, you'll be given a command prompt.  My user
+name is "jak," so my command prompt on ugrad11 looks like this:
+
+     [jak@ugrad11 ~]$
+
+Let's try two simple but useful commands to get started:
+
+   ls - used to print the contents of a directory.  When invoked with
+	no arguments, it prints the contents of your current
+	directory.  The "-l" option is useful for obtaining more
+	information about the contents of the directory.
+
+   cd <dir> - change directory, used to navigate throughout the file
+	      system.  When no directory is provided, it changes to
+	      the user's home directory.
+
+Here's an example session to illustrate the use of these two
+commands.  Suppose we're currently in a top-level directory called
+"top" that has subdirectories a, b, and c, and a file called
+hello.txt:
+   
+   [jak@ugrad11 ~/top]$ ls
+   a  b  c  hello.txt
+
+   [jak@ugrad11 ~/top]$ ls -l
+   total 3
+   drwxr-xr-x  2 jak users 512 Feb  1 23:11 a
+   drwxr-xr-x  2 jak users 512 Feb  1 23:11 b
+   drwxr-xr-x  2 jak users 512 Feb  1 23:11 c
+   -rw-r--r--  1 jak users   0 Feb  1 23:11 hello.txt
+
+Note how the options to the ls command are simply placed after the
+name of the command, resulting in different output.  You can see the
+file permissions, file owner, last modified date, etc.  Supposing we now
+want to navigate into the "b" subdirectory:
+
+   [jak@ugrad11 ~/top]$ cd b
+   [jak@ugrad11 b]$ 
+   [jak@ugrad11 b]$ ls
+   file_1.txt  file_2.txt
+
+Note how the command prompt changes, indicating our new current
+directory.  You can see that the "b" directory contains two files.
+
+There are two special directories to be aware of.  The ".." directory
+is defined as the parent directory of the current directory, while the
+"." directory is defined as the current directory.  So for example,
+assuming we're still in the b directory:
+
+   [jak@ugrad11 b]$ cd .
+   [jak@ugrad11 b]$ 
+   [jak@ugrad11 b]$ cd ..
+   [jak@ugrad11 ~/top]$ 
+   [jak@ugrad11 ~/top]$ ls
+   a  b  c hello.txt
+
+B. Miscellaneous Commands
+
+This section lists several of the more useful commands you'll need,
+along with example usages.  I abbreviate the command prompt by simply
+writing "$".  I show only the most common usages; for more
+information, use the man command!  
+
+   man <which page> - display the online manual pages.  man is your friend!  
+      $ man ls  //Describes the usage of the ls command
+
+   pwd - prints the name of your working (current) directory 
+      $ pwd
+      /home/4/jak/top
+
+   rm <file_name> - removes a file
+      $ ls
+      hello.txt goodbye.txt
+      $ rm hello.txt         //Removes the file hello.txt
+      $ ls
+      goodbye.txt
+
+   mkdir <dir_name> - create a new directory
+      $ ls
+      a  b  c
+      $ mkdir d             //Create our new directory, d
+      $ ls 
+      a  b  c  d
+
+   rmdir <dir_name> - removes an empty directory
+      $ ls
+      a  b  c
+      $ rmdir c
+      $ ls
+      a  b
+
+   cp <source> <destination> - copy files and directories.  
+      $ ls
+      hello.txt		             //We start with the file
+      $ cp hello.txt new_hello.txt
+      $ ls                           //Now we have another copy
+      hello.txt  new_hello.txt
+ 
+   mv <source> <destination> - move (rename) files
+      $ ls
+      hello.txt
+      $ mv hello.txt goodbye.txt
+      $ ls
+      goodbye.txt
+
+   less <filename> - useful for viewing files (also note the "more"
+		     command, which behaves similarly)
+      $ ls
+      hello.txt
+      $ less hello.txt //displays the file
+
+C. Compiling
+
+The C compiler you'll be using is called gcc.  Assuming you have a
+source file called my_program.c, it can be invoked in the following
+way:
+
+   $ ls
+   my_program.c
+   $ gcc my_program.c
+   $ ls
+   a.out my_program.c
+
+You'll see that gcc has compiled your program, assembled it, and
+linked it to form the executable a.out (the default).
+
+To give the output file a name of your choosing, use the -o option:
+
+   $ gcc -o my_executable_name my_program.c
+   $ ls
+   my_executable_name my_program.c
+
+If you only want to compile your program and assemble it without
+linking, use the -c option:
+
+   $ gcc -c my_program.c
+   $ ls
+   my_program.c my_program.o
+
+Note that this creates an object file called my_program.o, without
+creating an executable.
+
+D. A Few More Things to Know
+
+   1. Most of the time, you'll just be editing, compiling, and
+      executing your programs.  Supposing I've created an executable
+      called "my_program", let's see what happens when I try to run
+      it:
+
+      $ ls
+      my_program my_program.c
+      $ my_program 
+      my_program: Command not found.
+
+      What went wrong?  The Unix shell has a series of places that it
+      looks when trying to figure out which command we're talking
+      about; this is called your PATH (you can see your path by typing
+      "echo $PATH").  By default, the PATH does not include the
+      current working directory.  Thus, we'll need to be a bit more
+      specific:
+
+      $ ls
+      my_program my_program.c
+      $ ./my_program
+      Hello, world!
+
+      To clarify, the "./" indicates that we're in the current
+      directory (remember the "." directory mentioned above), and the
+      file "my_program" is a file within this directory.  
+
+      Note that you can also edit your PATH variable to include the
+      current directory, but I won't describe this here.
+
+   2. A note about the Unix directory structure
+
+      The directories in the Unix file system form a tree, with the
+      "/" directory at the root of the tree.  A directory has some
+      contents, which may include various kinds of files, including
+      more directories.  
+
+      You can specify a file in two ways: by absolute path or relative
+      path.  An absolute pathname begins with a "/" (for the root
+      directory) and specifies the precise path from the root to the
+      file.  Assume we have a simple directory structure as follows:
+
+                          /
+                    a     b    c
+                 d    e      hello.txt
+           g1.txt   g2.txt
+
+      To run "less" on the file g1.txt, for example, we can use the
+      following command from any directory:
+
+          $ less /a/d/g2.txt
+
+      Note how we have specified its full path from the root.
+
+      The other way to specify a file is by using a relative path
+      name.  This assumes that we're starting our tree traversal in
+      the current directory (so it has an implicit "./" prepended to
+      whatever name we specify).  For example, assuming we're in the
+      "a" directory:
+
+         $ less d/gd.txt
+
+      Or, equivalently,
+         $ less ./d/gd.txt
+
+      A bit more fun: suppose we're in the "d" directory:
+
+         $ less ../e/g2.txt
+
+      Remember that the ".." directory takes us to the parent directory.
+
+   3. Some useful shortcuts for navigating around the command line:
+      
+      control-a    - jump to the beginning of the line
+      control-e    - jump to the end of the line
+      control-k    - cut the text after the cursor
+      control-y    - yank (paste) the text back to the line
+      
+   4. The wildcard character, *
+
+      The wildcard character can be used to get things done quickly.
+      Suppose we have a whole collection of object files in our
+      current directory, along with some source files, and we want to
+      delete the object files:
+
+      $ ls
+      file1.o  file2.o  file3.o  file1.c  file2.c  file3.c
+      $ rm *.o
+      $ ls
+      file1.c  file2.c  file3.c
+
+      In this example, we removed any file ending with the .o
+      extension.
+
+      WARNING: Be careful with this!  It's all too easy to
+      accidentally delete the entire contents of your directory by
+      mistake (i.e. rm * ) -- don't do this!!!
+
+   5. To stop a running program, type control-c.  Very useful if your
+      program is in an infinite loop (which, of course, will never
+      happen to you!)  
+
+   6. To send a program the EOF character, type control-d.

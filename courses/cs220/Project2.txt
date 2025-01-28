@@ -1,0 +1,79 @@
+Intermediate Programming 601.220
+
+   Project 2
+   ---------
+
+1. Design and develop a repository based on a modified (and potentially
+   improved) version of your Project1 sorted linked list.
+
+   An exact C definition of the repository access functions is
+   given in the file repository.h (which should not be changed).
+
+   A Makefile and a program C file for project2 are provided
+   and also should not be changed (just used). Interestingly,
+   a reference executable for project2 is also provided.
+
+   You should implement the 5 repository access functions that
+   should reside in a file repository.c :
+
+1.  void repository_init() 
+    - should initialize the repository.
+
+2.  int  repository_update( int key, int data )
+    - updates a {key, data} record in the repository. If no record with the
+      given key exists, insert the {key, data} record into the repository,
+      sorted according to the key (smaller keys first). Each key should only
+      appear at most once in the repository. If a record with the given key
+      already exists, update the data associated with that key to the new data
+      value. The operation should return 1 if the {key, data} record was
+      inserted, return 0 if an existing record was updated, and -1 if the
+      operation had a problem completing correctly.
+
+3.  int repository_delete( int key )
+    - removes a record with the given key from the repository if such exists.
+      The operation should return 1 if such a record was removed and 
+      0 if there was no such record in the repository.
+ 
+4.  int repository_get( int key, int *data )
+    - gets a record with a specific key from the repository and stores the
+      data of that record into the data parameter, if such a record exists.
+      The operation should return 1 if the record was found in the 
+      repository and 0 if the record was not found.
+
+5.  void repository_print( int print_elements )
+    - prints the current number of records in the repository and the number of
+      'next' steps performed so far (see below).
+      If print_elements is non-zero, the function prints the list of elements
+      in the repository.
+
+   A counter should maintain the number of steps performed on the list. The
+   counter should be initialized to 0 and should be incremented each time a
+   pointer is set to point to another member of the list in the functions
+   repository_update, repository_delete, and repository_get. This gives an
+   indication of how much effort was spent so far.
+
+    Please use seed 20 to run the following cases:
+
+1.a  Run it with numbers between 1..10, for 1000 operations, 
+     printing every 100 operations.
+1.b  Run it with numbers between 1..100, for 10,000 operations, 
+     printing every 1000 operations.
+1.c  Run it with numbers between 1..100, for 1,000,000 operations, 
+     printing every 100,000 operations.
+1.d  Run it with numbers between 1..1000, for 10,000,000 operations, 
+     printing every 1,000,000 operations. The project2 program will
+     avoid printing the actual records in this case (just the size 
+     and number of steps).
+
+
+Submission date of a complete project including a well-documented repository.c
+source file and a text document including design, analysis of the number of
+steps expected in each case (1.a - 1.d), and results of the actual number of
+steps in each case is: Monday September 28, 12pm (noon).
+
+Submission is accomplished by e-mailing tar file that contains the repository.c 
+file and the above design and results file to amir220@cs.jhu.edu .
+
+The development environment and the place where you have to check your program
+is *only* on the ugrad1-24 machines. We ask that your program can be
+demonstrated there.

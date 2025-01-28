@@ -1,0 +1,152 @@
+Intermediate Programming 601.220
+
+   Project 3
+   ---------
+
+A. Repository Design and Development
+
+   Design and develop a repository based on the Super List
+   data structure presented in class.
+
+   An exact definition of the repository access functions is
+   given in the file sl_repository.h (which should not be changed).
+
+   You should implement a Super List version of the 5 repository 
+   access functions that should reside in a new file sl_repository.c :
+
+    1.  int Repository_init( int p ) 
+        - initializes the Super List repository, setting the Super List
+          probability constant to p percent (e.g 50 for 50 percent). The
+          operation should return 0 if it succeeded, and -1 if the operation
+          had a problem completing correctly.
+
+    2.  int Repository_update( int key, int data )
+        - updates a {key, data} record in the repository. If no record with the
+          given key exists, insert the {key, data} record into the repository,
+          sorted according to the key (smaller keys first). Each key should
+          only appear at most once in the repository. If a record with the
+          given key already exists, update the data associated with that key to
+          the new data value. The operation should return 1 if the {key, data}
+          record was inserted, return 0 if an existing record was updated, and
+          -1 if the operation had a problem completing correctly.
+
+        - Note that in real life, data can be much larger than an integer, so
+          the Super List structure should only store one copy of the data. This
+          means that each element in the Super List should have a key and a
+          pointer to data. All elements related to the same key (i.e. on
+          different levels) should point to the same data.
+
+    3.  int Repository_delete( int key )
+        - removes a record with the given key from the repository if such
+          a record exists. The operation should return 1 if such a record was
+          removed and 0 if there was no such record in the repository. 
+     
+    4.  int Repository_get( int key, int *data )
+        - gets a record with a specific key from the repository and stores (a
+          copy of) the data of that record into the data parameter, if such a
+          record exists. The operation should return 1 if the record was found
+          in the repository and 0 if the record was not found. 
+
+    5.  void Repository_print( int print_elements )
+        - prints the number of unique records in the repository, the total
+          number of records in each level of the Super List structure, the
+          current number of levels in the Super List, and the number of 'next'
+          steps performed so far (see below).
+        - If print_elements is 1, the function should print the list of unique
+          records in the repository. If print_elements is 2, the function
+          should print the list of records in each level of the repository in a
+          way that nicely presents the super list structure (think about how to
+          do this). Otherwise, the function should not print the specific
+          records.
+
+   A counter should maintain the number of steps performed on the Super list.      
+   The counter should be initialized to 0 and should be incremented each time 
+   a pointer is set to point to another record in any level of the Super List. 
+   This gives an indication of how much effort was spent so far.
+
+B. Driver Program Development
+
+   A driver program is provided (project3.c), as well as a Makefile that will
+   compile project3.c and repository.c to build the project3 executable.
+   However, the project3.c program should be modified to receive its input
+   parameters as command line arguments (see below), and to call the
+   repository_print function with print_elements=2 in the appropriate cases
+   (see Testing and Analysis below).
+
+   The program should receive its input parameters as command line arguments.
+   The user may specify the parameters in any order and does not need to
+   provide all the parameters. If a particular parameter is not provided, the
+   default value for that parameter should be used.
+
+   The program should receive the following input parameters, with the
+   following defaults, as command line parameters:
+
+     -r <max range> with a default of 100 (for numbers between 1..100)
+     -o <operations> with a default of 1,000,000 (for the number of operations).
+     -s <seed> with a default of 20, for the starting seed.
+     -p <probability percentage> with a default of 50.
+
+   The program should exit after completing the run.
+
+C. Testing and Analysis
+
+    You should run AT LEAST the following tests to check your program:
+
+    1.a  Run it with keys between 1..10, for 1000 operations, 
+         printing (print_element = 2 ) every 100 operations.
+    1.b  Run it with keys between 1..100, for 10,000 operations, 
+         printing (print_element = 2 ) every 1000 operations.
+    1.c  Run it with keys between 1..100, for 1,000,000 operations, 
+         printing (print_element = 1 ) every 100,000 operations.
+    1.d  Run it with keys between 1..1000, for 10,000,000 operations, 
+         printing (print_element = 0 ) every 1,000,000 operations. 
+    1.e  Run it with keys between 1..1000, for 100,000,000 operations, 
+         printing (print_element = 0 ) every 10,000,000 operations. 
+    1.f  Run it with keys between 1..10000, for 50,000,000 operations, 
+         printing (print_element = 0 ) every 5,000,000 operations. 
+
+    We should be able to use your driver program to run all of these tests
+    without recompiling anything. You do NOT need to include the output of the
+    above tests in your submission.
+
+    The step counts, averages, and analysis for parts 2 and 3 below MUST be
+    included in your submission: 
+
+    2.   Re-run 1.d, 1.e, and 1.f with 5 different seeds 20-24. Include in
+         your results document the number of steps in each case and calculate
+         the average number of steps for 1.d, 1.e, and 1.f respectively. Please
+         analyze and explain the results in detail (include what you would
+         expect the number of steps to be based on your mathematical analysis).
+
+    3.   In a standard Super List (1.a-1.f, 2), the probability (p) used when
+         randomizing level instantiation upon insertion is 50%. Re-run 1.d with
+         p=25% and also with p=75% instead. Include the number of steps in each
+         case with seed 20 (you do not need to analyze these results). 
+
+Note: All through this project, you MUST use the rand100 related functions 
+      (see rand100.h) to randomize on the p parameter of the Super List. 
+      The Get_next_op function should be the only function that uses the
+      usual rand functions from Projects 1 and 2. This is done to create
+      a separation between the random number streams so that your results
+      for 1.a to 1.d will be similar to those in project2 (the keys and data
+      appearing in the list should match project2 exactly).
+
+      All provided files (Makefile, project3.c, rand100.h, rand100.c, and
+      sl_repository.h) are available on the ugrad machines in
+      ~amir220/Projects/project3.
+
+D. Submission
+
+    Please come to class on Friday (10/2) with a complete, typed design.
+    Please try hard to complete implementation of the Super List by
+    Monday 10/12.
+
+    Submission date of a complete project including design document, code, and
+    results/analysis is: Friday October 16, noon.
+
+    Submission is accomplished by emailing a tar file to amir220@cs.jhu.edu.
+    Please do not include executable/object files or cores in your tar (include
+    only the files you want to submit)
+
+    The development environment and the place where you have to check your
+    program is *only* on the ugrad1-24 machines. 

@@ -1,0 +1,100 @@
+GDB
+
+GDB is a program that you can use to help debug your programs. It has
+a large amount of functionality. GDB can be used to actually see what
+is happening as you run you program. You can step through the lines in
+your program, set breakpoints where the debugger will stop and let you
+inspect the state of your program, and you can even change the values
+of variable in your program as it runs. We encourage you explore the
+functionality of GDB, but we will present only a few things which are
+especially useful.
+
+Part 1) Compiling
+
+If you want to use GDB, you need to use the -g flag when you compile
+your program:
+
+gcc -g -o program_name my_c_code.c 
+
+The executable will contain extra information that GDB can use.
+
+Part 2) Running your program using GDB
+
+From the command line, you can type:
+
+gdb program_name
+
+This will start gdb and load your program into gdb. You can now run
+your program from the command prompt in gdb. To do this, type:
+
+run
+
+Your program will start running. The debugger is great for finding
+bugs that cause crashes. If a segmentation fault occurs, gdb will
+stop. You can see where the error occurred, and you can print the
+values of current variables. The following commands are useful:
+
+bt: Shows you a back trace of all of the functions that have been
+called below main. These actually are referred to as frames. Each time
+a function is called, a frame is added to the stack. So, you can see
+where the program crashed and what functions were called to get to
+this point. 
+
+up: Move up one function (or frame). 
+
+down: Move down one function (or frame). 
+
+l: Print the source code where the debugger stopped.
+l line_number: Print the source code around the specified line number.
+
+print: Prints the value of variables.
+For example, you can print the value of a pointer as follows.
+
+print myptr
+
+If you want to print the contents of the pointer, you can do the
+following:
+
+print *myptr
+
+When you run you program, you can set breakpoints at specific
+locations where you want the program to stop. One the program stops at
+a breakpoint, you can look at the contents of the local variables. To
+set a breakpoint you can type:
+
+break 15
+
+This sets a breakpoint at line 15.
+
+When the program stops at the breakpoint, you can examine the
+variables, and then you can start running the program from the point
+where you stopped by typing:
+
+continue
+
+This should get you started. GDB has help in it. You can view this by
+typing:
+
+help 
+
+Part 3) Core Files
+
+Core files are created when a program crashes. These files are images
+of the state of the memory at the time that the program terminated.
+Core dumps are often caused when a pointer having a value of NULL is
+used.
+
+First, when you compile your program you need to use the -g flag
+(described above).
+
+Now, you can used GDB. If you happen to get a core file (or when), you
+will see an error reported and the program will stop. Take a look at
+the core file using ls -l. This will show show the time when the core
+file was created. You may have more than one core file and you can
+find the latest one this way. When you find the core file you want to
+look at, run GDB:
+
+gdb program_name core.12423
+
+Now you can examine the core file using the commands described above.
+

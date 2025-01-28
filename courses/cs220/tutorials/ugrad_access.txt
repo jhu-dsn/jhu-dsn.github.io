@@ -1,0 +1,94 @@
+The ugrad machines
+==================
+
+In the CS220 course, we will be using the 24 ugrad machines maintained by the
+Computer Science Department. The names of these machines are ugrad1.cs.jhu.edu,
+ugrad2.cs.jhu.edu, ugrad3.cs.jhu.edu, ... , ugrad24.cs.jhu.edu. You can use any
+of these 24 machines -- if you create a file on a particular ugrad machine, you
+will be able to view and edit it on any of the other machines as well.
+
+These computers are physically located in Malone Hall 122 and Malone Hall G61.
+Your JCard should give you access to these labs (non-CS students with course
+accounts may not have access immediately, but access can be arranged).
+
+
+Accessing the ugrad machines remotely
+=====================================
+
+During class, we will work on the ugrad machines remotely from the Maryland 310
+classroom, and you can do this to work on your projects at home on your laptop
+too.
+
+To connect to the ugrad machines remotely, we will use ssh.
+
+On Windows:
+-----------
+You will need to install PuTTY, which is available here:
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+Once you have PuTTY installed, the steps to login are:
+1. Start PuTTY
+
+2. The PuTTY Configuration window should appear. Enter the name of the ugrad
+   machine you want to connect to (for example, ugrad10.cs.jhu.edu) in the
+   "Host Name (or IP address)" box. The "Port" box should be 22, and the
+   "Connection type" should be SSH.
+
+3. Click the "Open" button.
+
+4. The first time you connect to a particular ugrad machine, a box will pop up
+   saying that PuTTY does not recognize the server's host key. Most of the time
+   it's fine to click "yes" here, but if you want to be completely safe, you
+   can first verify that the key fingerprint showing in the pop-up box matches
+   the one in the "SSH Fingerprint Table for Ugrad Net machines" here:
+   https://support.cs.jhu.edu/wiki/SSH_Key_Fingerprints_for_Grad_and_Ugrad_Net_Linux_Computers
+
+5. A PuTTY window will appear with the prompt "login as:". Type your user name
+   and hit enter (if you got your account through the cs220 course, your user
+   name starts with "ipa" and ends with some number from 1-40).
+
+6. You'll then be prompted for your password. Type it in and hit enter.
+
+7. You should now be logged into your account.
+
+On Mac:
+-------
+1. Open up a terminal window
+    - Terminal.app can be found in the Utilities folder inside the Applications
+      folder.
+
+2. In the terminal window, type: 
+        ssh your_user_name@ugrad#.cs.jhu.edu
+   with "your_user_name" replaced by your user name and "#" replaced by a number
+   between 1 and 24.
+   
+   For example, if your user name is ipa40, and you want to log into ugrad10,
+   you would type:
+        ssh ipa40@ugrad10.cs.jhu.edu
+
+3. You will be prompted for your password. Type it in and hit enter.
+
+4. You should now be logged into your account.
+
+
+Accessing the course code
+=========================
+
+All the code we go over in class is kept in the amir220 account on the ugrad
+machines.
+
+To get to the home directory of the amir220 account type:
+    cd ~amir220
+
+To see everything in that directory type:
+    ls
+
+To get to the code in the Week1 directory type:
+    cd Week1
+
+To view a particular file, type:
+    less filename (for example, less hello_world.c)
+
+    - After using "less" to view a file, you can use the arrow keys to move up
+      and down in the file (if it doesn't all fit on the screen at once) and
+      press the "q" key to quit looking at the file.

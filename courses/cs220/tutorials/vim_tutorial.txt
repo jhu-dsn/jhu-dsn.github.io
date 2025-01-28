@@ -1,0 +1,276 @@
+Vim Tutorial
+John Lane
+February 1, 2006
+
+Here's a brief introduction to the text editor Vim. Vim stands for Vi Improved.
+It's more powerful and a little easier to use than Vi. Vi is the standard
+editor that comes with Unix operating systems. Vim is available for many
+different operating systems including Windows, Apple OS X, and Linux. If you
+want to learn more, go to www.vim.org. This page contains extensive
+documentation and links to various reference material.
+
+Part 1: What's the most important thing to know about Vim?
+
+Initially, the most confusing thing about Vim is that it has modes. When you
+first start Vim, you must open a file by typing :e <filename>. Now you will be
+in Normal mode. In Normal mode you can move around the text file, delete text,
+search, and copy and paste (among other things). However, you can't enter text
+like you can in a word processor just by typing. This may seem a little
+strange at first, but many people like this "feature." If you want to edit text
+just by typing (similar to what you would do in a word processor), you must
+switch to the Insert Mode. These two modes allow you to do a lot of common
+editing tasks. 
+
+You can switch between Normal and Insert modes as follows:
+
+switch to Insert Mode at the cursor: i
+switch to Normal Mode: ESC 
+
+Now that you are aware of Vim's modes, we can get go over over a few commands.
+
+Part 2: Essential Commands. Here are just a few of the more useful commands.
+Vim has many, but you should be able to edit code with what follows.
+
+Starting the editor:
+
+On the ugrad machines, you can start vim simply by entering vim at the command
+line. If you want to edit a file, you can type vim <filename> like this:
+
+vim my_c_file.c
+
+Opening files, Saving files, and Exiting Vim: You can easily do these things
+from Normal Mode.
+
+To write the file that you are working on. Note that you need to type the
+colon. When you are in Normal Mode, typing a colon allows you to type a command
+into a line at the bottom of the screen.
+
+:w
+
+To edit a new file in a new buffer.
+
+:e <FILENAME>
+
+If you open more than one file, you can switch between them.
+
+Typing the following shows a list of all open buffers.
+
+:ls
+
+You can switch to the buffer you want by typing.
+
+:b <BUFFER NUMBER>
+
+You can quit by typing.
+
+:q
+
+If you don't want to save the file that you are editing, you can quit vim
+without saving your changes.
+
+:q!
+
+Moving the cursor: In Normal Mode, the h,j,k, and l keys can be used to move
+the cursor by one space. The arrow keys usually work, too. 
+
+left: h
+right: l
+up: k 
+down: j
+move right to the next word: w
+move right to the end of the current word: e 
+move to the beginning of the line: ^
+move to the end of a line: $
+move up a page: CTRL u   (the up arrow often works, too) 
+move down a page: CTRL d     (the down arrow often works)
+move to a line in the file: <LINE NUMBER> gg (or <LINE NUMBER> G, or :<LINE NUMBER>)
+move to the last line in the file: G 
+
+Deleting: In Normal mode you can delete characters, words, and lines. 
+
+delete the character under the cursor: x
+delete a line: dd
+delete from the cursor to the end of a word (including the space): dw 
+delete from the cursor to the end of a word (not including the space): de
+delete from the cursor to the end of the line: d$ 
+
+Undo: You can undo things that you have done. (And redo if you undo too much!)
+
+undo: u
+undo an entire line: U
+redo something after you used undo: CTRL r
+
+Visual Mode: This mode makes selecting text easy. All you need to do type v
+when you are in normal mode and then Vim allows you to select parts of the text
+for deleting or copying. 
+
+To enter visual mode: v
+
+If you move the cursor a few lines down and then type d, you will delete the
+selected text.
+
+Copying and pasting: You can "yank" text into a buffer and then "put" the text
+into the file.
+
+To yank: select the text using visual mode, then type y
+To put the yanked text (paste) before the cursor: P 
+To put the yanked text (paste) after the cursor: p
+To yank the text from the cursor to the end of a line: y$ 
+
+Searching: If you want to find a word, from Normal Mode, just type / followed
+by the word and then hit return.
+
+To search for dog: /dog
+To go to the next occurrence of the word that the cursor is on: * 
+
+Search and Replace: You can use the Vim substitute command to search and
+replace.
+
+Examples:
+
+To replace dog with cat in the whole file.
+
+:%s/dog/cat/g
+
+To do the same thing, but ask for confirmation.
+
+:%s/dog/cat/gc
+
+You can also use Visual Mode to select some lines and then only use substitute
+on these lines.
+
+Formatting text: Try selecting some text with visual mode and typing gq. This
+formats the text. Try it with C comments.
+
+/* This comment is much too long. It should be broken up into several lines. Vim makes this easy. All you need to do is select the line and type gq. Then the comment becomes one line. */
+
+After the above line is selected and you type gq, you get the following:
+
+/* This comment is much too long. It should be broken up into several lines.
+ * Vim makes this easy. All you need to do is select the line and type gq. Then
+ * the comment becomes one line. */
+
+Advanced Capabilities: Vim is a very powerful editor. It has a scripting
+language. You can use regular expressions when searching or using the
+substitute command. You can send selected text to outside programs for
+processing. It may be useful for you to know some of these commands, but this
+document only describes "basic" Vim functionality. We just want you to be aware
+of the things that a text editor can do. Some of you will spend thousands of
+hours programming (No, not on this class :)). It's worth devoting a little time
+to mastering an editor. Besides, it's fun! 
+
+Example 1:
+
+The substitute command can do more powerful things. For example, the following
+substitute command can be used to add an open comment and a closed comment to a
+line. It's a simple way to comment out a block of code.
+
+:s/^.*$/\/*&*\//g
+
+If you select some lines with Visual Mode and then enter this command in Normal
+Mode, all of the lines are commented out. 
+
+The match component is "^.*$". The ^ means beginning of line. The $
+means end of line. The .* matches any number of characters between the
+beginning and end of the line. So, this matches a whole line.
+
+The part that is substituted is "\/*&*\/". Note that the / is a special
+character so we put a \ in front of it if we really want a /. The & represents
+the entire match (which was the whole line). So this command just places a /*
+and */ around the line. It's a little complicated. You don't need to know how
+to do this, but there's more to searching and replacing than substituting cat
+for dog!
+
+Example 2: You may want to sort a list in Vim. You can just select the text
+that you want to sort in Visual Mode and then hit :!sort. This will sort the
+selected lines by sending them to the Unix sort program.
+
+Example 3: You can split the window into parts if you want to view more than
+one buffer at a time or if you want to have two views of the same file.
+
+:split
+
+Then you can type CTRL w CTRL w to switch between the two windows and CTRL w
+q (*not* CTRL q) to close the current window. 
+
+Example 4: Vim has auto completion. Enter Insert Mode, type a few words. Now
+type the first character of one of the words you typed and then type CTRL p.
+Make sure you are in visual mode.
+
+Commands for Editing Code: The following commands can be typed so that your
+tabs and spaces work well for editing C code. I code with tabs and I always set
+a tab to be 8 spaces. However, that's too much for an indent. So this makes the
+tab key put in four spaces the first time you hit it, and then a tab. If you
+hit it three times, there will be a tab and then four spaces. 
+
+:set cindent
+:set shiftwidth=4
+:set softtabstop=4
+
+Additional Resources:
+
+Try the vim tutor. Just type vimtutor at the command line.
+
+Go to www.vim.org.
+
+Look in the help by typing:
+
+:help
+:help <THE_COMMAND_YOU_WANT_HELP_FOR>
+
+Have fun.
+
+
+EDIT (2015):
+
+If you're new to Vim (and the command line in general), Vim may seem like an
+outdated tool compared to IDEs like JGrasp or Eclipse (or even a simple text
+editor like Notepad) because Vim only runs from the command line. Vim is still
+popular today, however, and has an in-depth Wiki as well as plenty of Stack
+Overflow questions online. If you're wondering "Can Vim do X?", try Google.
+You're bound to find something useful, usually in the first couple results.
+
+Vim is one of many text editors that developers code in. If it doesn't turn out
+to be your cup of tea, there are plenty of other free text editors online with
+clickable buttons and flatter learning curves. Note, however, that you will
+need to be comfortable using a command line text editor (Vim, Emacs, or Nano)
+for the midterm in this course, so we highly recommend using one to work on
+your projects as well.
+
+
+Here's some possibly useful stuff that the above tutorial doesn't mention:
+
+You can use your mouse in vim:
+
+:set mouse=a
+
+The above command allows you to scroll with the scroll wheel and move the
+cursor by clicking.
+
+
+If your arrow keys don't work in INSERT mode (meaning they insert characters
+like ^^A), try
+
+:set term=builtin_ansi
+
+If that doesn't work, google something along the lines of "vim arrow keys not
+working in insert mode". There's a Vim wiki page specifically about this.
+
+
+You can open multiple files in separate tabs:
+
+vim -p file1.txt file2.txt file3.txt
+
+The above command opens three text files in three separate tabs. If mouse mode
+is enabled, you can click on a tab to switch to it.
+
+
+You can tell vim to run a series of commands every time it opens by adding a
+.vimrc file to your home directory, ~. For instance, if you want vim to always
+open with mouse mode enabled, add "set mouse=a" to ~/.vimrc on a new line.
+
+A vimrc file with some useful settings can be found in
+~amir220/tutorials/vimrc. You can copy this file to your home directory to use
+it as your .vimrc with the command:
+
+cp ~amir220/tutorials/vimrc ~/.vimrc
