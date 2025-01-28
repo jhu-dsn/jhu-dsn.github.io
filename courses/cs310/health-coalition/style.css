@@ -1,0 +1,203 @@
+html, body{
+  background-color: #f0f2f2;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0px;
+
+}
+
+
+.content {
+  width: auto;
+  height: auto;
+  min-width: 50vw;
+  padding: 20px;
+  margin: 0px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.title {
+  font-size: 60px;
+  font-family: Helvetica, sans-serif;
+  font-weight: lighter;
+  color: black;
+  text-align: center;
+  padding-bottom: 30px;
+
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+  width: 200px;
+  background-color: white;
+
+}
+
+.menu a {
+  display: block;
+  color: #009999;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.flex-container{
+  display: flex;
+}
+
+.profiles{
+  margin-left: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.profile-container h2{
+  text-align: center;
+  color: #009999;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.prof {
+  width: 230px;
+  height: 70px;
+  padding: 10px;
+  margin: 5px;
+  background-color: white;
+}
+
+.prof h1 {
+  font-size: 20px;
+  margin: 0px;
+}
+.prof h3 {
+  font-size: 15px;
+  margin: 2px;
+  color: #006666;
+}
+
+.prof a {
+  margin: 3px;
+  float: right;
+}
+
+.prof img:hover{
+  width: 28px;
+  margin: 0px;
+
+}
+
+.overview-container {
+
+  width: 2000px;
+  margin-left: -40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: #009999;
+
+}
+
+.overview {
+  width: 800px;
+  padding: 20px;
+  padding-left: 80px;
+}
+
+.advisors {
+  margin: auto;
+  width: 50%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.advisors h2{
+
+  color: #006666;
+}
+.advisors h3{
+  padding-top: 12px;
+}
+.advisors h4{
+  margin: 0px;
+}
+
+.links{
+
+  margin-top: 60px;
+
+  height: 200px;
+  padding-left: 40px;
+}
+
+
+.link_button{
+  float: left;
+  margin: 5px 20px;
+  padding: 10px;
+  font-size: 18px;
+  color: 	#808080;
+  border: 2px solid #808080;
+  border-radius: 16px;
+  text-decoration: none;
+}
+
+.link_button:hover{
+  background-color: #808080;
+  color: #f0f2f2;
+
+}
+
+.space{
+
+  height: 100px;
+  text-align: center;
+  vertical-align: bottom;
+
+}
+
+.solution h1 {
+
+  text-align: center;
+  font-weight: lighter;
+  font-size: 36px;
+
+}
+
+.link_button2{
+  float: left;
+  padding: 10px;
+  font-size: 18px;
+  color: 	white;
+  background-color: #006666;
+  text-decoration: none;
+  border-radius: 16px;
+}
+
+.link_button2:hover{
+  background-color: #555;
+
+}
+
+.solution_container{
+  width: 60%;
+  margin: auto;
+}
+
+.ostickpic {
+  margin: 5% 15%;
+}
+
+.wirepic{
+  float: left;
+
+}
