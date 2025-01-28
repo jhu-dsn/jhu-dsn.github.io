@@ -41,13 +41,13 @@ Due to time constraints, the algorithm to decide where and when to expand and co
 
 I wrote these two papers during the course:
 
-  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Project Proposal-final.doc|Project Proposal]] //(February 12, 2007)//
+  * [[https://jhu-dsn.github.io/courses/cs667-2007/dlb/papers/Project Proposal-final.doc|Project Proposal]] //(February 12, 2007)//
 
-  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc|Base Decision Algorithm Overview]] //(March 5, 2007)//
+  * [[https://jhu-dsn.github.io/courses/cs667-2007/dlb/papers/Base Decision Algorithm Overview.doc|Base Decision Algorithm Overview]] //(March 5, 2007)//
 
 I gave a presentation using the following OpenOffice Impress presentation at the end of the course, summing up the work I did throughout the semester:
 
-  * [[http://www.cnds.jhu.edu/courses/cs667-2007/dlb/papers/dlb.odp|Dynamic Load Balancing and Instantiation]] //(April 25, 2007)//
+  * [[https://jhu-dsn.github.io/courses/cs667-2007/dlb/papers/dlb.odp|Dynamic Load Balancing and Instantiation]] //(April 25, 2007)//
 
 Concepts from this thesis were used in the development of my project:
 

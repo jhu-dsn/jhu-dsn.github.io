@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
-<?xml-stylesheet href="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/lib/styles/feed.css" type="text/css"?>
+<?xml-stylesheet href="https://jhu-dsn.github.io/courses/cs667-2007/wapp/lib/styles/feed.css" type="text/css"?>
 <rdf:RDF
     xmlns="http://purl.org/rss/1.0/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
     xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <channel rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/feed.php">
+    <channel rdf:about="https://jhu-dsn.github.io/courses/cs667-2007/wapp/feed.php">
         <title>Web Application Privacy Protector playground</title>
         <description></description>
-        <link>http://www.cnds.jhu.edu/courses/cs667-2007/wapp/</link>
-        <image rdf:resource="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico" />
+        <link>https://jhu-dsn.github.io/courses/cs667-2007/wapp/</link>
+        <image rdf:resource="https://jhu-dsn.github.io/courses/cs667-2007/wapp/lib/images/favicon.ico" />
        <dc:date>2013-06-07T02:38:44-04:00</dc:date>
         <items>
             <rdf:Seq>
-                <rdf:li rdf:resource="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994"/>
+                <rdf:li rdf:resource="https://jhu-dsn.github.io/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994"/>
             </rdf:Seq>
         </items>
     </channel>
-    <image rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico">
+    <image rdf:about="https://jhu-dsn.github.io/courses/cs667-2007/wapp/lib/images/favicon.ico">
         <title>Web Application Privacy Protector</title>
-        <link>http://www.cnds.jhu.edu/courses/cs667-2007/wapp/</link>
-        <url>http://www.cnds.jhu.edu/courses/cs667-2007/wapp/lib/images/favicon.ico</url>
+        <link>https://jhu-dsn.github.io/courses/cs667-2007/wapp/</link>
+        <url>https://jhu-dsn.github.io/courses/cs667-2007/wapp/lib/images/favicon.ico</url>
     </image>
-    <item rdf:about="http://www.cnds.jhu.edu/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994">
+    <item rdf:about="https://jhu-dsn.github.io/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994">
         <dc:format>text/html</dc:format>
         <dc:date>2011-06-14T12:13:14-04:00</dc:date>
         <title>playground:playground</title>
-        <link>http://www.cnds.jhu.edu/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994</link>
+        <link>https://jhu-dsn.github.io/courses/cs667-2007/wapp/doku.php?id=playground:playground&amp;amp;rev=1308067994</link>
         <description></description>
     </item>
 </rdf:RDF>

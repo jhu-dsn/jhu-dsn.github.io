@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
-<?xml-stylesheet href="http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/lib/styles/feed.css" type="text/css"?>
+<?xml-stylesheet href="https://jhu-dsn.github.io/courses/cs667-2007/spamproject/lib/styles/feed.css" type="text/css"?>
 <rss version="2.0">
     <channel>
         <title>Spam Project playground</title>
         <description></description>
-        <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+        <link>https://jhu-dsn.github.io/courses/cs667-2007/spamproject/</link>
         <lastBuildDate>Sun, 01 Sep 2013 04:13:00 -0400</lastBuildDate>
         <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
         <image>
-            <url>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/lib/images/favicon.ico</url>
+            <url>https://jhu-dsn.github.io/courses/cs667-2007/spamproject/lib/images/favicon.ico</url>
             <title>Spam Project</title>
-            <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/</link>
+            <link>https://jhu-dsn.github.io/courses/cs667-2007/spamproject/</link>
         </image>
         <item>
             <title>playground:playground</title>
-            <link>http://www.cnds.jhu.edu/courses/cs667-2007/spamproject/doku.php?id=playground:playground&amp;amp;rev=1308067998</link>
+            <link>https://jhu-dsn.github.io/courses/cs667-2007/spamproject/doku.php?id=playground:playground&amp;amp;rev=1308067998</link>
             <description></description>
             <pubDate>Tue, 14 Jun 2011 12:13:18 -0400</pubDate>
         </item>
