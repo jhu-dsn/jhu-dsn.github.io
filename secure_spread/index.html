@@ -1,0 +1,341 @@
+<!--#include virtual="/includes/header" -->
+
+<title>The Secure Spread Project</title>
+
+</head>
+
+<!--#include virtual="/includes/header-a" -->
+
+<center>
+<img src="/pics/secure_spread_title.gif" alt="SECURE SPREAD">
+</center>
+<!--#include virtual="/includes/header-b" -->
+
+<table>
+<tr>
+<td width=250>
+<FONT SIZE=-1>
+<DD><A href="http://www.cs.jhu.edu/~yairamir">Yair Amir</A></DD>
+<DD><A href="http://www.cs.jhu.edu/~crisn">Cristina Nita-Rotaru</A></DD>
+<DD><A href="http://www.cnds.jhu.edu/~jschultz">John Schultz</A></DD>
+<DD><A href="http://www.cnds.jhu.edu/~jonathan">Jonathan Stanton</A></DD>
+<font size=+1>
+</td>
+<td>
+<img src="/pics/sec_spread.gif" alt="SECURE SPREAD img">
+</td>
+</tr>
+</table>
+
+<HR>
+
+
+<h2>Current News</h2>
+<table valign=top width=100% border=0>
+  <tr>
+  <td bgcolor="#ead29a" align=left>09/30/2002</td>
+  <td bgcolor="#f7e4c3" align=left>
+      Secure Spread <a
+      href="http://www.cnds.jhu.edu/download/download_securespread.cgi"> 2.1.0
+      </a> is available.  Supports Cliques 1.0. </td></tr>
+  <tr>
+
+
+  <tr>
+  <td bgcolor="#9aadd6" align=left>02/05/2002</td>
+  <td bgcolor="#ccd5e8" align=left>
+      Secure Spread <a
+      href="http://www.cnds.jhu.edu/download/download_securespread.cgi"> 2.0
+      </a> is available.  The major feature is that it supports four
+      additional key agreement protocols, besides GDH. For the new
+      four key agreement protocols, only simple cases are supported
+      for now (join, leave, partition, merge), the only protocol 
+      robust to any cascading group events is GDH. For more details
+      see the README file available in the distribution.</td></tr>
+  <tr>
+
+  <tr>
+  <td bgcolor="#ead29a" align=left>02/05/2002</td> <td
+  bgcolor="#f7e4c3" align=left> <a
+  href="http://www.cnds.jhu.edu/pub/papers/patch1-ssp.1.0.0.txt">Patch
+  </a> available for Secure Spread. Also <a
+  href="http://www.cnds.jhu.edu/pub/papers/patch-spread.3.16.1.txt">
+  patch </a>for Spread 3.16.1 available. Thanks to Frank Cole for
+  providing them. Note that Secure Spread patch should be applied
+  after the patch that solved the message type problem (available
+  below). </td></tr>
+
+  <tr>
+  <td bgcolor="#9aadd6" align=left>01/29/2002</td> <td
+  bgcolor="#ccd5e8" align=left> Secure Spread 1.0.0 does not compile
+  out of box with Spread 3.16.1. The reason is that one variable
+  defined by Spread and used by Secure Spread changed its name
+  (MAX_SCATTER_ELEMENTS is now MAX_CLIENT_SCATTER_ELEMENTS). Fix:
+  replace any MAX_SCATTER_ELEMENTS in the Secure Spread distribution
+  tree with MAX_CLIENT_SCATTER_ELEMENTS.  </td></tr> <tr> <td
+  bgcolor="#ead29a" align=left>11/15/2001</td> <td bgcolor="#f7e4c3"
+  align=left> A <a
+  href="http://www.cnds.jhu.edu/pub/papers/ssp-1.0.0.patch"> patch
+  </a>that solves a problem with the message type for Secure Spread is
+  available. Thanks to Roy Tromble for noticing the problem</td></tr>
+ 
+  <tr>
+  <td bgcolor="#9aadd6" align=left>07/16/2001</td> <td
+  bgcolor="#ccd5e8" align=left> <a
+  href="http://www.cnds.jhu.edu/download/download_spread.cgi">Spread
+  3.16.0 </a>which is compatible with Secure Spread 1.0.0 was
+  released.</td></tr>
+  
+  <tr>
+  <td bgcolor="#ead29a" align=left>06/01/2001</td> <td
+  bgcolor="#f7e4c3" align=left> <A
+  href="http://www.jhuisi.jhu.edu">The Johns Hopkins Information
+  Security Institute</a> becomes a collaborator on the Secure Spread
+  project.</td></tr>
+  
+  <tr>
+  <td bgcolor="#9aadd6" align=left>03/30/2001</td> <td
+  bgcolor="#ccd5e8" align=left> Secure Spread <a
+  href="http://www.cnds.jhu.edu/download/download_securespread.cgi">
+  1.0.0 </a>available.  Note that you still need Spread 3.12 or <a
+  href="http://www.cnds.jhu.edu/download/download_pread.cgi">3.14
+  </a>.</td></tr> <tr>
+  
+ <td bgcolor="#ead29a" align=left>03/28/2001</td> <td
+  bgcolor="#f7e4c3" align=left> An incompatibility between Secure
+  Spread and Spread 3.15 was reported.  Spread 3.12 or 3.14</a> are
+  required.  </td></tr>
+  
+ <tr>
+  <td bgcolor="#9aadd6" align=left>11/05/2000</td>
+  <td bgcolor="#ccd5e8" align=left>
+      Secure Spread 0.0.3 available. </td></tr>
+  <tr>
+</table>
+
+
+
+<h2>Overview</h2>
+<P>
+  The Secure Spread project addresses integrating security services
+  with reliable group communication. In particular, it enhances the <a
+  href="http://www.spread.org"> Spread Toolkit</a> with security
+  services.
+</P>
+
+<P> Group communication systems are application level multicast
+  systems, providing reliable and ordered (FIFO, Causal, Agreed, Safe)
+  message delivery, and a group membership service. The membership
+  service notifies the upper-level application about every group
+  change and about the list of current group members. Many group
+  communication systems are built around a client-server architecture
+  where a small number of servers provide service to numerous clients.
+</P>
+
+<P>
+  Confidentiality is the main concern of secure group
+  communication. As using public cryptography tools is very expensive,
+  efficient security services can be provided by means of symmetric
+  cryptography which requires the members of a group to share a secret
+  key.
+</P>
+<P>
+  Secure group communication requires forward and backward secrecy to
+  protect previous or future members of the group to decipher
+  confidential communication. In the context of a dynamic group
+  membership, these requirements make the management of the shared key
+  a challenging problem. Moreover, the interrelation between
+  high-availability and security guarantees are not well understood,
+  especially in the presence of general, possibly cascading, network
+  events.
+</P>
+<P>
+ Our approach uses contributory key agreement methods that proved to
+ provide advantages versus centralized key distribution schemes.
+</P>
+
+<P>
+  We provide a secure group communication layer and an API that uses a
+  robust contributory key agreement protocol based on the GDH suite
+  protocol developed by the <a
+  href="http://sconce.ics.uci.edu/cliques/">Cliques</a> project.  Our
+  key agreement protocol handles processor and network faults (under a
+  fail-stop or crash-and-recover model), asynchronous membership
+  events (such as cascading joins,leaves,merges and network
+  partitions) and is robust to any sequence (possibly cascading) of
+  group membership changes.
+</P>
+
+
+<h2>Development</h2>
+<p>
+  Current work consists of providing a practical, scalable secure group
+   communication, by integrating security services into the servers. By hosting
+   the expensive key agreement protocols at the servers we amortize the
+associated cost over many groups. Using this method, joins and leaves become very fast, while the cost for refreshing the key when partitions and merges occur decreases significantly.
+
+   
+<p>
+Join Spread <a href="http://lists.spread.org/mailman/listinfo/spread-users/"> mailing list </a>.
+
+<H2>Publications</H2>
+
+<h3>Refereed Conferences</h3>
+<UL>
+
+<li> Y. Amir, C. Nita-Rotaru, J. Stanton and G.Tsudik. Scaling Secure Group Communication Systems: Beyond Peer-to-Peer. To appear in the <i> Proceedings of DISCEX3</i>
+Washington DC, April 22-24, 2003. Obsoletes Technical Report CNDS-2002-3, October 2002.
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.ps">[PS]</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.ps.gz">[PS.GZ]</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/discex3_scalable.pdf">[PDF]</a>.
+
+<li>
+Y. Amir, Y. Kim, C. Nita-Rotaru, and G. Tsudik.  On the Performance of
+Group Key Agreement Protocols.  Published in the Proceedings of the
+22th IEEE International Conference on Distributed Computing Systems,
+Vienna, Austria, July 2-5, 2002, short paper.  <a
+href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">ps</a>, <a
+href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.pdf">pdf</a>.
+
+<li>
+Y. Amir, C. Nita-Rotaru, and J. Stanton.  Framework for Authentication
+and Access Control of Client-Server Group Communication Systems In the
+Proceedings of the Third International Workshop on Networked Group
+Communication, London, UK November 7-9 2001.  <a
+href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.ps">ps</a>,
+<a
+href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.ps.gz">ps.gz</a>,
+<a
+href="http://www.cnds.jhu.edu/pub/papers/ngc01_auth_framework.pdf">pdf</a>.
+
+
+<li>
+Y. Amir, Y. Kim, C. Nita-Rotaru, J. Schultz, J. Stanton, and G.
+Tsudik. Exploring Robustness in Group Key Agreement.  Published in
+Proceedings of the 21th IEEE International Conference on Distributed
+Computing Systems, Phoenix, Arizona, April 16-19, 2001, pp 399-408.
+<a
+href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.ps">ps</a>,
+<a
+href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.ps.gz">ps.gz</a>,
+<a
+href="http://www.cnds.jhu.edu/pub/papers/icdcs01_robustness.pdf">pdf</a>.
+
+<li>
+Y. Amir, G. Ateniese, D. Hasse, Y. Kim, C. Nita-Rotaru,
+T. Schlossnagle, J. Schultz, J. Stanton, and G. Tsudik. Secure Group
+Communication in Asynchronous Networks with Failures: Integration and
+Experiments. Published in Proceedings of the 20th IEEE International
+Conference on Distributed Computing Systems, pp.330--343, Taipei,
+Taiwan, April 2000.  <a
+href="http://www.cnds.jhu.edu/pub/papers/security_icdcs2000.ps">ps</a>,
+<a
+href="http://www.cnds.jhu.edu/pub/papers/security_icdcs2000.ps.gz">ps.gz</a>,<a
+href="http://www.cnds.jhu.edu/pub/papers/security_icdcs2000.pdf">pdf</a>.
+</UL>
+
+<h3>Technical Reports</h3>
+<UL> 
+
+<li>
+Y. Amir, Y. Kim, C. Nita-Rotaru, and G. Tsudik. 
+On the Performance of Group Key Agreement Protocols.
+Technical Report CNDS-2001-5 Obsoletes Technical Report CNDS-2001-4), Computer Science Department, Johns Hopkins University. October, 2001.
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2001-5.pdf">pdf</a>.
+
+<li>
+Y. Amir, Y. Kim, C. Nita-Rotaru, J. Schultz, J. Stanton, and G.
+Tsudik. Exploring Robustness in Group Key Agreement. 
+Technical Report CNDS-2000-4, Computer Science Department, Johns Hopkins University. August, 2000.
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-4.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-4.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-4.pdf">pdf</a>.
+
+<li>
+C. Nita-Rotaru . 
+The Cost of Adding Security Services to Group Communication Systems.
+Technical Report CNDS-2000-3, Computer Science Department, Johns Hopkins University. March, 2000.
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-3.ps">ps</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-3.ps.gz">ps.gz</a>,
+<a href="http://www.cnds.jhu.edu/pub/papers/cnds-2000-3.pdf">pdf</a>.
+</UL>
+
+<h3>Presentations</h3>
+<ul>
+
+<li>Y. Amir, Y. Kim, C. Nita-Rotaru, and G.Tsudik.
+ <a href="http://www.cnds.jhu.edu/funding/dynamic_coalitions/icdcs2002_security">On the Performance of Group Key Agreement Protocols
+</a>. Presented at the 22nd IEEE International Conference on Distributed Computing Systems, Viena, Austria, July 2-5, 2002 by Cristina Nita-Rotar\u.
+
+
+<li>Y. Amir, C. Nita-Rotaru, and J. Stanton.
+<a href="http://www.cnds.jhu.edu/funding/dynamic_coalitions/ngc2001/" >
+Framework for Authentication and Access Control of Client-Server Group Communication Systems</a>. 
+Presented at the Third International Workshop on Networked Group Communication, London, UK November 7-9 2001 by Jonathan Stanton.
+
+<li>Y. Amir, Y. Kim, C. Nita-Rotaru, J. Schultz, J. Stanton, and G.
+Tsudik.. <a href="http://www.cnds.jhu.edu/funding/dynamic_coalitions/icdcs2001/" >Exploring Robustness in Group Key Agreement
+</a>. Presented at the 21th IEEE International Conference on Distributed Computing Systems, Phoenix, Arizona, April 16-19, 2001 by Cristina Nita-Rotaru.
+
+<li>Y. Amir, D. Hasse, Y. Kim, C. Nita-Rotaru, T. Schlossnagle, J. Schultz, J. Stanton, and G.
+Tsudik.. <a href="http://www.cnds.jhu.edu/funding/dynamic_coalitions/icdcs2000/">Secure Group Communication in Asynchronous Networks with Failures:
+Integration and Experiments
+</a>. Presented at the 20th IEEE International Conference on Distributed Computing Systems, Taipei, Taiwan, April 10-13, 2000 by Jonathan Stanton.
+
+</ul>
+
+<H3>Software</H3>
+Secure Spread 2.0 and 1.0.0 are available. Linux, Solaris, BSDI and FreeBSD supported. With some minimal modification it works on Windows, too.
+It can be downloaded at 
+<a href="http://www.cnds.jhu.edu/download/download_securespread.cgi">http://www.cnds.jhu.edu/download/download_securespread.cgi</a>. 
+
+<H3>Documentation</H3>
+
+<a href="README_certificates"> How to generate certificates used by Secure Spread.</a><br><br>
+
+Secure Spread Function Interface
+<li> <a href="SSP_version.html"> SSP_version </a>
+<li> <a href="SSP_connect.html"> SSP_connect </a>
+<li> <a href="SSP_disconnect.html"> SSP_disconnect </a>
+<li> <a href="SSP_join.html"> SSP_join </a>
+<li> <a href="SSP_leave.html"> SSP_leave </a>
+<li> <a href="SSP_get_key.html"> SSP_get_key </a>
+<li> <a href="SSP_flush.html"> SSP_flush </a>
+<li> <a href="SSP_multicast.html"> SSP_multicast </a>
+<li> <a href="SSP_multicast.html"> SSP_scat_multicast </a>
+<li> <a href="SSP_receive.html"> SSP_receive </a>
+<li> <a href="SSP_receive.html"> SSP_scat_receive </a>
+<li> <a href="SSP_poll.html"> SSP_poll </a>
+<li> <a href="SSP_error.html"> SSP_error </a>
+
+<h3>Comments</h3>
+
+E-mail <a href="mailto:securespread@cnds.jhu.edu"><i>securespread@cnds.jhu.edu</i></a>
+for more information. 
+
+
+<!--#include virtual="/includes/footer" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+
+<HTML><HEAD><TITLE>Manpage of SSP_MULTICAST</TITLE></HEAD>
+
+<!--#include virtual="/includes/header-a" -->
+<!--#include virtual="/includes/header-b" -->
+<br><br>
+
+<H1>SSP_MULTICAST</H1>
+Section: User Manuals (3)<BR>Updated: JULY 2001<BR>
+<HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+SSP_multicast, SSP_scat_multicast - Multicast message to groups
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;ssp.h&gt;</B>
+
+<P>
+<B>int SSP_multicast(mailbox </B><I>mbox</I><B>, service </B><I>service_type</I><B>, const char *</B><I>group</I><B>, int16 </B><I>mess_type</I><B>, int </B><I>mess_len</I><B>, const char *</B><I>mess</I><B>);</B>
+
+<BR>
+
+<B>int SSP_scat_multicast(mailbox </B><I>mbox</I><B>, service </B><I>service_type</I><B>, const char *</B><I>group</I><B>, int16 </B><I>mess_type</I><B>, const scatter </B><I>scat_mess</I><B>);</B>
+
+<P>
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>SSP_multicast</B>
+
+and its variants all can multicast a message to a group.  The 
+message is sent on a particular connection and is marked as having come from the
+connection who sent it.
+The
+<I>service_type</I>
+
+is a type field that should be set to the service this message
+requires. The valid flags for messages are:
+<P>
+<DL COMPACT><DT><DD>
+
+<B>UNRELIABLE_MESS</B>
+
+<BR>
+
+
+<B>RELIABLE_MESS </B>
+
+<BR>
+
+
+<B>FIFO_MESS</B>
+
+<BR>
+
+
+<B>CAUSAL_MESS</B>
+
+<BR>
+
+
+<B>AGREED_MESS</B>
+
+<BR>
+
+
+<B>SAFE_MESS</B>
+
+</DL>
+
+<P>
+This type 
+can be bit ORed with other flags like SELF_DISCARD or ENCRYPT_MESS 
+if desired. SELF_DISCARD specifies that the message is sent to all the members of the
+group, but the sender and ENCRYPT_MESS specifies that the message will be encrypted.
+<P>
+The
+<I>group</I>
+
+string should include the name of the group to send to. 
+The group has a string name of no
+more then MAX_GROUP_NAME chars. 
+<P>
+The
+<I>mess_type</I>
+
+is a SHORT int (16 bits) which can be used by the 
+application arbitrarily.  The intent is that it could be used 
+to NAME different kinds of data messages so they can be
+differentiated without looking into the body of the message.
+This value 
+<B>will </B>
+
+be endian corrected before receiving. 
+<P>
+If the non-scatter varients are being used then a single buffer is
+passed to the multicast call specifying the full message to be sent.
+The 
+<I>mess_len</I>
+
+field gives the length in bytes of the message. While the
+<I>mess</I>
+
+field is a pointer to the buffer containing the message.
+For a scatter call both of these are replaced with one pointer,
+<I>scat_mess,</I>
+
+to a scatter structure, which is just like an iovec.  This allows 
+messages made up of several parts to be sent without an extra copy
+on systems which support scatter-gather.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+Returns the number of bytes sent
+on success or one of the following errors ( &lt; 0 ):
+<DL COMPACT>
+<DT><B>ILLEGAL_SESSION</B>
+
+<DD>
+The 
+<I>mbox</I>
+
+given to multicast on was illegal.
+<DT><B>CONNECTION_CLOSED</B>
+
+<DD>
+During communication to send the message errors occured
+and the send could not be completed.
+<DT><B>ILLEGAL_PARAM   </B>
+
+<DD>
+A call was made with an illegal size (negative)
+<DT><B>ILLEGAL_STATE        </B>
+
+<DD>
+A send call was made in a prohibited state: such as sending
+messages to a group after sending a flush to the group and before
+receiving a membership in that group, or sending a flush before receiving
+a flush request or after having already sent a flush.
+<DT><B>ILLEGAL_RECEIVERS   </B>
+
+<DD>
+A send call to a group with SUBGROUP_CAST set specified
+receivers that weren't legal for that group.
+<DT><B>ILLEGAL_MESSAGE</B>
+
+<DD>
+The message had an illegal structure, like a scatter not filled out correctly,
+or a send with an illegal scatter (num_elements was illegal (size &lt; 0 || size &gt;
+FL_MAX_SCATTER_ELEMENTS) or a scatter buffer size was negative.
+<DT><B>ILLEGAL_MESSAGE_TYPE</B>
+
+<DD>
+A send call used reserved a message type (see MIN_LEGAL_MESS_TYPE in fl.h)
+<DT><B>GROUP_NOT_SECURE</B>
+
+<DD>
+The group that you sent to have not finish yet the key agreement algorithm and
+there is no group key to be used for encryting data. 
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+Cristina Nita-Rotaru &lt;<A HREF="mailto:crisn@cnds.jhu.edu">crisn@cnds.jhu.edu</A>&gt;
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 21:15:38 GMT, July 06, 2001
+
+<!--#include virtual="/includes/footer" -->
+</BODY>
+</HTML>

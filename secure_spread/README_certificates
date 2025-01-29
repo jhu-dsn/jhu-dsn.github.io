@@ -1,0 +1,58 @@
+
+1. Generate a self-signed certificate for CA
+   a. Make a copy of the demoCA directory from the openssl distribution
+      cp -r /usr/download/openssl-0.9.6/apps/demoCA/*
+      /home/crisn/ssp-2.0/demoCA)
+ 
+   b. Specify openssl configure file
+      (e.g. export OPENSSL_CONF=/usr/local/ssl/openssl.cnf)
+   
+   c. Modify openssl.cnf
+      (e.g. dir = /home/crisn/ssp-2.0/demoCA)
+
+   d. Now generate a self-signed CA secret key and certificate
+      (e.g. /home/crisn/ssp-2.0/demoCA> openssl req -newkey rsa:1024 -keyout cakey.pem -out cacert.pem -x509 -nodes)
+
+   e. If you don't have /home/crisn/ssp-2.0/demoCA/newcerts directory, make it
+      (e.g. mkdir /home/crisn/ssp-2.0/demoCA/newcerts)
+
+   f. Move secret key to private directory
+      (e.g. mv /home/crisn/ssp-2.0/demoCA/cakey.pem /home/crisn/ssp-2.0/demoCA/private/cakey.pem)
+
+2. Generate DH shared parameters (dsa_param.pem file)
+       openssl dsaparam -outform PEM -out dsa_test.pem 1024
+
+
+3. Generate certificates
+ 
+    a. DSA certificates
+      use gen_dsa_cert provided in the Secure Spread distribution or
+
+    openssl req -out username_req.pem -days 365 -nodes -newkey dsa:dsa_param.pem -keyout username_priv.pem 
+    openssl ca -out username_cert.pem -policy policy_anything -infiles username_req.pem
+
+
+    b. RSA certificates 
+      use gen_rsa_cert provided in the distribution or
+
+    openssl req -out username_req.pem -days 365 -nodes -newkey rsa:1024 -keyout username_priv.pem 
+    openssl ca -out username_cert.pem -policy policy_anything -infiles username_req.pem 
+
+
+    c. RSA certificates with public exponent 3 (e = 3) 
+      use gen_rsa_e3_cert provided in the Secure Spread distribution or
+
+      openssl genrsa -3 1024 > username_priv.pem
+      openssl req -new -out username_req.pem -days 800 -nodes -key username_priv.pem 
+      openssl ca -out username_cert.pem -policy policy_anything -infiles username_req.pem 
+
+
+NOTES:
+Secure Spread naming convention for users is #user#spreadname where user
+is the name provided by the client when connects to a Spread server, and
+spreadname is the name of the Spread server the client connects to. This is
+the name specified in the Spread configuration file.
+
+Use -days option when generating certificates to specify the validity of the
+certificates. 
+

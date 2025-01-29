@@ -1,0 +1,462 @@
+
+<HTML><HEAD><TITLE>Manpage of SSP_RECEIVE</TITLE></HEAD>
+
+<!--#include virtual="/includes/header-a" -->
+<!--#include virtual="/includes/header-b" -->
+<br><br>
+
+<H1>SSP_RECEIVE</H1>
+Section: User Manuals (3)<BR>Updated: JULY 2001<BR>
+<HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+SSP_receive, SSP_scat_receive - Receive message from spread
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;ssp.h&gt;</B>
+
+<P>
+<B>int SSP_receive(mailbox </B><I>mbox</I><B>, service *</B><I>service_type</I><B>, char </B><I>sender</I><B>[MAX_GROUP_NAME], int </B><I>max_groups</I><B>, int *</B><I>num_groups</I><B>, char </B><I>groups</I><B>[][MAX_GROUP_NAME], int16 *</B><I>mess_type</I><B>, int *</B><I>endian_mismatch</I><B>, int </B><I>max_mess_len</I><B>, char *</B><I>mess</I><B>, int *</B><I>more_messes</I><B>);</B>
+
+<P>
+<B>int SSP_scat_receive( mailbox </B><I>mbox</I><B>, service *</B><I>service_type</I><B>, char </B><I>sender</I><B>[MAX_GROUP_NAME], int </B><I>max_groups</I><B>, int *</B><I>num_groups</I><B>, char </B><I>groups</I><B>[][MAX_GROUP_NAME], int16 *</B><I>mess_type</I><B>, int *</B><I>endian_mismatch</I><B>, scatter *</B><I>scat_mess</I><B>, int *</B><I>more_messes</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>SSP_receive</B>
+
+is the general purpose receive function for the
+toolkit.  This receives not only data messages but also membership
+messages for the connection.  Messages for all groups joined on
+this connection will arrive to the same mailbox so a call to 
+<B>SSP_receive</B>
+
+will get a single 'message' from any one of the 
+groups. After the receive completes a number of fields are set to 
+values indicating meta information about the message (such as groups,
+mess_type, endianness, type, etc).
+<P>
+This function is the most complex used in Spread because it is the 
+only way for the system to return information to the application. The
+meaning of many of the fields changes depending on whether the message
+is a data message or a membership message.
+<P>
+The 
+<B>SSP_receive </B>
+
+function will block if no messages are available. If the function
+is called with the 
+<I>service</I>
+
+set to DONT_BLOCK, then the call does not block if no message is
+available.
+<P>
+The
+<I>mbox</I>
+
+gives which connection to receive a message on.
+<I>Service_type</I>
+
+is a pointer to a variable of type 'service' which will be set 
+to the message type of the message just received.  This
+will be either a REG_MESSAGE or MEMBERSHIP_MESS, and the specific type.
+<P>
+<P>
+The rest of the parameters differ in meaning depending on the 
+<I>service_type. </I>
+
+If the
+<I>service_type</I>
+
+is a REG_MESSAGE (i.e. data message) then:
+<P>
+The
+<I>sender</I>
+
+is a pointer to an array of characters of at least MAX_GROUP_NAME size.  
+This will be set to the name of the sending connection(its private group name).
+<P>
+The 
+<I>max_groups</I>
+
+is the maximum number of groups you have allocated space for in 
+the 'groups' array passed to the receive function.
+<P>
+<I>Num_groups</I>
+
+is a pointer to an int which will be set to the number of groups 
+set in the 'groups' array.
+<P>
+The 
+<I>groups</I>
+
+array holds upto
+<I>max_groups</I>
+
+group names, each of which is a string of at most MAX_GROUP_NAME characters. All
+of the groups which are receiving this message will be listed here, unless the array
+is too small and then as many as can fit will be listed and the 
+<I>num_groups</I>
+
+value will be set to be negative. For example, if your groups array could store 5 
+group names, but a message for 7 groups arrived, the first five group names would
+appear in the
+<I>groups</I>
+
+array and  
+<I>num_groups</I>
+
+would be set to -7.
+<P>
+The 
+<I>mess_type</I>
+
+field will be set to the message type field the application sent with the 
+original message, this is only a short int (16bits). This value is already
+endian corrected before the application receives it.
+<P>
+<I>Endian_mismatch</I>
+
+will be set to true (1) if the endianness of the sending machine 
+differs from that of this receiving machine.
+<P>
+The actual message body being received will be passed into the buffer given by
+<I>mess</I>
+
+which is at least 
+<I>max_mess_len </I>
+
+bytes in size. If the message being received is larger then this buffer the  extra
+data will be discarded by the system and the return value of 
+<B>SSP_receive</B>
+
+will indicate an error.
+The number of messages still waiting for you in the queue is given by 
+<I>more_messes.</I>
+
+If the
+<B>SSP_scat_receive</B>
+
+form is used then instead of the
+<I>mess</I>
+
+buffer and length fields, a single 
+<I>scat_mess</I>
+
+scatter structure should be passed to receive filled in with whatever buffers
+you wish to receive into and their lengths. These buffers must be valid memory areas.
+They will be filled in by the receive call in the order they are listed.
+<P>
+If this is a MEMB_MESSAGE (i.e. membership message) and it 
+specifically is a TRANS_MESS, then:
+<P>
+The 
+<I>sender</I>
+
+char array will be set to the name of the group for which the membership change is occuring.
+<P>
+The 
+<I>max_groups</I>
+
+and 
+<I>max_mess_len</I>
+
+fields are not used and the
+<I>num_groups</I>
+
+is 0 and 
+<I>groups</I>
+
+since there are no normal groups for a transitional membership, the sender field is used instead. 
+The 
+<I>mess_type</I>
+
+field is set to -1. The
+<I>endian_mismatch</I>
+
+field will be zero since the transitional does not have any endian issues. The
+<I>mess</I>
+
+field will be left empty.
+So in essence the only information you get is the 
+<I>sender</I>
+
+field is 
+set to the group name which received a transitional membership change. The importance
+of the TRANS_MEMB_MESS is that it tells the application that all messages received
+after it and before the REG_MEMB_MESS for the same group are 'clean up' messages to
+put the messages in a consistant state before actually changing memberships.  For more
+explanations of this please see other documentation and research papers.
+<P>
+If This is a MEMB_MESSAGE (i.e. membership message) and it 
+specifically is a REG_MEMB_MESS, then:
+<P>
+The 
+<I>sender</I>
+
+char array will be set to the name of the group for which the membership change is occuring.
+<P>
+The 
+<I>max_groups</I>
+
+and
+<I>max_mess_len</I>
+
+fields have the same meaning as before, and the 
+<I>mess_type</I>
+
+field will be set to the index of this process in the array of group members. The
+<I>endian_mismatch</I>
+
+field will again be set to 0 since there are no endian issues with regular memberships.
+<P>
+The
+<I>groups</I>
+
+array and
+<I>mess</I>
+
+body are used to provide two kinds of membership information about the change that just
+occured in this group.  The 
+<I>num_groups</I>
+
+field will be set to the number of members in the group in the 
+<B>new</B>
+
+membership (i.e. after the change occured). Correspondingly the 
+<I>groups</I>
+
+array will be set to the private group names of all members of this group
+in the 
+<B>new</B>
+
+membership.  This list of names is always in the same order at all receipients
+and thus can be used to deterministically pick a group representative if
+one is needed by the application.
+<P>
+The second set of information is stored in the message body and provides a list
+of all the private group names of those processes which came with your process
+from the old group membership into this new membership. The data buffer will include
+the following fixed length fields:
+<P>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>group_id;</B>
+
+<DD>
+<BR>
+
+<DT><B>int num_members;</B>
+
+<DD>
+<BR>
+
+<DT><B>char groups[][MAX_GROUP_NAME];</B>
+
+<DD>
+</DL>
+</DL>
+
+<P>
+The groups array will have num_members group names, each of which is
+a fixed length string.  The content of the groups array is dependent 
+upon the type of the membership change:
+<P>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>CAUSED_BY_JOIN:</B>
+
+<DD>
+Groups contains the private group of the joining process.
+<DT><B>CAUSED_BY_LEAVE:</B>
+
+<DD>
+Groups contains the private group of the leaving process.
+<DT><B>CAUSED_BY_DISCONNECT:</B>
+
+<DD>
+Groups contains the private group of the disconnecting process.
+<DT><B>CAUSED_BY_NETWORK:</B>
+
+<DD>
+Groups contains the group names of the members of the new membership who came 
+with 
+<B>me</B>
+
+(the current process) to the new membership. Of course, all 
+<B>new </B>
+
+members can be determined by comparing it with the groups parameter of
+the SSP_receive call.
+</DL>
+</DL>
+
+<P>
+If this is a MEMB_MESSAGE (i.e. membership message) and it is
+<B>neither</B>
+
+a REG_MEMB_MESS or a TRANS_MEMB_MESS, then it represents exactly the 
+situtation where the member receiving this message has left a group and
+this is notification that the leave has occured, thus it is sometimes called 
+a 
+<B>self-leave</B>
+
+message.  The simplest test for this is if a message is CAUSED_BY_LEAVE and 
+REG_MEMB_MESS is FALSE then it is a 
+<B>self-leave</B>
+
+message.  TRANS_MEMB_MESS never have a CAUSED_BY_ type because they only serve
+to signal upto where SAVE delivery and AGREED delivery (with no holes) is guaranteed
+in the complete 
+<B>old</B>
+
+group membership.
+<P>
+The other members of the group this member just left will receive a normal TRANS_MEMB_MESS, 
+REG_MEMB_MESS pair as described above showing the membership change.
+<P>
+The fields of SSP_receive in this case will be as follows:
+<P>
+The 
+<I>sender</I>
+
+char array will be set to the name of the group for which the membership change is occuring.
+<P>
+The 
+<I>max_groups</I>
+
+and
+<I>max_mess_len</I>
+
+fields have the same meaning as before, and the 
+<I>mess_type</I>
+
+and 
+<I>endian_mismatch</I>
+
+fields will again be set to 0.
+<P>
+The
+<I>groups</I>
+
+array and
+<I>mess</I>
+
+body are used to provide two kinds of membership information about the change that just
+occured in this group.  The 
+<I>num_groups</I>
+
+field will be set to 0 and the 
+<I>groups</I>
+
+array will be empty, since this member is no longer part of the group and thus has
+no knowledge of it.
+<P>
+The second set of information is stored in the message body and provides a the
+private group name of the member who just left, which should always be the
+private group name of the connection which received this message.
+The data buffer will include the following fixed length fields:
+<P>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>group_id;</B>
+
+<DD>
+<BR>
+
+<DT><B>int num_members;</B>
+
+<DD>
+<BR>
+
+<DT><B>char groups[][MAX_GROUP_NAME];</B>
+
+<DD>
+</DL>
+</DL>
+
+<P>
+The groups array will have num_members group names, each of which is
+a fixed length string.  The content of the groups array will be the 
+private group of the leaving process, since this case only occurs with
+a CAUSED_BY_LEAVE membership change.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+Returns the size of the message received 
+on success or one of the following errors ( &lt; 0 ):
+<DL COMPACT>
+<DT><B>ILLEGAL_SESSION</B>
+
+<DD>
+The 
+<I>mbox</I>
+
+given to receive on was illegal.
+<DT><B>ILLEGAL_MESSAGE</B>
+
+<DD>
+The message had an illegal structure, like a scatter not filled out correctly.
+<DT><B>CONNECTION_CLOSED</B>
+
+<DD>
+During communication to receive the message communication errors occured
+and the receive could not be completed.
+<DT><B>BUFFER_TOO_SHORT</B>
+
+<DD>
+If the message body buffer
+<I>mess</I>
+
+is too short to hold the message being received, this is returned.
+<DT><B>WOULD_BLOCK</B>
+
+<DD>
+A receive call with DONT_BLOCK set would have blocked.
+<DT><B>ILLEGAL_PARAM</B>
+
+<DD>
+A call was made with an illegal size (negative).
+<DT><B>ILLEGAL_MESSAGE</B>
+
+<DD>
+The message had an illegal structure, like a scatter not filled out correctly,
+plus a receive call with an illegal scatter (num_elements was illegal 
+(size &lt; 0 || size &gt; FL_MAX_SCATTER_ELEMENTS) or a scatter buffer 
+size was negative.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+Cristina Nita-Rotaru &lt;<A HREF="mailto:crisn@cnds.jhu.edu">crisn@cnds.jhu.edu</A>&gt;
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 21:52:31 GMT, July 06, 2001
+
+<!--#include virtual="/includes/footer" -->
+</BODY>
+</HTML>

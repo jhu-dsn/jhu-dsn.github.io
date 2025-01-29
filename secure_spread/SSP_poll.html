@@ -1,0 +1,80 @@
+
+<HTML><HEAD><TITLE>Manpage of SSP_POLL</TITLE></HEAD>
+
+<!--#include virtual="/includes/header-a" -->
+<!--#include virtual="/includes/header-b" -->
+<br><br>
+
+<H1>SSP_POLL</H1>
+Section: User Manuals (3)<BR>Updated: JULY 2001<BR>
+<HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+SSP_poll - checks amount of data ready to be read
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;ssp.h&gt;</B>
+
+<BR>
+
+<B>int SSP_poll(mailbox </B><I>mbox</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>SSP_poll</B>
+
+is a way to poll a mailbox to see if any messages are
+available for receiving. The value returned will be &lt; 0 if error,
+0 if nothing is available, and the number of bytes waiting if
+something is there. Note that although SSP_poll indicates that
+there are bytes available, SSP_receive will block because the
+data on the file descriptor is used by Flush and is  not intended
+for the user.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+Returns 0 if nothing is available or the number of bytes available, or one of the following errors ( &lt; 0 ):
+<DL COMPACT>
+<DT><B>ILLEGAL_SESSION</B>
+
+<DD>
+The session specified by
+<I>mbox</I>
+
+is illegal. Usually because it is not active.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+Cristina Nita-Rotaru &lt;<A HREF="mailto:crisn@cnds.jhu.edu">crisn@cnds.jhu.edu</A>&gt;
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 22:01:40 GMT, July 06, 2001
+
+<!--#include virtual="/includes/footer" -->
+</BODY>
+</HTML>

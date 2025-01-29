@@ -1,0 +1,189 @@
+<HTML><HEAD><TITLE>Manpage of SSP_CONNECT</TITLE></HEAD>
+
+<!--#include virtual="/includes/header-a" -->
+<!--#include virtual="/includes/header-b" -->
+<br><br>
+
+<H1>SSP_CONNECT</H1>
+Section: User Manuals (3)<BR>Updated: JULY 2001<BR>
+<hr>
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+SSP_connect - Connect an application to a daemon
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;ssp.h&gt;</B>
+
+<BR>
+
+<B>int SSP_connect( const char *</B><I>spread_name</I><B>, const char *</B><I>private_name</I><B>, int </B><I>priority</I><B>, int </B><I>group_membership</I><B>, mailbox *</B><I>mbox</I><B>, char *</B><I>private_group</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>SSP_connect</B>
+
+is the initial call an application must make to establish a
+connection with a Spread daemon.  All other spread calls must
+refer to a valid 
+<I>mbox </I>
+
+returned by this function.
+<P>
+The 
+<I>spread_name</I>
+
+is the name of the Spread daemon to connect to.  It should be a
+string in one of the following forms:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT><B>4803 </B>
+
+<DD>
+This will connect to the Spread daemon on the local 
+machine running on port 4803.  This form cannot be
+used to connect to a Windows95/NT machine.
+<DT><B>4803@localhost </B>
+
+<DD>
+This will also connect to the Spread daemon 
+on the local machine running on port 4803.
+This form can be used on Windows95/NT machines.
+<DT><B>4803@host.domain.edu</B>or<B>4803@128.220.221.99</B>
+
+<DD>
+This will connect to the machine identified by either 
+domain name or IP address at the specified port. 
+</DL>
+</DL>
+
+<P>
+The
+<I>private_name </I>
+
+is the name this connection would like to be known as.  It
+must be unique on the machine running the spread daemon.  The 
+name can be of at most MAX_PRIVATE_NAME characters, with the same character
+restrictions as a group name (mainly it cannot contain the '#'
+character).
+<P>
+The
+<I>priority</I>
+
+is a 0/1 flag for whether this connection will be a &quot;Priority&quot; 
+connection or not. Currently this has no effect.
+<P>
+The 
+<I>group_membership</I>
+
+is a boolean integer.  If 1 then the application will 
+receive group membership messages for this connection, 
+if 0 then the application will 
+<B>not</B>
+
+receive 
+<B>any</B>
+
+membership change messages. For Secure Spread is not used,
+the application must and will receive membership notifications.
+It is used just for compatibility with SP_connect.
+<P>
+The
+<I>mbox</I>
+
+should be a pointer to a mailbox variable.  After the 
+<B>SSP_connect</B>
+
+call returns this variable will hold the mbox for
+the connection.
+<P>
+The
+<I>private_group</I>
+
+should be a pointer to a string big 
+enough to hold at least MAX_GROUP_NAME characters.  
+After the Connect call returns it will contain the private 
+group name of this connection.  This group name can be used to
+send unicast messages to this connection and no one can join 
+this special group.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+Returns 
+<B>ACCEPT_SESSION </B>
+
+on success or one of the following errors ( &lt; 0 ):
+<DL COMPACT>
+<DT><B>ILLEGAL_SPREAD</B>
+
+<DD>
+The 
+<I>spread_name</I>
+
+given to connect to was illegal for some reason. Usually because
+it was a unix socket on Windows95/NT, an improper format for a host
+or an illegal port number
+<DT><B>COULD_NOT_CONNECT</B>
+
+<DD>
+Lower level socket calls failed to allow a connection to the 
+specified spread daemon right now.
+<DT><B>CONNECTION_CLOSED</B>
+
+<DD>
+During communication to establish the connection errors occured
+and the setup could not be completed.
+<DT><B>REJECT_VERSION</B>
+
+<DD>
+The daemon or library has a version mismatch.
+<DT><B>REJECT_NO_NAME</B>
+
+<DD>
+No user private name was provided.
+<DT><B>REJECT_ILLEGAL_NAME</B>
+
+<DD>
+Name provided violated some requirement (length or used an illegal character)
+<DT><B>REJECT_NOT_UNIQUE</B>
+
+<DD>
+Name provided is not unique on this daemon. Recommended response is to try
+again with a different name.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Cristina Nita-Rotaru &lt;<A HREF="mailto:crisn@cnds.jhu.edu">crisn@cnds.jhu.edu</A>&gt;
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 20:33:48 GMT, July 06, 2001
+
+<!--#include virtual="/includes/footer" -->
+</BODY>
+</HTML>

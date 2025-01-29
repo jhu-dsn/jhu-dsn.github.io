@@ -1,0 +1,109 @@
+<HTML><HEAD><TITLE>Manpage of SSP_FLUSH</TITLE></HEAD>
+
+<!--#include virtual="/includes/header-a" -->
+<!--#include virtual="/includes/header-b" -->
+<br><br>
+
+<H1>SSP_FLUSH</H1>
+Section: User Manuals (3)<BR>Updated: JULY 2001<BR>
+<HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+SSP_flush - flush a group
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;ssp.h">ssp.h&gt;</B>
+
+<BR>
+
+<B>int SSP_flush( mailbox </B><I>mbox</I><B>, const char *</B><I>group</I><B>);</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>SSP_flush</B>
+
+flushes a group with the name passed as the string
+<I>group.</I>
+
+If the group
+does not exist amoung the Spread daemons, an error
+will be returned. By flushing a group, the application
+acknowledges the change of the group. No messages should
+be sent till the group is changed (a membership notification
+is received).
+<P>
+The
+<I>mbox</I>
+
+of the connection upon which to join a group is the first parameter.
+<P>
+The
+<I>group </I>
+
+string represents the name of the group to be flushed.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+Returns 0 on success or one of the following errors ( &lt; 0 ):
+<DL COMPACT>
+<DT><B>ILLEGAL_GROUP</B>
+
+<DD>
+The 
+<I>group</I>
+
+given to join was illegal for some reason. Usually because it was of 
+length 0 or length &gt; MAX_GROUP_NAME
+<DT><B>ILLEGAL_SESSION</B>
+
+<DD>
+The session specified by
+<I>mbox</I>
+
+is illegal. Usually because it is not active.
+<DT><B>CONNECTION_CLOSED</B>
+
+<DD>
+During communication errors occured
+and the flush could not be initiated.
+<DT><B>FLUSH_OK_ALREADY_SENT</B>
+
+<DD>
+The group was already flushed.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+None.
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+Cristina Nita-Rotaru &lt;<A HREF="mailto:crisn@cnds.jhu.edu">crisn@cnds.jhu.edu</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 18:34:19 GMT, July 07, 2001
+
+<!--#include virtual="/includes/footer" -->
+</BODY>
+</HTML>
+
+
+

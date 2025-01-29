@@ -1,0 +1,118 @@
+The SECURE SPREAD Non-Commercial License
+(the SECURE SPREAD NCDL)
+Version 2.0
+Februarie 5, 2002
+
+	  IMPORTANT NOTICE
+
+Grant of Limited License
+
+SECURE SPREAD is a software package that is intended to provide secure 
+group communications and reliable multicast services across local and wide 
+area networks such as the Internet. SECURE SPREAD includes computer 
+software and may include associated media, printed materials, and ``online'' 
+or electronic documentation. By installing, copying or otherwise using
+SECURE SPREAD, you agree to be bound by the terms of this License. Read its
+terms very carefully. If you do not agree to these terms, do not install or 
+use SECURE SPREAD.
+
+This License is granted by the copyright owners of SECURE SPREAD: 
+The Johns Hopkins University.
+
+SECURE SPREAD is protected by the copyright laws of the United States
+of America and international copyright treaties.
+
+This software uses a Blowfish implementation that is derived from
+Blowfish code written by Bruce Schneider ().
+T
+
+Terms
+
+(a) You are granted a perpetual, royalty-free, non-exclusive license,
+subject to the claims of any third parties, to use SECURE SPREAD Version 2.0
+or lower for non-commercial, education, or research purposes only. 
+
+(b) Any use or distribution you make of SECURE SPREAD is subject to this
+License.
+
+(c) Any software or system which uses SECURE SPREAD must display a statement 
+with the following information: SECURE SPREAD is copyrighted by the above 
+owners, the official SECURE SPREAD website is 
+http://www.cnds.jhu.edu/research/group/secure_spread,
+SECURE SPREAD is provided subject to this License and that SECURE SPREAD is
+provided AS IS, with NO WARRANTY. This statement must be displayed in the
+documentation, in any material which describes the rights of the
+recipient, in any screen describing credits if the software has a
+user-visible interface, and on any web page describing credits.
+
+(d) You are free to publish (in print or electronic form) your work
+involving SECURE SPREAD, including performance benchmarks, provided you
+credit SECURE SPREAD's copyright owners, and provide a copy of what you
+publish to Yair Amir at yairamir@cs.jhu.edu.
+
+(e) TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SECURE SPREAD IS
+PROVIDED UNDER THIS LICENSE ON AN AS IS BASIS, WITHOUT WARRANTY OF ANY
+KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION,
+WARRANTIES THAT SECURE SPREAD IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A
+PARTICULAR PURPOSE OR NON-INFRINGING. ALL WARRANTIES ARE DISCLAIMED
+AND THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE COVERED
+CODE IS WITH YOU. SHOULD ANY COVERED CODE PROVE DEFECTIVE IN ANY
+RESPECT, YOU (NOT THE INITIAL DEVELOPER OR ANY OTHER CONTRIBUTOR)
+ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS
+DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS
+LICENSE. NO USE OF ANY COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT
+UNDER THIS DISCLAIMER.
+
+(f) TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT
+SHALL THE INITIAL DEVELOPER OR ANY OTHER CONTRIBUTOR BE LIABLE FOR ANY
+SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES FOR LOSS OF
+PROFITS, REVENUE, OR FOR LOSS OF INFORMATION OR ANY OTHER LOSS.
+
+(g) You expressly agree to forever indemnify, defend and hold harmles
+the initial developers and contributors of SECURE SPREAD against all claims,
+demands, suits or other actions arising directly or indirectly from
+your acceptance and use of SECURE SPREAD.
+
+(h) This license shall be goverened by the laws of the State of
+Maryland and the United States of America.
+
+(i) Each contributor hereby grants to the copyright owners and you the
+same rights to their modifications that you are granted in the above
+sections. Each contributor also grants to the copyright owners a
+world-wide, royalty-free, perpetual, non-exclusive license, subject to
+third party intellectual property claims: to use, reproduce, modify,
+display, perform, sub-license, sell, and distribute the contributor's
+modifications in future versions of SECURE SPREAD, or other software
+developed by the copyright owners, even if such software is released
+under a different license.
+
+Exhibit A.
+
+``The contents of this file are subject to the Secure Spread Non-Commercial 
+License, Version 2.0 (the ``License''); you may not use this file except 
+in compliance with the License.  
+You may obtain a copy of the License at:
+
+http://www.cnds.jhu.edu/research/group/secure_spread/license/
+
+Software distributed under the License is distributed on an AS IS basis, 
+WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License 
+for the specific language governing rights and limitations under the 
+License.
+
+    The Original Code is:
+         The SECURE SPREAD Library.
+     
+    The Initial Developers of the Original Code are:
+         Yair Amir, Cristina Nita-Rotaru, John Schultz and Jonathan Stanton.
+
+
+    All Rights Reserved. ''
+
+
+
+
+
+
+
+
