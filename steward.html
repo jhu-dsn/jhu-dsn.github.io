@@ -1,0 +1,129 @@
+<head> 
+<d> 
+    <title>The Steward System</title>
+    <link rel="stylesheet" type="text/css" href="./gen.css" />
+</head>
+
+<body>
+
+<table>
+  <tr valign="top">
+    <td width="15%" class="left_bar">
+      
+      <div class="dsnlogo">
+        <a class="dsnlogo" href="https://jhu-dsn.github.io">DSN</a>
+        </div>
+      <a class="leftside" href="https://jhu-dsn.github.io/about.html" style="color: white;">About Us</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/people.html">People</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/research.html">Current <br>Research</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/publications.html">Publications</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/funding">Funding</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/softwares.html">Download</a><br><br>
+
+      <br>
+        <hr color="white">
+        <br>
+      <a class="leftside" href="https://smesh-org.github.io/">SMesh</a><!-- WRT54G --><br><br>
+      <a class="leftside" href="https://spines-org.github.io/">Spines</a><br><br>
+      <a class="leftside" href="http://www.spread.org">Spread</a><br><br>
+      <a class="leftside" href="https://jhu-dsn.github.io/research/group/secure_spread">Secure Spread</a><br><br>
+
+    </td>
+  <td width="85%" class="CENTER_DATA"> <br>
+
+</head>
+
+<ul><h1><font color="blue">Steward: Scaling Byzantine Replication to Wide-Area Networks</font></h1></ul>
+
+<h2>Overview</h2>
+<p>
+Steward is a hierarchical Byzantine fault-tolerant replication system
+developed as part of DARPA's Self-Regenerative Systems project.  The
+system is suited to deployments consisting of multiple wide-area
+sites, each with a cluster of replication servers.  Steward continues
+to work correctly even if some of the replication servers in each site
+are compromised and act in an arbitrary manner.
+
+<p>
+Steward deploys a hierarchical architecture.  Each site runs local
+Byzantine fault-tolerant protocols to confine the effects of malicious
+replias to their local site.  Thus, each site acts as a trusted
+logical unit.  A benign fault-tolerant replication protocol runs among
+the logical units over the wide-area network.
+
+<h2>Contributors</h2>
+<p>
+<UL>
+
+<LI> Johns Hopkins University
+<UL>
+<LI> Yair Amir
+<LI> Claudiu Danilov
+<LI> Jonathan Kirsch
+<LI> John Lane
+</UL>
+
+<LI> Purdue University
+<UL>
+<LI> Cristina Nita-Rotaru
+<LI> Josh Olsen
+<LI> David Zage
+</UL>
+
+<LI> The Hebrew University
+<UL>
+<LI> Danny Dolev
+</UL>
+
+</UL>
+
+<h2>Funding</h2>
+<p>
+Our work on Steward was partially funded by the Defense Advanced
+Research Project Agency (contract FA8750-04-2-0232), and by the National Science Foundation (grants 0430271 and 0430276).
+
+<h2>Software</h2>
+
+<p>
+Steward was fully implemented and underwent a Red Team evaluation in
+December 2005.  The code was written in C and runs on Linux.
+
+<h4> License </h4>
+Steward may be freely used and distributed under some
+conditions. Please review the <a href="steward/LICENSE.txt">license
+agreement</a> for more details.
+
+<h4> Download </h4>
+Source code can be downloaded <a href="http://dsn.jhu.edu/softwares.html">here</a>.
+
+<h2>Related Publications</h2>
+<p>
+<ul>
+
+<LI><a name="stw_tdsc" href="https://jhu-dsn.github.io/papers/steward_tdsc.pdf">STEWARD: Scaling Byzantine Fault-Tolerant Replication to Wide Area Networks</a><BR>&nbsp &nbsp Yair Amir, Claudiu Danilov, Danny Dolev, Jonathan Kirsch, John Lane, Cristina Nita-Rotaru, Josh Olsen, David Zage <BR>
+&nbsp &nbsp IEEE Transactions on Dependable and Secure Computing,
+Volume 7 Number 1, pp. 80-93, 2010. <BR>
+&nbsp
+</LI>
+
+<LI><A name="stw_dsn" href="https://jhu-dsn.github.io/papers/dsn06_steward.pdf">Scaling Byzantine Fault-Tolerant Replication to Wide Area Networks</a><BR>
+&nbsp &nbsp Yair Amir, Claudiu Danilov, Danny Dolev, Jonathan Kirsch, John Lane,
+ Cristina Nita-Rotaru, Josh Olsen, David Zage<BR>&nbsp &nbsp IEEE International Conference on  Dependable Systems and Networks (DSN 2006), Philadelphia, PA, June 2006, pp. 105-114.<BR>
+&nbsp &nbsp <b> Award paper</b>. <BR>
+&nbsp
+</LI>
+</ul>
+
+
+<div class="dsn-foot-wrapper">
+  <div class="dsn-foot">
+  Distributed Systems and Networks Lab <br>
+  Computer Science Department, Johns Hopkins University <br>
+  Malone Hall <br>
+  3400 North Charles Street <br>
+  Baltimore, MD 21218 <br>
+  </div>
+</div>
+
+
+
