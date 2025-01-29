@@ -1,0 +1,110 @@
+<head> 
+<d> 
+    <title>Paxos for System Builders</title>
+    <link rel="stylesheet" type="text/css" href="/gen.css" />
+</head>
+
+<body>
+
+<table>
+  <tr valign="top">
+    <td width="15%" class="left_bar">
+      <!--#include virtual="/includes/side_menu.html" -->
+    </td>
+  <td width="85%" class="CENTER_DATA"> <br>
+
+</head>
+
+<ul><h1><font color="blue">Paxos for System Builders</font></h1></ul>
+
+<h2>Overview</h2>
+<p>
+Paxos is a fault-tolerant state machine replication algorithm
+developed by Leslie Lamport.  Although the algorithm was known in the
+1980s and published in 1998, it is difficult to understand how the
+algorithm works from the original specification.  Moreover, the
+specification omits several critical details needed to build a real
+system that uses Paxos as a replication engine.<BR><BR>
+
+Over the last several years, we have developed a complete
+specification of our interpretation of the Paxos algorithm such that
+system builders can understand it and implement it.  We call the
+resulting specification <i>Paxos For System Builders</i>.  We are not
+the first to try to cleanly specify Paxos. What distinguishes our work
+from previous approaches is its dual emphasis on (1) specifying the
+protocol such that it will lead to a simple and efficient
+implementation and (2) bringing to light the theoretical implications
+of the various design choices one makes in filling in the details
+needed to implement Paxos.  Our research has shown that how one fills
+in these missing algorithmic and systems-related details can have a
+dramatic effect on the performance and liveness properties of the
+protocol.  These details include which protocol is used to elect a
+leader, how servers recover missed messages, and how flow control is
+achieved.<BR><BR>
+
+We implemented Paxos For System Builders and it is available 
+to the research community.  Our implementation is optimized
+and includes batching and aggregation techniques that dramatically
+improve performance and reduce overhead. <br><br>
+
+<h2>Contributors</h2>
+<p>
+<UL>
+<LI> Johns Hopkins University
+<UL>
+<LI> Yair Amir
+<LI> Jonathan Kirsch
+</UL>
+</UL>
+
+<!-- <h2>Funding</h2>
+<p>
+Our work on Steward was partially funded by the Defense Advanced
+Research Project Agency (contract FA8750-04-2-0232), and by the National Science Foundation (grants 0430271 and 0430276).
+-->
+
+<h2>Software</h2>
+
+<p>
+The first version of Paxos-SB was released in August 2012.  It is written in C and has been tested on 
+Linux and Mac OS X.
+
+<h4> License </h4>
+Paxos-SB may be freely used and distributed under some
+conditions. Please review the <a href="Paxos-SB/LICENSE.txt">license
+agreement</a> for more details.
+
+<h4> Download </h4>
+Source code can be downloaded <a href="http://dsn.jhu.edu/download.html">here</a>.
+
+<h2>Related Publications</h2>
+<p>
+<ul>
+
+<LI><a name="psb-ov" href="https://jhu-dsn.github.io/papers/psb_ladis_08.pdf">Paxos For System Builders: An Overview</a><BR>
+&nbsp &nbsp 
+Yair Amir, Jonathan Kirsch<BR>
+&nbsp &nbsp In Proceedings of the 2008 Workshop on Large-Scale Distributed Systems and Middleware (LADIS 2008), Yorktown, NY, September 2008.
+Invited paper.
+<BR>
+&nbsp
+</LI>
+
+<LI><A name="psb" href="https://jhu-dsn.github.io/papers/cnds-2008-2.pdf">Paxos For System Builders</a><BR>
+&nbsp &nbsp Jonathan Kirsch, Yair Amir<BR>
+&nbsp &nbsp Technical Report CNDS-2008-2.<BR>
+&nbsp
+</LI>
+</ul>
+<div class="dsn-foot-wrapper">
+  <div class="dsn-foot">
+  Distributed Systems and Networks Lab <br>
+  Computer Science Department, Johns Hopkins University <br>
+  Malone Hall <br>
+  3400 North Charles Street <br>
+  Baltimore, MD 21218 <br>
+  </div>
+</div>
+
+
+
