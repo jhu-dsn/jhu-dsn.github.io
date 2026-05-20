@@ -1,6 +1,6 @@
 # Confidential Spire: Confidential Intrusion-Tolerant SCADA for the Power grid
 
-For more information see [www.dsn.jhu.edu/spire/](http://www.dsn.jhu.edu/spire/)
+For more information, see [https://jhu-dsn.github.io/spire/](https://jhu-dsn.github.io/spire/)
 
 Confidential Spire was added to the open source release in Spire 2.0.
 
@@ -151,17 +151,19 @@ Deployment in `example_conf/confidential_spire_conf_4+4+3+3`.
 ### General Prerequisites
 
 - OpenSSL development package
-    * e.g. `yum install openssl-devel`, `apt-get install libssl-dev`
+    * e.g. `dnf install openssl-devel`, `apt-get install libssl-dev`
 
 ### Spines Prerequisites
 
 - Lex and Yacc
-	* e.g. `yum install flex byacc`, `apt-get install flex byacc`
+	* e.g. `dnf install flex byacc`, `apt-get install flex byacc`
 
 ### HMI Prerequisites
 
-- QT development package and webkit
-    * e.g. `yum install qt-devel epel-release qtwebkit-devel`, `apt-get install qt-sdk`
+- QT development package and webkit. Note that for AlmaLinux these require CRB
+  and EPEL repos to be enabled (`dnf config-manager --set-enabled crb`, `dnf
+  install epel-release`
+    * e.g. `dnf install qt5-devel qt5-qtwebengine-devel`, `apt-get install qt5-sdk`
 
 - [pvbrowser](https://pvbrowser.de/pvbrowser/)
     * pvbrowser is packaged with Spire, located in the `pvb` directory.
@@ -176,7 +178,7 @@ Deployment in `example_conf/confidential_spire_conf_4+4+3+3`.
 
 ### DNP3 Support Prerequisites
 
-- cmake (e.g. `yum install cmake`, `apt-get install cmake`)
+- cmake (e.g. `dnf install cmake`, `apt-get install cmake`)
 
 - gcc and g++ version 8.3.1 or higher
 
@@ -201,6 +203,10 @@ Deployment in `example_conf/confidential_spire_conf_4+4+3+3`.
 
 ### OpenPLC (optional, for PLC emulation/creation)
 
+- autotools (e.g. `dnf install autoconf automake`)
+
+- bison (e.g. `dnf install bison`)
+
 - [A (slightly modified) version of OpenPLC](https://github.com/dqian3/OpenPLC_v2.git)
   is packaged  with Spire in the `OpenPLC_v2` directory. 
   Building Spire (below) will build these components also.
@@ -221,16 +227,32 @@ Spire configuration to a Confidential Spire configuration, first run `make
 clean` from the top-level Spire directory, and then follow the instructions
 below to build Confidential Spire.
 
-1. Build pvbrowser, OpenPLC, dnp3, spines, prime (from top-level Spire directory):
+1. Build pvbrowser, OpenPLC, dnp3, libiec61850, spines (from top-level Spire directory):
 
         make libs
    
    Note: Select Y to build DNP3 and select "Blank" driver (1) to build emulated
    PLCs that run on Linux
 
-2. Build Spire (from top-level Spire directory):
+2. Build Spire, including SCADA Master, HMIs, PLCs, and Prime (from top-level Spire directory):
 
         make conf_spire
+
+### Building for Performance Benchmarks
+
+If you are only conducting performance benchmarks of the core Spire system
+(i.e. measuring how long it takes clients to get responses for updates
+submitted to the SCADA Master), you can build only the Spines, Prime, SCADA
+Master, and benchmark program components.
+
+For that, you can use the command:
+
+```
+make conf_core
+```
+
+Note that if you are switching from a base Spire configuration, you
+still need to run `make clean` before running `make conf_core`.
 
 ---
 
@@ -395,10 +417,11 @@ parameters in `common/def.h`
 
    To run:
 
-        cd prime/bin; ./conf_prime -i id
+        cd prime/bin; ./conf_prime -i id -g global_id
 
    The `id` of a Prime daemon must match the id of the SCADA Master that
    connects to it (and is running on the same machine as it).
+   For Confidential Spire, the `id` and `global_id` are same.
 
    Prime uses its configuration files to find the location of the internal
    Spines daemon to connect to (see Prime documentation).
@@ -528,10 +551,10 @@ To run this example, execute the following:
         cd scada_master; ./conf_scada_master 5 192.168.101.101:8100 192.168.101.101:8120
         cd scada_master; ./conf_scada_master 9 192.168.101.101:8100 192.168.101.101:8120
         cd scada_master; ./conf_scada_master 13 192.168.101.101:8100 192.168.101.101:8120
-        cd prime/bin; ./conf_prime -i 1
-        cd prime/bin; ./conf_prime -i 5
-        cd prime/bin; ./conf_prime -i 9
-        cd prime/bin; ./conf_prime -i 13
+        cd prime/bin; ./conf_prime -i 1 -g 1
+        cd prime/bin; ./conf_prime -i 5 -g 5
+        cd prime/bin; ./conf_prime -i 9 -g 9
+        cd prime/bin; ./conf_prime -i 13 -g 13
 
 - On control center 2 machine:
 
@@ -541,10 +564,10 @@ To run this example, execute the following:
         cd scada_master; ./conf_scada_master 6 192.168.101.102:8100 192.168.101.102:8120
         cd scada_master; ./conf_scada_master 10 192.168.101.102:8100 192.168.101.102:8120
         cd scada_master; ./conf_scada_master 14 192.168.101.102:8100 192.168.101.102:8120
-        cd prime/bin; ./conf_prime -i 2
-        cd prime/bin; ./conf_prime -i 6
-        cd prime/bin; ./conf_prime -i 10
-        cd prime/bin; ./conf_prime -i 14
+        cd prime/bin; ./conf_prime -i 2 -g 2
+        cd prime/bin; ./conf_prime -i 6 -g 6
+        cd prime/bin; ./conf_prime -i 10 -g 10
+        cd prime/bin; ./conf_prime -i 14 -g 14
 
 - On data center 1 machine:
 
@@ -552,9 +575,9 @@ To run this example, execute the following:
         cd scada_master; ./conf_scada_master 3 192.168.101.103:8100
         cd scada_master; ./conf_scada_master 7 192.168.101.103:8100
         cd scada_master; ./conf_scada_master 11 192.168.101.103:8100
-        cd prime/bin; ./conf_prime -i 3
-        cd prime/bin; ./conf_prime -i 7
-        cd prime/bin; ./conf_prime -i 11
+        cd prime/bin; ./conf_prime -i 3 -g 3
+        cd prime/bin; ./conf_prime -i 7 -g 7
+        cd prime/bin; ./conf_prime -i 11 -g 11
 
 - On data center 2 machine:
 
@@ -562,9 +585,9 @@ To run this example, execute the following:
         cd scada_master; ./conf_scada_master 4 192.168.101.104:8100
         cd scada_master; ./conf_scada_master 8 192.168.101.104:8100
         cd scada_master; ./conf_scada_master 12 192.168.101.104:8100
-        cd prime/bin; ./conf_prime -i 4
-        cd prime/bin; ./conf_prime -i 8
-        cd prime/bin; ./conf_prime -i 12
+        cd prime/bin; ./conf_prime -i 4 -g 4
+        cd prime/bin; ./conf_prime -i 8 -g 8
+        cd prime/bin; ./conf_prime -i 12 -g 12
 
 - On the PLC/RTU proxy machine:
 
